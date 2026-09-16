@@ -1,0 +1,56 @@
+{
+  "environmentIdentifier": "lab-pc",
+  "roots": [
+    {
+      "dataLocationIdentifier": "rawdata",
+      "rootStoragePathIdentifier": "raw-disk-1",
+      "entries": [
+        "2024_03_15/",
+        "2024_03_15/.DS_Store",
+        "2024_03_15/20240315_09_00_00_calibration/",
+        "2024_03_15/20240315_09_00_00_calibration/beads.raw",
+        "2024_03_15/20240315_10_22_31_m0123-20240315-001/",
+        "2024_03_15/20240315_10_22_31_m0123-20240315-001/m0123-20240315-001.ini",
+        "2024_03_15/20240315_10_22_31_m0123-20240315-001/m0123-20240315-001_XYT.raw",
+        "2024_03_15/20240315_14_05_00_m0123-20240315-002/",
+        "2024_03_15/20240315_14_05_00_m0123-20240315-002/m0123-20240315-002.ini",
+        "2024_03_15/20240315_14_05_00_m0123-20240315-002/m0123-20240315-002_XYT.raw"
+      ]
+    },
+    {
+      "dataLocationIdentifier": "rawdata",
+      "rootStoragePathIdentifier": "raw-disk-2",
+      "entries": [
+        "2024_03_16/",
+        "2024_03_16/20240316_11_30_00_m0124-20240316-001/",
+        "2024_03_16/20240316_11_30_00_m0124-20240316-001/m0124-20240316-001.ini",
+        "2024_03_16/20240316_11_30_00_m0124-20240316-001/m0124-20240316-001_XYT.raw"
+      ]
+    },
+    {
+      "dataLocationIdentifier": "processed",
+      "rootStoragePathIdentifier": "processed-disk",
+      "entries": [
+        "subject-m0123/",
+        "subject-m0123/session-m0123-20240315-001/",
+        "subject-m0123/session-m0123-20240315-001/m0123-20240315-001_my_custom_variable.mat",
+        "subject-m0123/session-m0123-20240315-001/motion_corrected/",
+        "subject-m0123/session-m0123-20240315-001/motion_corrected/m0123-20240315-001_two_photon_corrected.raw",
+        "subject-m0123/session-m0123-20240315-001/roi_data/",
+        "subject-m0123/session-m0123-20240315-001/roi_data/m0123-20240315-001_rois.mat",
+        "subject-m0123/session-m0123-20240315-001/roi_data/m0123-20240315-001_rois_curated.mat",
+        "subject-m0123/session-m0123-20240315-001/roisignals/",
+        "subject-m0123/session-m0123-20240315-001/roisignals/m0123-20240315-001_roisignals.mat",
+        "subject-m0123/session-m0123-20240315-002/",
+        "subject-m0123/session-m0123-20240315-002/motion_corrected/",
+        "subject-m0123/session-m0123-20240315-002/motion_corrected/m0123-20240315-002_two_photon_corrected.raw",
+        "subject-m0124/",
+        "subject-m0124/session-m0124-20240316-001/",
+        "subject-m0125/",
+        "subject-m0125/session-m0125-20240320-001/",
+        "subject-m0125/session-m0125-20240320-001/roi_data/",
+        "subject-m0125/session-m0125-20240320-001/roi_data/m0125-20240320-001_rois.mat"
+      ]
+    }
+  ]
+}
