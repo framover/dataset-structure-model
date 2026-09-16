@@ -70,5 +70,5 @@ An implementation is a callable `(full_path, level_name, data_location_identifie
 
 ## Design notes
 
-- **No generated models.** The earlier `wip-python-api` branch generated pydantic classes from the pre-freeze draft. This reader works on the validated document directly; a typed layer will be added when something consumes it, not before.
+- **No generated models.** The earlier `wip-python-api` branch generated pydantic classes from the earlier draft. This reader works on the validated document directly; a typed layer will be added when something consumes it, not before.
 - **The reader is not the harness.** `tests/test_conformance.py` re-derives every fixture expectation with its own small evaluator and never imports the reader, so the fixtures and the reader are two implementations that must agree.

@@ -6,6 +6,7 @@ This project uses [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Changed
+- The version is 0.1.0, not 1.0.0. The 1.0.0 label was applied before the mapping had met any dataset outside the authors' lab, and no tag, release or consumer ever carried it. Under semantic versioning, 1.0 promises that breaking changes become major versions; that promise waits for the evidence described in the README. The `schemaVersion` in every config, fixture and example, the Python package version and the schema default now read `0.1.0`.
 - An ancestor inferred from its descendants' names now carries every field of its type those names yield, not only its identity. A cell with no folder gets the recording date and slice number read from its ABF file names; descendants that disagree raise `metadata-conflict`. Both readers implement it; the new `inferred-ancestor-fields` conformance case pins it. Previously the values were evaluated and discarded without an issue.
 
 ### Fixed
@@ -13,9 +14,9 @@ This project uses [Semantic Versioning](https://semver.org/).
 - Two-digit years take a fixed pivot, 1969–2068, in both readers. MATLAB's `datetime` default pivot moves with the current year; the reader now passes `PivotYear` 1969.
 - The portable `valueFormat` token subset (`yyyy yy MM dd HH mm ss`, quoted literals) is stated in the schema description and `docs/reference/metadata-extraction.md`; the `extraction-methods` conformance case pins the two-digit year and the pivot.
 
-## [1.0.0] - 2026-09-09
+## [0.1.0] - 2026-09-09
 
-First release: the frozen core. Readers implement this version, configs rely on it, and the blocks marked DRAFT are the only parts that may change without a major bump.
+The first numbered version. The core is what both readers implement and the conformance fixtures pin; blocks marked DRAFT may change at any time. The schema is not stable before 1.0, and what 1.0 waits for is stated in the README.
 
 Earlier drafts (from 2025-07-02; labelled `1.0.0` in their files but never tagged, released or consumed) are superseded. The lists below are relative to those drafts.
 
@@ -55,7 +56,7 @@ Earlier drafts (from 2025-07-02; labelled `1.0.0` in their files but never tagge
 - Level references by name are preferred over 0-based indices
 - `identifier` on `dataLocation`, `rootStoragePath`, `entityLayoutLevel` and `fileGroupingPattern` constrained to `^[A-Za-z][A-Za-z0-9_-]*$`; `metadataDefinitions` keys to `^[A-Za-z_][A-Za-z0-9_]*$`
 - `metadataDefinition` and its `validation` object are strict (`additionalProperties: false`)
-- Draft configs that declared `schemaVersion: "1.0.0"` do not validate against this release (identity, level and method constraints)
+- Draft configs that declared `schemaVersion: "0.1.0"` do not validate against this release (identity, level and method constraints)
 
 ### Removed (relative to the drafts)
 - `rootStoragePath.isAvailable` — runtime state, reported by readers

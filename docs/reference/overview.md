@@ -10,7 +10,7 @@ A DSM config is a JSON object. `additionalProperties` is `false` — no keys out
 |--|--|
 | Type | `string` |
 | Pattern | `^\d+\.\d+\.\d+$` |
-| Example | `"1.0.0"` |
+| Example | `"0.1.0"` |
 
 The version of the DSM schema this config conforms to, using [semantic versioning](https://semver.org/). Readers use it to decide compatibility.
 

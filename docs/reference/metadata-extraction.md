@@ -69,7 +69,7 @@ A config that uses `function` needs an implementation in every reader that consu
 
 ### `sidecar` — DRAFT
 
-Read the value from a file inside the entity folder (`filePattern`, `contentPath`, `fileFormat`). Outside the frozen core; readers may reject it.
+Read the value from a file inside the entity folder (`filePattern`, `contentPath`, `fileFormat`). Outside the core; readers may reject it.
 
 ## `valueFormat`
 

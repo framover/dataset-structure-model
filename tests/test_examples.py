@@ -1,6 +1,6 @@
 """
-Every example validates against the schema, and the constraints the frozen
-core adds are enforced: documents that break them are rejected.
+Every example validates against the schema, and the constraints the core
+adds are enforced: documents that break them are rejected.
 """
 import jsonschema
 import pytest
@@ -39,7 +39,7 @@ def test_preferences_are_optional(schema):
 
 
 def test_missing_data_locations_is_rejected(schema):
-    assert _errors(schema, {"schemaVersion": "1.0.0"})
+    assert _errors(schema, {"schemaVersion": "0.1.0"})
 
 
 def test_wrong_data_category_is_rejected(schema):

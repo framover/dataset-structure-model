@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "0.1.0",
   "entityTypes": [
     { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
     { "name": "session", "identifierRef": "session_id" }

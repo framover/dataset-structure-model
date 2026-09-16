@@ -58,7 +58,7 @@ The category says nothing about permission; that is `access`.
 | Type | `string` (enum) |
 | Values | `"filesystem"` \| `"spreadsheet"` \| `"database"` \| `"api"` |
 
-`filesystem` is the frozen core and requires `filesystemSource`. The other three are **DRAFT**: they require their source block plus `entityType`, and readers may reject them.
+`filesystem` is the core and requires `filesystemSource`. The other three are **DRAFT**: they require their source block plus `entityType`, and readers may reject them.
 
 ---
 
@@ -144,4 +144,4 @@ The locations this one was produced from. Provenance only — it does not say ho
 
 ### `entityType`, `spreadsheetSource`, `databaseSource`, `apiSource` — DRAFT
 
-Placeholders for entity records that come from a spreadsheet, a database table, or an API rather than a folder tree. They validate but are outside the frozen core; readers may reject them and their shape may change without a major version bump.
+Placeholders for entity records that come from a spreadsheet, a database table, or an API rather than a folder tree. They validate but are outside the core; readers may reject them and their shape may change at any time.

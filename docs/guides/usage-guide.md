@@ -21,7 +21,7 @@ A minimal valid configuration:
 
 ```json
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "0.1.0",
   "entityTypes": [
     { "name": "subject", "identifierRef": "subject_id" }
   ],

@@ -10,9 +10,11 @@ Most data standards (BIDS, ISA, NWB) require you to conform your data to a speci
 
 ---
 
-## A frozen core, and DRAFT blocks outside it
+## A core, DRAFT blocks outside it, and no 1.0 before the evidence
 
-A schema without an implementation drifts — the repository's own history shows it. Version 1.0.0 freezes what readers implement and configs rely on: the `filesystem` source, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, entity identity, file-level entities and the entity record. `spreadsheet`, `database` and `api` sources and the `sidecar` method stay in the schema as **DRAFT** so their place is reserved, but readers may reject them and they may change without a major bump. The rule from here: a field enters the core when a reader consumes it, not before.
+A schema without an implementation drifts — the repository's own history shows it. Version 0.1.0 names what readers implement and configs rely on: the `filesystem` source, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, entity identity, file-level entities and the entity record. `spreadsheet`, `database` and `api` sources and the `sidecar` method stay in the schema as **DRAFT** so their place is reserved, but readers may reject them and they may change at any time. The rule from here: a field enters the core when a reader consumes it, not before.
+
+Version 1.0 is a promise that breaking changes become major versions. The core has been exercised on the authors' own layouts and one toy dataset, which is not evidence for that promise. So 1.0 waits until the mapping has been applied to datasets from outside the authors' lab and the core has stopped changing across them. Until then a change to the core bumps the minor version.
 
 ---
 
