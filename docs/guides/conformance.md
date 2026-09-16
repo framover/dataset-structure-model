@@ -104,6 +104,26 @@ These are the rules a reader implements; each is exercised by at least one case.
 | `invalid-reference` | must be refused with `reference-integrity` |
 | `invalid-schema` | must be refused with `schema-validation` |
 
+The cases below describe layouts from outside the authors' lab; each README names the layout's provenance and the gaps it exposes. The gap ids refer to [Validation Against Foreign Datasets](../validation/foreign-datasets.md). Where a layout exposes a gap, the case pins the *current* rules, so a change to the core shows up as a change to an expectation.
+
+| Case | Layout | Checks |
+|------|--------|--------|
+| `dandi-nwb-subject-folders` | DANDI dandiset (000006) | subject folder above a one-file session level, parent and own tokens in one pattern, dataset-level file (G1) |
+| `dandi-nwb-session-variants` | DANDI dandiset (000409) | several NWB files per session distinguished by `desc-`, UUID identities, `+` in names, partial download unmatched |
+| `gin-blackrock-flat-files` | GIN repository, Blackrock files | fixed level above a file level, subject from one character with `enum`, two-digit year, seven file kinds, sibling branch (G5) |
+| `crcns-hc3-numbered-extensions` | CRCNS hc-3 | four entity types on three levels, file entities keyed by numeric extension, two ancestors' tokens in one pattern, outer-entity files double-accounted (G2) |
+| `ibl-alf-session-path` | IBL ONE/ALF | fixed level between entities, composite identity from a structural date level, whole-path rule, one entity in two branches (G3), branching (G5) |
+| `bids-multimodal-sessions` | BIDS (OpenNeuro ds000117) | structural datatype level with alternation, stem-keyed file entities, optional entities (G4), `scans.tsv` (G2), session-level files under `meg/` (G6) |
+| `allen-ecephys-cache` | AllenSDK ecephys cache | integer identities, a session folder owning a file next to probe files (G2), root tables (G1) |
+| `open-ephys-binary` | Open Ephys binary format | four entity levels, fixed `continuous` level, names with spaces, recording-level files (G2), `events/` and `spikes/` branches (G5) |
+| `spikeglx-folder-per-probe` | SpikeGLX, folder per probe | composite gate identity, tokens from parent and own identity, per-trigger series, nidq files at the gate level (G2) |
+| `suite2p-output-planes` | suite2p output | fixed level between entities, `combined/` excluded, seven fixed-name kinds, files inside a structural folder (G7) |
+| `deeplabcut-project` | DeepLabCut project | one tree as two locations (the G5 workaround), file group in one and folder in the other, one regex for two naming forms (G8) |
+| `scanimage-caiman-two-photon` | ScanImage TIFF series, CaImAn outputs | file-level ↔ folder-level matching on a three-field identity, two environments, subject under dates flagged `duplicate-entity` (G3), zero-padded counter as text (G9), metadata in member names (G10) |
+| `zenodo-adhoc-date-folders` | ad-hoc Zenodo deposit | single entity type, date level on top, `enum` and integer from one name, exactly-three planes not expressible (G11) |
+| `zenodo-adhoc-flat-mat` | ad-hoc Zenodo deposit | one file level at the root, an entity split over numbered files |
+| `nansen-project-layout` | NANSEN data locations | two roots in one location, raw timestamp folders matched to generated `subject-`/`session-` folders, MATLAB index ranges as slices, variables in subfolders not describable (G12) |
+
 ## Using the fixtures from a reader
 
 ```

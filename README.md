@@ -80,7 +80,7 @@ Then: the [Quick Start](docs/getting-started/quickstart.md), [Core Concepts](doc
 
 Version **0.1.0**. The core is what both readers implement and the conformance fixtures pin: the `filesystem` store, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, declared identity, file-level entities, and the entity record. A field enters the core only when a reader consumes it. Blocks marked DRAFT in the schema (`spreadsheet`, `database` and `api` stores, `sidecar` extraction) are reserved and may change at any time. See [CHANGELOG.md](CHANGELOG.md).
 
-The schema is not yet stable. It has been exercised on the authors' own layouts and one toy dataset. Until 1.0, a change to the core bumps the minor version, and a config written for one minor version is not guaranteed to validate against the next.
+The schema is not yet stable. It has been exercised on the authors' own layouts, one toy dataset, and fourteen public layouts plus the data locations of one existing tool (NANSEN); [docs/validation/foreign-datasets.md](docs/validation/foreign-datasets.md) lists them, the gaps they exposed and what should be settled before 1.0. Until 1.0, a change to the core bumps the minor version, and a config written for one minor version is not guaranteed to validate against the next.
 
 **1.0 waits for evidence.** It follows once the mapping has been applied to datasets from outside the authors' lab and the core has stopped changing across them. Each such dataset adds an example config and, where it exposed a gap, a conformance case.
 
