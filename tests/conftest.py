@@ -42,7 +42,7 @@ def example_files():
 
 
 _MINIMAL_CONFIG = {
-    "schemaVersion": "1.0.0",
+    "schemaVersion": "0.1.0",
     "entityTypes": [
         {"name": "subject", "identifierRef": "subject_id"},
         {"name": "session", "identifierRef": "session_id"},
@@ -80,5 +80,5 @@ _MINIMAL_CONFIG = {
 
 
 def minimal_config():
-    """A fresh copy of the smallest config that satisfies the frozen core."""
+    """A fresh copy of the smallest config that satisfies the core."""
     return copy.deepcopy(_MINIMAL_CONFIG)

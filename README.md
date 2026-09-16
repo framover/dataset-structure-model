@@ -78,7 +78,11 @@ Then: the [Quick Start](docs/getting-started/quickstart.md), [Core Concepts](doc
 
 ## Status
 
-Version **1.0.0** is the frozen core: the `filesystem` store, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, declared identity, file-level entities, and the entity record. A field enters the core only when a reader consumes it; blocks marked DRAFT in the schema (`spreadsheet`, `database` and `api` stores, `sidecar` extraction) are reserved and may change without a major version bump. See [CHANGELOG.md](CHANGELOG.md).
+Version **0.1.0**. The core is what both readers implement and the conformance fixtures pin: the `filesystem` store, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, declared identity, file-level entities, and the entity record. A field enters the core only when a reader consumes it. Blocks marked DRAFT in the schema (`spreadsheet`, `database` and `api` stores, `sidecar` extraction) are reserved and may change at any time. See [CHANGELOG.md](CHANGELOG.md).
+
+The schema is not yet stable. It has been exercised on the authors' own layouts and one toy dataset. Until 1.0, a change to the core bumps the minor version, and a config written for one minor version is not guaranteed to validate against the next.
+
+**1.0 waits for evidence.** It follows once the mapping has been applied to datasets from outside the authors' lab and the core has stopped changing across them. Each such dataset adds an example config and, where it exposed a gap, a conformance case.
 
 Both readers pass every conformance case; CI runs the Python suite, the Python conformance run, and the MATLAB suite on each change. Neither reader is published on a package index yet.
 

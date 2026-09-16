@@ -5,7 +5,7 @@ description: Infer a Dataset Structure Model (DSM) config from a data directory 
 
 # Infer a DSM config from a directory listing
 
-You produce **one JSON file** that validates against `DatasetStructureModel.schema.json` 1.0.0 and describes how an existing dataset is laid out: which path components are which entities, and how metadata is read from their names.
+You produce **one JSON file** that validates against `DatasetStructureModel.schema.json` 0.1.0 and describes how an existing dataset is laid out: which path components are which entities, and how metadata is read from their names.
 
 The config is **descriptive**. Record what is there. Never invent a layout, a field the names do not carry, or a tidier convention than the one the dataset uses.
 

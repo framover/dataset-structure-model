@@ -12,7 +12,7 @@ One JSON file describing how a dataset is laid out on disk: which folders and fi
 
 | Key | Required | Notes |
 |-----|----------|-------|
-| `schemaVersion` | Yes | `"1.0.0"` |
+| `schemaVersion` | Yes | `"0.1.0"` |
 | `dataLocations` | Yes | One entry per folder tree |
 | `entityTypes` | Yes in practice | One per entity type used in any layout |
 | `metadataDefinitions` | Yes in practice | Every field referenced anywhere |
@@ -131,7 +131,7 @@ Config:
 
 ```json
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "0.1.0",
   "entityTypes": [
     { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
     { "name": "session", "identifierRef": "session_id" }

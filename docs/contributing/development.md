@@ -52,7 +52,7 @@ pytest tests/ -v
 |-----------|--------|
 | `test_schema_validity.py` | The schema is valid draft-07 |
 | `test_schema_completeness.py` | Every `$ref` resolves; no unused definitions |
-| `test_examples.py` | Every example validates; documents that break the frozen-core rules are rejected |
+| `test_examples.py` | Every example validates; documents that break the core rules are rejected |
 | `test_reference_integrity.py` | Cross-references in every example resolve (identity fields, `ofEntity`, level names, `derivedFrom`, template tokens) |
 | `test_entity_record.py` | `EntityRecord.schema.json` and `DirectoryListing.schema.json` are valid; every expected record validates |
 | `test_conformance.py` | Every conformance case is self-consistent: config valid, paths exist, listing fully accounted for, extractions and file patterns re-evaluate to the expectation (independent of the reader) |
@@ -89,7 +89,7 @@ The built site is written to `site/` (git-ignored).
 
 Follow these steps whenever making changes to `schema/DatasetStructureModel.schema.json`:
 
-1. **A field enters the frozen core only when a reader consumes it.** Otherwise mark it DRAFT in its description.
+1. **A field enters the core only when a reader consumes it.** Otherwise mark it DRAFT in its description.
 2. **Update the schema** — `schema/DatasetStructureModel.schema.json`, and `schema/EntityRecord.schema.json` if the output changes.
 3. **Bump `schemaVersion`** in all example files if the change is breaking.
 4. **Add a CHANGELOG entry** under `## [Unreleased]` in `CHANGELOG.md`.
@@ -109,7 +109,7 @@ This project uses [Semantic Versioning](https://semver.org/):
 - **Minor** (`1.x.0`) — additive schema changes: new optional fields, new enum values. Existing valid configs remain valid.
 - **Major** (`x.0.0`) — breaking changes: removed or renamed fields, new required fields, changed `additionalProperties` rules.
 
-The `schemaVersion` field in config files is the schema version they were written for (`"1.0.0"` for the current core). DRAFT blocks are exempt from this policy: they may change in a minor release.
+The `schemaVersion` field in config files is the schema version they were written for (`"0.1.0"` for the current core). DRAFT blocks are exempt from this policy: they may change in a minor release.
 
 ---
 

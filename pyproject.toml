@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dataset-structure-model"
-version = "1.0.0"
+version = "0.1.0"
 description = "Reference reader, validator and dry-run tool for Dataset Structure Model configs"
 readme = "README.md"
 requires-python = ">=3.9"

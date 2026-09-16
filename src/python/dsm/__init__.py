@@ -13,7 +13,7 @@ from .report import render_report
 from .validate import check_references, load_config, schema_errors, validate_config
 from .walk import Walker, walk
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"
 
 __all__ = [
     "Config", "ConfigError", "ListingError", "ExtractorRegistry",

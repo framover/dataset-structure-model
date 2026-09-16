@@ -36,7 +36,7 @@ Create `my-dataset.json`:
 
 ```json
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "0.1.0",
   "entityTypes": [
     { "name": "subject", "identifierRef": "subject_id" },
     { "name": "session", "identifierRef": "session_id" }

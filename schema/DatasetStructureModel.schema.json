@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "DatasetStructureModel",
-  "description": "Describes how a scientific dataset is laid out: where its files live, which entity hierarchy the folder and file structure encodes, and how metadata is read out of path components. Version 1.0.0 is the frozen core: the filesystem source type and the extraction methods substring, regex, template, fixed and function. Blocks marked DRAFT are outside the core and readers may reject them.",
+  "description": "Describes how a scientific dataset is laid out: where its files live, which entity hierarchy the folder and file structure encodes, and how metadata is read out of path components. The core, which readers implement, is the filesystem source type and the extraction methods substring, regex, template, fixed and function. Blocks marked DRAFT are outside the core and readers may reject them.",
   "type": "object",
   "required": ["schemaVersion", "dataLocations"],
   "additionalProperties": false,
@@ -10,7 +10,7 @@
       "type": "string",
       "description": "Version of the DatasetStructureModel schema this document conforms to, using semantic versioning.",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "default": "1.0.0"
+      "default": "0.1.0"
     },
     "entityTypes": {
       "type": "array",
@@ -270,7 +270,7 @@
         "sourceType": {
           "type": "string",
           "enum": ["filesystem", "spreadsheet", "database", "api"],
-          "description": "Kind of source. 'filesystem' is the frozen core and requires filesystemSource. 'spreadsheet', 'database' and 'api' are DRAFT: they require their source block and entityType, and readers may reject them."
+          "description": "Kind of source. 'filesystem' is the core and requires filesystemSource. 'spreadsheet', 'database' and 'api' are DRAFT: they require their source block and entityType, and readers may reject them."
         },
         "entityType": {
           "type": "string",
