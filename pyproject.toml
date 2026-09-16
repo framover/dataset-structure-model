@@ -18,7 +18,7 @@ test = ["pytest>=7.0"]
 dsm = "dsm.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/ehennestad/dataset-structure-model"
+Homepage = "https://github.com/framover/dataset-structure-model"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/python/dsm"]

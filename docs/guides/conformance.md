@@ -1,6 +1,6 @@
 # Conformance Fixtures
 
-The schema says how a config is shaped. The fixtures in [`conformance/`](https://github.com/ehennestad/dataset-structure-model/tree/main/conformance) say what a reader must *do* with one: given a config and a directory listing, produce exactly these [entity records](../reference/entity-record.md). They are language-neutral, so a MATLAB reader and a Python reader are checked against the same expectations, and a tool that writes configs (an LLM skill, a configuration UI) can check its output against a listing without a real filesystem.
+The schema says how a config is shaped. The fixtures in [`conformance/`](https://github.com/framover/dataset-structure-model/tree/main/conformance) say what a reader must *do* with one: given a config and a directory listing, produce exactly these [entity records](../reference/entity-record.md). They are language-neutral, so a MATLAB reader and a Python reader are checked against the same expectations, and a tool that writes configs (an LLM skill, a configuration UI) can check its output against a listing without a real filesystem.
 
 ---
 
@@ -11,7 +11,7 @@ One directory per case:
 | File | Contents |
 |------|----------|
 | `config.json` | A DSM config |
-| `listing.json` | A directory snapshot under one or more root paths — [`schema/DirectoryListing.schema.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/schema/DirectoryListing.schema.json) |
+| `listing.json` | A directory snapshot under one or more root paths — [`schema/DirectoryListing.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/DirectoryListing.schema.json) |
 | `expected.json` | The records and unmatched entries a reader must produce, or the error it must raise |
 | `README.md` | What the case checks |
 

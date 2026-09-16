@@ -2,7 +2,7 @@
 
 The reference reader. It validates configs, turns directory listings into [entity records](../reference/entity-record.md), and is the executable definition of the reader rules — it passes every [conformance case](../guides/conformance.md), and CI runs them on each change.
 
-Source: [`src/python/dsm`](https://github.com/ehennestad/dataset-structure-model/tree/main/src/python/dsm). Requires Python 3.9+; the only dependency is `jsonschema`.
+Source: [`src/python/dsm`](https://github.com/framover/dataset-structure-model/tree/main/src/python/dsm). Requires Python 3.9+; the only dependency is `jsonschema`.
 
 ## Install
 

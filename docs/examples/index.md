@@ -1,6 +1,6 @@
 # Examples
 
-Complete configurations, each validated against the schema by the test suite. The JSON files are in [`examples/`](https://github.com/ehennestad/dataset-structure-model/tree/main/examples).
+Complete configurations, each validated against the schema by the test suite. The JSON files are in [`examples/`](https://github.com/framover/dataset-structure-model/tree/main/examples).
 
 <div class="grid cards" markdown>
 

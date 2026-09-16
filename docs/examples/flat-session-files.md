@@ -1,6 +1,6 @@
 # Flat Session Files
 
-Source: [`examples/flat_session_files.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/examples/flat_session_files.json). Expected reader output, with a listing: [`conformance/flat-session-files/`](https://github.com/ehennestad/dataset-structure-model/tree/main/conformance/flat-session-files).
+Source: [`examples/flat_session_files.json`](https://github.com/framover/dataset-structure-model/blob/main/examples/flat_session_files.json). Expected reader output, with a listing: [`conformance/flat-session-files/`](https://github.com/framover/dataset-structure-model/tree/main/conformance/flat-session-files).
 
 The layout that "one folder per session" models cannot describe: an acquisition system exported every file of every session into a single folder.
 

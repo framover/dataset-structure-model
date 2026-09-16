@@ -1,7 +1,7 @@
 site_name: Dataset Structure Model
 site_description: A JSON Schema standard for declaratively describing the structure of scientific datasets
-repo_url: https://github.com/ehennestad/dataset-structure-model
-repo_name: ehennestad/dataset-structure-model
+repo_url: https://github.com/framover/dataset-structure-model
+repo_name: framover/dataset-structure-model
 edit_uri: edit/main/docs/
 
 # Work-item notes are symlinked into docs/ from a separate repo and are not part of the site.
