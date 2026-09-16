@@ -31,4 +31,4 @@ Thank you for your interest in contributing to the Dataset Structure Model.
 - **Add examples** — new domain examples are welcome; they must validate against the schema
 - **Improve documentation** — corrections, clarifications, and new guides
 
-All contributions are made under the [MIT License](https://github.com/ehennestad/dataset-structure-model/blob/main/LICENSE).
+All contributions are made under the [MIT License](https://github.com/framover/dataset-structure-model/blob/main/LICENSE).

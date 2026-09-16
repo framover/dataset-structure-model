@@ -1,6 +1,6 @@
 # Entity Record
 
-A DSM config says how to *read* a dataset. The **entity record** says what comes out: the object a reader emits for each entity it discovers. It is defined by [`schema/EntityRecord.schema.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/schema/EntityRecord.schema.json) and is the interchange format between readers in different languages and the tools that build entity tables from them. Two readers given the same config and the same directory listing produce the same records — that is what the [conformance fixtures](../guides/conformance.md) check.
+A DSM config says how to *read* a dataset. The **entity record** says what comes out: the object a reader emits for each entity it discovers. It is defined by [`schema/EntityRecord.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/EntityRecord.schema.json) and is the interchange format between readers in different languages and the tools that build entity tables from them. Two readers given the same config and the same directory listing produce the same records — that is what the [conformance fixtures](../guides/conformance.md) check.
 
 ```json
 {

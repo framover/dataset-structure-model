@@ -1,6 +1,6 @@
 # SHAREbrain Toy Dataset
 
-Source: [`examples/sharebrain_toy_dataset.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/examples/sharebrain_toy_dataset.json).
+Source: [`examples/sharebrain_toy_dataset.json`](https://github.com/framover/dataset-structure-model/blob/main/examples/sharebrain_toy_dataset.json).
 
 A three-level hierarchy written by the Begonia acquisition software: session → recording → trial, with the subject encoded in the session folder name.
 

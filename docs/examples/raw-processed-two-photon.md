@@ -1,6 +1,6 @@
 # Raw and Processed Two-Photon
 
-Source: [`examples/raw_processed_two_photon.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/examples/raw_processed_two_photon.json). Expected reader output, with a listing: [`conformance/raw-processed-matching/`](https://github.com/ehennestad/dataset-structure-model/tree/main/conformance/raw-processed-matching).
+Source: [`examples/raw_processed_two_photon.json`](https://github.com/framover/dataset-structure-model/blob/main/examples/raw_processed_two_photon.json). Expected reader output, with a listing: [`conformance/raw-processed-matching/`](https://github.com/framover/dataset-structure-model/tree/main/conformance/raw-processed-matching).
 
 The case the DSM was designed for: the same sessions in two locations with different hierarchies and different naming.
 

@@ -2,7 +2,7 @@
 
 The MATLAB reader: the same rules as the [Python reference reader](python.md), implemented in a `+dsm` package. It passes every [conformance case](../guides/conformance.md), and its output is checked against the Python comparator (`dsm compare`) so the two readers are known to agree on the [entity record](../reference/entity-record.md) format.
 
-Source: [`src/matlab/+dsm`](https://github.com/ehennestad/dataset-structure-model/tree/main/src/matlab). Requires MATLAB R2021a or later (tested on R2024b and R2025b); no toolboxes.
+Source: [`src/matlab/+dsm`](https://github.com/framover/dataset-structure-model/tree/main/src/matlab). Requires MATLAB R2021a or later (tested on R2024b and R2025b); no toolboxes.
 
 ## Install
 

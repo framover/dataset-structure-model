@@ -2,7 +2,7 @@
 
 Complete reference for every property in the Dataset Structure Model schema, version **1.0.0** (the frozen core).
 
-The schema file is [`schema/DatasetStructureModel.schema.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/schema/DatasetStructureModel.schema.json). Readers emit [entity records](entity-record.md) defined by [`schema/EntityRecord.schema.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/schema/EntityRecord.schema.json), and take directory snapshots defined by [`schema/DirectoryListing.schema.json`](https://github.com/ehennestad/dataset-structure-model/blob/main/schema/DirectoryListing.schema.json) — see [Conformance Fixtures](../guides/conformance.md).
+The schema file is [`schema/DatasetStructureModel.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/DatasetStructureModel.schema.json). Readers emit [entity records](entity-record.md) defined by [`schema/EntityRecord.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/EntityRecord.schema.json), and take directory snapshots defined by [`schema/DirectoryListing.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/DirectoryListing.schema.json) — see [Conformance Fixtures](../guides/conformance.md).
 
 ## Top-level structure
 

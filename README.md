@@ -1,6 +1,6 @@
 # Dataset Structure Model
 
-[![CI](https://github.com/ehennestad/dataset-structure-model/actions/workflows/ci.yml/badge.svg)](https://github.com/ehennestad/dataset-structure-model/actions/workflows/ci.yml)
+[![CI](https://github.com/framover/dataset-structure-model/actions/workflows/ci.yml/badge.svg)](https://github.com/framover/dataset-structure-model/actions/workflows/ci.yml)
 
 **A declarative, language-neutral mapping between the physical layout of a dataset across one or more stores and a semantic entity model.** A reader applies the mapping to derive entity tables — which entities exist, how each is identified across stores, which items belong to it, and what attributes its location encodes — and, in reverse, to place a new entity's data. The mapping describes layouts as they are; it does not prescribe them.
 

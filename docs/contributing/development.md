@@ -10,7 +10,7 @@ This guide covers the tools and workflow for contributing to the Dataset Structu
 
 ```bash
 # Clone the repository
-git clone https://github.com/ehennestad/dataset-structure-model.git
+git clone https://github.com/framover/dataset-structure-model.git
 cd dataset-structure-model
 
 # Install the Python reader (editable) with the test dependencies; adds the `dsm` command

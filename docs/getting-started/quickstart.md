@@ -14,7 +14,7 @@ pip install jsonschema
 ## Step 1: Get the schema
 
 ```bash
-git clone https://github.com/ehennestad/dataset-structure-model.git
+git clone https://github.com/framover/dataset-structure-model.git
 ```
 
 The schema is `schema/DatasetStructureModel.schema.json`.
