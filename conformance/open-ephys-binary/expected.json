@@ -1,0 +1,514 @@
+{
+  "records": [
+    {
+      "entityType": "record_node",
+      "identity": {
+        "node_id": 101
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/"
+          ],
+          "files": {
+            "settings": [
+              "Record Node 101/settings.xml"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101
+      }
+    },
+    {
+      "entityType": "record_node",
+      "identity": {
+        "node_id": 102
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 102/"
+          ],
+          "files": {
+            "settings": [
+              "Record Node 102/settings.xml"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 102
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/"
+          ]
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 102
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 102/experiment1/"
+          ]
+        }
+      ],
+      "metadata": {
+        "node_id": 102,
+        "experiment_index": 1
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/recording1/"
+          ],
+          "files": {
+            "structure": [
+              "Record Node 101/experiment1/recording1/structure.oebin"
+            ],
+            "sync_messages": [
+              "Record Node 101/experiment1/recording1/sync_messages.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1,
+        "recording_index": 1
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_index": 2
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/recording2/"
+          ],
+          "files": {
+            "structure": [
+              "Record Node 101/experiment1/recording2/structure.oebin"
+            ],
+            "sync_messages": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1,
+        "recording_index": 2
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 102
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 102/experiment1/recording1/"
+          ],
+          "files": {
+            "structure": [
+              "Record Node 102/experiment1/recording1/structure.oebin"
+            ],
+            "sync_messages": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 102,
+        "experiment_index": 1,
+        "recording_index": 1
+      }
+    },
+    {
+      "entityType": "stream",
+      "identity": {
+        "stream_name": "Neuropix-PXI-100.ProbeA-AP"
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        },
+        {
+          "entityType": "recording",
+          "identity": {
+            "recording_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-AP/"
+          ],
+          "files": {
+            "samples": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-AP/continuous.dat"
+            ],
+            "timestamps": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-AP/timestamps.npy"
+            ],
+            "sample_numbers": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-AP/sample_numbers.npy"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1,
+        "recording_index": 1,
+        "stream_name": "Neuropix-PXI-100.ProbeA-AP",
+        "processor_id": 100
+      }
+    },
+    {
+      "entityType": "stream",
+      "identity": {
+        "stream_name": "Neuropix-PXI-100.ProbeA-LFP"
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        },
+        {
+          "entityType": "recording",
+          "identity": {
+            "recording_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-LFP/"
+          ],
+          "files": {
+            "samples": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-LFP/continuous.dat"
+            ],
+            "timestamps": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-LFP/timestamps.npy"
+            ],
+            "sample_numbers": [
+              "Record Node 101/experiment1/recording1/continuous/Neuropix-PXI-100.ProbeA-LFP/sample_numbers.npy"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1,
+        "recording_index": 1,
+        "stream_name": "Neuropix-PXI-100.ProbeA-LFP",
+        "processor_id": 100
+      }
+    },
+    {
+      "entityType": "stream",
+      "identity": {
+        "stream_name": "Neuropix-PXI-100.ProbeA-AP"
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 101
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        },
+        {
+          "entityType": "recording",
+          "identity": {
+            "recording_index": 2
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 101/experiment1/recording2/continuous/Neuropix-PXI-100.ProbeA-AP/"
+          ],
+          "files": {
+            "samples": [
+              "Record Node 101/experiment1/recording2/continuous/Neuropix-PXI-100.ProbeA-AP/continuous.dat"
+            ],
+            "timestamps": [
+              "Record Node 101/experiment1/recording2/continuous/Neuropix-PXI-100.ProbeA-AP/timestamps.npy"
+            ],
+            "sample_numbers": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 101,
+        "experiment_index": 1,
+        "recording_index": 2,
+        "stream_name": "Neuropix-PXI-100.ProbeA-AP",
+        "processor_id": 100
+      }
+    },
+    {
+      "entityType": "stream",
+      "identity": {
+        "stream_name": "NI-DAQmx-102.PXIe-6341"
+      },
+      "parents": [
+        {
+          "entityType": "record_node",
+          "identity": {
+            "node_id": 102
+          }
+        },
+        {
+          "entityType": "experiment",
+          "identity": {
+            "experiment_index": 1
+          }
+        },
+        {
+          "entityType": "recording",
+          "identity": {
+            "recording_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "openephys",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "Record Node 102/experiment1/recording1/continuous/NI-DAQmx-102.PXIe-6341/"
+          ],
+          "files": {
+            "samples": [
+              "Record Node 102/experiment1/recording1/continuous/NI-DAQmx-102.PXIe-6341/continuous.dat"
+            ],
+            "timestamps": [
+              "Record Node 102/experiment1/recording1/continuous/NI-DAQmx-102.PXIe-6341/timestamps.npy"
+            ],
+            "sample_numbers": [
+              "Record Node 102/experiment1/recording1/continuous/NI-DAQmx-102.PXIe-6341/sample_numbers.npy"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "node_id": 102,
+        "experiment_index": 1,
+        "recording_index": 1,
+        "stream_name": "NI-DAQmx-102.PXIe-6341",
+        "processor_id": 102
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording1/events/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording1/spikes/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording1/structure.oebin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording1/sync_messages.txt",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording2/events/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/experiment1/recording2/structure.oebin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 101/settings.xml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 102/experiment1/recording1/structure.oebin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "openephys",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "Record Node 102/settings.xml",
+      "reason": "no-match"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0123"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "m0123"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0124"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "m0124"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0123_20240315"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "suite2p",
+          "rootStoragePathIdentifier": "analysis",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "session_id": "m0123_20240315",
+        "session_date": "2024-03-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0124_20240316"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0124"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "suite2p",
+          "rootStoragePathIdentifier": "analysis",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0124_20240316/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124",
+        "session_id": "m0124_20240316",
+        "session_date": "2024-03-16"
+      }
+    },
+    {
+      "entityType": "plane",
+      "identity": {
+        "plane_index": 0
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "m0123_20240315"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "suite2p",
+          "rootStoragePathIdentifier": "analysis",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315/suite2p/plane0/"
+          ],
+          "files": {
+            "fluorescence": [
+              "m0123_20240315/suite2p/plane0/F.npy"
+            ],
+            "neuropil": [
+              "m0123_20240315/suite2p/plane0/Fneu.npy"
+            ],
+            "spikes": [
+              "m0123_20240315/suite2p/plane0/spks.npy"
+            ],
+            "stat": [
+              "m0123_20240315/suite2p/plane0/stat.npy"
+            ],
+            "ops": [
+              "m0123_20240315/suite2p/plane0/ops.npy"
+            ],
+            "iscell": [
+              "m0123_20240315/suite2p/plane0/iscell.npy"
+            ],
+            "registered_binary": [
+              "m0123_20240315/suite2p/plane0/data.bin"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "session_id": "m0123_20240315",
+        "plane_index": 0
+      }
+    },
+    {
+      "entityType": "plane",
+      "identity": {
+        "plane_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "m0123_20240315"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "suite2p",
+          "rootStoragePathIdentifier": "analysis",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315/suite2p/plane1/"
+          ],
+          "files": {
+            "fluorescence": [
+              "m0123_20240315/suite2p/plane1/F.npy"
+            ],
+            "neuropil": [
+              "m0123_20240315/suite2p/plane1/Fneu.npy"
+            ],
+            "spikes": [
+              "m0123_20240315/suite2p/plane1/spks.npy"
+            ],
+            "stat": [
+              "m0123_20240315/suite2p/plane1/stat.npy"
+            ],
+            "ops": [
+              "m0123_20240315/suite2p/plane1/ops.npy"
+            ],
+            "iscell": [
+              "m0123_20240315/suite2p/plane1/iscell.npy"
+            ],
+            "registered_binary": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "session_id": "m0123_20240315",
+        "plane_index": 1
+      }
+    },
+    {
+      "entityType": "plane",
+      "identity": {
+        "plane_index": 0
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0124"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "m0124_20240316"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "suite2p",
+          "rootStoragePathIdentifier": "analysis",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0124_20240316/suite2p/plane0/"
+          ],
+          "files": {
+            "fluorescence": [
+              "m0124_20240316/suite2p/plane0/F.npy"
+            ],
+            "neuropil": [
+              "m0124_20240316/suite2p/plane0/Fneu.npy"
+            ],
+            "spikes": [],
+            "stat": [],
+            "ops": [
+              "m0124_20240316/suite2p/plane0/ops.npy"
+            ],
+            "iscell": [
+              "m0124_20240316/suite2p/plane0/iscell.npy"
+            ],
+            "registered_binary": []
+          },
+          "isComplete": false
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124",
+        "session_id": "m0124_20240316",
+        "plane_index": 0
+      },
+      "issues": [
+        {
+          "code": "missing-required-file",
+          "message": "suite2p: pattern 'stat' is required, matched 0"
+        }
+      ]
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "suite2p",
+      "rootStoragePathIdentifier": "analysis",
+      "path": "m0123_20240315/suite2p/combined/",
+      "reason": "excluded"
+    },
+    {
+      "dataLocationIdentifier": "suite2p",
+      "rootStoragePathIdentifier": "analysis",
+      "path": "m0123_20240315/suite2p/ops1.npy",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "suite2p",
+      "rootStoragePathIdentifier": "analysis",
+      "path": "m0123_20240315/suite2p/run.log",
+      "reason": "no-match"
+    }
+  ]
+}

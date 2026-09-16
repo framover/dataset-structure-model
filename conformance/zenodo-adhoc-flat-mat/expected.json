@@ -1,0 +1,82 @@
+{
+  "records": [
+    {
+      "entityType": "area",
+      "identity": {
+        "area_code": "AC"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "deposit",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "AnatInfo_AC.mat",
+            "Clusters_AC.mat",
+            "Data_AC1.mat",
+            "Data_AC2.mat"
+          ],
+          "files": {
+            "responses": [
+              "Data_AC1.mat",
+              "Data_AC2.mat"
+            ],
+            "clusters": [
+              "Clusters_AC.mat"
+            ],
+            "anatomy": [
+              "AnatInfo_AC.mat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "area_code": "AC"
+      }
+    },
+    {
+      "entityType": "area",
+      "identity": {
+        "area_code": "ICE"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "deposit",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "AnatInfo_ICE.mat",
+            "Clusters_ICE.mat",
+            "Data_ICE.mat"
+          ],
+          "files": {
+            "responses": [
+              "Data_ICE.mat"
+            ],
+            "clusters": [
+              "Clusters_ICE.mat"
+            ],
+            "anatomy": [
+              "AnatInfo_ICE.mat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "area_code": "ICE"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "path": "README.md",
+      "reason": "no-match"
+    }
+  ]
+}

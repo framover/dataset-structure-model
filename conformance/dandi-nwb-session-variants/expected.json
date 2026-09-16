@@ -1,0 +1,169 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "CSHL049"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-CSHL049/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "CSHL049"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "KS023"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-KS023/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "KS023"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "3e6a97d3-3991-49e2-b346-6948cb4580fb"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "CSHL049"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-CSHL049/sub-CSHL049_ses-3e6a97d3-3991-49e2-b346-6948cb4580fb_desc-processed_behavior+ecephys+image.nwb"
+          ],
+          "files": {
+            "processed": [
+              "sub-CSHL049/sub-CSHL049_ses-3e6a97d3-3991-49e2-b346-6948cb4580fb_desc-processed_behavior+ecephys+image.nwb"
+            ],
+            "raw": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "CSHL049",
+        "session_id": "3e6a97d3-3991-49e2-b346-6948cb4580fb"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "c99d53e6-c317-4c53-99ba-070b26673ac4"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "CSHL049"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-processed_behavior+ecephys+image.nwb",
+            "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-raw_ecephys+image.nwb"
+          ],
+          "files": {
+            "processed": [
+              "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-processed_behavior+ecephys+image.nwb"
+            ],
+            "raw": [
+              "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-raw_ecephys+image.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "CSHL049",
+        "session_id": "c99d53e6-c317-4c53-99ba-070b26673ac4"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "aad23144-0e52-4eac-80c5-c4ee2decb198"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-processed_behavior+ecephys+image.nwb",
+            "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-raw_ecephys+image.nwb"
+          ],
+          "files": {
+            "processed": [
+              "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-processed_behavior+ecephys+image.nwb"
+            ],
+            "raw": [
+              "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-raw_ecephys+image.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "KS023",
+        "session_id": "aad23144-0e52-4eac-80c5-c4ee2decb198"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "path": "dandiset.yaml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "path": "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-raw_ecephys+image.nwb.part",
+      "reason": "no-match"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "videos",
+      "rootStoragePathIdentifier": "workstation",
+      "entries": [
+        "reachingvideo1.avi",
+        "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.csv",
+        "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.h5",
+        "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_labeled.mp4",
+        "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle",
+        "reachingvideo2.avi",
+        "reachingvideo3.avi",
+        "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000.h5",
+        "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle",
+        "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000.h5",
+        "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000_meta.pickle"
+      ]
+    },
+    {
+      "dataLocationIdentifier": "labeled-data",
+      "rootStoragePathIdentifier": "workstation",
+      "entries": [
+        "reachingvideo1/",
+        "reachingvideo1/CollectedData_Mackenzie.csv",
+        "reachingvideo1/CollectedData_Mackenzie.h5",
+        "reachingvideo1/img001.png",
+        "reachingvideo1/img023.png",
+        "reachingvideo1/img047.png",
+        "reachingvideo1_labeled/",
+        "reachingvideo1_labeled/img001_individual.png",
+        "reachingvideo2/",
+        "reachingvideo2/CollectedData_Mackenzie.csv",
+        "reachingvideo2/CollectedData_Mackenzie.h5",
+        "reachingvideo2/img005.png",
+        "reachingvideo2/img019.png"
+      ]
+    }
+  ]
+}

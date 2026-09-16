@@ -1,0 +1,33 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "repository",
+      "rootStoragePathIdentifier": "clone",
+      "entries": [
+        "LICENSE.txt",
+        "README.md",
+        "code/",
+        "code/data_overview_1.py",
+        "code/reachgraspio/",
+        "code/reachgraspio/reachgraspio.py",
+        "datasets/",
+        "datasets/i140703-001-03.nev",
+        "datasets/i140703-001.ccf",
+        "datasets/i140703-001.nev",
+        "datasets/i140703-001.ns2",
+        "datasets/i140703-001.ns6",
+        "datasets/i140703-001.odml",
+        "datasets/l101210-001-02.nev",
+        "datasets/l101210-001.ccf",
+        "datasets/l101210-001.nev",
+        "datasets/l101210-001.ns2",
+        "datasets/l101210-001.ns5",
+        "datasets/l101210-001.ns6",
+        "datasets/l101210-001.odml",
+        "datasets_matlab/",
+        "datasets_matlab/i140703-001.mat",
+        "datasets_matlab/l101210-001.mat"
+      ]
+    }
+  ]
+}

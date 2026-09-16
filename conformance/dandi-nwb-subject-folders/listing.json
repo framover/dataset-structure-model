@@ -1,0 +1,18 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "dandiset.yaml",
+        "sub-anm369962/",
+        "sub-anm369962/sub-anm369962_ses-20170309.nwb",
+        "sub-anm369962/sub-anm369962_ses-20170310.nwb",
+        "sub-anm369962/sub-anm369962_ses-20170313.nwb",
+        "sub-anm369963/",
+        "sub-anm369963/sub-anm369963_ses-20170314.nwb",
+        "sub-anm369963/sub-anm369963_ses-20170314_notes.txt"
+      ]
+    }
+  ]
+}

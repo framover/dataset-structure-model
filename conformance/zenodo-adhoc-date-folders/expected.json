@@ -1,0 +1,116 @@
+{
+  "records": [
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_name": "opto_1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "deposit",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "2023-05-11/opto_1/"
+          ],
+          "files": {
+            "planes": [
+              "2023-05-11/opto_1/plane1.tif",
+              "2023-05-11/opto_1/plane2.tif",
+              "2023-05-11/opto_1/plane3.tif"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "recording_name": "opto_1",
+        "recording_date": "2023-05-11",
+        "condition": "opto",
+        "recording_number": 1
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_name": "spontaneous_1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "deposit",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "2023-05-11/spontaneous_1/"
+          ],
+          "files": {
+            "planes": [
+              "2023-05-11/spontaneous_1/plane1.tif",
+              "2023-05-11/spontaneous_1/plane2.tif",
+              "2023-05-11/spontaneous_1/plane3.tif"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "recording_name": "spontaneous_1",
+        "recording_date": "2023-05-11",
+        "condition": "spontaneous",
+        "recording_number": 1
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_name": "spontaneous_2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "deposit",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "2023-05-11/spontaneous_2/"
+          ],
+          "files": {
+            "planes": [
+              "2023-05-11/spontaneous_2/plane1.tif",
+              "2023-05-11/spontaneous_2/plane2.tif"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "recording_name": "spontaneous_2",
+        "recording_date": "2023-05-11",
+        "condition": "spontaneous",
+        "recording_number": 2
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "path": "2023-05-11/Thumbs.db",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "path": "README.txt",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "path": "processed_traces.mat",
+      "reason": "no-match"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "lab", "identifierRef": "lab_name" },
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One session: <subject>/<date>/<number>; identified by date and number under its subject", "identifierRefs": ["session_date", "session_number"] },
+    { "name": "probe", "description": "One Neuropixels probe insertion, probeNN. It has a folder under alf/ (spike sorting output) and another under raw_ephys_data/ (SpikeGLX files)", "identifierRef": "probe_label" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "lab", "targetEntity": "subject", "relationType": "oneToMany" },
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany" },
+    { "sourceEntity": "session", "targetEntity": "probe", "relationType": "oneToMany", "isRequired": false }
+  ],
+  "metadataDefinitions": {
+    "lab_name": { "name": "lab_name", "dataType": "string", "ofEntity": "lab" },
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Za-z0-9_-]+$" } },
+    "session_date": { "name": "session_date", "dataType": "date", "ofEntity": "session" },
+    "session_number": { "name": "session_number", "dataType": "integer", "ofEntity": "session", "validation": { "minimum": 1 } },
+    "session_path": { "name": "session_path", "description": "lab/Subjects/subject/date/number, the ALF session path", "dataType": "string", "ofEntity": "session" },
+    "probe_label": { "name": "probe_label", "dataType": "string", "ofEntity": "probe", "validation": { "pattern": "^probe\\d{2}$" } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "one-cache",
+      "displayName": "ONE local cache (ALF layout)",
+      "description": "<lab>/Subjects/<subject>/<yyyy-mm-dd>/<NNN>/ is the session path. Below it, collections: alf/ (extracted ALF files, with alf/probeNN/ per probe), raw_ephys_data/ (with raw_ephys_data/probeNN/), raw_video_data/, raw_behavior_data/. ALF files are named [_namespace_]object.attribute[.extra].extension.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "cache", "path": "/data/one/openalyx.internationalbrainlab.org" }
+        ],
+        "entityLayout": [
+          { "name": "labs", "entityType": "lab", "matchPattern": "^[a-z]+$" },
+          { "name": "subjects-folder", "isVariable": false, "fixedName": "Subjects" },
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^[A-Za-z0-9_-]+$" },
+          { "name": "dates", "matchPattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          { "name": "numbers", "entityType": "session", "matchPattern": "^\\d{3}$" },
+          { "name": "collections", "matchPattern": "^(alf|raw_ephys_data)$" },
+          {
+            "name": "probes",
+            "entityType": "probe",
+            "matchPattern": "^probe\\d{2}$",
+            "filePatterns": [
+              { "name": "spike_times", "pattern": "^spikes\\.times\\.npy$", "cardinality": "one" },
+              { "name": "spike_clusters", "pattern": "^spikes\\.clusters\\.npy$", "cardinality": "one" },
+              { "name": "ap_band", "pattern": "\\.imec\\d+\\.ap\\.(cbin|bin)$", "cardinality": "one" },
+              { "name": "ap_meta", "pattern": "\\.imec\\d+\\.ap\\.meta$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "lab_name", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "labs" } },
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "dates" } },
+          { "metadataRef": "session_number", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "numbers" } },
+          { "metadataRef": "session_path", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": null } },
+          { "metadataRef": "probe_label", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "probes" } }
+        ],
+        "pathTemplate": "{rootPath}/{lab_name}/Subjects/{subject_id}/{session_date}/{session_number}/<collection>/{probe_label}"
+      }
+    }
+  ]
+}

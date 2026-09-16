@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "identifierRef": "session_id" },
+    { "name": "plane", "description": "One imaging plane as segmented by suite2p: the folder suite2p/plane<N>", "identifierRef": "plane_index" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany" },
+    { "sourceEntity": "session", "targetEntity": "plane", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^m\\d{4}$" } },
+    "session_id": { "name": "session_id", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^m\\d{4}_\\d{8}$" } },
+    "session_date": { "name": "session_date", "dataType": "date", "ofEntity": "session" },
+    "plane_index": { "name": "plane_index", "dataType": "integer", "ofEntity": "plane", "validation": { "minimum": 0 } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "suite2p",
+      "displayName": "suite2p output folders",
+      "description": "One folder per session; inside it the suite2p/ folder written by suite2p: ops1.npy at its top, one plane<N>/ folder per imaging plane with F.npy, Fneu.npy, spks.npy, stat.npy, ops.npy, iscell.npy and the intermediate data.bin, and a combined/ folder for multi-plane recordings that repeats the per-plane files in the combined view.",
+      "dataCategory": "processed",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "analysis", "path": "/data/processed/suite2p" }
+        ],
+        "entityLayout": [
+          { "name": "sessions", "entityType": "session", "matchPattern": "^m\\d{4}_\\d{8}$" },
+          { "name": "suite2p-folder", "isVariable": false, "fixedName": "suite2p" },
+          {
+            "name": "planes",
+            "entityType": "plane",
+            "pathComponentTemplate": "plane{plane_index}",
+            "matchPattern": "^plane\\d+$",
+            "excludePatterns": ["^combined$"],
+            "filePatterns": [
+              { "name": "fluorescence", "pattern": "^F\\.npy$", "isRequired": true, "cardinality": "one" },
+              { "name": "neuropil", "pattern": "^Fneu\\.npy$", "isRequired": true, "cardinality": "one" },
+              { "name": "spikes", "pattern": "^spks\\.npy$", "cardinality": "one" },
+              { "name": "stat", "pattern": "^stat\\.npy$", "isRequired": true, "cardinality": "one" },
+              { "name": "ops", "pattern": "^ops\\.npy$", "isRequired": true, "cardinality": "one" },
+              { "name": "iscell", "pattern": "^iscell\\.npy$", "cardinality": "one" },
+              { "name": "registered_binary", "pattern": "^data\\.bin$", "cardinality": "one", "description": "Intermediate registered movie; often deleted" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "session_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": "0:5", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "session_date", "extraction": { "method": "substring", "pattern": "6:14", "valueFormat": "yyyyMMdd", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "plane_index", "extraction": { "method": "regex", "pattern": "^plane(\\d+)$", "entityLayoutLevel": "planes" } }
+        ],
+        "pathTemplate": "{rootPath}/{session_id}/suite2p/plane{plane_index}"
+      }
+    }
+  ]
+}

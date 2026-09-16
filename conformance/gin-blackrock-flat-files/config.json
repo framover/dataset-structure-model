@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One monkey, identified by the first letter of the session name", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One recording; every file of a session shares the name <monkey><yymmdd>-<nnn>", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Monkey", "dataType": "string", "ofEntity": "subject", "validation": { "enum": ["i", "l"] } },
+    "session_id": { "name": "session_id", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^[il]\\d{6}-\\d{3}$" } },
+    "session_date": { "name": "session_date", "dataType": "date", "ofEntity": "session" },
+    "session_number": { "name": "session_number", "dataType": "integer", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "repository",
+      "displayName": "GIN INT/multielectrode_grasp (clone)",
+      "description": "A git-annex repository. Recordings sit flat in datasets/: Blackrock .nev/.ns2/.ns5/.ns6/.ccf files plus an odML metadata file per session, and a second .nev with a two-digit suffix for the offline-sorted spikes. code/ and datasets_matlab/ are siblings of datasets/.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "clone", "path": "/data/gin/multielectrode_grasp" }
+        ],
+        "entityLayout": [
+          { "name": "datasets", "isVariable": false, "fixedName": "datasets" },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^[il]\\d{6}-\\d{3}",
+            "filePatterns": [
+              { "name": "nev", "pattern": "^{session_id}\\.nev$", "isRequired": true, "cardinality": "one", "description": "Online-sorted spikes and events" },
+              { "name": "nev_sorted", "pattern": "^{session_id}-\\d{2}\\.nev$", "cardinality": "many", "description": "Offline-sorted spikes, one file per sorting" },
+              { "name": "ns2", "pattern": "^{session_id}\\.ns2$", "cardinality": "one", "description": "LFP, 1 kHz" },
+              { "name": "ns5", "pattern": "^{session_id}\\.ns5$", "cardinality": "one" },
+              { "name": "ns6", "pattern": "^{session_id}\\.ns6$", "cardinality": "one", "description": "Raw broadband, 30 kHz" },
+              { "name": "ccf", "pattern": "^{session_id}\\.ccf$", "cardinality": "one" },
+              { "name": "odml", "pattern": "^{session_id}\\.odml$", "isRequired": true, "cardinality": "one", "description": "Metadata" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^([il]\\d{6}-\\d{3})", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": "0:1", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_date", "extraction": { "method": "substring", "pattern": "1:7", "valueFormat": "yyMMdd", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_number", "extraction": { "method": "regex", "pattern": "^[il]\\d{6}-(\\d{3})", "entityLayoutLevel": "session-files" } }
+        ]
+      }
+    }
+  ]
+}
