@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "cell", "description": "One whole-cell patched CA1 pyramidal neuron. The data descriptor: 'The digits represent the date when the data was recorded (year month day) and the number of the slice recorded on that day from the same animal.' One neuron was recorded per slice; 7 cells in total.", "isPrimary": true, "identifierRef": "cell_id" },
+    { "name": "recording", "description": "One ABF file: one repetition of the excitability protocol (0-450 pA in 50 pA steps, 500 ms) for a cell. The data descriptor: 'The letters a-e signify the excitability protocol repeated 5-times for a single neuron.'", "identifierRef": "recording_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "cell", "targetEntity": "recording", "relationType": "oneToMany", "relationName": "hasRecordings" }
+  ],
+  "metadataDefinitions": {
+    "cell_id": { "name": "cell_id", "title": "Cell ID", "description": "Recording date (yyMMdd) and slice number on that day, e.g. 170518_1.", "dataType": "string", "ofEntity": "cell", "validation": { "pattern": "^\\d{6}_\\d+$" } },
+    "recording_date": { "name": "recording_date", "title": "Recording date", "description": "Day of recording, from the yyMMdd prefix of the file name.", "dataType": "date", "ofEntity": "cell" },
+    "slice_number": { "name": "slice_number", "title": "Slice number", "description": "Number of the slice recorded on that day from the same animal.", "dataType": "integer", "ofEntity": "cell" },
+    "recording_id": { "name": "recording_id", "title": "Recording ID", "description": "File name without its extension, e.g. 170518_1a.", "dataType": "string", "ofEntity": "recording", "validation": { "pattern": "^\\d{6}_\\d+[a-z]$" } },
+    "protocol_repeat": { "name": "protocol_repeat", "title": "Protocol repeat", "description": "Letter a-e: which of the five repetitions of the excitability protocol the file holds.", "dataType": "string", "ofEntity": "recording", "validation": { "pattern": "^[a-e]$" } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket d-cc88a377-b456-4673-a449-07b0e7960ffd",
+      "description": "Garad and Lessmann, excitability of mouse hippocampal CA1 pyramidal neurons during sustained strong depolarization (dataset version 07554ebd-95a2-46f0-8065-d961d56ce098). A flat folder of Axon Binary Format files named <yyMMdd>_<slice><repeat>.ABF, with the data descriptor and licence PDFs. The descriptor lists the files as <yyMMdd>_<slice>a-e.abf; the files in the bucket end in .ABF. Every entry of the bucket was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/d-cc88a377-b456-4673-a449-07b0e7960ffd" }
+        ],
+        "entityLayout": [
+          {
+            "name": "recording-files",
+            "entityType": "recording",
+            "fileSystemType": "file",
+            "matchPattern": "^\\d{6}_\\d+[a-z]\\.ABF$",
+            "filePatterns": [
+              { "name": "abf", "pattern": "^{recording_id}\\.ABF$", "isRequired": true, "cardinality": "one", "description": "Axon Binary Format recording" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "recording_id", "extraction": { "method": "regex", "pattern": "^(\\d{6}_\\d+[a-z])\\.ABF$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "protocol_repeat", "extraction": { "method": "regex", "pattern": "^\\d{6}_\\d+([a-z])\\.ABF$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "cell_id", "extraction": { "method": "regex", "pattern": "^(\\d{6}_\\d+)[a-z]\\.ABF$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "slice_number", "extraction": { "method": "regex", "pattern": "^\\d{6}_(\\d+)[a-z]\\.ABF$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "recording_date", "extraction": { "method": "substring", "pattern": "0:6", "valueFormat": "yyMMdd", "entityLayoutLevel": "recording-files" } }
+        ]
+      }
+    }
+  ]
+}

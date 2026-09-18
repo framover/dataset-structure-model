@@ -1,0 +1,2316 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "01"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject01_080517/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "recording_date": "2017-05-08"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "02"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject02_120318/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "recording_date": "2018-03-12"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "03"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject03_131117/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "03",
+        "recording_date": "2017-11-13"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "04"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject04_131217/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_date": "2017-12-13"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "05"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject05_140317/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "05",
+        "recording_date": "2017-03-14"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "06"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject06_140318/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "06",
+        "recording_date": "2018-03-14"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "07"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject07_141217/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "07",
+        "recording_date": "2017-12-14"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "08"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject08_160518/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "08",
+        "recording_date": "2018-05-16"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "09"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject09_161017/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_date": "2017-10-16"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "10"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject10_171117/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "10",
+        "recording_date": "2017-11-17"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "11"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject11_180417/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "11",
+        "recording_date": "2017-04-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "12"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject12_180518/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "12",
+        "recording_date": "2018-05-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "13"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject13_200218/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "13",
+        "recording_date": "2018-02-20"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "14"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject14_240518/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_date": "2018-05-24"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "15"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject15_250518/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "15",
+        "recording_date": "2018-05-25"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "16"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "SC_Subject16_301017/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "16",
+        "recording_date": "2017-10-30"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "080517_gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject01_080517/080517_gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject01_080517/080517_gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "recording_id": "080517_gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "080517_iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject01_080517/080517_iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject01_080517/080517_iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "recording_id": "080517_iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "120318-1203000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject02_120318/120318-1203000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject02_120318/120318-1203000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "recording_id": "120318-1203000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131117-A_ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject03_131117/131117-A_ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject03_131117/131117-A_ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "03",
+        "recording_id": "131117-A_ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131117-A_gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject03_131117/131117-A_gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject03_131117/131117-A_gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "03",
+        "recording_id": "131117-A_gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131117-B_ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject03_131117/131117-B_ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject03_131117/131117-B_ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "03",
+        "recording_id": "131117-B_ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131117-B_gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject03_131117/131117-B_gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject03_131117/131117-B_gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "03",
+        "recording_id": "131117-B_gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217-0112056-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217-0112056-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217-0112056-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217-0112056-EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217-0112058-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217-0112058-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217-0112058-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217-0112058-EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217-0112060-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217-0112060-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217-0112060-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217-0112060-EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217_ccstep1"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217_ccstep1.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217_ccstep1.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217_ccstep1",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217_ccstep2"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217_ccstep2.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217_ccstep2.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217_ccstep2",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217_gapfree1"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217_gapfree1.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217_gapfree1.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217_gapfree1",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217_gapfree2"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217_gapfree2.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217_gapfree2.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217_gapfree2",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131217_iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject04_131217/131217_iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject04_131217/131217_iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "04",
+        "recording_id": "131217_iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "140317_ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject05_140317/140317_ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject05_140317/140317_ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "05",
+        "recording_id": "140317_ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "140317_gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject05_140317/140317_gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject05_140317/140317_gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "05",
+        "recording_id": "140317_gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "140318-1403003-EPSC_20 pulses"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject06_140318/140318-1403003-EPSC_20 pulses.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject06_140318/140318-1403003-EPSC_20 pulses.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "06",
+        "recording_id": "140318-1403003-EPSC_20 pulses",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "140318-1403004-EPSC_20 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject06_140318/140318-1403004-EPSC_20 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject06_140318/140318-1403004-EPSC_20 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "06",
+        "recording_id": "140318-1403004-EPSC_20 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "141217-1412001-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject07_141217/141217-1412001-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject07_141217/141217-1412001-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "07",
+        "recording_id": "141217-1412001-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "141217-1412005-ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject07_141217/141217-1412005-ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject07_141217/141217-1412005-ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "07",
+        "recording_id": "141217-1412005-ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "141217-1412007-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject07_141217/141217-1412007-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject07_141217/141217-1412007-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "07",
+        "recording_id": "141217-1412007-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "141217-1412009-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject07_141217/141217-1412009-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject07_141217/141217-1412009-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "07",
+        "recording_id": "141217-1412009-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "160518-1505002-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject08_160518/160518-1505002-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject08_160518/160518-1505002-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "08",
+        "recording_id": "160518-1505002-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "160518-1505013-EPSC_20 pulses50Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject08_160518/160518-1505013-EPSC_20 pulses50Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject08_160518/160518-1505013-EPSC_20 pulses50Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "08",
+        "recording_id": "160518-1505013-EPSC_20 pulses50Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "160518-1505014-EPSC_20 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject08_160518/160518-1505014-EPSC_20 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject08_160518/160518-1505014-EPSC_20 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "08",
+        "recording_id": "160518-1505014-EPSC_20 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "160518-1505015-EPSC_20 pulses200Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject08_160518/160518-1505015-EPSC_20 pulses200Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject08_160518/160518-1505015-EPSC_20 pulses200Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "08",
+        "recording_id": "160518-1505015-EPSC_20 pulses200Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610001-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610001-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610001-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610001-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610006-ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610006-ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610006-ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610006-ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610008-ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610008-ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610008-ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610008-ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610026-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610026-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610026-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610026-EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610042-EPSC_3 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610042-EPSC_3 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610042-EPSC_3 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610042-EPSC_3 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161017-1610047-EPSC_10 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject09_161017/161017-1610047-EPSC_10 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject09_161017/161017-1610047-EPSC_10 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "09",
+        "recording_id": "161017-1610047-EPSC_10 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "171117-1711000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "10"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject10_171117/171117-1711000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject10_171117/171117-1711000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "10",
+        "recording_id": "171117-1711000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "171117-1711001-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "10"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject10_171117/171117-1711001-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject10_171117/171117-1711001-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "10",
+        "recording_id": "171117-1711001-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180417-1404005-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "11"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject11_180417/180417-1404005-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject11_180417/180417-1404005-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "11",
+        "recording_id": "180417-1404005-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180417-1404008-ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "11"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject11_180417/180417-1404008-ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject11_180417/180417-1404008-ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "11",
+        "recording_id": "180417-1404008-ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180518-1705002-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "12"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject12_180518/180518-1705002-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject12_180518/180518-1705002-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "12",
+        "recording_id": "180518-1705002-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200218-2002000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "13"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject13_200218/200218-2002000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject13_200218/200218-2002000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "13",
+        "recording_id": "200218-2002000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200218-2002003-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "13"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject13_200218/200218-2002003-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject13_200218/200218-2002003-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "13",
+        "recording_id": "200218-2002003-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200218-2002004-ccstep"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "13"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject13_200218/200218-2002004-ccstep.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject13_200218/200218-2002004-ccstep.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "13",
+        "recording_id": "200218-2002004-ccstep",
+        "protocol": "ccstep"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405006-EPSC_20 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405006-EPSC_20 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405006-EPSC_20 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405006-EPSC_20 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405007-EPSC_20 pulses200Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405007-EPSC_20 pulses200Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405007-EPSC_20 pulses200Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405007-EPSC_20 pulses200Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405016-EPSC_20 pulses200Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405016-EPSC_20 pulses200Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405016-EPSC_20 pulses200Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405016-EPSC_20 pulses200Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405017-EPSC_20 pulses50Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405017-EPSC_20 pulses50Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405017-EPSC_20 pulses50Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405017-EPSC_20 pulses50Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405032-EPSC_20 pulses200Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405032-EPSC_20 pulses200Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405032-EPSC_20 pulses200Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405032-EPSC_20 pulses200Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240518-2405033-EPSC_20 pulses50Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject14_240518/240518-2405033-EPSC_20 pulses50Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject14_240518/240518-2405033-EPSC_20 pulses50Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "14",
+        "recording_id": "240518-2405033-EPSC_20 pulses50Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250518-A-2505012-EPSC_20 pulses100Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject15_250518/250518-A-2505012-EPSC_20 pulses100Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject15_250518/250518-A-2505012-EPSC_20 pulses100Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "15",
+        "recording_id": "250518-A-2505012-EPSC_20 pulses100Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250518-A-2505013-EPSC_20 pulses200Hz"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject15_250518/250518-A-2505013-EPSC_20 pulses200Hz.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject15_250518/250518-A-2505013-EPSC_20 pulses200Hz.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "15",
+        "recording_id": "250518-A-2505013-EPSC_20 pulses200Hz",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250518-B-2505030-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject15_250518/250518-B-2505030-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject15_250518/250518-B-2505030-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "15",
+        "recording_id": "250518-B-2505030-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "301017-3010000-iv"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject16_301017/301017-3010000-iv.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject16_301017/301017-3010000-iv.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "16",
+        "recording_id": "301017-3010000-iv",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "301017-3010001-gapfree"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject16_301017/301017-3010001-gapfree.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject16_301017/301017-3010001-gapfree.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "16",
+        "recording_id": "301017-3010001-gapfree",
+        "protocol": "gapfree"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "301017-3010010-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject16_301017/301017-3010010-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject16_301017/301017-3010010-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "16",
+        "recording_id": "301017-3010010-EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "301017-3010012-EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "SC_Subject16_301017/301017-3010012-EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "SC_Subject16_301017/301017-3010012-EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "16",
+        "recording_id": "301017-3010012-EPSP",
+        "protocol": "epsp"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "HBP-DataDescriptor_PatchStellateCs.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "Licence (CCBY-NC-SA).pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

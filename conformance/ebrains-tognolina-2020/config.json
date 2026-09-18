@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "subject",
+      "description": "One animal (juvenile Wistar rat (p18-p24)). The data descriptor: 'The data are organized by subjects (animals). All the data recorded from the same subject are collected in one folder (named by cell type, subject number and date of recording).'",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "recording",
+      "description": "One ABF file: one protocol applied to one granule cell. The data descriptor: 'The protocol applied in each case is indicated in the filename. If more than one cell was recorded from different slices cut from the same subject, different prefixes (A/B) were used to indicate the different cells.'",
+      "identifierRef": "recording_id"
+    }
+  ],
+  "entityRelationships": [
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "recording",
+      "relationType": "oneToMany",
+      "relationName": "hasRecordings"
+    }
+  ],
+  "metadataDefinitions": {
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Subject number",
+      "description": "Two-digit subject number from the folder name <celltype>_Subject<NN>_<ddMMyy>.",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^\\d{2}$"
+      }
+    },
+    "recording_date": {
+      "name": "recording_date",
+      "title": "Recording date",
+      "description": "Date of recording from the subject folder name, written ddMMyy. The file names carry the date too, but drop leading zeros in some files, so the folder is read.",
+      "dataType": "date",
+      "ofEntity": "subject"
+    },
+    "recording_id": {
+      "name": "recording_id",
+      "title": "Recording ID",
+      "description": "File name without the .abf extension.",
+      "dataType": "string",
+      "ofEntity": "recording"
+    },
+    "protocol": {
+      "name": "protocol",
+      "title": "Protocol",
+      "description": "Protocol named in the file name, lowercased: CC step (2 s current steps), IV (from -70 mV) and EPSP (mossy fibre stimulation, 5 pulses at 50 Hz).",
+      "dataType": "string",
+      "ofEntity": "recording",
+      "validation": {
+        "enum": [
+          "cc step",
+          "iv",
+          "epsp"
+        ]
+      }
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket p63ea6-hbp-d000017_PatchClamp-GranuleCells_pub",
+      "description": "Tognolina et al., whole cell patch-clamp recordings of cerebellar granule cells (dataset version 7dc5d5d5-4323-41d6-bdfd-0b841cfe7000). One folder per animal, <GrC>_Subject<NN>_<ddMMyy>, holding one ABF file per recording; the data descriptor and the licence at the root. The data descriptor names a root folder 'PatchClamp-Granule cells/', a file HBP_DataDescriptor_PatchGrCs.txt and a licence 'Licence (CCBY-SA).pdf'; the bucket has no such folder, and has HBP-DataDescriptor_PatchGrCs.txt and 'Licence (CCBY-NC-SA).pdf'. Every entry of the bucket was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p63ea6-hbp-d000017_PatchClamp-GranuleCells_pub"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "subjects",
+            "entityType": "subject",
+            "matchPattern": "^GrC_Subject\\d{2}_\\d{6}$"
+          },
+          {
+            "name": "recording-files",
+            "entityType": "recording",
+            "fileSystemType": "file",
+            "matchPattern": "\\.abf$",
+            "filePatterns": [
+              {
+                "name": "abf",
+                "pattern": "^{recording_id}\\.abf$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Axon Binary Format recording"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_Subject(\\d{2})_",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_(\\d{6})$",
+              "valueFormat": "ddMMyy",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "recording_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(.+)\\.abf$",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "protocol",
+            "extraction": {
+              "method": "regex",
+              "pattern": "(?i)(cc step|iv|epsp)",
+              "normalize": "lowercase",
+              "entityLayoutLevel": "recording-files"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

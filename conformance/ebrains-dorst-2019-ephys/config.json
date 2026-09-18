@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "cell",
+      "description": "One recorded cholinergic interneuron. The dataset holds one cell, sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN; the descriptor calls this name the identity and does not break it down.",
+      "isPrimary": true,
+      "identifierRef": "cell_id"
+    }
+  ],
+  "metadataDefinitions": {
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell identity",
+      "description": "Name of the cell's folder, as the data descriptor's <identity>.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^sbj\\d+-\\d{6}_cell\\d+_.+$"
+      }
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "derived",
+      "displayName": "2019Q3/<cell type>/derived",
+      "description": "Dorst et al., electrophysiological recordings of a striatal cholinergic interneuron (dataset version 7d545473-405d-45f9-b0c4-05b627bf793a, bucket pc0a33-hbp-d000009_ChIN-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3, with one root per cell-type folder (chin), and holds the derived traces per cell, ASCII text. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "chin",
+            "path": "/data/ebrains/pc0a33-hbp-d000009_ChIN-ephys_pub/2019Q3/chin/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^sbj\\d+-\\d{6}_cell\\d+_.+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.dat$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original",
+      "displayName": "2019Q3/<cell type>/original",
+      "description": "Dorst et al., electrophysiological recordings of a striatal cholinergic interneuron (dataset version 7d545473-405d-45f9-b0c4-05b627bf793a, bucket pc0a33-hbp-d000009_ChIN-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3, with one root per cell-type folder (chin), and holds the original recordings, Igor Pro. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "chin",
+            "path": "/data/ebrains/pc0a33-hbp-d000009_ChIN-ephys_pub/2019Q3/chin/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cell-files",
+            "entityType": "cell",
+            "fileSystemType": "file",
+            "matchPattern": "\\.pxp$",
+            "filePatterns": [
+              {
+                "name": "original",
+                "pattern": "^{cell_id}\\.pxp$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(.+)\\.pxp$",
+              "entityLayoutLevel": "cell-files"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "derived-nwb",
+      "displayName": "2019Q3_NWB/<cell type>/derived",
+      "description": "Dorst et al., electrophysiological recordings of a striatal cholinergic interneuron (dataset version 7d545473-405d-45f9-b0c4-05b627bf793a, bucket pc0a33-hbp-d000009_ChIN-ephys_pub). The data descriptor's layout is 2019Q3_NWB/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3_NWB, with one root per cell-type folder (chin), and holds the derived traces per cell, NWB. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "chin",
+            "path": "/data/ebrains/pc0a33-hbp-d000009_ChIN-ephys_pub/2019Q3_NWB/chin/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^sbj\\d+-\\d{6}_cell\\d+_.+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.nwb$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original-nwb",
+      "displayName": "2019Q3_NWB/<cell type>/original",
+      "description": "Dorst et al., electrophysiological recordings of a striatal cholinergic interneuron (dataset version 7d545473-405d-45f9-b0c4-05b627bf793a, bucket pc0a33-hbp-d000009_ChIN-ephys_pub). The data descriptor's layout is 2019Q3_NWB/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3_NWB, with one root per cell-type folder (chin), and holds the original recordings, NWB. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "chin",
+            "path": "/data/ebrains/pc0a33-hbp-d000009_ChIN-ephys_pub/2019Q3_NWB/chin/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cell-files",
+            "entityType": "cell",
+            "fileSystemType": "file",
+            "matchPattern": "\\.nwb$",
+            "filePatterns": [
+              {
+                "name": "original",
+                "pattern": "^{cell_id}\\.nwb$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(.+)\\.nwb$",
+              "entityLayoutLevel": "cell-files"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
