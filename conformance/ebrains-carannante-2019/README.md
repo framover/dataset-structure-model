@@ -7,4 +7,5 @@ Provenance: the complete object listing of the public bucket below the four root
 What it checks:
 
 - Four data locations, one per branch and format (gap **G5**), and the one cell as one record complete in all four.
+- The descriptor lists itself as `HBP-DataDescriptor_SPN-mephys.txt`, the name used in the other striatal datasets; the bucket has `HBP-DataDescriptor_LTS-ephys.txt`.
 - Here the original is a folder as the descriptor says (`original/Experiment-9862/20181211_7_8_slice_L4_long.pxp`). The recording date and slice are in that file's name only, not in the identity, so they are not extracted (gap **G10**).
