@@ -1,19 +1,29 @@
 # Validation Against Foreign Datasets
 
-The mapping language was written around the authors' own layouts. Before 1.0 it has to be checked against layouts it was not designed for, so that the core stops changing for the right reason. This page records one such pass: fourteen public layouts plus the layout of one existing data-management tool, each written as a conformance case, and every place where the model could not say what the dataset means.
+The mapping language was written around the authors' own layouts. Before 1.0 it has to be checked against layouts it was not designed for, so that the core stops changing for the right reason. This page records two passes. The first covers fourteen public layouts plus the layout of one existing data-management tool, reconstructed from documentation. The second covers datasets published on EBRAINS, described from the complete listing of their bucket (one dataset so far). Each layout is written as a conformance case, and the page lists every place where the model could not say what the dataset means.
 
-The pass changed **no schema file**. Every gap below is a proposal; the fixtures pin the *current* behaviour so that a change to the core is visible as a change to an expectation.
+Neither pass changed a **schema file**. Every gap below is a proposal; the fixtures pin the *current* behaviour so that a change to the core is visible as a change to an expectation.
 
 ---
 
 ## Method
 
+### First pass: layouts reconstructed from documentation
+
 1. Each layout was reconstructed from public documentation and file listings (provenance in the table below) and reduced to a listing of a few entities, enough to exercise every rule the layout needs.
 2. A config was written for it without bending the description: where the model has no way to say something, the closest honest config was used and the gap recorded.
 3. `expected.json` was produced by the Python reader and reviewed against what the dataset means. Where the reader's output is wrong *for the dataset* but right *per the current rules*, the case pins the current rules and its README names the gap.
-4. Every case passes the self-consistency suite (`tests/test_conformance.py`) and the Python reader (`dsm conformance`). The MATLAB reader was not run in this pass (no MATLAB in the validation environment); every pattern stays inside the portable regex subset.
+4. Every case passes the self-consistency suite (`tests/test_conformance.py`) and the Python reader (`dsm conformance`). The MATLAB reader was not available in the environment of the first pass; it was run during the second pass (R2024b) and passes all 24 cases in `conformance/`. Every pattern stays inside the portable regex subset.
 
 **Provenance caveat.** The validation environment could not fetch dataset hosts directly (DANDI, OpenNeuro, GIN, CRCNS, Zenodo and the format documentation sites were blocked by the network policy). Layouts were reconstructed from the published format specifications and corroborated with search-engine excerpts of the landing pages, API paths and documentation. Names of real files are used where the source states them; where a case had to invent names to make a listing (recording folder names in a Zenodo deposit, session dates), its README says so. None of the gaps depends on an invented detail.
+
+### Second pass: EBRAINS datasets from their buckets
+
+1. The dataset version's bucket is listed through the EBRAINS Data Proxy API (`ebrains.bucket.listBucketObjects` in EBRAINS-MATLAB). The case's `listing.json` is that listing, complete and unchanged: every object of the bucket is an entry.
+2. The data descriptor in the bucket is read first. Entity names, the meaning of each file name token and the file descriptions in the config are taken from it, and the listing is checked against what it states.
+3. The config is written with the `dsm-infer-config` skill and walked over the listing until no entry is unexplained. `expected.json` is the Python reader's output, checked against sources inside the dataset that do not depend on the config (a session table, the session counts in the descriptor).
+4. The case passes `tests/test_conformance.py`, `dsm conformance` and the MATLAB reader (`dsm.conformance.runCases`).
+5. The config is then used, not only walked: the NANSEN converter (`nansen.config.dloc.importDatasetStructureModel`, NANSEN branch `dsm-to-nansen-converter`) imports it into a NANSEN project whose root is a local copy of the bucket, and NANSEN's own session detection is compared with the records.
 
 ---
 
@@ -36,6 +46,7 @@ The pass changed **no schema file**. Every gap below is a proposal; the fixtures
 | `zenodo-adhoc-date-folders` | Zenodo 10558021: `2023-05-11/<recording>/plane{1,2,3}.tif` | Landing-page description (recording names reconstructed) | Ad-hoc, no subject, exact count of files |
 | `zenodo-adhoc-flat-mat` | Zenodo 13941450: `Data_AC1.mat`, `Data_AC2.mat`, `Clusters_AC.mat`, `AnatInfo_ICE.mat` … | Landing-page description | Ad-hoc, flat, an entity split over numbered files |
 | `nansen-project-layout` | NANSEN (VervaekeLab/NANSEN): raw `yyyy_mm_dd/yyyymmdd_HH_mm_ss_<sid>/`, processed `subject-<id>/session-<sid>/{motion_corrected,roi_data,roisignals}/<sid>_<var>.<ext>` | Source code: `initializeDataLocationModel.m`, `templates/datalocation/ophys/two_photon_sciscan.m`, `Session.generateFolderName`, `Session.getDataFilePath`, `templates/datavariables/+ophys/+twophoton/getVariableList.m` | The layout an existing tool already manages |
+| `ebrains-fiorilli-2022` | EBRAINS dataset version `d406a98c-ae5c-4fb3-9f0c-4cf4de9b1094`: `hbp-data-002061/data/neo_<animal>_<yymmdd>.pkl`, optional `neo_<animal>_<yymmdd>_lfps.nio`, `data/sessions_df.csv`, `code/`, data descriptor and licence PDFs | Complete listing of the public bucket (58 objects); data descriptor `EBRAINS-DataDescriptor_ViTa-V3.pdf` and `data/sessions_df.csv` from the bucket | Second pass. A real listing rather than a reconstruction; several files per session in one flat folder; a session table inside the dataset to check the records against |
 
 ---
 
@@ -60,8 +71,11 @@ The pass changed **no schema file**. Every gap below is a proposal; the fixtures
 | zenodo-adhoc-date-folders | ● | | ● | | | | | | | ○ | ● | ● | | | |
 | zenodo-adhoc-flat-mat | | ● | | | | | | | ● | ● | | | | | |
 | nansen-project-layout | ○ | | ● | | | ● | ● | ● (2 roots) | ● | ● | ● | | ● | ● | |
+| ebrains-fiorilli-2022 | | ● | | ● | | ● | | | ● | ● | ● (yy) | | | | |
 
-What worked without friction, across all fifteen: identity declared once and matched across locations (raw timestamp folders against generated `session-` folders; a TIFF series against a CaImAn folder); composite identities whose parts come from structural levels above the entity; ancestors with no folder of their own; two-digit years; integer identities; `enum` and `minimum` validation; several roots and environments in one location; `{token}` substitution of parent and own identity into file patterns.
+What worked without friction, across the fifteen cases of the first pass: identity declared once and matched across locations (raw timestamp folders against generated `session-` folders; a TIFF series against a CaImAn folder); composite identities whose parts come from structural levels above the entity; ancestors with no folder of their own; two-digit years; integer identities; `enum` and `minimum` validation; several roots and environments in one location; `{token}` substitution of parent and own identity into file patterns.
+
+`ebrains-fiorilli-2022` needed nothing the model lacks to describe its entities. The walk yields 4 subjects and 25 sessions with no issue. The 25 session records equal the 25 rows of the dataset's `data/sessions_df.csv` in key, animal and date, and the sessions per subject equal Table 1 of the data descriptor (7, 10, 4, 4). Describing the listing rather than the descriptor found three differences between them: the descriptor names the folders `Data/` and `Code/` where the bucket has `data/` and `code/`, it names its own file and the licence differently from the bucket, and it does not mention the suffix `_lfps_clean.nio` that one session has instead of `_lfps.nio`. Imported into NANSEN, the config gives the same 25 sessions with the same ids, subjects and dates, and each of the three file kinds resolves to the session's file.
 
 ---
 
@@ -71,7 +85,7 @@ Kind: **concept** (the model has no way to say it), **cardinality** (it can say 
 
 | Id | Gap | Kind | Seen in | Proposed change | Compatibility |
 |----|-----|------|---------|-----------------|---------------|
-| G1 | **Dataset-level files and known non-entity siblings.** `dandiset.yaml`, `participants.tsv`, `manifest.json`, `sessions.csv`, `README`, `docs/`, `hc3-metadata-tables/` are expected parts of every downloaded dataset, and every one is `no-match`. The only alternative, `excludePatterns`, reports them as `excluded`, which says they are noise. | concept | 12 of 15 cases | `filesystemSource.additionalEntries` (or a per-level `knownPatterns`): regexes for entries that are part of the dataset but belong to no entity; reported as `unmatched` with a new reason `known`. `additionalFolders` becomes one instance of it. | additive; adds an `unmatched.reason` value |
+| G1 | **Dataset-level files and known non-entity siblings.** `dandiset.yaml`, `participants.tsv`, `manifest.json`, `sessions.csv`, `sessions_df.csv`, a data descriptor PDF, a licence, `code/`, `README`, `docs/`, `hc3-metadata-tables/` are expected parts of every downloaded dataset, and every one is `no-match`. The only alternative, `excludePatterns`, reports them as `excluded`, which says they are noise. | concept | 13 of 16 cases | `filesystemSource.additionalEntries` (or a per-level `knownPatterns`): regexes for entries that are part of the dataset but belong to no entity; reported as `unmatched` with a new reason `known`. `additionalFolders` becomes one instance of it. | additive; adds an `unmatched.reason` value |
 | G2 | **Files of an outer entity are double-accounted.** A file that is a direct child of a non-innermost entity folder and matches that level's `filePatterns` is listed in the entity's `files` *and* reported `no-match` by the next level. Neither the schema nor the conformance rules say which wins. | ambiguity | hc-3 (`.xml/.eeg/.whl`), BIDS (`scans.tsv`), Allen (`session_<id>.nwb`), Open Ephys (`structure.oebin`, `settings.xml`), SpikeGLX (nidq files) | Rule: an entry that matches a `filePatterns` entry of the level whose folder it is in is claimed by that entity and is not offered to the next level. An entry that matches no pattern is offered to the next level as now. State it in `docs/guides/conformance.md`; update the five fixtures. | semantic (five new fixtures change; no existing fixture changes) |
 | G3 | **A legitimate multi-folder entity is reported as `duplicate-entity`.** When a structural level sits above an entity level (a date above a subject) or alternates between branches (`alf`/`raw_ephys_data` above `probeNN`), the same entity has one folder per structural value by design. The reader reports `duplicate-entity` on every one of them. | ambiguity | IBL (`probe00` in two collections), ScanImage (`m0123` under two dates) | Rule: `duplicate-entity` fires only when two folders yield the same identity **under the same parent folder**. Folders under different parents are the entity's several locations, listed in `paths` without an issue. `folder-hierarchy-basic` (`_copy` sibling) still fires. | semantic (two new fixtures change) |
 | G4 | **No optional fields.** A field whose rule legitimately matches nothing (`task`, `run` on an anatomical scan) raises `extraction-failed` unless a `defaultValue` is invented. BIDS optional entities and any "sometimes present" name part hit this. | concept | BIDS | `metadataDefinition.isRequired` (default `true`); when `false`, a missing value is absent without an issue. | additive |
@@ -87,11 +101,13 @@ Kind: **concept** (the model has no way to say it), **cardinality** (it can say 
 | G14 | **Identity is always scoped by parent.** A session found under `sub-01/` in one location and directly under the root in another (no subject in the name) is two records, because the parent chain is part of the key. Processed folders named by session id alone are common. | concept | Probed during this pass on an in-memory listing (one location with subject folders, one with session folders only); not made a fixture, because the fixture would pin the undesired split | `entityType.identityScope`: `"parent"` (default, current) or `"global"`: a global identity matches across locations regardless of ancestors, and the record's `parents` is the union of what the locations yielded (conflict → `metadata-conflict`). | additive, but changes the record key for types that opt in |
 | G15 | **`defaultValue` and identity.** The schema says a default is used "when the field cannot be extracted", but an entity whose identity field matched nothing is `no-match` even when the field has a `defaultValue`. So an optional component of a composite identity (BIDS `run-` absent ⇒ run 1) cannot be expressed. | ambiguity | BIDS | Decide and state it: either defaults apply before the identity check (then `run` with `defaultValue: 1` works), or identity fields may not carry a `defaultValue` (validation rule). The first is more useful. | semantic (only for configs with a default on an identity field; none in the repository) |
 | G16 | **`additionalFolders` has no effect.** Everything under an innermost entity folder is covered whether or not it is listed. The field documents intent but changes no record. | naming | NANSEN, raw-processed example | Retire it when G12 lands, or give it meaning now: a subfolder not listed is reported (new issue code `unexpected-folder`). | additive either way |
+| G17 | **A published dataset has no root path.** `rootStoragePath.path` is required and is an absolute path on one machine. `environment` lets a lab list the machines it knows, but the users of a published dataset each copy it to a folder of their own, and the `<config>.local.json` overlay carries `preferences` only. A config shipped with a dataset therefore holds a path that is wrong for every user but its author, and using it means editing the shared file. | concept | EBRAINS (`ebrains-fiorilli-2022`: the fixture holds a placeholder, and the NANSEN import replaced it in memory) | Let the overlay carry root paths: `rootStoragePaths` in `<config>.local.json`, keyed by data location and root identifier, read in preference to the shared `path`; make `path` optional in the shared config. A reader that has to open files and resolves no path reports it; walking a listing needs no path and is unchanged. | additive (`path` optional; overlay extended) |
 
-Two smaller observations, not gaps:
+Smaller observations, not gaps:
 
 - `dsm listing` and the fixtures handle names with spaces, dots and `+` without trouble; MATLAB-facing regexes only need the documented escapes.
 - Partial downloads (`.nwb.part`), OS files (`Thumbs.db`, `.DS_Store`) and notes (`notes.txt`) are `no-match` unless excluded. That is correct: the config author decides what is noise. G1 is about entries the *dataset* defines, not these.
+- A session table inside the dataset (`sessions_df.csv`, `participants.tsv`) is `no-match` under G1, but it is also a second statement of the entity list that does not depend on the config. Comparing the walked records with it is a check that a config author can run; `ebrains-fiorilli-2022` did, and the 25 rows were identical.
 
 ---
 
@@ -110,7 +126,7 @@ Two smaller observations, not gaps:
 | G5 | Only the tree-layout option is structural. Decide (a) or (b) now; if (a), write the idiom into the usage guide and keep `entityLayout` an array for good. |
 | G14 | Changes the meaning of the record key for types that opt in; better to have it in the 1.0 key semantics than to add a second notion of identity later. |
 
-**Can follow as minor releases** (purely additive, no existing record changes): G1, G4, G6, G7, G9, G10, G11, G16.
+**Can follow as minor releases** (purely additive, no existing record changes): G1, G4, G6, G7, G9, G10, G11, G16, G17.
 
 Nothing found argues for a different shape of the core: entity types with declared identity, per-location layouts, per-location extraction rules and the entity record held for every layout. What the layouts asked for is more ways to say *which files belong to whom* (G2, G6, G7, G10, G12) and a few rules the spec had left implicit (G3, G8, G13, G15).
 
@@ -118,4 +134,4 @@ Nothing found argues for a different shape of the core: entity types with declar
 
 ## Fixtures added
 
-Fifteen cases under `conformance/`, listed in the [conformance guide](../guides/conformance.md#cases). Each README states the layout, its provenance, what the case checks, and the gap ids it exhibits. The NANSEN layout was reconstructed from the tool's source only; the tool itself was not run.
+Sixteen cases under `conformance/` (fifteen from the first pass, one from the second), listed in the [conformance guide](../guides/conformance.md#cases). Each README states the layout, its provenance, what the case checks, and the gap ids it exhibits. The NANSEN layout was reconstructed from the tool's source only; the tool itself was not run.

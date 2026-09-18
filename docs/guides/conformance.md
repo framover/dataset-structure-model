@@ -123,6 +123,7 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `zenodo-adhoc-date-folders` | ad-hoc Zenodo deposit | single entity type, date level on top, `enum` and integer from one name, exactly-three planes not expressible (G11) |
 | `zenodo-adhoc-flat-mat` | ad-hoc Zenodo deposit | one file level at the root, an entity split over numbered files |
 | `nansen-project-layout` | NANSEN data locations | two roots in one location, raw timestamp folders matched to generated `subject-`/`session-` folders, MATLAB index ranges as slices, variables in subfolders not describable (G12) |
+| `ebrains-fiorilli-2022` | EBRAINS dataset, complete bucket listing | two fixed levels above a file level, several files per session in one flat folder, session key and subject from one name, two-digit year, a required kind beside two optional kinds, dataset-level files and a session table (G1), placeholder root path (G17) |
 
 ## Using the fixtures from a reader
 
