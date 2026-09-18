@@ -3,7 +3,7 @@
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "01"
+        "subject_id": "GoC_Subject01"
       },
       "parents": [],
       "locations": [
@@ -17,14 +17,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "01",
+        "subject_id": "GoC_Subject01",
         "recording_date": "2019-04-08"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "02"
+        "subject_id": "GoC_Subject02"
       },
       "parents": [],
       "locations": [
@@ -38,14 +38,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "02",
+        "subject_id": "GoC_Subject02",
         "recording_date": "2019-04-10"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "03"
+        "subject_id": "GoC_Subject03"
       },
       "parents": [],
       "locations": [
@@ -59,14 +59,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "03",
+        "subject_id": "GoC_Subject03",
         "recording_date": "2019-05-13"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "04"
+        "subject_id": "GoC_Subject04"
       },
       "parents": [],
       "locations": [
@@ -80,14 +80,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "04",
+        "subject_id": "GoC_Subject04",
         "recording_date": "2019-02-18"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "05"
+        "subject_id": "GoC_Subject05"
       },
       "parents": [],
       "locations": [
@@ -101,14 +101,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "05",
+        "subject_id": "GoC_Subject05",
         "recording_date": "2019-04-18"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "06"
+        "subject_id": "GoC_Subject06"
       },
       "parents": [],
       "locations": [
@@ -122,14 +122,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "06",
+        "subject_id": "GoC_Subject06",
         "recording_date": "2019-03-25"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "07"
+        "subject_id": "GoC_Subject07"
       },
       "parents": [],
       "locations": [
@@ -143,7 +143,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "07",
+        "subject_id": "GoC_Subject07",
         "recording_date": "2019-04-30"
       }
     },
@@ -156,7 +156,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "01"
+            "subject_id": "GoC_Subject01"
           }
         }
       ],
@@ -177,7 +177,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "01",
+        "subject_id": "GoC_Subject01",
         "recording_id": "80419_0007_IV",
         "protocol": "iv"
       }
@@ -191,7 +191,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "02"
+            "subject_id": "GoC_Subject02"
           }
         }
       ],
@@ -212,7 +212,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "02",
+        "subject_id": "GoC_Subject02",
         "recording_id": "100419_0025_EPSC",
         "protocol": "epsc"
       }
@@ -226,7 +226,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "02"
+            "subject_id": "GoC_Subject02"
           }
         }
       ],
@@ -247,7 +247,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "02",
+        "subject_id": "GoC_Subject02",
         "recording_id": "100419_0027_EPSC",
         "protocol": "epsc"
       }
@@ -261,7 +261,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "02"
+            "subject_id": "GoC_Subject02"
           }
         }
       ],
@@ -282,7 +282,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "02",
+        "subject_id": "GoC_Subject02",
         "recording_id": "100419_0028_EPSC",
         "protocol": "epsc"
       }
@@ -296,7 +296,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "03"
+            "subject_id": "GoC_Subject03"
           }
         }
       ],
@@ -317,7 +317,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "03",
+        "subject_id": "GoC_Subject03",
         "recording_id": "130519_0014_IV",
         "protocol": "iv"
       }
@@ -331,7 +331,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "03"
+            "subject_id": "GoC_Subject03"
           }
         }
       ],
@@ -352,7 +352,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "03",
+        "subject_id": "GoC_Subject03",
         "recording_id": "130519_0020_EPSC",
         "protocol": "epsc"
       }
@@ -366,7 +366,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "03"
+            "subject_id": "GoC_Subject03"
           }
         }
       ],
@@ -387,7 +387,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "03",
+        "subject_id": "GoC_Subject03",
         "recording_id": "130519_0021_EPSC",
         "protocol": "epsc"
       }
@@ -401,7 +401,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "03"
+            "subject_id": "GoC_Subject03"
           }
         }
       ],
@@ -422,7 +422,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "03",
+        "subject_id": "GoC_Subject03",
         "recording_id": "130519_0022_EPSC",
         "protocol": "epsc"
       }
@@ -436,7 +436,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "04"
+            "subject_id": "GoC_Subject04"
           }
         }
       ],
@@ -457,7 +457,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "04",
+        "subject_id": "GoC_Subject04",
         "recording_id": "180219_0001_IV",
         "protocol": "iv"
       }
@@ -471,7 +471,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "05"
+            "subject_id": "GoC_Subject05"
           }
         }
       ],
@@ -492,7 +492,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "05",
+        "subject_id": "GoC_Subject05",
         "recording_id": "18419-A_0001_IV",
         "protocol": "iv"
       }
@@ -506,7 +506,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "05"
+            "subject_id": "GoC_Subject05"
           }
         }
       ],
@@ -527,7 +527,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "05",
+        "subject_id": "GoC_Subject05",
         "recording_id": "18419-B_0004_IV",
         "protocol": "iv"
       }
@@ -541,7 +541,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "05"
+            "subject_id": "GoC_Subject05"
           }
         }
       ],
@@ -562,7 +562,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "05",
+        "subject_id": "GoC_Subject05",
         "recording_id": "18419-C_0013_IV",
         "protocol": "iv"
       }
@@ -576,7 +576,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "05"
+            "subject_id": "GoC_Subject05"
           }
         }
       ],
@@ -597,7 +597,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "05",
+        "subject_id": "GoC_Subject05",
         "recording_id": "18419-D_0015_IV",
         "protocol": "iv"
       }
@@ -611,7 +611,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "06"
+            "subject_id": "GoC_Subject06"
           }
         }
       ],
@@ -632,7 +632,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "06",
+        "subject_id": "GoC_Subject06",
         "recording_id": "250319_0005_IV",
         "protocol": "iv"
       }
@@ -646,7 +646,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "06"
+            "subject_id": "GoC_Subject06"
           }
         }
       ],
@@ -667,7 +667,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "06",
+        "subject_id": "GoC_Subject06",
         "recording_id": "250319_0007_EPSC",
         "protocol": "epsc"
       }
@@ -681,7 +681,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "06"
+            "subject_id": "GoC_Subject06"
           }
         }
       ],
@@ -702,7 +702,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "06",
+        "subject_id": "GoC_Subject06",
         "recording_id": "250319_0008_EPSC",
         "protocol": "epsc"
       }
@@ -716,7 +716,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "07"
+            "subject_id": "GoC_Subject07"
           }
         }
       ],
@@ -737,7 +737,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "07",
+        "subject_id": "GoC_Subject07",
         "recording_id": "30419_0015_EPSC",
         "protocol": "epsc"
       }

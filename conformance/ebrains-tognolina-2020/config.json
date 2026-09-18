@@ -24,12 +24,12 @@
   "metadataDefinitions": {
     "subject_id": {
       "name": "subject_id",
-      "title": "Subject number",
-      "description": "Two-digit subject number from the folder name <celltype>_Subject<NN>_<ddMMyy>.",
+      "title": "Subject",
+      "description": "Cell type and subject number from the folder name <celltype>_Subject<NN>_<ddMMyy>, e.g. GrC_Subject01. The same string is the internalIdentifier of the subject in the EBRAINS Knowledge Graph.",
       "dataType": "string",
       "ofEntity": "subject",
       "validation": {
-        "pattern": "^\\d{2}$"
+        "pattern": "^[A-Za-z]+_Subject\\d{2}$"
       }
     },
     "recording_date": {
@@ -103,7 +103,7 @@
             "metadataRef": "subject_id",
             "extraction": {
               "method": "regex",
-              "pattern": "_Subject(\\d{2})_",
+              "pattern": "^([A-Za-z]+_Subject\\d{2})_",
               "entityLayoutLevel": "subjects"
             }
           },

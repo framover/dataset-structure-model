@@ -2,9 +2,15 @@
   "schemaVersion": "0.1.0",
   "entityTypes": [
     {
+      "name": "subject",
+      "description": "One mouse, sbj<N>-<yymmdd>, the start of the cell identity. The same string is the internalIdentifier of the subject in the EBRAINS Knowledge Graph and the subject folder name in the morphology dataset of the same neuron (dorst-2019-morphology).",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
       "name": "cell",
       "description": "One recorded cholinergic interneuron. The dataset holds one cell, sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN; the descriptor calls this name the identity and does not break it down.",
-      "isPrimary": true,
+      "isPrimary": false,
       "identifierRef": "cell_id"
     }
   ],
@@ -17,6 +23,15 @@
       "ofEntity": "cell",
       "validation": {
         "pattern": "^sbj\\d+-\\d{6}_cell\\d+_.+$"
+      }
+    },
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Subject",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^sbj\\d+-\\d{6}$"
       }
     }
   },
@@ -57,6 +72,14 @@
             "extraction": {
               "method": "substring",
               "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(sbj\\d+-\\d{6})_",
               "entityLayoutLevel": "cells"
             }
           }
@@ -101,6 +124,14 @@
               "pattern": "^(.+)\\.pxp$",
               "entityLayoutLevel": "cell-files"
             }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(sbj\\d+-\\d{6})_",
+              "entityLayoutLevel": "cell-files"
+            }
           }
         ]
       }
@@ -141,6 +172,14 @@
             "extraction": {
               "method": "substring",
               "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(sbj\\d+-\\d{6})_",
               "entityLayoutLevel": "cells"
             }
           }
@@ -185,9 +224,25 @@
               "pattern": "^(.+)\\.nwb$",
               "entityLayoutLevel": "cell-files"
             }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(sbj\\d+-\\d{6})_",
+              "entityLayoutLevel": "cell-files"
+            }
           }
         ]
       }
+    }
+  ],
+  "entityRelationships": [
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "cell",
+      "relationType": "oneToMany",
+      "relationName": "hasCells"
     }
   ]
 }

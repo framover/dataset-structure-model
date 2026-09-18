@@ -6,9 +6,9 @@ Provenance: the complete object listing of the public bucket (37 objects). The m
 
 What it checks:
 
-- One `file` level at the root, with the recording as the file entity and the cell inferred from the file name (`locations: []`).
+- One `file` level at the root, with the recording as the file entity, and the cell and the animal inferred from the file name (`locations: []`).
 - A cell id that is itself composite (date and slice number) read as one string, with the date and the slice number as separate fields of the cell.
-- The walk yields 7 cells and 35 recordings. The descriptor reports 7 cells and 350 traces, which is 35 files of 10 current steps each.
+- The walk yields 2 animals, 7 cells and 35 recordings. The descriptor reports 7 cells from two mice and 350 traces, which is 35 files of 10 current steps each.
 - The descriptor lists the files as `<yyMMdd>_<slice>a-e.abf`; the bucket has `.ABF`. The config follows the bucket.
-- The descriptor says the slices of one day come from one animal, so the animal is identified by the date. The config does not add it as an entity: it would carry no field the cell does not already have.
+- The descriptor says the slices of one day come from one animal, so the animal is identified by the recording date. The EBRAINS Knowledge Graph lists the two animals of the dataset version under the same identifiers (`170518`, `170529`), which is why the animal is the subject entity here rather than the cell.
 - The data descriptor and the licence are `no-match` (gap **G1**).

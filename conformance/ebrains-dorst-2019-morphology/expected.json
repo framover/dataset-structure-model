@@ -3,7 +3,7 @@
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "sbj1"
+        "subject_id": "sbj1-160504"
       },
       "parents": [],
       "locations": [
@@ -17,14 +17,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj1",
+        "subject_id": "sbj1-160504",
         "recording_date": "2016-05-04"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "sbj2"
+        "subject_id": "sbj2-160505"
       },
       "parents": [],
       "locations": [
@@ -38,14 +38,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj2",
+        "subject_id": "sbj2-160505",
         "recording_date": "2016-05-05"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "sbj3"
+        "subject_id": "sbj3-170627"
       },
       "parents": [],
       "locations": [
@@ -59,14 +59,14 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj3",
+        "subject_id": "sbj3-170627",
         "recording_date": "2017-06-27"
       }
     },
     {
       "entityType": "subject",
       "identity": {
-        "subject_id": "sbj4"
+        "subject_id": "sbj4-170614"
       },
       "parents": [],
       "locations": [
@@ -80,7 +80,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj4",
+        "subject_id": "sbj4-170614",
         "recording_date": "2017-06-14"
       }
     },
@@ -93,7 +93,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj1"
+            "subject_id": "sbj1-160504"
           }
         }
       ],
@@ -108,7 +108,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj1",
+        "subject_id": "sbj1-160504",
         "cell_id": "cell1_2"
       }
     },
@@ -121,7 +121,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj1"
+            "subject_id": "sbj1-160504"
           }
         }
       ],
@@ -136,7 +136,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj1",
+        "subject_id": "sbj1-160504",
         "cell_id": "cell3"
       }
     },
@@ -149,7 +149,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj1"
+            "subject_id": "sbj1-160504"
           }
         }
       ],
@@ -164,7 +164,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj1",
+        "subject_id": "sbj1-160504",
         "cell_id": "cell4"
       }
     },
@@ -177,7 +177,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj2"
+            "subject_id": "sbj2-160505"
           }
         }
       ],
@@ -192,7 +192,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj2",
+        "subject_id": "sbj2-160505",
         "cell_id": "cell7"
       }
     },
@@ -205,7 +205,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj3"
+            "subject_id": "sbj3-170627"
           }
         }
       ],
@@ -220,7 +220,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj3",
+        "subject_id": "sbj3-170627",
         "cell_id": "cell6"
       }
     },
@@ -233,7 +233,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj3"
+            "subject_id": "sbj3-170627"
           }
         }
       ],
@@ -248,7 +248,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj3",
+        "subject_id": "sbj3-170627",
         "cell_id": "cell7"
       }
     },
@@ -261,7 +261,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj4"
+            "subject_id": "sbj4-170614"
           }
         }
       ],
@@ -276,7 +276,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj4",
+        "subject_id": "sbj4-170614",
         "cell_id": "cell5"
       }
     },
@@ -289,7 +289,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj4"
+            "subject_id": "sbj4-170614"
           }
         }
       ],
@@ -304,7 +304,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj4",
+        "subject_id": "sbj4-170614",
         "cell_id": "cell6"
       }
     },
@@ -317,7 +317,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj4"
+            "subject_id": "sbj4-170614"
           }
         }
       ],
@@ -332,7 +332,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj4",
+        "subject_id": "sbj4-170614",
         "cell_id": "cell7"
       }
     },
@@ -345,7 +345,7 @@
         {
           "entityType": "subject",
           "identity": {
-            "subject_id": "sbj4"
+            "subject_id": "sbj4-170614"
           }
         }
       ],
@@ -360,7 +360,7 @@
         }
       ],
       "metadata": {
-        "subject_id": "sbj4",
+        "subject_id": "sbj4-170614",
         "cell_id": "cell8"
       }
     }

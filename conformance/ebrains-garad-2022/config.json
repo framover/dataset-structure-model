@@ -1,18 +1,92 @@
 {
   "schemaVersion": "0.1.0",
   "entityTypes": [
-    { "name": "cell", "description": "One whole-cell patched CA1 pyramidal neuron. The data descriptor: 'The digits represent the date when the data was recorded (year month day) and the number of the slice recorded on that day from the same animal.' One neuron was recorded per slice; 7 cells in total.", "isPrimary": true, "identifierRef": "cell_id" },
-    { "name": "recording", "description": "One ABF file: one repetition of the excitability protocol (0-450 pA in 50 pA steps, 500 ms) for a cell. The data descriptor: 'The letters a-e signify the excitability protocol repeated 5-times for a single neuron.'", "identifierRef": "recording_id" }
+    {
+      "name": "subject",
+      "description": "One C57BL/6J mouse. The data descriptor: the slices of a day come 'from the same animal', and the recordings are 'from seven hippocampal CA1 pyramidal cells of two 6-months old C57Bl/6J mice, recorded on 2 different days'. The animal is identified by the recording date, as in the EBRAINS Knowledge Graph (internalIdentifier 170518 and 170529).",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "cell",
+      "description": "One whole-cell patched CA1 pyramidal neuron. The data descriptor: 'The digits represent the date when the data was recorded (year month day) and the number of the slice recorded on that day from the same animal.' One neuron was recorded per slice; 7 cells in total.",
+      "identifierRef": "cell_id"
+    },
+    {
+      "name": "recording",
+      "description": "One ABF file: one repetition of the excitability protocol (0-450 pA in 50 pA steps, 500 ms) for a cell. The data descriptor: 'The letters a-e signify the excitability protocol repeated 5-times for a single neuron.'",
+      "identifierRef": "recording_id"
+    }
   ],
   "entityRelationships": [
-    { "sourceEntity": "cell", "targetEntity": "recording", "relationType": "oneToMany", "relationName": "hasRecordings" }
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "cell",
+      "relationType": "oneToMany",
+      "relationName": "hasCells"
+    },
+    {
+      "sourceEntity": "cell",
+      "targetEntity": "recording",
+      "relationType": "oneToMany",
+      "relationName": "hasRecordings"
+    }
   ],
   "metadataDefinitions": {
-    "cell_id": { "name": "cell_id", "title": "Cell ID", "description": "Recording date (yyMMdd) and slice number on that day, e.g. 170518_1.", "dataType": "string", "ofEntity": "cell", "validation": { "pattern": "^\\d{6}_\\d+$" } },
-    "recording_date": { "name": "recording_date", "title": "Recording date", "description": "Day of recording, from the yyMMdd prefix of the file name.", "dataType": "date", "ofEntity": "cell" },
-    "slice_number": { "name": "slice_number", "title": "Slice number", "description": "Number of the slice recorded on that day from the same animal.", "dataType": "integer", "ofEntity": "cell" },
-    "recording_id": { "name": "recording_id", "title": "Recording ID", "description": "File name without its extension, e.g. 170518_1a.", "dataType": "string", "ofEntity": "recording", "validation": { "pattern": "^\\d{6}_\\d+[a-z]$" } },
-    "protocol_repeat": { "name": "protocol_repeat", "title": "Protocol repeat", "description": "Letter a-e: which of the five repetitions of the excitability protocol the file holds.", "dataType": "string", "ofEntity": "recording", "validation": { "pattern": "^[a-e]$" } }
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Animal",
+      "description": "Recording date, yyMMdd, which identifies the animal: one animal was used per day.",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^\\d{6}$"
+      }
+    },
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell ID",
+      "description": "Recording date (yyMMdd) and slice number on that day, e.g. 170518_1.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^\\d{6}_\\d+$"
+      }
+    },
+    "recording_date": {
+      "name": "recording_date",
+      "title": "Recording date",
+      "description": "Day of recording, from the yyMMdd prefix of the file name; one animal per day.",
+      "dataType": "date",
+      "ofEntity": "subject"
+    },
+    "slice_number": {
+      "name": "slice_number",
+      "title": "Slice number",
+      "description": "Number of the slice recorded on that day from the same animal.",
+      "dataType": "integer",
+      "ofEntity": "cell"
+    },
+    "recording_id": {
+      "name": "recording_id",
+      "title": "Recording ID",
+      "description": "File name without its extension, e.g. 170518_1a.",
+      "dataType": "string",
+      "ofEntity": "recording",
+      "validation": {
+        "pattern": "^\\d{6}_\\d+[a-z]$"
+      }
+    },
+    "protocol_repeat": {
+      "name": "protocol_repeat",
+      "title": "Protocol repeat",
+      "description": "Letter a-e: which of the five repetitions of the excitability protocol the file holds.",
+      "dataType": "string",
+      "ofEntity": "recording",
+      "validation": {
+        "pattern": "^[a-e]$"
+      }
+    }
   },
   "dataLocations": [
     {
@@ -24,7 +98,10 @@
       "sourceType": "filesystem",
       "filesystemSource": {
         "rootStoragePaths": [
-          { "identifier": "local-copy", "path": "/data/ebrains/d-cc88a377-b456-4673-a449-07b0e7960ffd" }
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/d-cc88a377-b456-4673-a449-07b0e7960ffd"
+          }
         ],
         "entityLayout": [
           {
@@ -33,16 +110,66 @@
             "fileSystemType": "file",
             "matchPattern": "^\\d{6}_\\d+[a-z]\\.ABF$",
             "filePatterns": [
-              { "name": "abf", "pattern": "^{recording_id}\\.ABF$", "isRequired": true, "cardinality": "one", "description": "Axon Binary Format recording" }
+              {
+                "name": "abf",
+                "pattern": "^{recording_id}\\.ABF$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Axon Binary Format recording"
+              }
             ]
           }
         ],
         "metadataMapping": [
-          { "metadataRef": "recording_id", "extraction": { "method": "regex", "pattern": "^(\\d{6}_\\d+[a-z])\\.ABF$", "entityLayoutLevel": "recording-files" } },
-          { "metadataRef": "protocol_repeat", "extraction": { "method": "regex", "pattern": "^\\d{6}_\\d+([a-z])\\.ABF$", "entityLayoutLevel": "recording-files" } },
-          { "metadataRef": "cell_id", "extraction": { "method": "regex", "pattern": "^(\\d{6}_\\d+)[a-z]\\.ABF$", "entityLayoutLevel": "recording-files" } },
-          { "metadataRef": "slice_number", "extraction": { "method": "regex", "pattern": "^\\d{6}_(\\d+)[a-z]\\.ABF$", "entityLayoutLevel": "recording-files" } },
-          { "metadataRef": "recording_date", "extraction": { "method": "substring", "pattern": "0:6", "valueFormat": "yyMMdd", "entityLayoutLevel": "recording-files" } }
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(\\d{6})_",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "recording_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(\\d{6}_\\d+[a-z])\\.ABF$",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "protocol_repeat",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^\\d{6}_\\d+([a-z])\\.ABF$",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(\\d{6}_\\d+)[a-z]\\.ABF$",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "slice_number",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^\\d{6}_(\\d+)[a-z]\\.ABF$",
+              "entityLayoutLevel": "recording-files"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "recording-files"
+            }
+          }
         ]
       }
     }

@@ -6,7 +6,7 @@ Provenance: the complete object listing of the public bucket (43 objects, one of
 
 What it checks:
 
-- A subject level whose name carries the subject number and the recording date (`sbj1-160504`), above a cell level.
+- A subject level whose name carries the subject number and the recording date (`sbj1-160504`), above a cell level. The whole name is the subject identity, as in the EBRAINS Knowledge Graph.
 - Files in subfolders of the innermost entity folder (`cell3/original/*.pxp`, `cell3/derived/*.mat`). File patterns match direct children only, so the recording, the slice picture, the spatial registration and the MAT traces cannot be named or required; the folders are listed in `additionalFolders` and their files are covered without appearing in `files` (gap **G12**). The descriptor's registry promises a `.pxp`, `.tif`, `.DAT` and `.xml` in `original/` and a `.mat` in `derived/` for every cell. The bucket has a `.DAT` for `cell3` only and a `derived/` folder for 4 of the 10 cells, which a reader could only report if those patterns could be declared.
 - The walk yields 4 subjects and 10 cells without issues.
 - Names inside the cell folders disagree with the folders: in `sbj3-170627` the recordings are `md_20170524_cell_6_ChIN.pxp` and `md_20170524_cell_7_ChIN.pxp`, dated a month before the subject folder; `sbj2-160505/cell7` holds `md_20160505_cell_1_2_ChIN`; and `sbj4-170614/cell5` and `cell6` each hold a copy of `md_20170614_cell_5_6_ChIN.pxp`.

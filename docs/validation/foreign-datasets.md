@@ -106,6 +106,8 @@ Describing the listing rather than the descriptor found differences between the 
 
 `arsenault-2020` has no case. Its six files are a data descriptor, a licence, a README and three CSV tables of trial-level results whose rows name the subjects (`monkey: m1 or m2`); no path carries an entity. It needs the DRAFT `spreadsheetSource`, not a filesystem layout.
 
+The subject identities were compared with the subjects the Knowledge Graph lists for each dataset version (`studiedSpecimen`, `internalIdentifier`). Where a folder or file name carries the Knowledge Graph's identifier, the config reads that string, so that the two join without a mapping: 16 of the 21 configs give subject identities equal to the Knowledge Graph's. Of the other five, `ebrains-murris-2021` names the monkeys `m1` and `m2` where the Knowledge Graph has `MM-M1` and `MM-M2`; the two Kozlov datasets register each cell as a Knowledge Graph subject, where the configs have cells and no subject; `ebrains-carannante-2019` has one cell, which the Knowledge Graph lists as subject `exp-9862` and the bucket names `Experiment-9862`; and `ebrains-locatelli-2020-golgi` has only a subject group in the Knowledge Graph, with tissue sample collections named after the subject folders.
+
 Three rules held that the first pass had not exercised: `defaultValue` on a field outside the identity (the experimenter in `ebrains-salgueiro-pereira-2020`: 43 `rita`, 30 `marie`, no issue), a `fixed` rule as one part of a composite identity (`localizer` in `ebrains-murris-2021`), and `ddMMyy` and `HH-mm-ss` value formats in both readers.
 
 ### Use in NANSEN

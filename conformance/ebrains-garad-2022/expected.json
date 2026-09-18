@@ -1,16 +1,47 @@
 {
   "records": [
     {
-      "entityType": "cell",
+      "entityType": "subject",
       "identity": {
-        "cell_id": "170518_1"
+        "subject_id": "170518"
       },
       "parents": [],
       "locations": [],
       "metadata": {
-        "cell_id": "170518_1",
-        "slice_number": 1,
+        "subject_id": "170518",
         "recording_date": "2017-05-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "170529"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "170529",
+        "recording_date": "2017-05-29"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "170518_1"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        }
+      ],
+      "locations": [],
+      "metadata": {
+        "subject_id": "170518",
+        "cell_id": "170518_1",
+        "slice_number": 1
       }
     },
     {
@@ -18,12 +49,19 @@
       "identity": {
         "cell_id": "170518_2"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
-        "slice_number": 2,
-        "recording_date": "2017-05-18"
+        "slice_number": 2
       }
     },
     {
@@ -31,12 +69,19 @@
       "identity": {
         "cell_id": "170518_3"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
-        "slice_number": 3,
-        "recording_date": "2017-05-18"
+        "slice_number": 3
       }
     },
     {
@@ -44,12 +89,19 @@
       "identity": {
         "cell_id": "170518_4"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
-        "slice_number": 4,
-        "recording_date": "2017-05-18"
+        "slice_number": 4
       }
     },
     {
@@ -57,12 +109,19 @@
       "identity": {
         "cell_id": "170529_1"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
-        "slice_number": 1,
-        "recording_date": "2017-05-29"
+        "slice_number": 1
       }
     },
     {
@@ -70,12 +129,19 @@
       "identity": {
         "cell_id": "170529_2"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
-        "slice_number": 2,
-        "recording_date": "2017-05-29"
+        "slice_number": 2
       }
     },
     {
@@ -83,12 +149,19 @@
       "identity": {
         "cell_id": "170529_3"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        }
+      ],
       "locations": [],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
-        "slice_number": 3,
-        "recording_date": "2017-05-29"
+        "slice_number": 3
       }
     },
     {
@@ -97,6 +170,12 @@
         "recording_id": "170518_1a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -121,6 +200,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_1",
         "recording_id": "170518_1a",
         "protocol_repeat": "a"
@@ -132,6 +212,12 @@
         "recording_id": "170518_1b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -156,6 +242,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_1",
         "recording_id": "170518_1b",
         "protocol_repeat": "b"
@@ -167,6 +254,12 @@
         "recording_id": "170518_1c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -191,6 +284,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_1",
         "recording_id": "170518_1c",
         "protocol_repeat": "c"
@@ -202,6 +296,12 @@
         "recording_id": "170518_1d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -226,6 +326,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_1",
         "recording_id": "170518_1d",
         "protocol_repeat": "d"
@@ -237,6 +338,12 @@
         "recording_id": "170518_1e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -261,6 +368,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_1",
         "recording_id": "170518_1e",
         "protocol_repeat": "e"
@@ -272,6 +380,12 @@
         "recording_id": "170518_2a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -296,6 +410,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
         "recording_id": "170518_2a",
         "protocol_repeat": "a"
@@ -307,6 +422,12 @@
         "recording_id": "170518_2b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -331,6 +452,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
         "recording_id": "170518_2b",
         "protocol_repeat": "b"
@@ -342,6 +464,12 @@
         "recording_id": "170518_2c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -366,6 +494,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
         "recording_id": "170518_2c",
         "protocol_repeat": "c"
@@ -377,6 +506,12 @@
         "recording_id": "170518_2d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -401,6 +536,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
         "recording_id": "170518_2d",
         "protocol_repeat": "d"
@@ -412,6 +548,12 @@
         "recording_id": "170518_2e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -436,6 +578,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_2",
         "recording_id": "170518_2e",
         "protocol_repeat": "e"
@@ -447,6 +590,12 @@
         "recording_id": "170518_3a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -471,6 +620,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
         "recording_id": "170518_3a",
         "protocol_repeat": "a"
@@ -482,6 +632,12 @@
         "recording_id": "170518_3b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -506,6 +662,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
         "recording_id": "170518_3b",
         "protocol_repeat": "b"
@@ -517,6 +674,12 @@
         "recording_id": "170518_3c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -541,6 +704,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
         "recording_id": "170518_3c",
         "protocol_repeat": "c"
@@ -552,6 +716,12 @@
         "recording_id": "170518_3d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -576,6 +746,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
         "recording_id": "170518_3d",
         "protocol_repeat": "d"
@@ -587,6 +758,12 @@
         "recording_id": "170518_3e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -611,6 +788,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_3",
         "recording_id": "170518_3e",
         "protocol_repeat": "e"
@@ -622,6 +800,12 @@
         "recording_id": "170518_4a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -646,6 +830,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
         "recording_id": "170518_4a",
         "protocol_repeat": "a"
@@ -657,6 +842,12 @@
         "recording_id": "170518_4b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -681,6 +872,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
         "recording_id": "170518_4b",
         "protocol_repeat": "b"
@@ -692,6 +884,12 @@
         "recording_id": "170518_4c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -716,6 +914,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
         "recording_id": "170518_4c",
         "protocol_repeat": "c"
@@ -727,6 +926,12 @@
         "recording_id": "170518_4d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -751,6 +956,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
         "recording_id": "170518_4d",
         "protocol_repeat": "d"
@@ -762,6 +968,12 @@
         "recording_id": "170518_4e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170518"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -786,6 +998,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170518",
         "cell_id": "170518_4",
         "recording_id": "170518_4e",
         "protocol_repeat": "e"
@@ -797,6 +1010,12 @@
         "recording_id": "170529_1a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -821,6 +1040,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
         "recording_id": "170529_1a",
         "protocol_repeat": "a"
@@ -832,6 +1052,12 @@
         "recording_id": "170529_1b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -856,6 +1082,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
         "recording_id": "170529_1b",
         "protocol_repeat": "b"
@@ -867,6 +1094,12 @@
         "recording_id": "170529_1c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -891,6 +1124,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
         "recording_id": "170529_1c",
         "protocol_repeat": "c"
@@ -902,6 +1136,12 @@
         "recording_id": "170529_1d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -926,6 +1166,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
         "recording_id": "170529_1d",
         "protocol_repeat": "d"
@@ -937,6 +1178,12 @@
         "recording_id": "170529_1e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -961,6 +1208,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_1",
         "recording_id": "170529_1e",
         "protocol_repeat": "e"
@@ -972,6 +1220,12 @@
         "recording_id": "170529_2a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -996,6 +1250,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
         "recording_id": "170529_2a",
         "protocol_repeat": "a"
@@ -1007,6 +1262,12 @@
         "recording_id": "170529_2b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1031,6 +1292,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
         "recording_id": "170529_2b",
         "protocol_repeat": "b"
@@ -1042,6 +1304,12 @@
         "recording_id": "170529_2c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1066,6 +1334,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
         "recording_id": "170529_2c",
         "protocol_repeat": "c"
@@ -1077,6 +1346,12 @@
         "recording_id": "170529_2d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1101,6 +1376,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
         "recording_id": "170529_2d",
         "protocol_repeat": "d"
@@ -1112,6 +1388,12 @@
         "recording_id": "170529_2e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1136,6 +1418,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_2",
         "recording_id": "170529_2e",
         "protocol_repeat": "e"
@@ -1147,6 +1430,12 @@
         "recording_id": "170529_3a"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1171,6 +1460,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
         "recording_id": "170529_3a",
         "protocol_repeat": "a"
@@ -1182,6 +1472,12 @@
         "recording_id": "170529_3b"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1206,6 +1502,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
         "recording_id": "170529_3b",
         "protocol_repeat": "b"
@@ -1217,6 +1514,12 @@
         "recording_id": "170529_3c"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1241,6 +1544,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
         "recording_id": "170529_3c",
         "protocol_repeat": "c"
@@ -1252,6 +1556,12 @@
         "recording_id": "170529_3d"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1276,6 +1586,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
         "recording_id": "170529_3d",
         "protocol_repeat": "d"
@@ -1287,6 +1598,12 @@
         "recording_id": "170529_3e"
       },
       "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "170529"
+          }
+        },
         {
           "entityType": "cell",
           "identity": {
@@ -1311,6 +1628,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "170529",
         "cell_id": "170529_3",
         "recording_id": "170529_3e",
         "protocol_repeat": "e"

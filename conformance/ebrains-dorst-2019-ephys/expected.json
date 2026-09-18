@@ -1,11 +1,29 @@
 {
   "records": [
     {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "sbj4-170614"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "sbj4-170614"
+      }
+    },
+    {
       "entityType": "cell",
       "identity": {
         "cell_id": "sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN"
       },
-      "parents": [],
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj4-170614"
+          }
+        }
+      ],
       "locations": [
         {
           "dataLocationIdentifier": "derived",
@@ -327,6 +345,7 @@
         }
       ],
       "metadata": {
+        "subject_id": "sbj4-170614",
         "cell_id": "sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN"
       }
     }

@@ -8,5 +8,5 @@ What it checks:
 
 - Four data locations, one per branch and format (`derived`, `original`, `derived-nwb`, `original-nwb`; gap **G5**), and the one cell as one record complete in all four.
 - One entity that is a folder in two locations and a file in the other two: `derived/<identity>/` holds the traces, while the original is a single file `original/<identity>.pxp` (or `.nwb`), where the descriptor promises a folder `original/<identity>/`.
-- An identity with no parts the descriptor explains (`sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN`), used whole.
+- An identity with no parts the descriptor explains (`sbj4-170614_cell6_original__md_20170614_cell_5_6_ChIN`), used whole for the cell. Its start, `sbj4-170614`, is the subject: the EBRAINS Knowledge Graph lists it as the dataset version's subject, and `ebrains-dorst-2019-morphology` has a subject folder of that name.
 - The descriptor lists itself as `HBP-DataDescriptor_SPN-mephys.txt`; the bucket has `HBP-DataDescriptor_ChIn-ephys.txt`.
