@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One mouse, S<NN> at the end of the file names. The data descriptor does not name this part of the file name; its file list omits it. The reading as a mouse number is inferred: each of the four groups has 3 or 4 values, and the descriptor says 'Cells from each sub-group were recorded from at least 3 independent mice'.", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "recording", "description": "One ABF file from a CA1 pyramidal neuron: current steps of 50 to 400 pA in 50 pA increments, 400 ms, from -65 mV.", "identifierRef": "recording_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "recording", "relationType": "oneToMany", "relationName": "hasRecordings" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Mouse", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^S\\d+$" } },
+    "genotype": { "name": "genotype", "title": "Genotype", "description": "APPPS1 or control (wild-type littermate), from the group folder name.", "dataType": "string", "ofEntity": "subject", "validation": { "enum": ["APPPS1", "control"] } },
+    "age_group": { "name": "age_group", "title": "Age group", "description": "3-4 months (presymptomatic) or 9-10 months (symptomatic), from the group folder name.", "dataType": "string", "ofEntity": "subject", "validation": { "enum": ["3-4_months", "9-10_months"] } },
+    "recording_id": { "name": "recording_id", "title": "Recording ID", "description": "File name without the .abf extension.", "dataType": "string", "ofEntity": "recording" },
+    "recording_date": { "name": "recording_date", "title": "Recording date", "description": "The first six digits of the file name. The data descriptor: 'The digits represent the date when the data was recorded'.", "dataType": "date", "ofEntity": "recording" },
+    "experimenter": { "name": "experimenter", "title": "Experimenter", "description": "The data descriptor: 'the _rita specifies the author that recorded the trace. All other traces were recorded by Hélène MARIE.' Files without _rita take the default.", "dataType": "string", "ofEntity": "recording", "defaultValue": "marie", "validation": { "enum": ["rita", "marie"] } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket pc0a33-ext-d000001_ADNeuronModel_pub",
+      "description": "Salgueiro-Pereira and Marie, excitability profile of CA1 pyramidal neurons in APP-PS1 Alzheimer disease mice and control littermates (dataset version bd5f91ff-e829-4b85-92eb-fc56991541f1). One folder per group, <APPPS1_mouse_model|control>_<3-4|9-10>_months, holding the ABF files <yyMMdd><NNN>[_rita]_S<NN>.abf; the data descriptor and the licence at the root. The descriptor lists the files without the _S<NN> part. Every entry of the bucket was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/pc0a33-ext-d000001_ADNeuronModel_pub" }
+        ],
+        "entityLayout": [
+          { "name": "groups", "matchPattern": "^(APPPS1_mouse_model|control)_\\d+-\\d+_months$" },
+          {
+            "name": "recording-files",
+            "entityType": "recording",
+            "fileSystemType": "file",
+            "matchPattern": "^\\d{9}(_rita)?_S\\d+\\.abf$",
+            "filePatterns": [
+              { "name": "abf", "pattern": "^{recording_id}\\.abf$", "isRequired": true, "cardinality": "one", "description": "Axon Binary Format recording" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "genotype", "extraction": { "method": "regex", "pattern": "^(APPPS1|control)_", "entityLayoutLevel": "groups" } },
+          { "metadataRef": "age_group", "extraction": { "method": "regex", "pattern": "_(\\d+-\\d+_months)$", "entityLayoutLevel": "groups" } },
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "_(S\\d+)\\.abf$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "recording_id", "extraction": { "method": "regex", "pattern": "^(.+)\\.abf$", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "recording_date", "extraction": { "method": "substring", "pattern": "0:6", "valueFormat": "yyMMdd", "entityLayoutLevel": "recording-files" } },
+          { "metadataRef": "experimenter", "extraction": { "method": "regex", "pattern": "_(rita)_", "entityLayoutLevel": "recording-files" } }
+        ]
+      }
+    }
+  ]
+}

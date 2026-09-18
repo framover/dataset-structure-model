@@ -1,0 +1,24 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "MF-CA3-STDP-neonate-WT-negPairing/",
+        "MF-CA3-STDP-neonate-WT-negPairing/00-hbp-00005_DataDescriptor_MF-CA3-STDP-neonate-WT-negPairing_v1p1.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj001/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj001/B18815/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj001/B18815/MF-CA3-STDP-neonate-WT-negPairing_Sbj001_B18815__B18815010_C.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj001/B18815/MF-CA3-STDP-neonate-WT-negPairing_Sbj001_B18815__B18815015_P.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj002/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj002/A220715/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj002/A220715/MF-CA3-STDP-neonate-WT-negPairing_Sbj002_A220715__A2207150001_C.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj002/A220715/MF-CA3-STDP-neonate-WT-negPairing_Sbj002_A220715__A2207150006_P.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj003/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj003/A200815/",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj003/A200815/MF-CA3-STDP-neonate-WT-negPairing_Sbj003_A200815__A200815002_C.txt",
+        "MF-CA3-STDP-neonate-WT-negPairing/Sbj003/A200815/MF-CA3-STDP-neonate-WT-negPairing_Sbj003_A200815__A200815006_P.txt"
+      ]
+    }
+  ]
+}

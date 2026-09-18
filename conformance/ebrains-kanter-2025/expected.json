@@ -1,0 +1,2122 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "26863"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/26863/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "26863"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "26965"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/26965/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "26966"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/26966/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "26966"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "27284"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/27284/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "27285"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/27285/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "27963"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/27963/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "28003"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/28003/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "29629"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/29629/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "29629"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "29630"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "data/29630/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Nov-04_12-46-06"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26863"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26863/26863_2020-Nov-04_12-46-06.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26863/26863_2020-Nov-04_12-46-06.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26863",
+        "session_id": "2020-Nov-04_12-46-06",
+        "session_date": "2020-Nov-04",
+        "session_time": "12:46:06"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Nov-05_10-26-23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26863"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26863/26863_2020-Nov-05_10-26-23.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26863/26863_2020-Nov-05_10-26-23.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26863",
+        "session_id": "2020-Nov-05_10-26-23",
+        "session_date": "2020-Nov-05",
+        "session_time": "10:26:23"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-07_15-52-32"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-07_15-52-32.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-07_15-52-32.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-07_15-52-32",
+        "session_date": "2020-Dec-07",
+        "session_time": "15:52:32"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-07_16-51-52"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-07_16-51-52.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-07_16-51-52.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-07_16-51-52",
+        "session_date": "2020-Dec-07",
+        "session_time": "16:51:52"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-08_10-46-12"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-08_10-46-12.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-08_10-46-12.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-08_10-46-12",
+        "session_date": "2020-Dec-08",
+        "session_time": "10:46:12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-08_11-29-48"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-08_11-29-48.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-08_11-29-48.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-08_11-29-48",
+        "session_date": "2020-Dec-08",
+        "session_time": "11:29:48"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-08_14-36-11"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-08_14-36-11.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-08_14-36-11.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-08_14-36-11",
+        "session_date": "2020-Dec-08",
+        "session_time": "14:36:11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-09_11-52-59"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-09_11-52-59.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-09_11-52-59.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-09_11-52-59",
+        "session_date": "2020-Dec-09",
+        "session_time": "11:52:59"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-09_12-10-58"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-09_12-10-58.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-09_12-10-58.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-09_12-10-58",
+        "session_date": "2020-Dec-09",
+        "session_time": "12:10:58"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-11_10-58-11"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26965"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26965/26965_2020-Dec-11_10-58-11.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26965/26965_2020-Dec-11_10-58-11.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26965",
+        "session_id": "2020-Dec-11_10-58-11",
+        "session_date": "2020-Dec-11",
+        "session_time": "10:58:11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-14_15-18-10"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26966"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26966/26966_2020-Dec-14_15-18-10.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26966/26966_2020-Dec-14_15-18-10.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26966",
+        "session_id": "2020-Dec-14_15-18-10",
+        "session_date": "2020-Dec-14",
+        "session_time": "15:18:10"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-14_16-26-40"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26966"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26966/26966_2020-Dec-14_16-26-40.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26966/26966_2020-Dec-14_16-26-40.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26966",
+        "session_id": "2020-Dec-14_16-26-40",
+        "session_date": "2020-Dec-14",
+        "session_time": "16:26:40"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-15_11-47-50"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26966"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26966/26966_2020-Dec-15_11-47-50.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26966/26966_2020-Dec-15_11-47-50.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26966",
+        "session_id": "2020-Dec-15_11-47-50",
+        "session_date": "2020-Dec-15",
+        "session_time": "11:47:50"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2020-Dec-16_11-48-01"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "26966"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/26966/26966_2020-Dec-16_11-48-01.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/26966/26966_2020-Dec-16_11-48-01.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "26966",
+        "session_id": "2020-Dec-16_11-48-01",
+        "session_date": "2020-Dec-16",
+        "session_time": "11:48:01"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-15_19-16-52"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27284"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27284/27284_2021-Jun-15_19-16-52.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27284/27284_2021-Jun-15_19-16-52.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284",
+        "session_id": "2021-Jun-15_19-16-52",
+        "session_date": "2021-Jun-15",
+        "session_time": "19:16:52"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-16_08-24-12"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27284"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27284/27284_2021-Jun-16_08-24-12.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27284/27284_2021-Jun-16_08-24-12.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284",
+        "session_id": "2021-Jun-16_08-24-12",
+        "session_date": "2021-Jun-16",
+        "session_time": "08:24:12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-16_14-33-11"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27284"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27284/27284_2021-Jun-16_14-33-11.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27284/27284_2021-Jun-16_14-33-11.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284",
+        "session_id": "2021-Jun-16_14-33-11",
+        "session_date": "2021-Jun-16",
+        "session_time": "14:33:11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-17_15-01-36"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27284"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27284/27284_2021-Jun-17_15-01-36.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27284/27284_2021-Jun-17_15-01-36.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284",
+        "session_id": "2021-Jun-17_15-01-36",
+        "session_date": "2021-Jun-17",
+        "session_time": "15:01:36"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-18_11-01-41"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27284"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27284/27284_2021-Jun-18_11-01-41.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27284/27284_2021-Jun-18_11-01-41.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27284",
+        "session_id": "2021-Jun-18_11-01-41",
+        "session_date": "2021-Jun-18",
+        "session_time": "11:01:41"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jul-01_08-10-45"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jul-01_08-10-45.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jul-01_08-10-45.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jul-01_08-10-45",
+        "session_date": "2021-Jul-01",
+        "session_time": "08:10:45"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jul-01_12-33-30"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jul-01_12-33-30.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jul-01_12-33-30.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jul-01_12-33-30",
+        "session_date": "2021-Jul-01",
+        "session_time": "12:33:30"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jul-01_13-26-22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jul-01_13-26-22.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jul-01_13-26-22.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jul-01_13-26-22",
+        "session_date": "2021-Jul-01",
+        "session_time": "13:26:22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jul-02_13-23-12"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jul-02_13-23-12.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jul-02_13-23-12.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jul-02_13-23-12",
+        "session_date": "2021-Jul-02",
+        "session_time": "13:23:12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-30_10-03-39"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jun-30_10-03-39.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jun-30_10-03-39.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jun-30_10-03-39",
+        "session_date": "2021-Jun-30",
+        "session_time": "10:03:39"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-30_13-05-14"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jun-30_13-05-14.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jun-30_13-05-14.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jun-30_13-05-14",
+        "session_date": "2021-Jun-30",
+        "session_time": "13:05:14"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2021-Jun-30_13-59-11"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27285"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27285/27285_2021-Jun-30_13-59-11.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27285/27285_2021-Jun-30_13-59-11.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27285",
+        "session_id": "2021-Jun-30_13-59-11",
+        "session_date": "2021-Jun-30",
+        "session_time": "13:59:11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Feb-08_21-14-27"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27963/27963_2022-Feb-08_21-14-27.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27963/27963_2022-Feb-08_21-14-27.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963",
+        "session_id": "2022-Feb-08_21-14-27",
+        "session_date": "2022-Feb-08",
+        "session_time": "21:14:27"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Feb-09_08-02-57"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27963/27963_2022-Feb-09_08-02-57.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27963/27963_2022-Feb-09_08-02-57.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963",
+        "session_id": "2022-Feb-09_08-02-57",
+        "session_date": "2022-Feb-09",
+        "session_time": "08:02:57"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Feb-10_11-06-56"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27963/27963_2022-Feb-10_11-06-56.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27963/27963_2022-Feb-10_11-06-56.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963",
+        "session_id": "2022-Feb-10_11-06-56",
+        "session_date": "2022-Feb-10",
+        "session_time": "11:06:56"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Feb-10_14-07-47"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27963/27963_2022-Feb-10_14-07-47.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27963/27963_2022-Feb-10_14-07-47.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963",
+        "session_id": "2022-Feb-10_14-07-47",
+        "session_date": "2022-Feb-10",
+        "session_time": "14:07:47"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Feb-11_14-58-41"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "27963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/27963/27963_2022-Feb-11_14-58-41.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/27963/27963_2022-Feb-11_14-58-41.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "27963",
+        "session_id": "2022-Feb-11_14-58-41",
+        "session_date": "2022-Feb-11",
+        "session_time": "14:58:41"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-07_20-44-03"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-07_20-44-03.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-07_20-44-03.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-07_20-44-03",
+        "session_date": "2022-Mar-07",
+        "session_time": "20:44:03"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-08_11-22-53"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-08_11-22-53.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-08_11-22-53.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-08_11-22-53",
+        "session_date": "2022-Mar-08",
+        "session_time": "11:22:53"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-08_11-38-59"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-08_11-38-59.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-08_11-38-59.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-08_11-38-59",
+        "session_date": "2022-Mar-08",
+        "session_time": "11:38:59"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-08_15-04-04"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-08_15-04-04.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-08_15-04-04.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-08_15-04-04",
+        "session_date": "2022-Mar-08",
+        "session_time": "15:04:04"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-09_07-54-00"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-09_07-54-00.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-09_07-54-00.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-09_07-54-00",
+        "session_date": "2022-Mar-09",
+        "session_time": "07:54:00"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2022-Mar-10_10-53-58"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "28003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/28003/28003_2022-Mar-10_10-53-58.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/28003/28003_2022-Mar-10_10-53-58.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "28003",
+        "session_id": "2022-Mar-10_10-53-58",
+        "session_date": "2022-Mar-10",
+        "session_time": "10:53:58"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Oct-29_15-05-13"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29629"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29629/29629_2024-Oct-29_15-05-13.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29629/29629_2024-Oct-29_15-05-13.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29629",
+        "session_id": "2024-Oct-29_15-05-13",
+        "session_date": "2024-Oct-29",
+        "session_time": "15:05:13"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Oct-30_05-40-15"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29629"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29629/29629_2024-Oct-30_05-40-15.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29629/29629_2024-Oct-30_05-40-15.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29629",
+        "session_id": "2024-Oct-30_05-40-15",
+        "session_date": "2024-Oct-30",
+        "session_time": "05:40:15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Oct-30_15-13-05"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29629"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29629/29629_2024-Oct-30_15-13-05.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29629/29629_2024-Oct-30_15-13-05.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29629",
+        "session_id": "2024-Oct-30_15-13-05",
+        "session_date": "2024-Oct-30",
+        "session_time": "15:13:05"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-17_07-08-26"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-17_07-08-26.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-17_07-08-26.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-17_07-08-26",
+        "session_date": "2024-Sep-17",
+        "session_time": "07:08:26"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-17_09-22-08"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-17_09-22-08.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-17_09-22-08.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-17_09-22-08",
+        "session_date": "2024-Sep-17",
+        "session_time": "09:22:08"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-17_13-26-08"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-17_13-26-08.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-17_13-26-08.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-17_13-26-08",
+        "session_date": "2024-Sep-17",
+        "session_time": "13:26:08"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-17_23-09-30"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-17_23-09-30.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-17_23-09-30.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-17_23-09-30",
+        "session_date": "2024-Sep-17",
+        "session_time": "23:09:30"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-18_10-18-21"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-18_10-18-21.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-18_10-18-21.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-18_10-18-21",
+        "session_date": "2024-Sep-18",
+        "session_time": "10:18:21"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-18_14-20-12"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-18_14-20-12.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-18_14-20-12.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-18_14-20-12",
+        "session_date": "2024-Sep-18",
+        "session_time": "14:20:12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-18_15-19-16"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-18_15-19-16.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-18_15-19-16.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-18_15-19-16",
+        "session_date": "2024-Sep-18",
+        "session_time": "15:19:16"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-19_05-09-20"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-19_05-09-20.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-19_05-09-20.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-19_05-09-20",
+        "session_date": "2024-Sep-19",
+        "session_time": "05:09:20"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-19_11-15-17"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-19_11-15-17.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-19_11-15-17.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-19_11-15-17",
+        "session_date": "2024-Sep-19",
+        "session_time": "11:15:17"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-20_09-49-05"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-20_09-49-05.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-20_09-49-05.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-20_09-49-05",
+        "session_date": "2024-Sep-20",
+        "session_time": "09:49:05"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-20_10-32-21"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-20_10-32-21.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-20_10-32-21.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-20_10-32-21",
+        "session_date": "2024-Sep-20",
+        "session_time": "10:32:21"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-20_13-20-20"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-20_13-20-20.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-20_13-20-20.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-20_13-20-20",
+        "session_date": "2024-Sep-20",
+        "session_time": "13:20:20"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "2024-Sep-24_14-25-53"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "29630"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "data/29630/29630_2024-Sep-24_14-25-53.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "data/29630/29630_2024-Sep-24_14-25-53.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "29630",
+        "session_id": "2024-Sep-24_14-25-53",
+        "session_date": "2024-Sep-24",
+        "session_time": "14:25:53"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "Licence-CC-BY-SA.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'data-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "data-descriptor_eebc19898ded.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'data-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "docs/",
+      "reason": "no-match",
+      "detail": "does not match level 'data-folder' pattern ^data$"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "scripts/",
+      "reason": "no-match",
+      "detail": "does not match level 'data-folder' pattern ^data$"
+    }
+  ]
+}

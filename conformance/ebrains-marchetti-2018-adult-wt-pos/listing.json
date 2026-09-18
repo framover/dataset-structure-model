@@ -1,0 +1,30 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "MF-CA3-STDP-adult-WT-posPairing/",
+        "MF-CA3-STDP-adult-WT-posPairing/00-hbp-00005_DataDescriptor_MF-CA3-STDP-adult-WT-posPairing_v1p1.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_A260216__A260216_C.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_A260216__A260216_P.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_B260216__B260216_C.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_B260216__B260216_P.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_C260216__C260216_C.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_C260216__C260216_P.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj002/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/MF-CA3-STDP-adult-WT-posPairing_Sbj002_B110216__B110216_C.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/MF-CA3-STDP-adult-WT-posPairing_Sbj002_B110216__B110216_P.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj003/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/MF-CA3-STDP-adult-WT-posPairing_Sbj003_D110216__D110216_C.txt",
+        "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/MF-CA3-STDP-adult-WT-posPairing_Sbj003_D110216__D110216_P.txt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One adult male Long Evans rat, identified by a five-digit animal id. The data descriptor lists nine rats.", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One recording session in one NWB file: unit spike times from Neuropixels probes in LEC, MEC and/or CA1, position, head direction, speed and task epochs. Which tasks a file holds is listed in docs/index.json.", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Animal ID", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^\\d{5}$" } },
+    "session_id": { "name": "session_id", "title": "Session", "description": "The <session-date_time> part of the file name, yyyy-MMM-dd_HH-mm-ss.", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^\\d{4}-[A-Z][a-z]{2}-\\d{2}_\\d{2}-\\d{2}-\\d{2}$" } },
+    "session_date": { "name": "session_date", "title": "Session date", "description": "The date part of the file name, e.g. 2020-Nov-04. It uses an English month abbreviation (LDML MMM), which is not in the portable format subset, so it is kept as text.", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^\\d{4}-[A-Z][a-z]{2}-\\d{2}$" } },
+    "session_time": { "name": "session_time", "title": "Session start time", "description": "The HH-mm-ss part of the file name.", "dataType": "time", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket d-885b4936-9345-43bd-880e-eebc19898ded",
+      "description": "Kanter et al., electrophysiological recordings from entorhinal cortex and hippocampus in freely behaving adult male rats (dataset version 885b4936-9345-43bd-880e-eebc19898ded). The data descriptor: '/data/<subject_id>/<subject_id>_<session-date_time>.nwb [main data files]', with scripts/nwb.py, scripts/requirements.txt, docs/index.json (session and task index), the data descriptor and the licence. Units are spike-sorted with KiloSort 2.5. Every entry of the bucket was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/d-885b4936-9345-43bd-880e-eebc19898ded" }
+        ],
+        "entityLayout": [
+          { "name": "data-folder", "isVariable": false, "fixedName": "data" },
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^\\d{5}$" },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^\\d{5}_\\d{4}-[A-Z][a-z]{2}-\\d{2}_\\d{2}-\\d{2}-\\d{2}\\.nwb$",
+            "filePatterns": [
+              { "name": "nwb", "pattern": "^{subject_id}_{session_id}\\.nwb$", "isRequired": true, "cardinality": "one", "description": "NWB 2.0 file written with PyNWB 2.8.2" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^\\d{5}_(.+)\\.nwb$", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_date", "extraction": { "method": "regex", "pattern": "^\\d{5}_(\\d{4}-[A-Z][a-z]{2}-\\d{2})_", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_time", "extraction": { "method": "regex", "pattern": "_(\\d{2}-\\d{2}-\\d{2})\\.nwb$", "valueFormat": "HH-mm-ss", "entityLayoutLevel": "session-files" } }
+        ]
+      }
+    }
+  ]
+}

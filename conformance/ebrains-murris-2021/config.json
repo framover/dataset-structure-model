@@ -1,0 +1,401 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "subject",
+      "description": "One macaque monkey, m1 or m2. The same id names the monkey in the fMRI folders and in the behaviour file names.",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "fmri_session",
+      "description": "One scanning day of one monkey in one experiment. The day number restarts in each experiment, so the experiment is part of the identity.",
+      "identifierRefs": [
+        "experiment",
+        "day_number"
+      ]
+    },
+    {
+      "name": "run",
+      "description": "One functional run of a scanning day: the NIfTI volume series in funct/ and its JSON sidecar. The run's SPM timing file in timing/ and the day's anatomical scan in struct/ are not described; see the case README.",
+      "identifierRef": "run_number"
+    },
+    {
+      "name": "behaviour_session",
+      "description": "One day of the colour discrimination task for one monkey.",
+      "identifierRef": "behaviour_session_id"
+    }
+  ],
+  "entityRelationships": [
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "fmri_session",
+      "relationType": "oneToMany",
+      "relationName": "hasScanningDays"
+    },
+    {
+      "sourceEntity": "fmri_session",
+      "targetEntity": "run",
+      "relationType": "oneToMany",
+      "relationName": "hasRuns"
+    },
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "behaviour_session",
+      "relationType": "oneToMany",
+      "relationName": "hasBehaviourSessions"
+    }
+  ],
+  "metadataDefinitions": {
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Monkey",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^m\\d+$"
+      }
+    },
+    "experiment": {
+      "name": "experiment",
+      "title": "Experiment",
+      "description": "PRE_stim or POST_stim (before or after the cue-VTA-EM pairing) for the association experiment; localizer for the category localizer.",
+      "dataType": "string",
+      "ofEntity": "fmri_session",
+      "validation": {
+        "enum": [
+          "PRE_stim",
+          "POST_stim",
+          "localizer"
+        ]
+      }
+    },
+    "day_number": {
+      "name": "day_number",
+      "title": "Scanning day",
+      "dataType": "integer",
+      "ofEntity": "fmri_session"
+    },
+    "run_number": {
+      "name": "run_number",
+      "title": "Run",
+      "dataType": "integer",
+      "ofEntity": "run"
+    },
+    "behaviour_session_id": {
+      "name": "behaviour_session_id",
+      "title": "Session",
+      "description": "The file name without its extension, m<N>_<yyyyMMdd>.",
+      "dataType": "string",
+      "ofEntity": "behaviour_session",
+      "validation": {
+        "pattern": "^m\\d+_\\d{8}$"
+      }
+    },
+    "session_date": {
+      "name": "session_date",
+      "title": "Session date",
+      "dataType": "date",
+      "ofEntity": "behaviour_session"
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "fmri-vta-em",
+      "displayName": "fMRI_VTA-EM_association/raw",
+      "description": "Murris et al., VTA-induced plasticity of visual cortex (dataset version 87a63af5-06ac-4fec-89e0-b7f1a9d6c192; bucket p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub, folder v1.0). Functional and structural MRI of the VTA electrical microstimulation (VTA-EM) association experiment, before and after pairing: raw/<PRE_stim|POST_stim>/m<N>/d<N>/{funct,timing,struct}/m<N>_d<N>_run_<N>.<nii.gz|json>, m<N>_d<N>_run_SPM_<N>.mat, m<N>_d<N>_gre.nii. Day numbers restart in each phase. The dataset is organised by analysis and figure; this location is rooted inside the tree, and every entry below its root was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub/v1.0/data_storage - fMRI/fMRI_VTA-EM_association/raw"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "phases",
+            "matchPattern": "^(PRE|POST)_stim$"
+          },
+          {
+            "name": "monkeys",
+            "entityType": "subject",
+            "matchPattern": "^m\\d+$"
+          },
+          {
+            "name": "days",
+            "entityType": "fmri_session",
+            "matchPattern": "^d\\d+$"
+          },
+          {
+            "name": "funct-folder",
+            "isVariable": false,
+            "fixedName": "funct"
+          },
+          {
+            "name": "run-files",
+            "entityType": "run",
+            "fileSystemType": "file",
+            "matchPattern": "_run_\\d+\\.(nii\\.gz|json)$",
+            "filePatterns": [
+              {
+                "name": "bold",
+                "pattern": "\\.nii\\.gz$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Functional run, NIfTI"
+              },
+              {
+                "name": "sidecar",
+                "pattern": "\\.json$",
+                "cardinality": "one",
+                "description": "Acquisition parameters of the run"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "experiment",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "phases"
+            }
+          },
+          {
+            "metadataRef": "day_number",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^d(\\d+)$",
+              "entityLayoutLevel": "days"
+            }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "monkeys"
+            }
+          },
+          {
+            "metadataRef": "run_number",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_run_(\\d+)\\.(nii\\.gz|json)$",
+              "entityLayoutLevel": "run-files"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "fmri-localizer",
+      "displayName": "fMRI_localizer/raw",
+      "description": "Murris et al., VTA-induced plasticity of visual cortex (dataset version 87a63af5-06ac-4fec-89e0-b7f1a9d6c192; bucket p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub, folder v1.0). Functional and structural MRI of the category localizer: raw/m<N>/d<N>/{funct,timing,struct}/. Timing files are named either m<N>_d<N>_run_SPM_<N>.mat or m<N>_d<N>_SPM_<N>.mat. The dataset is organised by analysis and figure; this location is rooted inside the tree, and every entry below its root was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub/v1.0/data_storage - fMRI/fMRI_localizer/raw"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "monkeys",
+            "entityType": "subject",
+            "matchPattern": "^m\\d+$"
+          },
+          {
+            "name": "days",
+            "entityType": "fmri_session",
+            "matchPattern": "^d\\d+$"
+          },
+          {
+            "name": "funct-folder",
+            "isVariable": false,
+            "fixedName": "funct"
+          },
+          {
+            "name": "run-files",
+            "entityType": "run",
+            "fileSystemType": "file",
+            "matchPattern": "_run_\\d+\\.(nii\\.gz|json)$",
+            "filePatterns": [
+              {
+                "name": "bold",
+                "pattern": "\\.nii\\.gz$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Functional run, NIfTI"
+              },
+              {
+                "name": "sidecar",
+                "pattern": "\\.json$",
+                "cardinality": "one",
+                "description": "Acquisition parameters of the run"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "experiment",
+            "extraction": {
+              "method": "fixed",
+              "value": "localizer"
+            }
+          },
+          {
+            "metadataRef": "day_number",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^d(\\d+)$",
+              "entityLayoutLevel": "days"
+            }
+          },
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "monkeys"
+            }
+          },
+          {
+            "metadataRef": "run_number",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_run_(\\d+)\\.(nii\\.gz|json)$",
+              "entityLayoutLevel": "run-files"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "colour-task-sessions",
+      "displayName": "behaviour_colour_task/data_all_sessions",
+      "description": "Murris et al., VTA-induced plasticity of visual cortex (dataset version 87a63af5-06ac-4fec-89e0-b7f1a9d6c192; bucket p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub, folder v1.0). Colour discrimination task behaviour, one CSV per monkey and session day, m<N>_<yyyyMMdd>.csv, in behaviour_colour_task/data_all_sessions/. The same 69 file names appear in data_all_sessions/ and fMRI_runs_data/. The dataset is organised by analysis and figure; this location is rooted inside the tree, and every entry below its root was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub/v1.0/data_storage - behavior/behaviour_colour_task/data_all_sessions"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "session-files",
+            "entityType": "behaviour_session",
+            "fileSystemType": "file",
+            "matchPattern": "^m\\d+_\\d{8}\\.csv$",
+            "filePatterns": [
+              {
+                "name": "trials",
+                "pattern": "^{behaviour_session_id}\\.csv$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(m\\d+)_",
+              "entityLayoutLevel": "session-files"
+            }
+          },
+          {
+            "metadataRef": "behaviour_session_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(m\\d+_\\d{8})\\.csv$",
+              "entityLayoutLevel": "session-files"
+            }
+          },
+          {
+            "metadataRef": "session_date",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_(\\d{8})\\.csv$",
+              "valueFormat": "yyyyMMdd",
+              "entityLayoutLevel": "session-files"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "colour-task-fmri-runs",
+      "displayName": "behaviour_colour_task/fMRI_runs_data",
+      "description": "Murris et al., VTA-induced plasticity of visual cortex (dataset version 87a63af5-06ac-4fec-89e0-b7f1a9d6c192; bucket p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub, folder v1.0). Colour discrimination task behaviour, one CSV per monkey and session day, m<N>_<yyyyMMdd>.csv, in behaviour_colour_task/fMRI_runs_data/. The same 69 file names appear in data_all_sessions/ and fMRI_runs_data/. The dataset is organised by analysis and figure; this location is rooted inside the tree, and every entry below its root was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p22717-hbp-d000058_VTAinducedVPLandPlasticity_pub/v1.0/data_storage - behavior/behaviour_colour_task/fMRI_runs_data"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "session-files",
+            "entityType": "behaviour_session",
+            "fileSystemType": "file",
+            "matchPattern": "^m\\d+_\\d{8}\\.csv$",
+            "filePatterns": [
+              {
+                "name": "trials",
+                "pattern": "^{behaviour_session_id}\\.csv$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(m\\d+)_",
+              "entityLayoutLevel": "session-files"
+            }
+          },
+          {
+            "metadataRef": "behaviour_session_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(m\\d+_\\d{8})\\.csv$",
+              "entityLayoutLevel": "session-files"
+            }
+          },
+          {
+            "metadataRef": "session_date",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_(\\d{8})\\.csv$",
+              "valueFormat": "yyyyMMdd",
+              "entityLayoutLevel": "session-files"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

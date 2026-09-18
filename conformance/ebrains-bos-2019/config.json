@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One rat, named in the folder and the file names (Ramachandran, Taskmaster, Turing). The data descriptor calls this level Animal_name.", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One recording session in the Touch and See task: spiking from V2m, S1bf, perirhinal cortex and CA1 with video-tracked position, stored as one pickled Neo block. The data descriptor: 'session.pkl: pickled Neo block containing spiking and position data of the session.' Sessions are numbered samp1 to samp46 across all rats.", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Animal", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Z][a-z]+$" } },
+    "session_id": { "name": "session_id", "title": "Session", "description": "samp<N>, the name of the session's folder, repeated in the file name.", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^samp\\d+$" } },
+    "session_number": { "name": "session_number", "title": "Session number", "dataType": "integer", "ofEntity": "session" },
+    "session_date": { "name": "session_date", "title": "Session date", "description": "The yyyy-MM-dd date at the end of the file name.", "dataType": "date", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket p25b4e-Pennartz_SGA1_T3.3.3, folder hbp-01681",
+      "description": "Bos et al., multi-area recordings from visual and somatosensory cortices, perirhinal cortex and hippocampal CA1 (dataset version 2077efac-09f6-47c1-aabe-632e08ed148b). The dataset is the folder hbp-01681/ of a bucket shared with other data. Layout: hbp-01681/TouchAndSee/<animal>/samp<N>/hbp-01681_TouchAndSee_<animal>_samp<N>__<yyyy-MM-dd>.pkl, with an example notebook and script in TouchAndSee/, and the data descriptor, the licence and hbp-01681.json in hbp-01681/. The data descriptor's registry describes a different layout, touch_and_see/data/<Animal_name>/<Session>/session.pkl with data/maze_outline.pkl and examples/; the bucket has neither maze_outline.pkl nor examples/. Every entry below hbp-01681/ was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/p25b4e-Pennartz_SGA1_T3.3.3" }
+        ],
+        "entityLayout": [
+          { "name": "dataset-folder", "isVariable": false, "fixedName": "hbp-01681" },
+          { "name": "task-folder", "isVariable": false, "fixedName": "TouchAndSee" },
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^[A-Z][a-z]+$" },
+          { "name": "session-folders", "matchPattern": "^samp\\d+$" },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^hbp-01681_TouchAndSee_[A-Za-z]+_samp\\d+__\\d{4}-\\d{2}-\\d{2}\\.pkl$",
+            "filePatterns": [
+              { "name": "neo_block", "pattern": "_{session_id}__\\d{4}-\\d{2}-\\d{2}\\.pkl$", "isRequired": true, "cardinality": "one", "description": "Pickled Neo block with spiking and position data" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "_(samp\\d+)__", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_number", "extraction": { "method": "regex", "pattern": "_samp(\\d+)__", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_date", "extraction": { "method": "regex", "pattern": "__(\\d{4}-\\d{2}-\\d{2})\\.pkl$", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "session-files" } }
+        ]
+      }
+    }
+  ]
+}
