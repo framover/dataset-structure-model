@@ -1,0 +1,36 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "GoC_Subject01_080419/",
+        "GoC_Subject01_080419/80419_0007_IV.abf",
+        "GoC_Subject02_100419/",
+        "GoC_Subject02_100419/100419_0025_EPSC.abf",
+        "GoC_Subject02_100419/100419_0027_EPSC.abf",
+        "GoC_Subject02_100419/100419_0028_EPSC.abf",
+        "GoC_Subject03_130519/",
+        "GoC_Subject03_130519/130519_0014_IV.abf",
+        "GoC_Subject03_130519/130519_0020_EPSC.abf",
+        "GoC_Subject03_130519/130519_0021_EPSC.abf",
+        "GoC_Subject03_130519/130519_0022_EPSC.abf",
+        "GoC_Subject04_180219/",
+        "GoC_Subject04_180219/180219_0001_IV.abf",
+        "GoC_Subject05_180419/",
+        "GoC_Subject05_180419/18419-A_0001_IV.abf",
+        "GoC_Subject05_180419/18419-B_0004_IV.abf",
+        "GoC_Subject05_180419/18419-C_0013_IV.abf",
+        "GoC_Subject05_180419/18419-D_0015_IV.abf",
+        "GoC_Subject06_250319/",
+        "GoC_Subject06_250319/250319_0005_IV.abf",
+        "GoC_Subject06_250319/250319_0007_EPSC.abf",
+        "GoC_Subject06_250319/250319_0008_EPSC.abf",
+        "GoC_Subject07_300419/",
+        "GoC_Subject07_300419/30419_0015_EPSC.abf",
+        "HBP-DataDescriptor_PatchGolgCs.txt",
+        "Licence (CCBY-NC-SA).pdf"
+      ]
+    }
+  ]
+}

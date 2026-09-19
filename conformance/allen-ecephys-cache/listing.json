@@ -1,0 +1,23 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "channels.csv",
+        "manifest.json",
+        "probes.csv",
+        "session_715093703/",
+        "session_715093703/probe_810755797_lfp.nwb",
+        "session_715093703/probe_810755799_lfp.nwb",
+        "session_715093703/session_715093703.nwb",
+        "session_719161530/",
+        "session_719161530/session_719161530.nwb",
+        "session_721123822/",
+        "session_721123822/probe_729445648_lfp.nwb",
+        "sessions.csv",
+        "units.csv"
+      ]
+    }
+  ]
+}

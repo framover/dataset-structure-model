@@ -1,0 +1,391 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "sbj1-160504"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj1-160504/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj1-160504",
+        "recording_date": "2016-05-04"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "sbj2-160505"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj2-160505/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj2-160505",
+        "recording_date": "2016-05-05"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "sbj3-170627"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj3-170627/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj3-170627",
+        "recording_date": "2017-06-27"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "sbj4-170614"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj4-170614/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj4-170614",
+        "recording_date": "2017-06-14"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell1_2"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj1-160504"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj1-160504/cell1_2/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj1-160504",
+        "cell_id": "cell1_2"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell3"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj1-160504"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj1-160504/cell3/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj1-160504",
+        "cell_id": "cell3"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell4"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj1-160504"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj1-160504/cell4/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj1-160504",
+        "cell_id": "cell4"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell7"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj2-160505"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj2-160505/cell7/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj2-160505",
+        "cell_id": "cell7"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell6"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj3-170627"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj3-170627/cell6/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj3-170627",
+        "cell_id": "cell6"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell7"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj3-170627"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj3-170627/cell7/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj3-170627",
+        "cell_id": "cell7"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell5"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj4-170614"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj4-170614/cell5/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj4-170614",
+        "cell_id": "cell5"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell6"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj4-170614"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj4-170614/cell6/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj4-170614",
+        "cell_id": "cell6"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell7"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj4-170614"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj4-170614/cell7/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj4-170614",
+        "cell_id": "cell7"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "cell8"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "sbj4-170614"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "ephy-ChIN-STR/sbj4-170614/cell8/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "sbj4-170614",
+        "cell_id": "cell8"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "ephy-ChIN-STR/00_hbp-00940_ephy-ChIN-STR__DataDescriptor.md",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "ephy-ChIN-STR/00_hbp-00940_ephy-ChIN-STR__DataDescriptor.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "ephy-ChIN-STR/hbp-00940_ephy-ChIN-STR__Spatial_metadata.xlsx",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

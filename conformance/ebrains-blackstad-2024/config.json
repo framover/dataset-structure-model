@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One rat, identified by a five-digit animal id. The data descriptor: 'All sessions from subject 24101 were recorded with a Neuralynx recording system. All sessions from other subjects were recorded with an Axona system.'", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One open field foraging session, a folder named by the session date. Tetrode recordings from CA1, cluster-cut with MClust.", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Animal ID", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^\\d{5}$" } },
+    "session_id": { "name": "session_id", "title": "Session", "description": "Name of the session folder, yyyy-MM-dd.", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^\\d{4}-\\d{2}-\\d{2}$" } },
+    "session_date": { "name": "session_date", "title": "Session date", "dataType": "date", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket d-40faae41-7e72-4c3c-9abf-91dea149158d",
+      "description": "Blackstad et al., electrophysiological recordings of hippocampal CA1 units in rats during open field foraging (dataset version 40faae41-7e72-4c3c-9abf-91dea149158d). The data descriptor: data/<Subject>/<Session_date>/ with, for Neuralynx sessions, CSCX.ncs, TethX_ref.ncs, TTX.ntt, VT1.nvt and the MClust outputs TTX_feature_Z.fd, TTX_Y.t64, TTX.clusters; and for Axona sessions <date>.[1-8], <date>.eeg[2-4], <date>.set, <date>.pos, the MClust outputs <date>_X_Y.t64, <date>_X_feature_Z.fd, and <date>.csv from OptiTrack in some sessions. docs/ holds the file format documentation and scripts/ example loaders. The committed listing keeps every folder and one file of each name shape per folder; the full bucket has 7,423 files.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/d-40faae41-7e72-4c3c-9abf-91dea149158d" }
+        ],
+        "entityLayout": [
+          { "name": "data-folder", "isVariable": false, "fixedName": "data" },
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^\\d{5}$" },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "matchPattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "filePatterns": [
+              { "name": "axona_tetrode", "pattern": "^{session_id}\\.\\d$", "cardinality": "many", "description": "Axona tetrode spike file, one per tetrode" },
+              { "name": "axona_eeg", "pattern": "^{session_id}\\.eeg\\d?$", "cardinality": "many", "description": "Axona EEG channels" },
+              { "name": "axona_set", "pattern": "^{session_id}\\.set$", "cardinality": "one", "description": "Axona settings" },
+              { "name": "axona_pos", "pattern": "^{session_id}\\.pos$", "cardinality": "one", "description": "Axona position tracking" },
+              { "name": "optitrack", "pattern": "\\.csv$", "cardinality": "many", "description": "OptiTrack 3D tracking, some Axona sessions" },
+              { "name": "neuralynx_tetrode", "pattern": "^TT\\d+\\.ntt$", "cardinality": "many", "description": "Neuralynx tetrode spike file" },
+              { "name": "neuralynx_csc", "pattern": "^CSC\\d+\\.ncs$", "cardinality": "many", "description": "Neuralynx continuous channel" },
+              { "name": "neuralynx_reference", "pattern": "^Teth\\d+_ref\\.ncs$", "cardinality": "many" },
+              { "name": "neuralynx_video", "pattern": "^VT1\\.nvt$", "cardinality": "one", "description": "Neuralynx video tracking" },
+              { "name": "mclust_spikes", "pattern": "_\\d+\\.t64$", "cardinality": "many", "description": "MClust cluster spike times, <tetrode>_<cluster>.t64" },
+              { "name": "mclust_features", "pattern": "_feature_[A-Za-z0-9]+\\.fd$", "cardinality": "many", "description": "MClust feature files" },
+              { "name": "mclust_clusters", "pattern": "\\.clusters$", "cardinality": "many", "description": "MClust cluster definitions" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "session_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "sessions" } }
+        ]
+      }
+    }
+  ]
+}

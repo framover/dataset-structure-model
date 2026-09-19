@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "An animal (NANSEN: subjectID / 'Animal' folder type)", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "A recording session (NANSEN: sessionID, the key that matches session folders across data locations)", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Animal ID", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^m\\d{4}$" } },
+    "session_id": { "name": "session_id", "title": "Session ID", "description": "<subject>-<yyyymmdd>-<nnn>; identical in every data location", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^m\\d{4}-\\d{8}-\\d{3}$" } },
+    "session_date": { "name": "session_date", "title": "Experiment Date", "dataType": "date", "ofEntity": "session" },
+    "session_time": { "name": "session_time", "title": "Experiment Time", "dataType": "time", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "rawdata",
+      "uuid": "2c1f7a0e-8d4b-4c6a-9e2f-1b3d5f7a9c01",
+      "displayName": "Rawdata",
+      "description": "A 'recorded' data location (read-only) configured with the two-level SciScan two-photon template: a date folder yyyy_mm_dd, then one session folder yyyymmdd_HH_mm_ss_<sessionID>. Two root directories hold different sessions. Session ID is characters 19:end of the session folder, the date characters 1:10 of the date folder, the time characters 10:17 of the session folder.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "raw-disk-1", "uuid": "7e0d2b4a-6c8e-4f1a-b3d5-0f2a4c6e8a11", "path": "E:\\Rawdata", "volumeName": "RAW_DISK_1", "storageType": "external", "environment": "lab-pc", "priority": 1 },
+          { "identifier": "raw-disk-2", "uuid": "9a1c3e5b-7d9f-4a2c-8e4b-1a3c5e7b9d22", "path": "F:\\Rawdata", "volumeName": "RAW_DISK_2", "storageType": "external", "environment": "lab-pc", "priority": 2 }
+        ],
+        "entityLayout": [
+          { "name": "dates", "matchPattern": "^\\d{4}_\\d{2}_\\d{2}$", "customProperties": { "nansenSubfolderType": "Date", "nansenExpression": "\\d{4}_\\d{2}_\\d{2}" } },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "matchPattern": "^\\d{8}_\\d{2}_\\d{2}_\\d{2}_m\\d{4}-\\d{8}-\\d{3}$",
+            "excludePatterns": ["^\\.", "calibration"],
+            "filePatterns": [
+              { "name": "two_photon_series_original", "pattern": "^{session_id}_XYT\\.raw$", "isRequired": true, "cardinality": "one", "description": "NANSEN variable TwoPhotonSeries_Original" },
+              { "name": "acquisition_ini", "pattern": "^{session_id}\\.ini$", "cardinality": "one" }
+            ],
+            "customProperties": { "nansenSubfolderType": "Session", "nansenIgnoreList": ["calibration"] }
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "session_id", "extraction": { "method": "substring", "pattern": "18:", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "_(m\\d{4})-\\d{8}-\\d{3}$", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "session_date", "extraction": { "method": "substring", "pattern": "0:10", "valueFormat": "yyyy_MM_dd", "entityLayoutLevel": "dates" } },
+          { "metadataRef": "session_time", "extraction": { "method": "substring", "pattern": "9:17", "valueFormat": "HH_mm_ss", "entityLayoutLevel": "sessions" } }
+        ],
+        "pathTemplate": "{rootPath}/{session_date}/<yyyymmdd>_{session_time}_{session_id}"
+      }
+    },
+    {
+      "identifier": "processed",
+      "uuid": "4d3e9b2c-0f6a-4e8c-a1b3-2d4f6a8c0e33",
+      "displayName": "Processed",
+      "description": "The default 'processed' data location (writable): SubfolderStructure Animal → Session, folders generated as subject-<subjectID>/session-<sessionID>. Inside a session folder, data variables are files <sessionID>_<fileNameExpression><fileType>, each in the variable's Subfolder: motion_corrected/, roi_data/, roisignals/; a variable with no Subfolder sits at the top of the session folder.",
+      "dataCategory": "processed",
+      "access": "readwrite",
+      "derivedFrom": ["rawdata"],
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "processed-disk", "uuid": "b5c7d9e1-f3a5-4b7c-9d1e-3f5a7c9e1b44", "path": "D:\\Processed", "volumeName": "PROCESSED", "storageType": "local", "environment": "lab-pc" }
+        ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "pathComponentTemplate": "subject-{subject_id}", "customProperties": { "nansenSubfolderType": "Animal" } },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "pathComponentTemplate": "session-{session_id}",
+            "filePatterns": [
+              { "name": "custom_variable", "pattern": "^{session_id}_[a-z0-9_]+\\.mat$", "cardinality": "many", "description": "Any variable saved with an empty Subfolder: <sessionID>_<snake_case_name>.mat" }
+            ],
+            "customProperties": { "nansenSubfolderType": "Session" }
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "^subject-(.+)$", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^session-(.+)$", "entityLayoutLevel": "sessions" } }
+        ],
+        "additionalFolders": ["motion_corrected", "roi_data", "roisignals"],
+        "pathTemplate": "{rootPath}/subject-{subject_id}/session-{session_id}"
+      }
+    }
+  ],
+  "preferences": { "defaultDataLocationIdentifier": "processed", "environmentIdentifier": "lab-pc" }
+}

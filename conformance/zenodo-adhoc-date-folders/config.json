@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "recording", "description": "One imaging recording: a folder under the date folder holding one TIFF per simultaneously acquired plane", "isPrimary": true, "identifierRef": "recording_name" }
+  ],
+  "metadataDefinitions": {
+    "recording_name": { "name": "recording_name", "dataType": "string", "ofEntity": "recording" },
+    "recording_date": { "name": "recording_date", "dataType": "date", "ofEntity": "recording" },
+    "condition": { "name": "condition", "description": "spontaneous or opto, read from the folder name", "dataType": "string", "ofEntity": "recording", "validation": { "enum": ["spontaneous", "opto"] } },
+    "recording_number": { "name": "recording_number", "dataType": "integer", "ofEntity": "recording" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "deposit",
+      "displayName": "Zenodo deposit 10558021 (unpacked)",
+      "description": "Example raw calcium imaging data of hippocampal astrocytes. The raw data are in the folder 2023-05-11; each subfolder holds the three simultaneously acquired imaging planes as .tif files. A README and the processed traces sit beside the date folder.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/zenodo/10558021" }
+        ],
+        "entityLayout": [
+          { "name": "dates", "matchPattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          {
+            "name": "recordings",
+            "entityType": "recording",
+            "matchPattern": "^(spontaneous|opto)_\\d+$",
+            "filePatterns": [
+              { "name": "planes", "pattern": "^plane\\d\\.tif$", "isRequired": true, "cardinality": "many", "description": "Three planes are expected; DSM cannot say exactly three" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "recording_name", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "recordings" } },
+          { "metadataRef": "recording_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "dates" } },
+          { "metadataRef": "condition", "extraction": { "method": "regex", "pattern": "^([a-z]+)_", "entityLayoutLevel": "recordings" } },
+          { "metadataRef": "recording_number", "extraction": { "method": "regex", "pattern": "_(\\d+)$", "entityLayoutLevel": "recordings" } }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0123"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "2024-03-15/m0123/",
+            "2024-03-16/m0123/"
+          ]
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123"
+      },
+      "issues": [
+        {
+          "code": "duplicate-entity",
+          "message": "2 folders in 'scanimage' yield {'subject_id': 'm0123'}: ['2024-03-15/m0123/', '2024-03-16/m0123/']"
+        }
+      ]
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0124"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "2024-03-15/m0124/"
+          ]
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0124/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "acquisition_date": "2024-03-15",
+        "base_name": "file",
+        "acquisition_number": "00001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "file",
+          "paths": [
+            "2024-03-15/m0123/file_00001_00001.tif",
+            "2024-03-15/m0123/file_00001_00002.tif",
+            "2024-03-15/m0123/file_00001_00003.tif"
+          ],
+          "files": {
+            "tiff_series": [
+              "2024-03-15/m0123/file_00001_00001.tif",
+              "2024-03-15/m0123/file_00001_00002.tif",
+              "2024-03-15/m0123/file_00001_00003.tif"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123/2024-03-15/file_00001/"
+          ],
+          "files": {
+            "memmap_c": [
+              "m0123/2024-03-15/file_00001/memmap__d1_512_d2_512_d3_1_order_C_frames_6000_.mmap"
+            ],
+            "memmap_rigid": [
+              "m0123/2024-03-15/file_00001/file_00001_rig__d1_512_d2_512_d3_1_order_F_frames_6000_.mmap"
+            ],
+            "results": [
+              "m0123/2024-03-15/file_00001/file_00001_results.hdf5"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "base_name": "file",
+        "acquisition_number": "00001",
+        "acquisition_date": "2024-03-15"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "acquisition_date": "2024-03-15",
+        "base_name": "file",
+        "acquisition_number": "00002"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "file",
+          "paths": [
+            "2024-03-15/m0123/file_00002_00001.tif"
+          ],
+          "files": {
+            "tiff_series": [
+              "2024-03-15/m0123/file_00002_00001.tif"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123/2024-03-15/file_00002/"
+          ],
+          "files": {
+            "memmap_c": [
+              "m0123/2024-03-15/file_00002/memmap__d1_512_d2_512_d3_1_order_C_frames_2000_.mmap"
+            ],
+            "memmap_rigid": [],
+            "results": []
+          },
+          "isComplete": false
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "base_name": "file",
+        "acquisition_number": "00002",
+        "acquisition_date": "2024-03-15"
+      },
+      "issues": [
+        {
+          "code": "missing-required-file",
+          "message": "caiman: pattern 'results' is required, matched 0"
+        }
+      ]
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "acquisition_date": "2024-03-16",
+        "base_name": "file",
+        "acquisition_number": "00001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "file",
+          "paths": [
+            "2024-03-16/m0123/file_00001_00001.tif",
+            "2024-03-16/m0123/file_00001_00002.tif"
+          ],
+          "files": {
+            "tiff_series": [
+              "2024-03-16/m0123/file_00001_00001.tif",
+              "2024-03-16/m0123/file_00001_00002.tif"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123/2024-03-16/file_00001/"
+          ],
+          "files": {
+            "memmap_c": [],
+            "memmap_rigid": [],
+            "results": [
+              "m0123/2024-03-16/file_00001/file_00001_results.hdf5"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "base_name": "file",
+        "acquisition_number": "00001",
+        "acquisition_date": "2024-03-16"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "acquisition_date": "2024-03-15",
+        "base_name": "spont",
+        "acquisition_number": "00001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0124"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "scanimage",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "file",
+          "paths": [
+            "2024-03-15/m0124/spont_00001_00001.tif"
+          ],
+          "files": {
+            "tiff_series": [
+              "2024-03-15/m0124/spont_00001_00001.tif"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "caiman",
+          "rootStoragePathIdentifier": "nas",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0124/2024-03-15/spont_00001/"
+          ],
+          "files": {
+            "memmap_c": [],
+            "memmap_rigid": [],
+            "results": [
+              "m0124/2024-03-15/spont_00001/spont_00001_results.hdf5"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124",
+        "base_name": "spont",
+        "acquisition_number": "00001",
+        "acquisition_date": "2024-03-15"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "scanimage",
+      "rootStoragePathIdentifier": "nas",
+      "path": "2024-03-15/m0123/notes.txt",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "scanimage",
+      "rootStoragePathIdentifier": "nas",
+      "path": "2024-03-16/calibration/",
+      "reason": "no-match"
+    }
+  ]
+}

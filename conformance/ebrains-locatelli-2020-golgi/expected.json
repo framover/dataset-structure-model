@@ -1,0 +1,762 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject01"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject01_080419/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject01",
+        "recording_date": "2019-04-08"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject02"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject02_100419/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject02",
+        "recording_date": "2019-04-10"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject03"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject03_130519/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject03",
+        "recording_date": "2019-05-13"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject04"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject04_180219/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject04",
+        "recording_date": "2019-02-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject05"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject05_180419/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject05",
+        "recording_date": "2019-04-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject06"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject06_250319/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject06",
+        "recording_date": "2019-03-25"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GoC_Subject07"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GoC_Subject07_300419/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject07",
+        "recording_date": "2019-04-30"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "80419_0007_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject01_080419/80419_0007_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject01_080419/80419_0007_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject01",
+        "recording_id": "80419_0007_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100419_0025_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject02_100419/100419_0025_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject02_100419/100419_0025_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject02",
+        "recording_id": "100419_0025_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100419_0027_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject02_100419/100419_0027_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject02_100419/100419_0027_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject02",
+        "recording_id": "100419_0027_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100419_0028_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject02_100419/100419_0028_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject02_100419/100419_0028_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject02",
+        "recording_id": "100419_0028_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "130519_0014_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject03_130519/130519_0014_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject03_130519/130519_0014_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject03",
+        "recording_id": "130519_0014_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "130519_0020_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject03_130519/130519_0020_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject03_130519/130519_0020_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject03",
+        "recording_id": "130519_0020_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "130519_0021_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject03_130519/130519_0021_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject03_130519/130519_0021_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject03",
+        "recording_id": "130519_0021_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "130519_0022_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject03_130519/130519_0022_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject03_130519/130519_0022_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject03",
+        "recording_id": "130519_0022_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180219_0001_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject04_180219/180219_0001_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject04_180219/180219_0001_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject04",
+        "recording_id": "180219_0001_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18419-A_0001_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject05_180419/18419-A_0001_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject05_180419/18419-A_0001_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject05",
+        "recording_id": "18419-A_0001_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18419-B_0004_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject05_180419/18419-B_0004_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject05_180419/18419-B_0004_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject05",
+        "recording_id": "18419-B_0004_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18419-C_0013_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject05_180419/18419-C_0013_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject05_180419/18419-C_0013_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject05",
+        "recording_id": "18419-C_0013_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18419-D_0015_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject05_180419/18419-D_0015_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject05_180419/18419-D_0015_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject05",
+        "recording_id": "18419-D_0015_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250319_0005_IV"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject06_250319/250319_0005_IV.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject06_250319/250319_0005_IV.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject06",
+        "recording_id": "250319_0005_IV",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250319_0007_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject06_250319/250319_0007_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject06_250319/250319_0007_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject06",
+        "recording_id": "250319_0007_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250319_0008_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject06_250319/250319_0008_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject06_250319/250319_0008_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject06",
+        "recording_id": "250319_0008_EPSC",
+        "protocol": "epsc"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "30419_0015_EPSC"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GoC_Subject07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GoC_Subject07_300419/30419_0015_EPSC.abf"
+          ],
+          "files": {
+            "abf": [
+              "GoC_Subject07_300419/30419_0015_EPSC.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GoC_Subject07",
+        "recording_id": "30419_0015_EPSC",
+        "protocol": "epsc"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "HBP-DataDescriptor_PatchGolgCs.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "Licence (CCBY-NC-SA).pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

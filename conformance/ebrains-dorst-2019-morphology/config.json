@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "subject",
+      "description": "One mouse, sbj<N>-<yymmdd>: the subject number and the recording date.",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "cell",
+      "description": "One patched and filled cholinergic interneuron, cell<N>, or two cells recorded together, cell<N>_<M>. The folder holds original/ (Igor Pro recording, slice picture and spatial registration) and, for some cells, derived/ (selected traces in MAT format).",
+      "identifierRef": "cell_id"
+    }
+  ],
+  "entityRelationships": [
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "cell",
+      "relationType": "oneToMany",
+      "relationName": "hasCells"
+    }
+  ],
+  "metadataDefinitions": {
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Subject",
+      "description": "Name of the subject folder, sbj<N>-<yymmdd>. The same string is the internalIdentifier of the subject in the EBRAINS Knowledge Graph.",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^sbj\\d+-\\d{6}$"
+      }
+    },
+    "recording_date": {
+      "name": "recording_date",
+      "title": "Recording date",
+      "description": "The yymmdd part of the subject folder name.",
+      "dataType": "date",
+      "ofEntity": "subject"
+    },
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell",
+      "description": "Name of the cell folder.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^cell\\d+(_\\d+)?$"
+      }
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket p63ea6-hbp-00940",
+      "description": "Dorst et al., cholinergic interneurons in the striatum: single cell patch clamp recordings with morphological reconstructions (dataset version f25ec9c9-2348-4a62-a6af-907d389f263d). The bucket holds one folder, ephy-ChIN-STR, with the data descriptor (.md and .txt), a spatial metadata spreadsheet and one folder per subject. Each cell folder holds original/ and, for four of the ten cells, derived/. The data descriptor's registry: './sbj*/cell*/original/*.pxp: Original single cell recordings in Igor Pro packed format (PXP). ./sbj*/cell*/derived/*.mat: Selected traces in Matlab format. ./sbj*/cell*/original/*.tif: Slice overview. ./sbj*/cell*/original/*.DAT: Spatial data registration overlay. ./sbj*/cell*/original/*.xml: Spatial data specification file.' The files are inside those subfolders, so file patterns cannot name them. Every entry of the bucket was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p63ea6-hbp-00940"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "dataset-folder",
+            "isVariable": false,
+            "fixedName": "ephy-ChIN-STR"
+          },
+          {
+            "name": "subjects",
+            "entityType": "subject",
+            "matchPattern": "^sbj\\d+-\\d{6}$"
+          },
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^cell\\d+(_\\d+)?$"
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "regex",
+              "pattern": "-(\\d{6})$",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ],
+        "additionalFolders": [
+          "derived",
+          "original"
+        ]
+      }
+    }
+  ]
+}

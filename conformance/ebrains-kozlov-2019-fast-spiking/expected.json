@@ -1,0 +1,325 @@
+{
+  "records": [
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "160628_FS2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "160628_FS2/"
+          ],
+          "files": {
+            "features": [
+              "160628_FS2/160628_FS2-features.json"
+            ],
+            "protocols": [
+              "160628_FS2/160628_FS2-protocols.json"
+            ],
+            "spec": [
+              "160628_FS2/160628_FS2-spec.json"
+            ],
+            "summary": [
+              "160628_FS2/160628_FS2-sum.json"
+            ],
+            "figures": [
+              "160628_FS2/160628_FS2-figs.pdf"
+            ],
+            "notebook": [
+              "160628_FS2/160628_FS2.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "160628_FS2/"
+          ],
+          "files": {
+            "traces": [
+              "160628_FS2/ECall_APThreshold_ch4_482.dat",
+              "160628_FS2/ECall_APThreshold_ch5_482.dat",
+              "160628_FS2/ECall_APWaveform_ch4_500.dat",
+              "160628_FS2/ECall_APWaveform_ch4_501.dat",
+              "160628_FS2/ECall_APWaveform_ch4_502.dat",
+              "160628_FS2/ECall_APWaveform_ch4_503.dat"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "160628_FS2/"
+          ],
+          "files": {
+            "traces": [
+              "160628_FS2/ECall_APThreshold_ch4_482.ibw",
+              "160628_FS2/ECall_APThreshold_ch5_482.ibw",
+              "160628_FS2/ECall_APWaveform_ch4_500.ibw",
+              "160628_FS2/ECall_APWaveform_ch4_501.ibw",
+              "160628_FS2/ECall_APWaveform_ch4_502.ibw",
+              "160628_FS2/ECall_APWaveform_ch4_503.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "160628_FS2",
+        "recording_date": "2016-06-28"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "161024_FS16"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161024_FS16/"
+          ],
+          "files": {
+            "features": [
+              "161024_FS16/161024_FS16-features.json"
+            ],
+            "protocols": [
+              "161024_FS16/161024_FS16-protocols.json"
+            ],
+            "spec": [
+              "161024_FS16/161024_FS16-spec.json"
+            ],
+            "summary": [
+              "161024_FS16/161024_FS16-sum.json"
+            ],
+            "figures": [
+              "161024_FS16/161024_FS16-figs.pdf"
+            ],
+            "notebook": [
+              "161024_FS16/161024_FS16.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161024_FS16/"
+          ],
+          "files": {
+            "traces": [
+              "161024_FS16/ECall_APThreshold_ch0_478.dat",
+              "161024_FS16/ECall_APThreshold_ch1_478.dat",
+              "161024_FS16/ECall_APWaveform_ch0_470.dat",
+              "161024_FS16/ECall_APWaveform_ch0_471.dat",
+              "161024_FS16/ECall_APWaveform_ch0_472.dat",
+              "161024_FS16/ECall_APWaveform_ch0_496.dat"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161024_FS16/"
+          ],
+          "files": {
+            "traces": [
+              "161024_FS16/ECall_APThreshold_ch0_478.ibw",
+              "161024_FS16/ECall_APThreshold_ch1_478.ibw",
+              "161024_FS16/ECall_APWaveform_ch0_470.ibw",
+              "161024_FS16/ECall_APWaveform_ch0_471.ibw",
+              "161024_FS16/ECall_APWaveform_ch0_472.ibw",
+              "161024_FS16/ECall_APWaveform_ch0_496.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "161024_FS16",
+        "recording_date": "2016-10-24"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "161205_FS1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161205_FS1/"
+          ],
+          "files": {
+            "features": [
+              "161205_FS1/161205_FS1-features.json"
+            ],
+            "protocols": [
+              "161205_FS1/161205_FS1-protocols.json"
+            ],
+            "spec": [
+              "161205_FS1/161205_FS1-spec.json"
+            ],
+            "summary": [
+              "161205_FS1/161205_FS1-sum.json"
+            ],
+            "figures": [
+              "161205_FS1/161205_FS1-figs.pdf"
+            ],
+            "notebook": [
+              "161205_FS1/161205_FS1.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161205_FS1/"
+          ],
+          "files": {
+            "traces": [
+              "161205_FS1/ECall_APThreshold_ch2_582.dat",
+              "161205_FS1/ECall_APThreshold_ch3_582.dat",
+              "161205_FS1/ECall_APWaveform_ch2_536.dat",
+              "161205_FS1/ECall_APWaveform_ch2_537.dat",
+              "161205_FS1/ECall_APWaveform_ch2_538.dat",
+              "161205_FS1/ECall_APWaveform_ch2_539.dat"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "161205_FS1/"
+          ],
+          "files": {
+            "traces": [
+              "161205_FS1/ECall_APThreshold_ch2_582.ibw",
+              "161205_FS1/ECall_APThreshold_ch3_582.ibw",
+              "161205_FS1/ECall_APWaveform_ch2_536.ibw",
+              "161205_FS1/ECall_APWaveform_ch2_537.ibw",
+              "161205_FS1/ECall_APWaveform_ch2_538.ibw",
+              "161205_FS1/ECall_APWaveform_ch2_539.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "161205_FS1",
+        "recording_date": "2016-12-05"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "180418_FS5"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "180418_FS5/"
+          ],
+          "files": {
+            "features": [
+              "180418_FS5/180418_FS5-features.json"
+            ],
+            "protocols": [
+              "180418_FS5/180418_FS5-protocols.json"
+            ],
+            "spec": [
+              "180418_FS5/180418_FS5-spec.json"
+            ],
+            "summary": [
+              "180418_FS5/180418_FS5-sum.json"
+            ],
+            "figures": [
+              "180418_FS5/180418_FS5-figs.pdf"
+            ],
+            "notebook": [
+              "180418_FS5/180418_FS5.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "180418_FS5/"
+          ],
+          "files": {
+            "traces": [
+              "180418_FS5/ECall_APThreshold_ch6_1850.dat",
+              "180418_FS5/ECall_APThreshold_ch7_1850.dat",
+              "180418_FS5/ECall_APWaveform_ch6_1903.dat",
+              "180418_FS5/ECall_APWaveform_ch6_1904.dat",
+              "180418_FS5/ECall_APWaveform_ch6_1905.dat",
+              "180418_FS5/ECall_APWaveform_ch6_1906.dat"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "fs",
+          "fileSystemType": "folder",
+          "paths": [
+            "180418_FS5/"
+          ],
+          "files": {
+            "traces": [
+              "180418_FS5/ECall_APThreshold_ch6_1850.ibw",
+              "180418_FS5/ECall_APThreshold_ch7_1850.ibw",
+              "180418_FS5/ECall_APWaveform_ch6_1903.ibw",
+              "180418_FS5/ECall_APWaveform_ch6_1904.ibw",
+              "180418_FS5/ECall_APWaveform_ch6_1905.ibw",
+              "180418_FS5/ECall_APWaveform_ch6_1906.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "180418_FS5",
+        "recording_date": "2018-04-18"
+      }
+    }
+  ],
+  "unmatched": []
+}

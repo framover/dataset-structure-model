@@ -1,0 +1,45 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "CHANGES",
+        "README",
+        "dataset_description.json",
+        "derivatives/",
+        "derivatives/meg_derivatives/",
+        "derivatives/meg_derivatives/sub-01/",
+        "derivatives/meg_derivatives/sub-01/ses-meg/",
+        "derivatives/meg_derivatives/sub-01/ses-meg/meg/",
+        "derivatives/meg_derivatives/sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_proc-sss_meg.fif",
+        "participants.tsv",
+        "sub-01/",
+        "sub-01/ses-meg/",
+        "sub-01/ses-meg/meg/",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_coordsystem.json",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_headshape.pos",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_events.tsv",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.fif",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.json",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_events.tsv",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.fif",
+        "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.json",
+        "sub-01/ses-meg/sub-01_ses-meg_scans.tsv",
+        "sub-01/ses-mri/",
+        "sub-01/ses-mri/anat/",
+        "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.json",
+        "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.nii.gz",
+        "sub-01/ses-mri/func/",
+        "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.json",
+        "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.nii.gz",
+        "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_events.tsv",
+        "sub-01/ses-mri/sub-01_ses-mri_scans.tsv",
+        "sub-02/",
+        "sub-02/ses-mri/",
+        "sub-02/ses-mri/anat/",
+        "sub-02/ses-mri/anat/sub-02_ses-mri_acq-mprage_T1w.nii.gz"
+      ]
+    }
+  ]
+}

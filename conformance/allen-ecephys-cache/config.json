@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "session", "description": "One Neuropixels session: a folder session_<id> holding session_<id>.nwb", "isPrimary": true, "identifierRef": "session_id" },
+    { "name": "probe", "description": "One probe; its LFP is a separate file probe_<id>_lfp.nwb in the session folder", "identifierRef": "probe_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "session", "targetEntity": "probe", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "session_id": { "name": "session_id", "dataType": "integer", "ofEntity": "session" },
+    "probe_id": { "name": "probe_id", "dataType": "integer", "ofEntity": "probe" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "ecephys-cache",
+      "displayName": "AllenSDK EcephysProjectCache directory",
+      "description": "manifest.json and the tables sessions.csv, probes.csv, channels.csv, units.csv at the root; one folder per downloaded session with the session NWB file and one LFP NWB file per probe.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/allen/ecephys_cache_dir" }
+        ],
+        "entityLayout": [
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "pathComponentTemplate": "session_{session_id}",
+            "matchPattern": "^session_\\d+$",
+            "filePatterns": [
+              { "name": "session_nwb", "pattern": "^session_{session_id}\\.nwb$", "isRequired": true, "cardinality": "one" }
+            ]
+          },
+          {
+            "name": "probe-files",
+            "entityType": "probe",
+            "fileSystemType": "file",
+            "matchPattern": "^probe_\\d+_lfp\\.nwb$",
+            "filePatterns": [
+              { "name": "lfp_nwb", "pattern": "^probe_{probe_id}_lfp\\.nwb$", "isRequired": true, "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^session_(\\d+)$", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "probe_id", "extraction": { "method": "regex", "pattern": "^probe_(\\d+)_lfp\\.nwb$", "entityLayoutLevel": "probe-files" } }
+        ],
+        "pathTemplate": "{rootPath}/session_{session_id}/probe_{probe_id}_lfp.nwb"
+      }
+    }
+  ]
+}

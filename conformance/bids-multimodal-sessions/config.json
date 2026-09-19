@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "identifierRef": "session_id" },
+    { "name": "acquisition", "description": "One BIDS data file and its sidecars: everything sharing the name stem before the suffix. For files with no task/run entities (a T1w) the stem is just sub-XX_ses-YY[_acq-ZZ].", "identifierRef": "stem" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany" },
+    { "sourceEntity": "session", "targetEntity": "acquisition", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Za-z0-9]+$" } },
+    "session_id": { "name": "session_id", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^[A-Za-z0-9]+$" } },
+    "stem": { "name": "stem", "title": "File name stem", "description": "sub-XX_ses-YY plus every entity before the suffix", "dataType": "string", "ofEntity": "acquisition" },
+    "datatype": { "name": "datatype", "description": "The BIDS datatype folder the acquisition sits in", "dataType": "string", "ofEntity": "acquisition", "validation": { "enum": ["anat", "func", "fmap", "dwi", "meg", "eeg", "beh"] } },
+    "task": { "name": "task", "description": "task-<label>; absent for anatomical scans", "dataType": "string", "ofEntity": "acquisition" },
+    "run": { "name": "run", "description": "run-<index>; absent when there is one run", "dataType": "integer", "ofEntity": "acquisition" },
+    "suffix": { "name": "suffix", "description": "The BIDS suffix of the data file (T1w, bold, meg)", "dataType": "string", "ofEntity": "acquisition" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bids",
+      "displayName": "BIDS dataset (OpenNeuro ds000117 layout)",
+      "description": "sub-XX/ses-YY/<datatype>/sub-XX_ses-YY[_task-..][_run-..]_<suffix>.<ext>, sidecar .json/.tsv files with the same stem, sub-XX_ses-YY_scans.tsv in the session folder, dataset_description.json and participants.tsv at the root, derivatives/ beside the subjects.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/openneuro/ds000117" }
+        ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^sub-[A-Za-z0-9]+$" },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "matchPattern": "^ses-[A-Za-z0-9]+$",
+            "filePatterns": [
+              { "name": "scans", "pattern": "^sub-{subject_id}_ses-{session_id}_scans\\.tsv$", "cardinality": "one" }
+            ]
+          },
+          { "name": "datatypes", "matchPattern": "^(anat|func|fmap|dwi|meg|eeg|beh)$" },
+          {
+            "name": "acquisition-files",
+            "entityType": "acquisition",
+            "fileSystemType": "file",
+            "matchPattern": "^sub-[A-Za-z0-9]+_ses-[A-Za-z0-9]+(_[a-z]+-[A-Za-z0-9]+)*_[A-Za-z0-9]+\\.[A-Za-z.]+$",
+            "filePatterns": [
+              { "name": "data", "pattern": "^{stem}_(T1w|bold|meg)\\.(nii\\.gz|fif)$", "isRequired": true, "cardinality": "one" },
+              { "name": "sidecar", "pattern": "^{stem}_[A-Za-z0-9]+\\.json$", "cardinality": "one" },
+              { "name": "events", "pattern": "^{stem}_events\\.tsv$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": "4:", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "substring", "pattern": "4:", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "datatype", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "datatypes" } },
+          { "metadataRef": "stem", "extraction": { "method": "regex", "pattern": "^(sub-[A-Za-z0-9]+_ses-[A-Za-z0-9]+(?:_[a-z]+-[A-Za-z0-9]+)*)_[A-Za-z0-9]+\\.", "entityLayoutLevel": "acquisition-files" } },
+          { "metadataRef": "task", "extraction": { "method": "regex", "pattern": "_task-([A-Za-z0-9]+)", "entityLayoutLevel": "acquisition-files" } },
+          { "metadataRef": "run", "extraction": { "method": "regex", "pattern": "_run-(\\d+)", "entityLayoutLevel": "acquisition-files" } },
+          { "metadataRef": "suffix", "extraction": { "method": "regex", "pattern": "_([A-Za-z0-9]+)\\.(?:nii\\.gz|fif)$", "entityLayoutLevel": "acquisition-files" } }
+        ],
+        "pathTemplate": "{rootPath}/sub-{subject_id}/ses-{session_id}/{datatype}/{stem}_{suffix}.<ext>"
+      }
+    }
+  ]
+}

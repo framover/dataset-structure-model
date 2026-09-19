@@ -1,0 +1,198 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "anm369962"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-anm369962/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369962"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "anm369963"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-anm369963/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369963"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "20170309"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "anm369962"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-anm369962/sub-anm369962_ses-20170309.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "sub-anm369962/sub-anm369962_ses-20170309.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369962",
+        "session_id": "20170309",
+        "session_date": "2017-03-09"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "20170310"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "anm369962"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-anm369962/sub-anm369962_ses-20170310.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "sub-anm369962/sub-anm369962_ses-20170310.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369962",
+        "session_id": "20170310",
+        "session_date": "2017-03-10"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "20170313"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "anm369962"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-anm369962/sub-anm369962_ses-20170313.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "sub-anm369962/sub-anm369962_ses-20170313.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369962",
+        "session_id": "20170313",
+        "session_date": "2017-03-13"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "20170314"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "anm369963"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "dandiset",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-anm369963/sub-anm369963_ses-20170314.nwb"
+          ],
+          "files": {
+            "nwb": [
+              "sub-anm369963/sub-anm369963_ses-20170314.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "anm369963",
+        "session_id": "20170314",
+        "session_date": "2017-03-14"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "path": "dandiset.yaml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "path": "sub-anm369963/sub-anm369963_ses-20170314_notes.txt",
+      "reason": "no-match"
+    }
+  ]
+}

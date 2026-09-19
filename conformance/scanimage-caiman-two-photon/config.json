@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "acquisition", "description": "One ScanImage acquisition: the TIFF series <base>_<acq>_<file>.tif with the same base name and acquisition number, on one day (the counters restart every day, so the date folder is part of the identity). CaImAn writes its outputs for it into <date>/<base>_<acq>.", "identifierRefs": ["acquisition_date", "base_name", "acquisition_number"] }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "acquisition", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^m\\d{4}$" } },
+    "base_name": { "name": "base_name", "description": "The file base name typed into ScanImage", "dataType": "string", "ofEntity": "acquisition", "validation": { "pattern": "^[A-Za-z0-9-]+$" } },
+    "acquisition_number": { "name": "acquisition_number", "description": "The five-digit acquisition counter, kept as text so that it round-trips into folder names", "dataType": "string", "ofEntity": "acquisition", "validation": { "pattern": "^\\d{5}$" } },
+    "acquisition_date": { "name": "acquisition_date", "dataType": "date", "ofEntity": "acquisition" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "scanimage",
+      "displayName": "ScanImage session folders",
+      "description": "<yyyy-mm-dd>/<subject>/ holds the TIFF files ScanImage logs: <base>_<acquisition 5 digits>_<file 5 digits>.tif, the file counter incrementing when an acquisition is split across files. A notes.txt may sit beside them.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "rig", "path": "D:\\ScanImage", "storageType": "local", "environment": "rig-pc" },
+          { "identifier": "nas", "path": "/Volumes/lab-nas/ScanImage", "storageType": "network", "environment": "analysis-mac" }
+        ],
+        "entityLayout": [
+          { "name": "dates", "matchPattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^m\\d{4}$" },
+          {
+            "name": "tiff-files",
+            "entityType": "acquisition",
+            "fileSystemType": "file",
+            "matchPattern": "^[A-Za-z0-9-]+_\\d{5}_\\d{5}\\.tif$",
+            "filePatterns": [
+              { "name": "tiff_series", "pattern": "^{base_name}_{acquisition_number}_\\d{5}\\.tif$", "isRequired": true, "cardinality": "many" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "base_name", "extraction": { "method": "regex", "pattern": "^([A-Za-z0-9-]+)_\\d{5}_\\d{5}\\.tif$", "entityLayoutLevel": "tiff-files" } },
+          { "metadataRef": "acquisition_number", "extraction": { "method": "regex", "pattern": "_(\\d{5})_\\d{5}\\.tif$", "entityLayoutLevel": "tiff-files" } },
+          { "metadataRef": "acquisition_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "dates" } }
+        ]
+      }
+    },
+    {
+      "identifier": "caiman",
+      "displayName": "CaImAn outputs",
+      "description": "<subject>/<yyyy-mm-dd>/<base>_<acq>/ per acquisition: the C-order memory map memmap__d1_<h>_d2_<w>_d3_<z>_order_C_frames_<n>_.mmap, the F-order map from motion correction <base>_<acq>_rig__d1_..._order_F_frames_<n>_.mmap, and the results file <base>_<acq>_results.hdf5.",
+      "dataCategory": "processed",
+      "access": "readwrite",
+      "derivedFrom": ["scanimage"],
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "nas", "path": "/Volumes/lab-nas/CaImAn", "storageType": "network", "environment": "analysis-mac" }
+        ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "pathComponentTemplate": "{subject_id}" },
+          { "name": "dates", "matchPattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          {
+            "name": "acquisitions",
+            "entityType": "acquisition",
+            "pathComponentTemplate": "{base_name}_{acquisition_number}",
+            "filePatterns": [
+              { "name": "memmap_c", "pattern": "^memmap__d1_\\d+_d2_\\d+_d3_\\d+_order_C_frames_\\d+_\\.mmap$", "cardinality": "one" },
+              { "name": "memmap_rigid", "pattern": "^{base_name}_{acquisition_number}_rig__d1_\\d+_d2_\\d+_d3_\\d+_order_F_frames_\\d+_\\.mmap$", "cardinality": "one" },
+              { "name": "results", "pattern": "^{base_name}_{acquisition_number}_results\\.hdf5$", "isRequired": true, "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "base_name", "extraction": { "method": "regex", "pattern": "^([A-Za-z0-9-]+)_\\d{5}$", "entityLayoutLevel": "acquisitions" } },
+          { "metadataRef": "acquisition_number", "extraction": { "method": "regex", "pattern": "_(\\d{5})$", "entityLayoutLevel": "acquisitions" } },
+          { "metadataRef": "acquisition_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "dates" } }
+        ],
+        "pathTemplate": "{rootPath}/{subject_id}/{acquisition_date}/{base_name}_{acquisition_number}"
+      }
+    }
+  ],
+  "preferences": { "defaultDataLocationIdentifier": "caiman", "environmentIdentifier": "analysis-mac" }
+}

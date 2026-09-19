@@ -1,0 +1,36 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "MF-CA3-STDP-neonate-KO-posPairing/",
+        "MF-CA3-STDP-neonate-KO-posPairing/00-hbp-00005_DataDescriptor_MF-CA3-STDP-neonate-KO-posPairing_v1p1.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/A080615/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/A080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_A080615__A080615_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/A080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_A080615__A080615_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/B080615/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/B080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_B080615__B080615_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/B080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_B080615__B080615_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/C080615/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/C080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_C080615__C080615_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/C080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_C080615__C080615_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/D080615/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/D080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_D080615__D080615_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/D080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_D080615__D080615_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/E080615/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/E080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_E080615__E080615_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj001/E080615/MF-CA3-STDP-neonate-KO-posPairing_Sbj001_E080615__E080615_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj002/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj002/A180415/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj002/A180415/MF-CA3-STDP-neonate-KO-posPairing_Sbj002_A180415__A180415_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj002/A180415/MF-CA3-STDP-neonate-KO-posPairing_Sbj002_A180415__A180415_P.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj003/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj003/B180415/",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj003/B180415/MF-CA3-STDP-neonate-KO-posPairing_Sbj003_B180415__B180415_C.txt",
+        "MF-CA3-STDP-neonate-KO-posPairing/Sbj003/B180415/MF-CA3-STDP-neonate-KO-posPairing_Sbj003_B180415__B180415_P.txt"
+      ]
+    }
+  ]
+}

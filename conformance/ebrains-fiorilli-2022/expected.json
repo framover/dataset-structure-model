@@ -1,0 +1,1060 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "rat-14"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "rat-14"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "rat-16"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "rat-16"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "rat-26"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "rat-26"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "rat-27"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "rat-27"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190130"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190130.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190130.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190130",
+        "session_date": "2019-01-30"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190131"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190131.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190131.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190131",
+        "session_date": "2019-01-31"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190202"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190202.pkl",
+            "hbp-data-002061/data/neo_rat-14_190202_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190202.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-14_190202_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190202",
+        "session_date": "2019-02-02"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190204"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190204.pkl",
+            "hbp-data-002061/data/neo_rat-14_190204_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190204.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-14_190204_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190204",
+        "session_date": "2019-02-04"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190205"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190205.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190205.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190205",
+        "session_date": "2019-02-05"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190206"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190206.pkl",
+            "hbp-data-002061/data/neo_rat-14_190206_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190206.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-14_190206_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190206",
+        "session_date": "2019-02-06"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-14_190207"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-14_190207.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-14_190207.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-14",
+        "session_id": "rat-14_190207",
+        "session_date": "2019-02-07"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181012"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181012.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181012.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181012",
+        "session_date": "2018-10-12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181013"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181013.pkl",
+            "hbp-data-002061/data/neo_rat-16_181013_lfps_clean.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181013.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": [
+              "hbp-data-002061/data/neo_rat-16_181013_lfps_clean.nio"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181013",
+        "session_date": "2018-10-13"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181015"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181015.pkl"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181015.pkl"
+            ],
+            "lfp": [],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181015",
+        "session_date": "2018-10-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181016"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181016.pkl",
+            "hbp-data-002061/data/neo_rat-16_181016_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181016.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181016_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181016",
+        "session_date": "2018-10-16"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181021"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181021.pkl",
+            "hbp-data-002061/data/neo_rat-16_181021_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181021.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181021_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181021",
+        "session_date": "2018-10-21"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181022"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181022.pkl",
+            "hbp-data-002061/data/neo_rat-16_181022_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181022.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181022_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181022",
+        "session_date": "2018-10-22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181023"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181023.pkl",
+            "hbp-data-002061/data/neo_rat-16_181023_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181023.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181023_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181023",
+        "session_date": "2018-10-23"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181024"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181024.pkl",
+            "hbp-data-002061/data/neo_rat-16_181024_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181024.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181024_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181024",
+        "session_date": "2018-10-24"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181025"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181025.pkl",
+            "hbp-data-002061/data/neo_rat-16_181025_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181025.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181025_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181025",
+        "session_date": "2018-10-25"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-16_181029"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-16_181029.pkl",
+            "hbp-data-002061/data/neo_rat-16_181029_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-16_181029.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-16_181029_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-16",
+        "session_id": "rat-16_181029",
+        "session_date": "2018-10-29"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-26_190625"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-26_190625.pkl",
+            "hbp-data-002061/data/neo_rat-26_190625_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-26_190625.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-26_190625_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-26",
+        "session_id": "rat-26_190625",
+        "session_date": "2019-06-25"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-26_190626"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-26_190626.pkl",
+            "hbp-data-002061/data/neo_rat-26_190626_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-26_190626.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-26_190626_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-26",
+        "session_id": "rat-26_190626",
+        "session_date": "2019-06-26"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-26_190627"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-26_190627.pkl",
+            "hbp-data-002061/data/neo_rat-26_190627_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-26_190627.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-26_190627_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-26",
+        "session_id": "rat-26_190627",
+        "session_date": "2019-06-27"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-26_190702"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-26_190702.pkl",
+            "hbp-data-002061/data/neo_rat-26_190702_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-26_190702.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-26_190702_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-26",
+        "session_id": "rat-26_190702",
+        "session_date": "2019-07-02"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-27_191128"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-27_191128.pkl",
+            "hbp-data-002061/data/neo_rat-27_191128_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-27_191128.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-27_191128_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-27",
+        "session_id": "rat-27_191128",
+        "session_date": "2019-11-28"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-27_191204"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-27_191204.pkl",
+            "hbp-data-002061/data/neo_rat-27_191204_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-27_191204.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-27_191204_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-27",
+        "session_id": "rat-27_191204",
+        "session_date": "2019-12-04"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-27_191209"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-27_191209.pkl",
+            "hbp-data-002061/data/neo_rat-27_191209_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-27_191209.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-27_191209_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-27",
+        "session_id": "rat-27_191209",
+        "session_date": "2019-12-09"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "rat-27_191210"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "rat-27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-data-002061/data/neo_rat-27_191210.pkl",
+            "hbp-data-002061/data/neo_rat-27_191210_lfps.nio"
+          ],
+          "files": {
+            "spikes": [
+              "hbp-data-002061/data/neo_rat-27_191210.pkl"
+            ],
+            "lfp": [
+              "hbp-data-002061/data/neo_rat-27_191210_lfps.nio"
+            ],
+            "lfp_clean": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "rat-27",
+        "session_id": "rat-27_191210",
+        "session_date": "2019-12-10"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-data-002061/EBRAINS-DataDescriptor_ViTa-V3.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'data-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-data-002061/Licence-CC-BY-NC-SA.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'data-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-data-002061/code/",
+      "reason": "no-match",
+      "detail": "does not match level 'data-folder' pattern ^data$"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-data-002061/data/sessions_df.csv",
+      "reason": "no-match",
+      "detail": "does not match level 'session-files' pattern ^neo_rat-\\d{2}_\\d{6}[_.]"
+    }
+  ]
+}

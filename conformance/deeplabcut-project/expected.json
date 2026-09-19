@@ -1,0 +1,167 @@
+{
+  "records": [
+    {
+      "entityType": "video",
+      "identity": {
+        "video_name": "reachingvideo1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "videos",
+          "rootStoragePathIdentifier": "workstation",
+          "fileSystemType": "file",
+          "paths": [
+            "reachingvideo1.avi",
+            "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.csv",
+            "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.h5",
+            "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_labeled.mp4",
+            "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle"
+          ],
+          "files": {
+            "video": [
+              "reachingvideo1.avi"
+            ],
+            "poses_h5": [
+              "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.h5"
+            ],
+            "poses_csv": [
+              "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000.csv"
+            ],
+            "metadata_pickle": [
+              "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle"
+            ],
+            "labeled_video": [
+              "reachingvideo1DLC_resnet50_ReachingAug30shuffle1_200000_labeled.mp4"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "labeled-data",
+          "rootStoragePathIdentifier": "workstation",
+          "fileSystemType": "folder",
+          "paths": [
+            "reachingvideo1/"
+          ],
+          "files": {
+            "frames": [
+              "reachingvideo1/img001.png",
+              "reachingvideo1/img023.png",
+              "reachingvideo1/img047.png"
+            ],
+            "labels_csv": [
+              "reachingvideo1/CollectedData_Mackenzie.csv"
+            ],
+            "labels_h5": [
+              "reachingvideo1/CollectedData_Mackenzie.h5"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "video_name": "reachingvideo1"
+      }
+    },
+    {
+      "entityType": "video",
+      "identity": {
+        "video_name": "reachingvideo2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "videos",
+          "rootStoragePathIdentifier": "workstation",
+          "fileSystemType": "file",
+          "paths": [
+            "reachingvideo2.avi"
+          ],
+          "files": {
+            "video": [
+              "reachingvideo2.avi"
+            ],
+            "poses_h5": [],
+            "poses_csv": [],
+            "metadata_pickle": [],
+            "labeled_video": []
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "labeled-data",
+          "rootStoragePathIdentifier": "workstation",
+          "fileSystemType": "folder",
+          "paths": [
+            "reachingvideo2/"
+          ],
+          "files": {
+            "frames": [
+              "reachingvideo2/img005.png",
+              "reachingvideo2/img019.png"
+            ],
+            "labels_csv": [
+              "reachingvideo2/CollectedData_Mackenzie.csv"
+            ],
+            "labels_h5": [
+              "reachingvideo2/CollectedData_Mackenzie.h5"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "video_name": "reachingvideo2"
+      }
+    },
+    {
+      "entityType": "video",
+      "identity": {
+        "video_name": "reachingvideo3"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "videos",
+          "rootStoragePathIdentifier": "workstation",
+          "fileSystemType": "file",
+          "paths": [
+            "reachingvideo3.avi",
+            "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000.h5",
+            "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle",
+            "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000.h5",
+            "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000_meta.pickle"
+          ],
+          "files": {
+            "video": [
+              "reachingvideo3.avi"
+            ],
+            "poses_h5": [
+              "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000.h5",
+              "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000.h5"
+            ],
+            "poses_csv": [],
+            "metadata_pickle": [
+              "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_200000_meta.pickle",
+              "reachingvideo3DLC_resnet50_ReachingAug30shuffle1_500000_meta.pickle"
+            ],
+            "labeled_video": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "video_name": "reachingvideo3"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "labeled-data",
+      "rootStoragePathIdentifier": "workstation",
+      "path": "reachingvideo1_labeled/",
+      "reason": "excluded"
+    }
+  ]
+}

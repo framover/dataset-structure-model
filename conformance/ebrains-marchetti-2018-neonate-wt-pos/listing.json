@@ -1,0 +1,30 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "MF-CA3-STDP-neonate-WT-posPairing/",
+        "MF-CA3-STDP-neonate-WT-posPairing/00-hbp-00005_DataDescriptor-MF-CA3-STDP-neonate-WT-posPairing_v1p1.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/MF-CA3-STDP-neonate-WT-posPairing_Sbj001_A150715__A150715016_C.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/MF-CA3-STDP-neonate-WT-posPairing_Sbj001_A150715__A150715021_P.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_A170715__A170715009_C.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_A170715__A170715015_P.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_B170715__B170715023_C.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_B170715__B170715029_P.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_A210715__A210715006_C.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_A210715__A210715013_P.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_B2107150__B210715018_C.txt",
+        "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_B2107150__B210715023_P.txt"
+      ]
+    }
+  ]
+}

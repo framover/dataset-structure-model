@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "cell",
+      "description": "One recorded neuron. The data descriptor: 'Cell identity code includes the date, the cell number and the cell type, joined with the underscore symbol, e.g. 160118_c10_D2 means cell 10 expressing D2 dopamine receptor, recorded Jan 18 2016.'",
+      "isPrimary": true,
+      "identifierRef": "cell_id"
+    },
+    {
+      "name": "experiment",
+      "description": "One recording session with several neurons patched together. The data descriptor: 'Experiment identity code includes the date, the range of cell numbers and the list of cell types, joined with the underscore symbol, e.g. 150917_c9_11_D1_D1_D2 means cells 9-11 expressing D1, D1 and D2 dopamine receptor, respectively, recorded Sep 17 2015.'",
+      "identifierRef": "experiment_id"
+    }
+  ],
+  "metadataDefinitions": {
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell identity",
+      "description": "Name of the cell's folder, as the data descriptor's <identity>.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^\\d{6}_c\\d+_D[12]$"
+      }
+    },
+    "recording_date": {
+      "name": "recording_date",
+      "title": "Recording date",
+      "description": "The first six digits of the identity, yymmdd.",
+      "dataType": "date",
+      "ofEntity": "cell"
+    },
+    "dopamine_receptor": {
+      "name": "dopamine_receptor",
+      "title": "Dopamine receptor",
+      "description": "D1 or D2, the last part of the cell identity.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "enum": [
+          "D1",
+          "D2"
+        ]
+      }
+    },
+    "experiment_id": {
+      "name": "experiment_id",
+      "title": "Experiment identity",
+      "description": "Name of the experiment's folder in original/.",
+      "dataType": "string",
+      "ofEntity": "experiment",
+      "validation": {
+        "pattern": "^\\d{6}_c\\d+(_\\d+)?(_D[12])+$"
+      }
+    },
+    "experiment_date": {
+      "name": "experiment_date",
+      "title": "Experiment date",
+      "dataType": "date",
+      "ofEntity": "experiment"
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "analysis",
+      "displayName": "2019Q3/<cell type>/analysis",
+      "description": "Kozlov et al., electrophysiological recordings of striatal projection neurons (dataset version e0cfa3fb-22d2-48c7-bb4c-a6374bfc848b, bucket pc0a33-hbp-d000003_SPN-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the analysis branch of 2019Q3, with one root per cell-type folder (dspn, ispn), and holds the extracted features and the feature extraction notebook per cell. Every entry below the roots was listed.",
+      "dataCategory": "derived",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "dspn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/dspn/analysis"
+          },
+          {
+            "identifier": "ispn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/ispn/analysis"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^\\d{6}_c\\d+_D[12]$",
+            "filePatterns": [
+              {
+                "name": "features",
+                "pattern": "^{cell_id}-features\\.json$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Extracted electrophysiological features (eFEL)"
+              },
+              {
+                "name": "protocols",
+                "pattern": "^{cell_id}-protocols\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "spec",
+                "pattern": "^{cell_id}-spec\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "summary",
+                "pattern": "^{cell_id}-sum\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "figures",
+                "pattern": "^{cell_id}-figs\\.pdf$",
+                "cardinality": "one"
+              },
+              {
+                "name": "notebook",
+                "pattern": "^{cell_id}\\.ipynb$",
+                "cardinality": "one",
+                "description": "Feature extraction script"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "dopamine_receptor",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_(D[12])$",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "derived",
+      "displayName": "2019Q3/<cell type>/derived",
+      "description": "Kozlov et al., electrophysiological recordings of striatal projection neurons (dataset version e0cfa3fb-22d2-48c7-bb4c-a6374bfc848b, bucket pc0a33-hbp-d000003_SPN-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3, with one root per cell-type folder (dspn, ispn), and holds the derived traces per cell, ASCII text. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "dspn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/dspn/derived"
+          },
+          {
+            "identifier": "ispn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/ispn/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^\\d{6}_c\\d+_D[12]$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.dat$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "dopamine_receptor",
+            "extraction": {
+              "method": "regex",
+              "pattern": "_(D[12])$",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original",
+      "displayName": "2019Q3/<cell type>/original",
+      "description": "Kozlov et al., electrophysiological recordings of striatal projection neurons (dataset version e0cfa3fb-22d2-48c7-bb4c-a6374bfc848b, bucket pc0a33-hbp-d000003_SPN-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3, with one root per cell-type folder (dspn, ispn), and holds the original recordings, Igor Pro. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "dspn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/dspn/original"
+          },
+          {
+            "identifier": "ispn",
+            "path": "/data/ebrains/pc0a33-hbp-d000003_SPN-ephys_pub/2019Q3/ispn/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "experiments",
+            "entityType": "experiment",
+            "matchPattern": "^\\d{6}_c\\d+(_\\d+)?(_D[12])+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "\\.ibw$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "Original traces, Igor binary wave format"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "experiment_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "experiments"
+            }
+          },
+          {
+            "metadataRef": "experiment_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "experiments"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

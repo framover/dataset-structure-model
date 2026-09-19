@@ -1,0 +1,265 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0123"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0123/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0124"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0124/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m0125"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0125/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0125"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0123-20240315-001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "rawdata",
+          "rootStoragePathIdentifier": "raw-disk-1",
+          "fileSystemType": "folder",
+          "paths": [
+            "2024_03_15/20240315_10_22_31_m0123-20240315-001/"
+          ],
+          "files": {
+            "two_photon_series_original": [
+              "2024_03_15/20240315_10_22_31_m0123-20240315-001/m0123-20240315-001_XYT.raw"
+            ],
+            "acquisition_ini": [
+              "2024_03_15/20240315_10_22_31_m0123-20240315-001/m0123-20240315-001.ini"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0123/session-m0123-20240315-001/"
+          ],
+          "files": {
+            "custom_variable": [
+              "subject-m0123/session-m0123-20240315-001/m0123-20240315-001_my_custom_variable.mat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "session_id": "m0123-20240315-001",
+        "session_date": "2024-03-15",
+        "session_time": "10:22:31"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0123-20240315-002"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0123"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "rawdata",
+          "rootStoragePathIdentifier": "raw-disk-1",
+          "fileSystemType": "folder",
+          "paths": [
+            "2024_03_15/20240315_14_05_00_m0123-20240315-002/"
+          ],
+          "files": {
+            "two_photon_series_original": [
+              "2024_03_15/20240315_14_05_00_m0123-20240315-002/m0123-20240315-002_XYT.raw"
+            ],
+            "acquisition_ini": [
+              "2024_03_15/20240315_14_05_00_m0123-20240315-002/m0123-20240315-002.ini"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0123/session-m0123-20240315-002/"
+          ],
+          "files": {
+            "custom_variable": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0123",
+        "session_id": "m0123-20240315-002",
+        "session_date": "2024-03-15",
+        "session_time": "14:05:00"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0124-20240316-001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0124"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "rawdata",
+          "rootStoragePathIdentifier": "raw-disk-2",
+          "fileSystemType": "folder",
+          "paths": [
+            "2024_03_16/20240316_11_30_00_m0124-20240316-001/"
+          ],
+          "files": {
+            "two_photon_series_original": [
+              "2024_03_16/20240316_11_30_00_m0124-20240316-001/m0124-20240316-001_XYT.raw"
+            ],
+            "acquisition_ini": [
+              "2024_03_16/20240316_11_30_00_m0124-20240316-001/m0124-20240316-001.ini"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0124/session-m0124-20240316-001/"
+          ],
+          "files": {
+            "custom_variable": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0124",
+        "session_id": "m0124-20240316-001",
+        "session_date": "2024-03-16",
+        "session_time": "11:30:00"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "m0125-20240320-001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m0125"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "processed",
+          "rootStoragePathIdentifier": "processed-disk",
+          "fileSystemType": "folder",
+          "paths": [
+            "subject-m0125/session-m0125-20240320-001/"
+          ],
+          "files": {
+            "custom_variable": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m0125",
+        "session_id": "m0125-20240320-001"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "rawdata",
+      "rootStoragePathIdentifier": "raw-disk-1",
+      "path": "2024_03_15/.DS_Store",
+      "reason": "excluded"
+    },
+    {
+      "dataLocationIdentifier": "rawdata",
+      "rootStoragePathIdentifier": "raw-disk-1",
+      "path": "2024_03_15/20240315_09_00_00_calibration/",
+      "reason": "excluded"
+    }
+  ]
+}
