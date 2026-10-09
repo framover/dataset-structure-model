@@ -387,11 +387,16 @@ function key = entityKeyFor(entityType, identity, parents)
 end
 
 function regex = substituteTokens(pattern, metadata)
-    [tokens, literals] = regexp(char(pattern), "\{([A-Za-z_][A-Za-z0-9_]*)\}", "tokens", "split");
+    [names, widths, literals] = dsm.internal.tokenParts(pattern);
     regex = string(literals{1});
-    for i = 1:numel(tokens)
-        value = string(dsm.internal.getField(metadata, tokens{i}{1}, ""));
-        regex = regex + regexptranslate("escape", char(value)) + string(literals{i+1});
+    for i = 1:numel(names)
+        value = dsm.internal.getField(metadata, names(i), []);
+        if dsm.internal.isNone(value)
+            text = "";
+        else
+            text = dsm.internal.formatToken(value, widths(i));
+        end
+        regex = regex + regexptranslate("escape", char(text)) + string(literals{i+1});
     end
     regex = char(regex);
 end

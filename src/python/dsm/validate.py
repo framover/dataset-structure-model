@@ -5,7 +5,7 @@ from typing import List
 
 import jsonschema
 
-from .config import TOKEN, Config
+from .config import TOKEN, Config, token_names
 from .errors import ConfigError
 from .schemas import CONFIG_SCHEMA, load_schema
 
@@ -88,16 +88,20 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
                 layout_types.append(et)
         if level.get("fileSystemType") == "file" and i != len(layout) - 1:
             problems.append(f"{loc_id}: file level '{level['name']}' must be the last level")
-        for token in TOKEN.findall(level.get("pathComponentTemplate", "")):
+        for token, width in TOKEN.findall(level.get("pathComponentTemplate", "")):
             if token not in definitions:
                 problems.append(f"{loc_id}: level '{level['name']}' template token '{token}' is not a metadata field")
+            elif width and definitions[token]["dataType"] != "integer":
+                problems.append(f"{loc_id}: level '{level['name']}' template token '{token}' has a format, but the field is not an integer")
         pattern_names = [fp["name"] for fp in level.get("filePatterns", []) if "name" in fp]
         if len(set(pattern_names)) != len(pattern_names):
             problems.append(f"{loc_id}: level '{level['name']}' filePatterns names are not unique")
         for fp in level.get("filePatterns", []):
-            for token in TOKEN.findall(fp["pattern"]):
+            for token, width in TOKEN.findall(fp["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' is not a metadata field")
+                elif width and definitions[token]["dataType"] != "integer":
+                    problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' has a format, but the field is not an integer")
     if len(set(layout_types)) != len(layout_types):
         problems.append(f"{loc_id}: an entity type appears on more than one level")
     orders = [entity_types.index(t) for t in layout_types if t in entity_types]
@@ -120,11 +124,12 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
         if isinstance(level_ref, int) and not 0 <= level_ref < len(layout):
             problems.append(f"{loc_id}: extraction for '{ref}' level index {level_ref} is out of range")
         if extraction["method"] == "template":
-            tokens = TOKEN.findall(extraction["pattern"])
-            templates[ref] = tokens
-            for token in tokens:
+            templates[ref] = token_names(extraction["pattern"])
+            for token, width in TOKEN.findall(extraction["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: template for '{ref}' token '{token}' is not a metadata field")
+                elif width and definitions[token]["dataType"] != "integer":
+                    problems.append(f"{loc_id}: template for '{ref}' token '{token}' has a format, but the field is not an integer")
                 if token == ref:
                     problems.append(f"{loc_id}: template for '{ref}' references itself")
     problems += _template_cycles(loc_id, templates)

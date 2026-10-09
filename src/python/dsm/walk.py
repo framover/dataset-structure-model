@@ -7,7 +7,7 @@ import re
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from .config import TOKEN, Config
+from .config import TOKEN, Config, format_token
 from .extract import ExtractorRegistry, evaluate_fields, validate_value
 from .listing import Listing, Tree, basename, is_dir
 from .records import Issue, LocationEntry, Record, Unmatched, WalkResult
@@ -220,7 +220,8 @@ class Walker:
                     candidates = sorted({e for folder in acc.paths for e in tree.children(folder) if not is_dir(e)})
                 files, complete = {}, True
                 for pattern in patterns:
-                    regex = TOKEN.sub(lambda m: re.escape(str(metadata.get(m.group(1), ""))), pattern["pattern"])
+                    regex = TOKEN.sub(lambda m: re.escape(format_token(metadata[m.group(1)], m.group(2)))
+                                      if metadata.get(m.group(1)) is not None else "", pattern["pattern"])
                     matched = sorted(c for c in candidates if re.search(regex, basename(c)))
                     if "name" in pattern:
                         files[pattern["name"]] = matched

@@ -424,7 +424,7 @@
         },
         "pathComponentTemplate": {
           "type": "string",
-          "description": "How an entry name is composed from metadata fields, e.g. 'session-{session_id}'. Tokens in braces reference keys in metadataDefinitions. Used to generate names when writing to a readwrite location, and to derive matchPattern when that is absent: each {token} matches the referenced definition's validation.pattern if it has one, else [^/\\\\]+, and the result is anchored with ^ and $."
+          "description": "How an entry name is composed from metadata fields, e.g. 'session-{session_id}'. Tokens in braces reference keys in metadataDefinitions. Used to generate names when writing to a readwrite location, and to derive matchPattern when that is absent: each {token} matches the referenced definition's validation.pattern if it has one, else [^/\\\\]+, and the result is anchored with ^ and $. A token may carry a format, {name:05d}: the field must be an integer, the value is written zero-filled to the given width when a name is generated, and the token matches \\\\d{5,} when matchPattern is derived."
         },
         "matchPattern": {
           "type": "string",
@@ -502,7 +502,7 @@
         },
         "pattern": {
           "type": "string",
-          "description": "Regular expression (portable subset) matched against file names. May contain {token} references to metadata fields of the entity, e.g. '^{session_id}_raw\\\\.tif$'; each token is replaced by the regex-escaped value for the entity being resolved before matching, so membership is exact rather than by substring. Braces containing only digits and commas are regex quantifiers, not tokens."
+          "description": "Regular expression (portable subset) matched against file names. May contain {token} references to metadata fields of the entity, e.g. '^{session_id}_raw\\\\.tif$'; each token is replaced by the regex-escaped value for the entity being resolved before matching, so membership is exact rather than by substring. A token may carry a format, {name:05d}: the integer value is written zero-filled to the given width before it is escaped. Braces containing only digits and commas are regex quantifiers, not tokens."
         },
         "isRequired": {
           "type": "boolean",
@@ -534,7 +534,7 @@
         },
         "pattern": {
           "type": "string",
-          "description": "substring: a Python-style slice 'start:stop' of the path component: 0-based, half-open, either bound may be omitted, negative indices count from the end, no step (e.g. '0:8', '9:', ':-4'). At a file level the component is the file name including its extension. regex: the expression; the value is the first capture group, or the whole match when there is none. template: a string with {token} references to other metadata fields of the same entity or its ancestors, e.g. '{session_date}_{subject_id}'; readers resolve the order of evaluation and reject cycles."
+          "description": "substring: a Python-style slice 'start:stop' of the path component: 0-based, half-open, either bound may be omitted, negative indices count from the end, no step (e.g. '0:8', '9:', ':-4'). At a file level the component is the file name including its extension. regex: the expression; the value is the first capture group, or the whole match when there is none. template: a string with {token} references to other metadata fields of the same entity or its ancestors, e.g. '{session_date}_{subject_id}'; readers resolve the order of evaluation and reject cycles. A token may carry a format, {name:05d}, which writes an integer field zero-filled to the given width."
         },
         "value": {
           "type": ["string", "number", "boolean"],

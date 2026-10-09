@@ -68,7 +68,7 @@
       "identity": {
         "acquisition_date": "2024-03-15",
         "base_name": "file",
-        "acquisition_number": "00001"
+        "acquisition_number": 1
       },
       "parents": [
         {
@@ -121,7 +121,7 @@
       "metadata": {
         "subject_id": "m0123",
         "base_name": "file",
-        "acquisition_number": "00001",
+        "acquisition_number": 1,
         "acquisition_date": "2024-03-15"
       }
     },
@@ -130,7 +130,7 @@
       "identity": {
         "acquisition_date": "2024-03-15",
         "base_name": "file",
-        "acquisition_number": "00002"
+        "acquisition_number": 2
       },
       "parents": [
         {
@@ -175,7 +175,7 @@
       "metadata": {
         "subject_id": "m0123",
         "base_name": "file",
-        "acquisition_number": "00002",
+        "acquisition_number": 2,
         "acquisition_date": "2024-03-15"
       },
       "issues": [
@@ -190,7 +190,7 @@
       "identity": {
         "acquisition_date": "2024-03-16",
         "base_name": "file",
-        "acquisition_number": "00001"
+        "acquisition_number": 1
       },
       "parents": [
         {
@@ -237,7 +237,7 @@
       "metadata": {
         "subject_id": "m0123",
         "base_name": "file",
-        "acquisition_number": "00001",
+        "acquisition_number": 1,
         "acquisition_date": "2024-03-16"
       }
     },
@@ -246,7 +246,7 @@
       "identity": {
         "acquisition_date": "2024-03-15",
         "base_name": "spont",
-        "acquisition_number": "00001"
+        "acquisition_number": 1
       },
       "parents": [
         {
@@ -291,7 +291,7 @@
       "metadata": {
         "subject_id": "m0124",
         "base_name": "spont",
-        "acquisition_number": "00001",
+        "acquisition_number": 1,
         "acquisition_date": "2024-03-15"
       }
     }

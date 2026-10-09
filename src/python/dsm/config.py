@@ -2,7 +2,19 @@
 import re
 from typing import Dict, List, Optional
 
-TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
+# {name} or {name:0Nd}: group 1 is the field key, group 2 the digits of the zero-fill width or None
+TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)(?::(0[1-9][0-9]*)d)?\}")
+
+
+def token_names(text: str) -> List[str]:
+    return [m.group(1) for m in TOKEN.finditer(text)]
+
+
+def format_token(value, width: Optional[str] = None) -> str:
+    """The text a token substitutes: the value as is, or, with a `:0Nd` format, the integer zero-filled to N digits."""
+    if width is None:
+        return str(value)
+    return format(int(value), f"0{int(width)}d")
 
 
 def strip_anchors(pattern):
@@ -103,7 +115,10 @@ class Config:
             for m in TOKEN.finditer(template):
                 out += re.escape(template[pos:m.start()])
                 pattern = self.definitions.get(m.group(1), {}).get("validation", {}).get("pattern")
-                out += "(?:" + strip_anchors(pattern) + ")" if pattern else r"[^/\\]+"
+                if m.group(2):  # a zero-filled integer: at least that many digits
+                    out += r"\d{" + str(int(m.group(2))) + ",}"
+                else:
+                    out += "(?:" + strip_anchors(pattern) + ")" if pattern else r"[^/\\]+"
                 pos = m.end()
             regex = out + re.escape(template[pos:]) + "$"
         self._match_cache[key] = regex

@@ -78,6 +78,8 @@ A function extractor is portable when two things hold: the name is language-neut
 
 The template documents the naming convention, generates names when writing, and derives `matchPattern` when that is absent. "Tools may derive a regex" is not a rule; the rule is: a `{token}` matches the referenced definition's `validation.pattern`, else `[^/\\]+`, anchored `^…$`. Configs that rely on templates — LLM-written ones will — now behave identically everywhere.
 
+A token may carry a format, `{name:0Nd}`: width and zero-fill, nothing else. That is the one thing counters in file names need (`file_00001_00003.tif`), and it lets the counter stay an integer in the record instead of a string kept padded so that it round-trips. The grammar is deliberately smaller than Python's format mini-language because every reader implements it by hand; the derived pattern for a formatted token is `\d{N,}`.
+
 ---
 
 ## `derivedFrom` is provenance, not a pipeline definition
