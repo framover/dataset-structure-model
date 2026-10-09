@@ -44,6 +44,15 @@ def test_checker_detects_template_cycles():
     assert any("template cycle" in p for p in check_references(doc))
 
 
+def test_checker_rejects_file_patterns_on_a_structural_level():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
+    layout.append({"name": "processed", "isVariable": False, "fixedName": "processed", "filePatterns": [{"pattern": "\\.dat$"}]})
+    assert any("structural level 'processed' has filePatterns" in p for p in check_references(doc))
+
+
 def test_checker_requires_layout_order_to_follow_declaration_order():
     from conftest import minimal_config
 
