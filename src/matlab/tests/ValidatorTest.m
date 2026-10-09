@@ -104,7 +104,40 @@ classdef ValidatorTest < matlab.unittest.TestCase
             config = dsm.loadConfig(fullfile(folder, "ds.json"));
             testCase.verifyEqual(config.preferences().defaultDataLocationIdentifier, 'raw');
         end
+
+        function fileCountsThatDisagreeAreReferenceProblems(testCase)
+            disagreeing = { ...
+                struct("isRequired", false, "minCount", 1), "isRequired false and minCount 1 disagree"; ...
+                struct("isRequired", true, "minCount", 0), "isRequired true and minCount 0 disagree"; ...
+                struct("cardinality", "one", "maxCount", 3), "cardinality 'one' and maxCount 3 disagree"; ...
+                struct("cardinality", "many", "maxCount", 1), "cardinality 'many' and maxCount 1 disagree"; ...
+                struct("minCount", 3, "maxCount", 2), "minCount 3 exceeds maxCount 2"};
+            for i = 1:size(disagreeing, 1)
+                pattern = disagreeing{i, 1};
+                pattern.name = "planes";
+                pattern.pattern = "^plane\d\.tif$";
+                doc = withFilePattern(pattern);
+                testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), disagreeing{i, 2})), disagreeing{i, 2});
+            end
+            agreeing = struct("name", "planes", "pattern", "^plane\d\.tif$", "isRequired", true, "minCount", 3, "cardinality", "many", "maxCount", 3);
+            testCase.verifyEmpty(dsm.referenceProblems(withFilePattern(agreeing)));
+            testCase.verifyEmpty(dsm.schemaErrors(withFilePattern(agreeing)));
+        end
+
+        function fileCountsBelowTheirMinimumAreSchemaErrors(testCase)
+            errors = dsm.schemaErrors(withFilePattern(struct("pattern", "^plane\d\.tif$", "minCount", -1)));
+            testCase.verifyTrue(any(contains(errors, "minimum")), strjoin(errors, newline));
+            errors = dsm.schemaErrors(withFilePattern(struct("pattern", "^plane\d\.tif$", "maxCount", 0)));
+            testCase.verifyTrue(any(contains(errors, "minimum")), strjoin(errors, newline));
+        end
     end
+end
+
+function doc = withFilePattern(pattern)
+    doc = minimalConfigDoc();
+    layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+    layout{2}.filePatterns = {pattern};
+    doc.dataLocations.filesystemSource.entityLayout = layout;
 end
 
 function writeJson(path, doc)

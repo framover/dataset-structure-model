@@ -82,7 +82,7 @@
               "2023-05-11/spontaneous_2/plane2.tif"
             ]
           },
-          "isComplete": true
+          "isComplete": false
         }
       ],
       "metadata": {
@@ -90,7 +90,13 @@
         "recording_date": "2023-05-11",
         "condition": "spontaneous",
         "recording_number": 2
-      }
+      },
+      "issues": [
+        {
+          "code": "missing-required-file",
+          "message": "deposit: pattern 'planes' expects at least 3 file(s), matched 2"
+        }
+      ]
     }
   ],
   "unmatched": [

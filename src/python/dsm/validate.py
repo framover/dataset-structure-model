@@ -98,6 +98,15 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
             for token in TOKEN.findall(fp["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' is not a metadata field")
+            # isRequired and cardinality are the one-file spellings of minCount and maxCount; both forms may be
+            # written, but they must say the same thing
+            label = fp.get("name", fp["pattern"])
+            if "isRequired" in fp and "minCount" in fp and fp["isRequired"] != (fp["minCount"] >= 1):
+                problems.append(f"{loc_id}: filePattern '{label}' isRequired {json.dumps(fp['isRequired'])} and minCount {fp['minCount']} disagree")
+            if "cardinality" in fp and "maxCount" in fp and (fp["cardinality"] == "one") != (fp["maxCount"] == 1):
+                problems.append(f"{loc_id}: filePattern '{label}' cardinality '{fp['cardinality']}' and maxCount {fp['maxCount']} disagree")
+            if "minCount" in fp and "maxCount" in fp and fp["minCount"] > fp["maxCount"]:
+                problems.append(f"{loc_id}: filePattern '{label}' minCount {fp['minCount']} exceeds maxCount {fp['maxCount']}")
     if len(set(layout_types)) != len(layout_types):
         problems.append(f"{loc_id}: an entity type appears on more than one level")
     orders = [entity_types.index(t) for t in layout_types if t in entity_types]

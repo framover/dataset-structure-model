@@ -137,6 +137,18 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
                     problems(end+1) = sprintf("%s: filePattern '%s' token '%s' is not a metadata field", locId, pattern{1}.pattern, token); %#ok<AGROW>
                 end
             end
+            % isRequired and cardinality are the one-file spellings of minCount and maxCount; both forms may be
+            % written, but they must say the same thing
+            label = string(getField(pattern{1}, "name", pattern{1}.pattern));
+            if isfield(pattern{1}, "isRequired") && isfield(pattern{1}, "minCount") && pattern{1}.isRequired ~= (pattern{1}.minCount >= 1)
+                problems(end+1) = sprintf("%s: filePattern '%s' isRequired %s and minCount %d disagree", locId, label, string(pattern{1}.isRequired), pattern{1}.minCount); %#ok<AGROW>
+            end
+            if isfield(pattern{1}, "cardinality") && isfield(pattern{1}, "maxCount") && (string(pattern{1}.cardinality) == "one") ~= (pattern{1}.maxCount == 1)
+                problems(end+1) = sprintf("%s: filePattern '%s' cardinality '%s' and maxCount %d disagree", locId, label, pattern{1}.cardinality, pattern{1}.maxCount); %#ok<AGROW>
+            end
+            if isfield(pattern{1}, "minCount") && isfield(pattern{1}, "maxCount") && pattern{1}.minCount > pattern{1}.maxCount
+                problems(end+1) = sprintf("%s: filePattern '%s' minCount %d exceeds maxCount %d", locId, label, pattern{1}.minCount, pattern{1}.maxCount); %#ok<AGROW>
+            end
         end
         if numel(unique(names)) ~= numel(names)
             problems(end+1) = sprintf("%s: level '%s' filePatterns names are not unique", locId, level.name); %#ok<AGROW>

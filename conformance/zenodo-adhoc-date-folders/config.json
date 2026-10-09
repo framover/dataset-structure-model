@@ -27,7 +27,7 @@
             "entityType": "recording",
             "matchPattern": "^(spontaneous|opto)_\\d+$",
             "filePatterns": [
-              { "name": "planes", "pattern": "^plane\\d\\.tif$", "isRequired": true, "cardinality": "many", "description": "Three planes are expected; DSM cannot say exactly three" }
+              { "name": "planes", "pattern": "^plane\\d\\.tif$", "isRequired": true, "minCount": 3, "maxCount": 3, "description": "The three simultaneously acquired imaging planes" }
             ]
           }
         ],

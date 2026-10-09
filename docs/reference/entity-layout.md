@@ -90,8 +90,10 @@ The kinds of files that belong to an entity at this level. For a folder level: f
 |-------|----------|------|-------------|
 | `pattern` | Yes | string (regex) | Matched against file names. May contain `{token}` references to the entity's metadata fields; each token is replaced by the regex-escaped value for the entity being resolved. |
 | `name` | No | string | Name of this file kind, unique within the level. Readers report matched files under it in entity records. |
-| `isRequired` | No | boolean | At least one match must exist for the entity to be complete (default `false`). |
-| `cardinality` | No | `"one"` \| `"many"` | Exactly one file or any number (default `"many"`). |
+| `isRequired` | No | boolean | At least one match must exist for the entity to be complete (default `false`). The same as `minCount: 1`. |
+| `cardinality` | No | `"one"` \| `"many"` | At most one file, or any number (default `"many"`). `"one"` is the same as `maxCount: 1`. |
+| `minCount` | No | integer ≥ 0 | Smallest number of matches per entity. Fewer: the entity is incomplete and carries `missing-required-file`. |
+| `maxCount` | No | integer ≥ 1 | Largest number of matches per entity. More: `cardinality-violation`; the entity stays complete. |
 | `description` | No | string | What the file contains. |
 
 ```json
@@ -102,6 +104,12 @@ The kinds of files that belong to an entity at this level. For a folder level: f
 ```
 
 Because the token is substituted with the exact identity, `m110-20250510-001` never claims the files of `m110-20250510-0010`. Braces that contain only digits and commas (`\d{2}`, `{1,3}`) are regex quantifiers, not tokens.
+
+`isRequired` and `cardinality` are the one-file spellings of `minCount` and `maxCount`. Write whichever reads better; when both forms appear on one pattern they must agree (`isRequired: true` with `minCount: 0`, or `cardinality: "one"` with `maxCount: 3`, is refused as `reference-integrity`). An exact count is `minCount` and `maxCount` together:
+
+```json
+{ "name": "planes", "pattern": "^plane\\d\\.tif$", "minCount": 3, "maxCount": 3 }
+```
 
 ---
 

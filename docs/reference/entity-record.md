@@ -59,8 +59,8 @@ Each `locations` entry:
 
 | Code | Meaning |
 |------|---------|
-| `missing-required-file` | An `isRequired` pattern matched nothing |
-| `cardinality-violation` | A `cardinality: one` pattern matched several files |
+| `missing-required-file` | A pattern matched fewer files than its minimum (`isRequired` means at least one; `minCount` says any minimum) |
+| `cardinality-violation` | A pattern matched more files than its maximum (`cardinality: one` means at most one; `maxCount` says any maximum) |
 | `duplicate-entity` | Several folders in one location yield this identity |
 | `extraction-failed` | A rule matched nothing and the field has no `defaultValue` |
 | `metadata-conflict` | Locations disagree on a field's value |
