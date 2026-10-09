@@ -16,7 +16,7 @@ import pytest
 from conftest import CONFORMANCE_DIR, EXAMPLES_DIR, load_json
 from test_reference_integrity import check_references
 
-TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
+TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)(?::(0[1-9][0-9]*)d)?\}")  # {name} or {name:0Nd}
 CASE_TO_EXAMPLE = {
     "flat-session-files": "flat_session_files.json",
     "raw-processed-matching": "raw_processed_two_photon.json",
@@ -143,7 +143,10 @@ def match_regex(level, definitions):
     for m in TOKEN.finditer(template):
         out += re.escape(template[pos:m.start()])
         pattern = definitions.get(m.group(1), {}).get("validation", {}).get("pattern")
-        out += "(?:" + strip_anchors(pattern) + ")" if pattern else r"[^/\\]+"
+        if m.group(2):  # a zero-filled integer: at least that many digits
+            out += r"\d{" + str(int(m.group(2))) + ",}"
+        else:
+            out += "(?:" + strip_anchors(pattern) + ")" if pattern else r"[^/\\]+"
         pos = m.end()
     return out + re.escape(template[pos:]) + "$"
 
@@ -210,8 +213,8 @@ def normalize(value, rule):
     return value
 
 
-def format_token(value):
-    return str(value)
+def format_token(value, width=None):
+    return str(value) if width is None else format(int(value), f"0{int(width)}d")
 
 
 def component_for(rule, layout, rel_path):
@@ -232,7 +235,7 @@ def extract(rule, definition, layout, rel_path, known):
         value = rule["value"]
     elif method == "template":
         try:
-            value = TOKEN.sub(lambda m: format_token(known[m.group(1)]), rule["pattern"])
+            value = TOKEN.sub(lambda m: format_token(known[m.group(1)], m.group(2)), rule["pattern"])
         except KeyError:
             return None
     else:
@@ -269,7 +272,7 @@ def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
         progressed = False
         for item in list(pending):
             rule = item["extraction"]
-            if rule["method"] == "template" and any(t not in values for t in TOKEN.findall(rule["pattern"]) if t in {r["metadataRef"] for r in pending}):
+            if rule["method"] == "template" and any(t not in values for t, _ in TOKEN.findall(rule["pattern"]) if t in {r["metadataRef"] for r in pending}):
                 continue
             results[item["metadataRef"]] = extract(rule, case.definitions[item["metadataRef"]], layout, rel_path, values)
             if results[item["metadataRef"]] not in (None, SKIP):
@@ -331,7 +334,7 @@ def analyse(case, record):
                 codes.add("duplicate-entity")
         files, complete = {}, True
         for pattern in patterns or []:
-            regex = TOKEN.sub(lambda m: re.escape(str(record["metadata"][m.group(1)])), pattern["pattern"])
+            regex = TOKEN.sub(lambda m: re.escape(format_token(record["metadata"][m.group(1)], m.group(2))), pattern["pattern"])
             matched = sorted(c for c in candidates if re.search(regex, basename(c)))
             if "name" in pattern:
                 files[pattern["name"]] = matched

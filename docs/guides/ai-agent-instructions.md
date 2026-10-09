@@ -77,7 +77,7 @@ Reference levels by **name** from extraction rules.
 
 ## `filePatterns`
 
-Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`. No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
+Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`; an integer written zero-filled in names takes a format, `{acquisition_number:05d}` (integer fields only, width and zero-fill only). No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
 
 ## `metadataMapping`
 
@@ -87,7 +87,7 @@ An **array** of `{ "metadataRef": key, "extraction": {...} }`. The extraction ob
 |----------|-----------------|------|
 | `substring` | `pattern` | A Python slice `start:stop` — `"0:8"`, `"9:"`, `":-4"`, `":"`. Never `"0:end"`. |
 | `regex` | `pattern` | Value is the first capture group. Unnamed groups only; escape dots. |
-| `template` | `pattern` | `"{session_date}_{subject_id}"` referencing other fields. |
+| `template` | `pattern` | `"{session_date}_{subject_id}"` referencing other fields; `{run_number:03d}` zero-fills an integer. |
 | `fixed` | `value` | A constant. |
 | `function` | `extractorFunction` | **Do not emit by default.** It needs code in every reader. Propose it only when no declarative rule can express the value, and say so. |
 
@@ -97,7 +97,7 @@ The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 
 ## Cross-reference rules (checked by readers)
 
-- Every `identifierRef`, `metadataRef` and `{token}` names a key in `metadataDefinitions`.
+- Every `identifierRef`, `metadataRef` and `{token}` names a key in `metadataDefinitions`; a token with a format (`{name:05d}`) names an `integer` field.
 - Every `ofEntity`, layout `entityType`, `sourceEntity`, `targetEntity` names an `entityTypes` entry.
 - Every `derivedFrom` and `preferences.defaultDataLocationIdentifier` names a `dataLocations` identifier.
 - Every extraction `entityLayoutLevel` string names a level in that location's layout.

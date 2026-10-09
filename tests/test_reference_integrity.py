@@ -51,3 +51,18 @@ def test_checker_requires_layout_order_to_follow_declaration_order():
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
     layout.reverse()  # sessions above subjects, but subject is declared first
     assert any("declaration order" in p for p in check_references(doc))
+
+
+def test_checker_allows_a_token_format_only_on_integer_fields():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    source = doc["dataLocations"][0]["filesystemSource"]
+    source["entityLayout"][1]["filePatterns"] = [{"pattern": "^{session_id:03d}\\.tif$"}]
+    source["entityLayout"][0] = {"name": "subjects", "entityType": "subject", "pathComponentTemplate": "{subject_id:04d}"}
+    source["metadataMapping"].append({"metadataRef": "session_id", "extraction": {"method": "template", "pattern": "{subject_id:02d}"}})
+    problems = check_references(doc)
+    assert len([p for p in problems if "has a format, but the field is not an integer" in p]) == 3, problems
+    doc["metadataDefinitions"]["subject_id"]["dataType"] = "integer"
+    doc["metadataDefinitions"]["session_id"]["dataType"] = "integer"
+    assert check_references(doc) == []

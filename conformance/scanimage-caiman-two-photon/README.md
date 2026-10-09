@@ -7,7 +7,7 @@ What it checks:
 - Cross-location matching between a file-level entity (the TIFF series) and a folder-level entity (the CaImAn folder) with a three-field composite identity, one field of which (`acquisition_date`) is read from a structural level above.
 - Two environments in one location; the listing names `analysis-mac` and both roots are `nas`.
 - `cardinality: many` on the TIFF series; `derivedFrom` and `access: readwrite` on the processed location.
-- `acquisition_number` kept as a zero-padded string because a token cannot be formatted (gap **G9**): as an integer, `{acquisition_number}` would substitute `1` into a pattern that must match `00001`.
+- **A token with a format.** `acquisition_number` is an integer; `{acquisition_number:05d}` writes it zero-filled to five digits in the TIFF pattern, in the CaImAn folder template (whose derived `matchPattern` wants `\d{5,}`) and in the CaImAn file patterns, so the counter is the number `1` in the record and `00001` in every name.
 - **Gap G3 (one entity, several folders by design):** subject `m0123` has a folder under each date, so the reader reports `duplicate-entity` on it. A structural level above an entity level makes recurrence normal, not an error.
 - **Gap G10 (metadata in member file names):** the frame count and image size in the `.mmap` name cannot be extracted, because rules read path components of the entity, not the names of files matched by `filePatterns`.
 - `notes.txt` beside the TIFFs and `calibration/` (not a subject) are `no-match`.

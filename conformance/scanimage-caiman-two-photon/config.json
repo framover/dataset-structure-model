@@ -10,7 +10,7 @@
   "metadataDefinitions": {
     "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^m\\d{4}$" } },
     "base_name": { "name": "base_name", "description": "The file base name typed into ScanImage", "dataType": "string", "ofEntity": "acquisition", "validation": { "pattern": "^[A-Za-z0-9-]+$" } },
-    "acquisition_number": { "name": "acquisition_number", "description": "The five-digit acquisition counter, kept as text so that it round-trips into folder names", "dataType": "string", "ofEntity": "acquisition", "validation": { "pattern": "^\\d{5}$" } },
+    "acquisition_number": { "name": "acquisition_number", "description": "The acquisition counter, written zero-filled to five digits in file and folder names", "dataType": "integer", "ofEntity": "acquisition" },
     "acquisition_date": { "name": "acquisition_date", "dataType": "date", "ofEntity": "acquisition" }
   },
   "dataLocations": [
@@ -34,7 +34,7 @@
             "fileSystemType": "file",
             "matchPattern": "^[A-Za-z0-9-]+_\\d{5}_\\d{5}\\.tif$",
             "filePatterns": [
-              { "name": "tiff_series", "pattern": "^{base_name}_{acquisition_number}_\\d{5}\\.tif$", "isRequired": true, "cardinality": "many" }
+              { "name": "tiff_series", "pattern": "^{base_name}_{acquisition_number:05d}_\\d{5}\\.tif$", "isRequired": true, "cardinality": "many" }
             ]
           }
         ],
@@ -64,11 +64,11 @@
           {
             "name": "acquisitions",
             "entityType": "acquisition",
-            "pathComponentTemplate": "{base_name}_{acquisition_number}",
+            "pathComponentTemplate": "{base_name}_{acquisition_number:05d}",
             "filePatterns": [
               { "name": "memmap_c", "pattern": "^memmap__d1_\\d+_d2_\\d+_d3_\\d+_order_C_frames_\\d+_\\.mmap$", "cardinality": "one" },
-              { "name": "memmap_rigid", "pattern": "^{base_name}_{acquisition_number}_rig__d1_\\d+_d2_\\d+_d3_\\d+_order_F_frames_\\d+_\\.mmap$", "cardinality": "one" },
-              { "name": "results", "pattern": "^{base_name}_{acquisition_number}_results\\.hdf5$", "isRequired": true, "cardinality": "one" }
+              { "name": "memmap_rigid", "pattern": "^{base_name}_{acquisition_number:05d}_rig__d1_\\d+_d2_\\d+_d3_\\d+_order_F_frames_\\d+_\\.mmap$", "cardinality": "one" },
+              { "name": "results", "pattern": "^{base_name}_{acquisition_number:05d}_results\\.hdf5$", "isRequired": true, "cardinality": "one" }
             ]
           }
         ],
@@ -78,7 +78,7 @@
           { "metadataRef": "acquisition_number", "extraction": { "method": "regex", "pattern": "_(\\d{5})$", "entityLayoutLevel": "acquisitions" } },
           { "metadataRef": "acquisition_date", "extraction": { "method": "substring", "pattern": ":", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "dates" } }
         ],
-        "pathTemplate": "{rootPath}/{subject_id}/{acquisition_date}/{base_name}_{acquisition_number}"
+        "pathTemplate": "{rootPath}/{subject_id}/{acquisition_date}/{base_name}_{acquisition_number:05d}"
       }
     }
   ],

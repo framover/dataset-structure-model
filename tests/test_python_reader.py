@@ -11,6 +11,7 @@ from dsm import (Config, ConfigError, ExtractorRegistry, Listing, compare_result
                  validate_config, walk)
 from dsm.cli import main
 from dsm.conformance import FIXTURE_EXTRACTORS, run_case, run_cases
+from dsm.config import format_token
 from dsm.extract import apply_slice, ldml_to_strftime, normalize, parse_temporal
 from dsm.listing import listing_from_dict, root_from_lines
 
@@ -179,3 +180,10 @@ def test_cli_conformance(capsys):
 def test_all_cases_run(capsys):
     results = run_cases(CONFORMANCE_DIR)
     assert {r.name for r in results} == {p.name for p in CONFORMANCE_DIR.iterdir() if p.is_dir()}
+
+
+def test_token_format_zero_fills_integers():
+    assert format_token(7, "05") == "00007"
+    assert format_token("7", "03") == "007"
+    assert format_token(123456, "05") == "123456"  # wider values keep their digits
+    assert format_token(7) == "7" and format_token("00007") == "00007"

@@ -74,7 +74,7 @@ function problems = referenceProblems(doc)
             end
         end
         if isfield(location, "filesystemSource")
-            problems = [problems, filesystemProblems(string(location.identifier), location.filesystemSource, entityTypes, definitionKeys)]; %#ok<AGROW>
+            problems = [problems, filesystemProblems(string(location.identifier), location.filesystemSource, entityTypes, definitions)]; %#ok<AGROW>
         end
     end
 
@@ -97,10 +97,11 @@ function problems = referenceProblems(doc)
     end
 end
 
-function problems = filesystemProblems(locId, source, entityTypes, definitionKeys)
+function problems = filesystemProblems(locId, source, entityTypes, definitions)
     import dsm.internal.asCellOfStructs
     import dsm.internal.getField
 
+    definitionKeys = string(fieldnames(definitions))';
     problems = string.empty(1, 0);
     layout = asCellOfStructs(source.entityLayout);
     levelNames = string(cellfun(@(l) l.name, layout, "UniformOutput", false));
@@ -121,9 +122,12 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
         if string(getField(level, "fileSystemType", "folder")) == "file" && i ~= numel(layout)
             problems(end+1) = sprintf("%s: file level '%s' must be the last level", locId, level.name); %#ok<AGROW>
         end
-        for token = templateTokens(getField(level, "pathComponentTemplate", ""))
-            if ~ismember(token, definitionKeys)
-                problems(end+1) = sprintf("%s: level '%s' template token '%s' is not a metadata field", locId, level.name, token); %#ok<AGROW>
+        [tokens, widths] = dsm.internal.tokenParts(getField(level, "pathComponentTemplate", ""));
+        for t = 1:numel(tokens)
+            if ~ismember(tokens(t), definitionKeys)
+                problems(end+1) = sprintf("%s: level '%s' template token '%s' is not a metadata field", locId, level.name, tokens(t)); %#ok<AGROW>
+            elseif ~isnan(widths(t)) && string(definitions.(tokens(t)).dataType) ~= "integer"
+                problems(end+1) = sprintf("%s: level '%s' template token '%s' has a format, but the field is not an integer", locId, level.name, tokens(t)); %#ok<AGROW>
             end
         end
         patterns = asCellOfStructs(getField(level, "filePatterns", {}));
@@ -132,9 +136,12 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
             if isfield(pattern{1}, "name")
                 names(end+1) = string(pattern{1}.name); %#ok<AGROW>
             end
-            for token = templateTokens(pattern{1}.pattern)
-                if ~ismember(token, definitionKeys)
-                    problems(end+1) = sprintf("%s: filePattern '%s' token '%s' is not a metadata field", locId, pattern{1}.pattern, token); %#ok<AGROW>
+            [tokens, widths] = dsm.internal.tokenParts(pattern{1}.pattern);
+            for t = 1:numel(tokens)
+                if ~ismember(tokens(t), definitionKeys)
+                    problems(end+1) = sprintf("%s: filePattern '%s' token '%s' is not a metadata field", locId, pattern{1}.pattern, tokens(t)); %#ok<AGROW>
+                elseif ~isnan(widths(t)) && string(definitions.(tokens(t)).dataType) ~= "integer"
+                    problems(end+1) = sprintf("%s: filePattern '%s' token '%s' has a format, but the field is not an integer", locId, pattern{1}.pattern, tokens(t)); %#ok<AGROW>
                 end
             end
         end
@@ -171,25 +178,21 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
             problems(end+1) = sprintf("%s: extraction for '%s' level index %d is out of range", locId, ref, levelRef); %#ok<AGROW>
         end
         if string(extraction.method) == "template"
-            tokens = templateTokens(extraction.pattern);
+            [tokens, widths] = dsm.internal.tokenParts(extraction.pattern);
             templates(char(ref)) = tokens;
-            for token = tokens
-                if ~ismember(token, definitionKeys)
-                    problems(end+1) = sprintf("%s: template for '%s' token '%s' is not a metadata field", locId, ref, token); %#ok<AGROW>
+            for t = 1:numel(tokens)
+                if ~ismember(tokens(t), definitionKeys)
+                    problems(end+1) = sprintf("%s: template for '%s' token '%s' is not a metadata field", locId, ref, tokens(t)); %#ok<AGROW>
+                elseif ~isnan(widths(t)) && string(definitions.(tokens(t)).dataType) ~= "integer"
+                    problems(end+1) = sprintf("%s: template for '%s' token '%s' has a format, but the field is not an integer", locId, ref, tokens(t)); %#ok<AGROW>
                 end
-                if token == ref
+                if tokens(t) == ref
                     problems(end+1) = sprintf("%s: template for '%s' references itself", locId, ref); %#ok<AGROW>
                 end
             end
         end
     end
     problems = [problems, templateCycles(locId, templates)];
-end
-
-function tokens = templateTokens(text)
-    found = regexp(char(text), "\{([A-Za-z_][A-Za-z0-9_]*)\}", "tokens");
-    tokens = string(cellfun(@(t) t{1}, found, "UniformOutput", false));
-    tokens = reshape(tokens, 1, []);
 end
 
 function problems = templateCycles(locId, templates)

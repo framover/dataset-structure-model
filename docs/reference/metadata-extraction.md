@@ -51,7 +51,7 @@ MATLAB readers convert (`start+1`, omitted stop → `end`, negative → `end+n+1
 
 ### `template`
 
-`pattern` is a string with `{token}` references to other fields of the same entity or its ancestors, e.g. `"{session_date}_{subject_id}"`. Readers evaluate templates after the fields they reference and reject cycles. This replaces "combine folder names from several levels" rules: extract each part with its own rule, then compose.
+`pattern` is a string with `{token}` references to other fields of the same entity or its ancestors, e.g. `"{session_date}_{subject_id}"`. Readers evaluate templates after the fields they reference and reject cycles. This replaces "combine folder names from several levels" rules: extract each part with its own rule, then compose. A token may carry a format, `{run_number:03d}`, which writes an integer field zero-filled to the given width; see [token formats](entity-layout.md#pathcomponenttemplate).
 
 ### `fixed`
 
@@ -103,4 +103,4 @@ Patterns must behave the same in MATLAB `regexp` and Python `re`. Stay inside th
 - No lookbehind, no possessive or atomic groups, no inline flags other than `(?i)`.
 - Escape literal dots: `\.tif$`, not `.tif$`.
 
-Template tokens `{token}` are substituted before a pattern is used as a regex; braces containing only digits and commas are quantifiers.
+Template tokens `{token}` are substituted before a pattern is used as a regex; braces containing only digits and commas are quantifiers. A token may carry a format, `{name:0Nd}` — zero-fill to `N` digits, integer fields only; this is the whole format grammar.

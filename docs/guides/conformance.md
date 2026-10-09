@@ -80,7 +80,7 @@ A reader passes a case when:
 These are the rules a reader implements; each is exercised by at least one case.
 
 - **Folder entities.** A record's folder path ends with `/`. `files` and `isComplete` are present exactly when the level declares `filePatterns`; candidates for `files` are the direct children of the folder. Everything inside an innermost entity folder — including subfolders and `additionalFolders` — is covered by the entity, whether or not a pattern matches it.
-- **File entities.** At a `file` level, an entity's `paths` are every file at that level whose extracted identity is the entity's, whether or not a pattern matches it; `files` are the named-pattern matches among them. `{token}` references in patterns are replaced by the regex-escaped identity value before matching.
+- **File entities.** At a `file` level, an entity's `paths` are every file at that level whose extracted identity is the entity's, whether or not a pattern matches it; `files` are the named-pattern matches among them. `{token}` references in patterns are replaced by the regex-escaped identity value before matching; a token with a format `{token:0Nd}` substitutes the integer zero-filled to `N` digits, in file patterns and `template` rules alike.
 - **Structural levels** are walked and readable by extraction rules but never appear in `parents`.
 - **Ancestors inferred from descendants** — a subject whose id is read from session names in a location without subject folders — get a record with `locations: []`. An ancestor that has a folder somewhere lists only those locations. Every field of the ancestor's type that the inferring paths yield attaches to it, not only its identity: a subject's sex read from its session names lands on the subject record.
 - **`metadata`** is the union of the entity's own fields across every path it was read from — its own paths where it has a level, and the descendant paths it was inferred from where it has none — plus the identity fields of its entity-typed ancestors (not their other fields). A field with a rule that matched nothing on any of those paths takes the definition's `defaultValue`; without one it is absent and the record carries `extraction-failed`. A field with no rule in any visited location is absent without an issue.
@@ -88,7 +88,7 @@ These are the rules a reader implements; each is exercised by at least one case.
 - **`cardinality-violation`**: a `cardinality: one` pattern matched several files; all are reported. **`missing-required-file`**: an `isRequired` pattern matched none; `isComplete` is `false`.
 - **`metadata-conflict`**: the paths an entity was read from disagree on a field's value — two locations, or two descendants that infer the same ancestor. The reader keeps the first value in walk order (locations in listing order, entries sorted) and reports the conflict.
 - **`unresolved-extractor`**: a `function` key the reader has not registered; the field is absent.
-- **Derived `matchPattern`**: when a level has only `pathComponentTemplate`, `{token}` becomes the referenced definition's `validation.pattern` (without its own `^`/`$`) or `[^/\\]+`; literal text is escaped; the result is anchored.
+- **Derived `matchPattern`**: when a level has only `pathComponentTemplate`, `{token}` becomes the referenced definition's `validation.pattern` (without its own `^`/`$`) or `[^/\\]+`, and a token with a format `{token:0Nd}` becomes `\d{N,}`; literal text is escaped; the result is anchored.
 - **Level references** in extraction rules may be a name, a 0-based index, or `null` for the whole relative path (no trailing slash).
 
 ## Cases
@@ -119,7 +119,7 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `spikeglx-folder-per-probe` | SpikeGLX, folder per probe | composite gate identity, tokens from parent and own identity, per-trigger series, nidq files at the gate level (G2) |
 | `suite2p-output-planes` | suite2p output | fixed level between entities, `combined/` excluded, seven fixed-name kinds, files inside a structural folder (G7) |
 | `deeplabcut-project` | DeepLabCut project | one tree as two locations (the G5 workaround), file group in one and folder in the other, one regex for two naming forms (G8) |
-| `scanimage-caiman-two-photon` | ScanImage TIFF series, CaImAn outputs | file-level ↔ folder-level matching on a three-field identity, two environments, subject under dates flagged `duplicate-entity` (G3), zero-padded counter as text (G9), metadata in member names (G10) |
+| `scanimage-caiman-two-photon` | ScanImage TIFF series, CaImAn outputs | file-level ↔ folder-level matching on a three-field identity, two environments, subject under dates flagged `duplicate-entity` (G3), a zero-filled counter kept as an integer through the `{token:05d}` format, metadata in member names (G10) |
 | `zenodo-adhoc-date-folders` | ad-hoc Zenodo deposit | single entity type, date level on top, `enum` and integer from one name, exactly-three planes not expressible (G11) |
 | `zenodo-adhoc-flat-mat` | ad-hoc Zenodo deposit | one file level at the root, an entity split over numbered files |
 | `nansen-project-layout` | NANSEN data locations | two roots in one location, raw timestamp folders matched to generated `subject-`/`session-` folders, MATLAB index ranges as slices, variables in subfolders not describable (G12) |
