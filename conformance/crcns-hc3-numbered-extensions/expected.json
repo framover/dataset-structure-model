@@ -576,54 +576,6 @@
     {
       "dataLocationIdentifier": "hc3",
       "rootStoragePathIdentifier": "local",
-      "path": "ec013.15/ec013.156/ec013.156.eeg",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec013.15/ec013.156/ec013.156.whl",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec013.15/ec013.156/ec013.156.xml",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec013.15/ec013.157/ec013.157.eeg",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec013.15/ec013.157/ec013.157.xml",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec014.29/ec014.468/ec014.468.eeg",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec014.29/ec014.468/ec014.468.whl",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
-      "path": "ec014.29/ec014.468/ec014.468.xml",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "hc3",
-      "rootStoragePathIdentifier": "local",
       "path": "hc3-metadata-tables/",
       "reason": "no-match"
     }

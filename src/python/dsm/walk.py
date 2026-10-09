@@ -68,6 +68,10 @@ class Walker:
             self._roots.append((root.data_location, root.root_storage_path, len(root.entries)))
             self._walk_root(root.data_location, root.root_storage_path, Tree(root.entries))
         records = self._finalize()
+        # a file listed in a folder entity's files belongs to that entity and is never unmatched
+        claimed = {(loc.data_location, loc.root_storage_path, f) for r in records for loc in r.locations
+                   if loc.file_system_type == "folder" and loc.files for files in loc.files.values() for f in files}
+        self._unmatched = [u for u in self._unmatched if (u.data_location, u.root_storage_path, u.path) not in claimed]
         unresolved = set().union(*(e.unresolved for e in self._entities.values())) if self._entities else set()
         return WalkResult(records=records,
                           unmatched=sorted(self._unmatched, key=lambda u: (u.data_location, u.root_storage_path, u.path)),
@@ -82,12 +86,14 @@ class Walker:
     def _unmatch(self, loc_id, root_id, path, reason, detail=""):
         self._unmatched.append(Unmatched(loc_id, root_id, path, reason, detail))
 
-    def _visit(self, loc_id, root_id, tree, level_index, parent_path, ancestors: Parents):
+    def _visit(self, loc_id, root_id, tree, level_index, parent_path, ancestors: Parents, claimed=frozenset()):
         layout = self.config.layout(loc_id)
         level = layout[level_index]
         last = level_index == len(layout) - 1
         expects_dir = level.get("fileSystemType", "folder") == "folder"
         for entry in tree.children(parent_path):
+            if entry in claimed:  # the enclosing entity's filePatterns claimed it; it is not offered to this level
+                continue
             name = basename(entry)
             if self.config.is_excluded(level, name):
                 self._unmatch(loc_id, root_id, entry, "excluded", f"matches an excludePattern of level '{level['name']}'")
@@ -105,14 +111,38 @@ class Walker:
                 if not last:
                     self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors)
                 continue
-            entity = self._resolve_entity(loc_id, root_id, entry, entity_type, ancestors,
-                                          "folder" if expects_dir else "file")
+            entity, values = self._resolve_entity(loc_id, root_id, entry, entity_type, ancestors,
+                                                  "folder" if expects_dir else "file")
             if entity is None:
                 self._unmatch(loc_id, root_id, entry, "no-match",
                               f"identity of {entity_type} could not be extracted from '{name}'")
                 continue
             if expects_dir and not last:
-                self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors + [(entity_type, entity.identity)])
+                self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors + [(entity_type, entity.identity)],
+                            self._claimed_files(level, entry, tree, entity, values))
+
+    def _claimed_files(self, level, folder, tree, entity, values) -> frozenset:
+        """Direct child files of an entity folder that its filePatterns match.
+
+        They belong to the entity and are not offered to the next level. Tokens are substituted
+        from the same values _build_record will use for this path: the parents' identities, the
+        entity's own fields, and a definition's defaultValue where a field yielded nothing.
+        """
+        patterns = level.get("filePatterns")
+        if not patterns:
+            return frozenset()
+        metadata = {k: v for _, identity in entity.parents for k, v in identity.items()}
+        metadata.update(entity.identity)
+        for field, value in values.items():
+            if value is not None:
+                metadata[field] = value
+            elif "defaultValue" in self.config.definitions.get(field, {}):
+                metadata[field] = self.config.definitions[field]["defaultValue"]
+        claimed = set()
+        for pattern in patterns:
+            regex = TOKEN.sub(lambda m: re.escape(str(metadata.get(m.group(1), ""))), pattern["pattern"])
+            claimed |= {e for e in tree.children(folder) if not is_dir(e) and re.search(regex, basename(e))}
+        return frozenset(claimed)
 
     def _resolve_entity(self, loc_id, root_id, rel_path, entity_type, ancestors: Parents, file_system_type):
         root_path = self.config.root_storage_path(loc_id, root_id)["path"].rstrip("/\\")
@@ -141,7 +171,7 @@ class Walker:
         values, unresolved = evaluate_fields(self.config, loc_id, rel_path, entity_type, seed, self.registry, full_path)
         keys = self.config.identity_keys(entity_type)
         if any(values.get(k) is None for k in keys):
-            return None
+            return None, None
         identity = {k: values[k] for k in keys}
 
         entity = self._get_or_create(entity_type, identity, parents)
@@ -155,7 +185,7 @@ class Walker:
             ancestor_values, ancestor_unresolved = inferred_values[ancestor_type]
             ancestor.observations.append((loc_id, ancestor_values))
             ancestor.unresolved |= ancestor_unresolved
-        return entity
+        return entity, values
 
     def _get_or_create(self, entity_type, identity, parents) -> _Entity:
         candidate = _Entity(entity_type, identity, parents)

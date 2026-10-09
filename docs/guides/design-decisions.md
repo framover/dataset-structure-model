@@ -86,6 +86,12 @@ It records which locations fed this one. How the processing ran belongs to the p
 
 ---
 
+## A file an entity's `filePatterns` claim is that entity's
+
+A folder entity that is not innermost shares its folder with the next level, so a file in it can be judged twice: by the entity's own `filePatterns` and by the next level's `matchPattern`. `files` already decides `isComplete`, so it decides ownership too: a file that matches a pattern of the entity whose folder it is in belongs to that entity and is not offered to the next level. Readers evaluate the claim while walking, with the same substituted values the record will use, and remove any claimed path from `unmatched` after the walk, so the two cannot disagree. The alternative — patterns describe but do not claim — would leave `unmatched` listing a session's own required file, and a coverage report nobody could read.
+
+---
+
 ## `fileGroupingPattern` stays simple
 
 A pattern, an optional name, `isRequired`, `cardinality`. A richer *file class* with role, MIME format, co-occurrence `groupKey` and per-file extractors was drafted and withdrawn: no reader consumed it, and roles can be expressed by `name` and `description`. Co-occurrence groups may return when a reader needs them.

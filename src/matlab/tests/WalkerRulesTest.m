@@ -52,6 +52,27 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), "m110/20250523_baseline/raw/");
         end
 
+        function outerEntityFilePatternsClaimFilesBeforeTheNextLevel(testCase)
+            doc = minimalConfigDoc();
+            source = doc.dataLocations.filesystemSource;
+            layout = num2cell(source.entityLayout');
+            layout{1}.filePatterns = {struct("name", "notes", "pattern", '^notes\.txt$'), ...
+                                      struct("name", "log", "pattern", '^{subject_id}_log\.txt$')};
+            % a file level below whose pattern and identity rule would also accept the subject's files
+            layout{2} = struct("name", "sessions", "entityType", "session", "fileSystemType", "file", "matchPattern", '\.txt$');
+            source.entityLayout = layout;
+            source.metadataMapping(2).extraction.pattern = '^(.+)\.txt$';
+            doc.dataLocations.filesystemSource = source;
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a.txt', 'm110/m110_log.txt', 'm110/notes.txt', 'm110/readme.md'});
+            subject = result.Records{cellfun(@(r) r.entityType == "subject", result.Records)};
+            testCase.verifyEqual(string(subject.locations{1}.files("notes")), "m110/notes.txt");
+            testCase.verifyEqual(string(subject.locations{1}.files("log")), "m110/m110_log.txt");
+            % the claimed files are neither sessions nor unmatched; the unclaimed file is still no-match
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            testCase.verifyEqual(cellfun(@(r) r.identity.session_id, sessions), "20250523_a");
+            testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), "m110/readme.md");
+        end
+
         function recordsAreOrderedByDeclarationThenKey(testCase)
             result = walkEntries(minimalConfigDoc(), {'m220/', 'm220/20250523_b/', 'm110/', 'm110/20250523_a/'});
             labels = cellfun(@(r) r.entityType + ":" + strjoin(string(struct2cell(r.identity))', ","), result.Records);
