@@ -1,4 +1,5 @@
 """Schema validation and the cross-reference rules JSON Schema cannot express."""
+import copy
 import json
 import pathlib
 from typing import List
@@ -10,6 +11,8 @@ from .errors import ConfigError
 from .schemas import CONFIG_SCHEMA, load_schema
 
 DRAFT_SOURCE_TYPES = {"spreadsheet", "database", "api"}
+OVERLAY_KEYS = {"preferences", "rootStoragePaths"}
+ROOT_PATH_ENTRY_KEYS = ("dataLocationIdentifier", "rootStoragePathIdentifier", "path")
 
 
 def schema_errors(doc: dict, schema_name: str = CONFIG_SCHEMA) -> List[str]:
@@ -179,8 +182,44 @@ def validate_config(doc: dict, reject_draft: bool = True) -> None:
             raise ConfigError("unsupported-draft", drafts)
 
 
+def apply_overlay(doc: dict, local: dict) -> dict:
+    """Merge a '<name>.local.json' overlay into a config document; a copy is returned.
+
+    The overlay holds `preferences`, which replace the config's, and `rootStoragePaths` entries
+    {dataLocationIdentifier, rootStoragePathIdentifier, path}, which set the path of the root they
+    name. Raises ConfigError 'schema-validation' for a malformed overlay and 'reference-integrity'
+    for an entry that names no root path of the config.
+    """
+    if not isinstance(local, dict):
+        raise ConfigError("schema-validation", ["the overlay must be a JSON object"])
+    unknown = sorted(set(local) - OVERLAY_KEYS)
+    if unknown:
+        raise ConfigError("schema-validation", [f"overlay: unknown key(s) {', '.join(unknown)}; an overlay holds preferences and rootStoragePaths only"])
+    entries = local.get("rootStoragePaths", [])
+    if not isinstance(entries, list) or any(
+            not isinstance(e, dict) or any(not isinstance(e.get(k), str) for k in ROOT_PATH_ENTRY_KEYS) for e in entries):
+        raise ConfigError("schema-validation", ["overlay: rootStoragePaths must be a list of objects with the strings "
+                                                "dataLocationIdentifier, rootStoragePathIdentifier and path"])
+    doc = copy.deepcopy(doc)
+    if "preferences" in local:
+        doc["preferences"] = local["preferences"]
+    problems = []
+    for entry in entries:
+        targets = [rp for loc in doc.get("dataLocations", []) if loc["identifier"] == entry["dataLocationIdentifier"]
+                   for rp in loc.get("filesystemSource", {}).get("rootStoragePaths", [])
+                   if rp["identifier"] == entry["rootStoragePathIdentifier"]]
+        if not targets:
+            problems.append(f"overlay rootStoragePaths entry '{entry['dataLocationIdentifier']}/{entry['rootStoragePathIdentifier']}' "
+                            f"names no root path of the config")
+        for rp in targets:
+            rp["path"] = entry["path"]
+    if problems:
+        raise ConfigError("reference-integrity", problems)
+    return doc
+
+
 def load_config(path, reject_draft: bool = True) -> Config:
-    """Load, validate, and apply a sibling '<name>.local.json' overlay's preferences."""
+    """Load, validate, and apply a sibling '<name>.local.json' overlay: its preferences and root paths."""
     path = pathlib.Path(path)
     with path.open(encoding="utf-8") as f:
         doc = json.load(f)
@@ -189,6 +228,6 @@ def load_config(path, reject_draft: bool = True) -> Config:
     if overlay.is_file():
         with overlay.open(encoding="utf-8") as f:
             local = json.load(f)
-        if "preferences" in local:
-            doc = dict(doc, preferences=local["preferences"])
+        doc = apply_overlay(doc, local)
+        validate_config(doc, reject_draft=reject_draft)  # the overlay's preferences and paths must satisfy the schema too
     return Config(doc, source=str(path))

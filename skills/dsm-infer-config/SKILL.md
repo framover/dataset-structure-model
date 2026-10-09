@@ -200,6 +200,7 @@ Do not ask about layout, patterns or extraction methods. Those you verified in S
 - **Never emit DRAFT parts of the schema**: `sourceType` other than `filesystem` (`spreadsheet`, `database`, `api`), the `sidecar` method, and the `filePattern`, `contentPath` and `fileFormat` extraction fields.
 - **Never emit `pathTemplate`.** It describes how to *write* new paths, and a read-only listing cannot confirm a write convention. `pathComponentTemplate` is fine where a literal prefix is plainly there (`subject-{subject_id}`).
 - **Never emit `preferences`.** It is per-machine and belongs in a `<config>.local.json` overlay.
+- **Leave `path` out of a root path when no path holds for every user of the dataset** (a published deposit, a bucket). Whoever walks a real copy supplies it in the overlay under `rootStoragePaths`; the listing names the root by identifier, so a dry run needs no path.
 - **Every object is strict** (`additionalProperties: false`). A key you half-remember is a validation error. There is no `isAvailable`, no `role`, no `groupKey`, no `metadataExtractors`.
 - **`metadataDefinitions` is an object** keyed by identifier; `metadataMapping` and `entityTypes` are arrays.
 - **Say what you sampled.** If you surveyed rather than inspected every leaf, put that in the location's `description`.

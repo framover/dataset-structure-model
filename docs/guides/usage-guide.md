@@ -132,7 +132,7 @@ A [data location](../reference/data-locations.md) is one logical collection of d
 
 ### Root storage paths
 
-One entry per computing environment; `preferences.environmentIdentifier` selects one at runtime.
+One entry per computing environment; `preferences.environmentIdentifier` selects one at runtime. A config shipped with a published dataset leaves `path` out, since no path holds for every user; each user supplies it in the overlay described under [preferences](#preferences).
 
 ```json
 "rootStoragePaths": [
@@ -266,7 +266,7 @@ Two sessions from different locations are the same session when their `session_i
 }
 ```
 
-These describe a machine, not the dataset. Leave them out of a shared config and put them in a git-ignored `<config>.local.json` next to it; readers prefer the overlay. See [preferences](../reference/preferences.md).
+These describe a machine, not the dataset. Leave them out of a shared config and put them, with this machine's root paths, in a git-ignored `<config>.local.json` next to it; readers prefer the overlay. See [preferences](../reference/preferences.md).
 
 ---
 

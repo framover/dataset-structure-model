@@ -104,6 +104,33 @@ classdef ValidatorTest < matlab.unittest.TestCase
             config = dsm.loadConfig(fullfile(folder, "ds.json"));
             testCase.verifyEqual(config.preferences().defaultDataLocationIdentifier, 'raw');
         end
+
+        function localOverlaySuppliesRootPaths(testCase)
+            folder = testCase.applyFixture(matlab.unittest.fixtures.TemporaryFolderFixture).Folder;
+            doc = minimalConfigDoc();
+            doc.dataLocations.filesystemSource.rootStoragePaths = rmfield(doc.dataLocations.filesystemSource.rootStoragePaths, "path");
+            writeJson(fullfile(folder, "ds.json"), doc);
+            writeJson(fullfile(folder, "ds.local.json"), struct("rootStoragePaths", {{struct( ...
+                "dataLocationIdentifier", "raw", "rootStoragePathIdentifier", "main", "path", "/Volumes/data/raw")}}));
+            config = dsm.loadConfig(fullfile(folder, "ds.json"));
+            testCase.verifyEqual(config.rootStoragePath("raw", "main").path, '/Volumes/data/raw');
+            testCase.verifyEmpty(fieldnames(config.preferences()));
+        end
+
+        function localOverlayIsValidated(testCase)
+            folder = testCase.applyFixture(matlab.unittest.fixtures.TemporaryFolderFixture).Folder;
+            writeJson(fullfile(folder, "ds.json"), minimalConfigDoc());
+            overlays = { ...
+                struct("rootStoragePaths", {{struct("dataLocationIdentifier", "raw", "rootStoragePathIdentifier", "nope", "path", "/x")}}), "dsm:config:referenceIntegrity"; ...
+                struct("rootStoragePaths", {{struct("dataLocationIdentifier", "raw", "path", "/x")}}), "dsm:config:schemaValidation"; ...
+                struct("rootStoragePaths", "/x"), "dsm:config:schemaValidation"; ...
+                struct("paths", {{}}), "dsm:config:schemaValidation"; ...
+                struct("preferences", struct("environmentIdentifier", "nowhere")), "dsm:config:referenceIntegrity"};
+            for i = 1:size(overlays, 1)
+                writeJson(fullfile(folder, "ds.local.json"), overlays{i, 1});
+                testCase.verifyError(@() dsm.loadConfig(fullfile(folder, "ds.json")), overlays{i, 2});
+            end
+        end
     end
 end
 

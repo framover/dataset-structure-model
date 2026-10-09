@@ -179,3 +179,45 @@ def test_cli_conformance(capsys):
 def test_all_cases_run(capsys):
     results = run_cases(CONFORMANCE_DIR)
     assert {r.name for r in results} == {p.name for p in CONFORMANCE_DIR.iterdir() if p.is_dir()}
+
+
+def test_local_overlay_supplies_root_paths(tmp_path):
+    doc = minimal_config()
+    del doc["dataLocations"][0]["filesystemSource"]["rootStoragePaths"][0]["path"]
+    (tmp_path / "ds.json").write_text(json.dumps(doc))
+    (tmp_path / "ds.local.json").write_text(json.dumps({"rootStoragePaths": [
+        {"dataLocationIdentifier": "raw", "rootStoragePathIdentifier": "main", "path": "/Volumes/data/raw"}]}))
+    config = load_config(tmp_path / "ds.json")
+    assert config.root_storage_path("raw", "main")["path"] == "/Volumes/data/raw"
+    assert config.preferences == {}
+
+
+@pytest.mark.parametrize("overlay,code", [
+    ({"rootStoragePaths": [{"dataLocationIdentifier": "raw", "rootStoragePathIdentifier": "nope", "path": "/x"}]}, "reference-integrity"),
+    ({"rootStoragePaths": [{"dataLocationIdentifier": "raw", "path": "/x"}]}, "schema-validation"),
+    ({"rootStoragePaths": "/x"}, "schema-validation"),
+    ({"paths": []}, "schema-validation"),
+    ({"preferences": {"environmentIdentifier": "nowhere"}}, "reference-integrity"),
+])
+def test_local_overlay_is_validated(tmp_path, overlay, code):
+    (tmp_path / "ds.json").write_text(json.dumps(minimal_config()))
+    (tmp_path / "ds.local.json").write_text(json.dumps(overlay))
+    with pytest.raises(ConfigError) as e:
+        load_config(tmp_path / "ds.json")
+    assert e.value.code == code
+
+
+def test_root_path_is_optional_for_walking():
+    doc = minimal_config()
+    del doc["dataLocations"][0]["filesystemSource"]["rootStoragePaths"][0]["path"]
+    entries = ["m110/", "m110/20250523_a/"]
+    result = walk(Config(doc), Listing([listing.Root("raw", "main", entries)]))
+    assert [r.entity_type for r in result.records] == ["subject", "session"] and result.warnings == []
+    # only a function extractor sees a real path: without one the walk warns once and passes the relative path
+    doc["metadataDefinitions"]["note"] = {"name": "note", "dataType": "string", "ofEntity": "session"}
+    doc["dataLocations"][0]["filesystemSource"]["metadataMapping"].append(
+        {"metadataRef": "note", "extraction": {"method": "function", "extractorFunction": "path_as_note"}})
+    registry = ExtractorRegistry({"path_as_note": lambda full_path, level_name, loc_id: full_path})
+    result = walk(Config(doc), Listing([listing.Root("raw", "main", entries)]), registry)
+    assert result.records[1].metadata["note"] == "m110/20250523_a"
+    assert len(result.warnings) == 1 and "raw/main has no path" in result.warnings[0]

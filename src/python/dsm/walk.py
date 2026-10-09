@@ -65,6 +65,10 @@ class Walker:
                 self._warnings.append(
                     f"{root.data_location}/{root.root_storage_path} is for environment "
                     f"'{rp['environment']}', listing is for '{environment}'")
+            if "path" not in rp and self._needs_root_path(root.data_location):
+                self._warnings.append(
+                    f"{root.data_location}/{root.root_storage_path} has no path in the config or its overlay; "
+                    f"function extractors receive paths relative to the root")
             self._roots.append((root.data_location, root.root_storage_path, len(root.entries)))
             self._walk_root(root.data_location, root.root_storage_path, Tree(root.entries))
         records = self._finalize()
@@ -73,6 +77,10 @@ class Walker:
                           unmatched=sorted(self._unmatched, key=lambda u: (u.data_location, u.root_storage_path, u.path)),
                           environment=environment, roots=self._roots,
                           unresolved_extractors=unresolved, warnings=self._warnings)
+
+    def _needs_root_path(self, loc_id) -> bool:
+        """Only function extractors see a real path; walking a listing needs none."""
+        return any(item["extraction"]["method"] == "function" for item in self.config.mapping(loc_id))
 
     # ----- traversal
     def _walk_root(self, loc_id, root_id, tree):
@@ -115,8 +123,9 @@ class Walker:
                 self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors + [(entity_type, entity.identity)])
 
     def _resolve_entity(self, loc_id, root_id, rel_path, entity_type, ancestors: Parents, file_system_type):
-        root_path = self.config.root_storage_path(loc_id, root_id)["path"].rstrip("/\\")
-        full_path = root_path + "/" + rel_path.rstrip("/")
+        root_path = self.config.root_storage_path(loc_id, root_id).get("path")
+        relative = rel_path.rstrip("/")
+        full_path = root_path.rstrip("/\\") + "/" + relative if root_path else relative
         seed = {k: v for _, identity in ancestors for k, v in identity.items()}
 
         # ancestors that have no level of their own in this location are read from this path;

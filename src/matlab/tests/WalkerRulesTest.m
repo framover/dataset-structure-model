@@ -66,6 +66,25 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyTrue(contains(text, "session: 1"));
             testCase.verifyTrue(contains(text, "Unmatched: 1"));
         end
+
+        function rootPathIsOptionalForWalking(testCase)
+            doc = minimalConfigDoc();
+            doc.dataLocations.filesystemSource.rootStoragePaths = rmfield(doc.dataLocations.filesystemSource.rootStoragePaths, "path");
+            entries = {'m110/', 'm110/20250523_a/'};
+            result = walkEntries(doc, entries);
+            testCase.verifyEqual(cellfun(@(r) r.entityType, result.Records), ["subject", "session"]);
+            testCase.verifyEmpty(result.Warnings);
+            % only a function extractor sees a real path: without one the walk warns once and passes the relative path
+            doc.metadataDefinitions.note = struct("name", "note", "dataType", "string", "ofEntity", "session");
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            mapping{end+1} = struct("metadataRef", "note", "extraction", struct("method", "function", "extractorFunction", "path_as_note"));
+            doc.dataLocations.filesystemSource.metadataMapping = mapping;
+            registry = dsm.ExtractorRegistry(struct("path_as_note", @(fullPath, levelName, locId) string(fullPath)));
+            result = dsm.walk(dsm.Config(doc), dsm.Listing({dsm.Listing.makeRoot("raw", "main", entries)}), registry);
+            testCase.verifyEqual(result.Records{2}.metadata.note, "m110/20250523_a");
+            testCase.verifyEqual(numel(result.Warnings), 1);
+            testCase.verifyTrue(contains(result.Warnings, "raw/main has no path"));
+        end
     end
 end
 
