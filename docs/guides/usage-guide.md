@@ -213,6 +213,7 @@ The `{session_id}` token is replaced by the exact identity of the entity being r
 | `name` | Reported in entity records under this name |
 | `isRequired` | At least one match must exist for the entity to be complete |
 | `cardinality` | `one` or `many` (a numbered series) |
+| `minCount`, `maxCount` | Bounds on the number of matches; `minCount: 3, maxCount: 3` says exactly three |
 
 Readers report matched files per named pattern and flag incomplete entities. This is where a tool finds "the raw movie of session X" without knowing the naming convention.
 
