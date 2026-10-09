@@ -132,7 +132,7 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `ebrains-marchetti-2018-*` (six cases) | EBRAINS datasets that are folders of one bucket | fixed dataset folder, subject and sample folders, two required kinds |
 | `ebrains-bos-2019` | EBRAINS folder of a shared bucket | the session date only in the member file's name (G10), so the file is the session below a structural folder |
 | `ebrains-salgueiro-pereira-2020` | EBRAINS flat files in group folders | subject fields from a structural level, `defaultValue` on a non-identity field |
-| `ebrains-kanter-2025` | EBRAINS NWB per session | two identity tokens in one pattern, a month name in the date (G19) |
+| `ebrains-kanter-2025` | EBRAINS NWB per session | two identity tokens in one pattern, a month name in the date typed with `MMM` (G19) |
 | `ebrains-blackstad-2024` | EBRAINS Axona and Neuralynx sessions | twelve file kinds, requirements that differ by recording system (G20), listing reduced by name shape |
 | `ebrains-murris-2021` | EBRAINS paper supplement | four locations inside one tree, composite identity with a `fixed` part, `duplicate-entity` from a structural level above the subject (G3), folders the model cannot place (G21, G22) |
 

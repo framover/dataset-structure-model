@@ -159,6 +159,47 @@ def name_matches(level, name, definitions):
 # --------------------------------------------------------------------------- extraction
 
 LDML_TOKENS = [("yyyy", "%Y"), ("yy", "%y"), ("MM", "%m"), ("dd", "%d"), ("HH", "%H"), ("mm", "%M"), ("ss", "%S")]
+MONTH_ABBREVIATIONS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+_TOKEN_WIDTHS = {"yyyy": 4, "MMM": 3, "yy": 2, "MM": 2, "dd": 2, "HH": 2, "mm": 2, "ss": 2}
+
+
+def months_as_numbers(text, fmt):
+    """Replace each English month abbreviation an `MMM` token denotes with its two-digit number.
+
+    Every portable token has a fixed width, so the abbreviation's position in the text follows from
+    the format. Resolving the name here, against a fixed English table and without regard to case,
+    keeps strptime's locale-dependent `%b` out of the readers; MATLAB's reader passes Locale en_US
+    for the same reason. An unknown name raises ValueError, which coerce() turns into no value.
+    """
+    if "MMM" not in fmt:
+        return text, fmt
+    out, i, pos = "", 0, 0
+    while i < len(fmt):
+        if fmt[i] == "'":
+            end = fmt.index("'", i + 1)
+            out += fmt[i:end + 1]
+            pos += end - i - 1
+            i = end + 1
+            continue
+        for token, width in _TOKEN_WIDTHS.items():
+            if fmt.startswith(token, i):
+                if token == "MMM":
+                    name = text[pos:pos + 3].capitalize()
+                    if name not in MONTH_ABBREVIATIONS:
+                        raise ValueError(f"{text[pos:pos + 3]!r} is not an English month abbreviation")
+                    text = text[:pos] + f"{MONTH_ABBREVIATIONS.index(name) + 1:02d}" + text[pos + 3:]
+                    out += "MM"
+                    pos += 2
+                else:
+                    out += token
+                    pos += width
+                i += len(token)
+                break
+        else:
+            out += fmt[i]
+            pos += 1
+            i += 1
+    return text, out
 
 
 def ldml_to_strftime(fmt):
@@ -181,6 +222,7 @@ def ldml_to_strftime(fmt):
 
 
 def parse_temporal(text, fmt, data_type):
+    text, fmt = months_as_numbers(text, fmt)
     parsed = dt.datetime.strptime(text, ldml_to_strftime(fmt))
     if data_type == "date":
         return parsed.date().isoformat()

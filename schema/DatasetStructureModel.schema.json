@@ -542,7 +542,7 @@
         },
         "valueFormat": {
           "type": "string",
-          "description": "For date, time and datetime fields: the pattern the extracted text is parsed with, in Unicode LDML notation as used by MATLAB datetime and Java (e.g. 'yyyyMMdd', 'yyyy_MM_dd', 'HH_mm_ss', 'yyMMdd'). Readers support the tokens yyyy, yy, MM, dd, HH, mm and ss plus single-quoted literals; other tokens are not portable. A two-digit year (yy) is placed in 1969-2068, so 69 is 1969 and 68 is 2068."
+          "description": "For date, time and datetime fields: the pattern the extracted text is parsed with, in Unicode LDML notation as used by MATLAB datetime and Java (e.g. 'yyyyMMdd', 'yyyy_MM_dd', 'HH_mm_ss', 'yyMMdd'). Readers support the tokens yyyy, yy, MMM, MM, dd, HH, mm and ss plus single-quoted literals; other tokens are not portable. MMM is an English three-letter month abbreviation (Jan to Dec), matched without regard to case and independent of the machine's locale. A two-digit year (yy) is placed in 1969-2068, so 69 is 1969 and 68 is 2068."
         },
         "extractorFunction": {
           "type": "string",

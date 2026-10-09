@@ -139,7 +139,7 @@ Regex must stay portable: **unnamed groups only**, no lookbehind, no inline flag
 
 Two failure modes, equally bad. **Over-fitting**: `^(m110|m220)$` enumerates today's subjects and breaks on the next one - never enumerate observed values. **Under-fitting**: `^.+$` matches the stray folders too, and the noise lands in the tables.
 
-Dates and times take `valueFormat` in **LDML**: `"yyyyMMdd"`, `"yyyy_MM_dd"`, `"HH_mm_ss"`, `"yyMMdd"`. Only the tokens `yyyy yy MM dd HH mm ss` and quoted literals are portable; a two-digit year lands in 1969–2068. Give a date field `dataType: "date"` so the reader emits ISO 8601.
+Dates and times take `valueFormat` in **LDML**: `"yyyyMMdd"`, `"yyyy_MM_dd"`, `"HH_mm_ss"`, `"yyMMdd"`. Only the tokens `yyyy yy MMM MM dd HH mm ss` and quoted literals are portable; `MMM` is an English month abbreviation such as `Nov`, and a two-digit year lands in 1969–2068. Give a date field `dataType: "date"` so the reader emits ISO 8601.
 
 Reference levels by **name**, not by index. `entityLayoutLevel: null` means the whole relative path.
 
