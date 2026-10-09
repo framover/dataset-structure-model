@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One scanning day of one monkey", "identifierRef": "day_number" },
+    { "name": "run", "description": "One functional run of a scanning day: the NIfTI and its sidecar in funct/ and the SPM timing file in timing/", "identifierRef": "run_number" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany" },
+    { "sourceEntity": "session", "targetEntity": "run", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^m\\d+$" } },
+    "day_number": { "name": "day_number", "dataType": "integer", "ofEntity": "session" },
+    "run_number": { "name": "run_number", "dataType": "integer", "ofEntity": "run" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "fmri",
+      "displayName": "fMRI scanning days, files split by kind",
+      "description": "<monkey>/d<N>/ holds funct/ with the runs as NIfTI and JSON, timing/ with one SPM timing file per run, struct/ with the day's anatomical scan, and logs/, which may be empty.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/fmri" }
+        ],
+        "entityLayout": [
+          { "name": "monkeys", "entityType": "subject", "matchPattern": "^m\\d+$" },
+          { "name": "days", "entityType": "session", "matchPattern": "^d\\d+$" },
+          { "name": "kinds", "matchPattern": "^(funct|timing|struct|logs)$" },
+          {
+            "name": "run-files",
+            "entityType": "run",
+            "fileSystemType": "file",
+            "matchPattern": "_run_(SPM_)?\\d+\\.(nii\\.gz|json|mat)$",
+            "filePatterns": [
+              { "name": "bold", "pattern": "^{subject_id}_d{day_number}_run_{run_number}\\.nii\\.gz$", "isRequired": true, "cardinality": "one", "description": "The functional run, in funct/" },
+              { "name": "sidecar", "pattern": "^{subject_id}_d{day_number}_run_{run_number}\\.json$", "cardinality": "one", "description": "Acquisition parameters of the run, in funct/" },
+              { "name": "timing", "pattern": "^{subject_id}_d{day_number}_run_SPM_{run_number}\\.mat$", "cardinality": "one", "description": "SPM timing of the run, in timing/" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "monkeys" } },
+          { "metadataRef": "day_number", "extraction": { "method": "regex", "pattern": "^d(\\d+)$", "entityLayoutLevel": "days" } },
+          { "metadataRef": "run_number", "extraction": { "method": "regex", "pattern": "_run_(?:SPM_)?(\\d+)\\.", "entityLayoutLevel": "run-files" } }
+        ]
+      }
+    }
+  ]
+}

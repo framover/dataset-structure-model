@@ -84,11 +84,15 @@ classdef Walker < handle
             items = items(order);
         end
 
-        function visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors)
+        function claimed = visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors)
+        %visit Walk the children of one folder against one level
+        %   claimed says whether anything below the folder is accounted for: an entity resolved at this
+        %   level or deeper, or an innermost structural folder, which covers its contents.
             layout = obj.Config.layout(locId);
             level = layout{levelIndex};
             last = levelIndex == numel(layout);
             expectsDir = string(dsm.internal.getField(level, "fileSystemType", "folder")) == "folder";
+            claimed = false;
             for entry = tree.children(parentPath)
                 name = dsm.internal.pathBase(entry{1});
                 if obj.Config.isExcluded(level, name)
@@ -112,8 +116,20 @@ classdef Walker < handle
                 entityType = string(dsm.internal.getField(level, "entityType", ""));
                 if entityType == ""
                     % structural level: walked, never an entity; an innermost one covers its contents
-                    if ~last
-                        obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, ancestors);
+                    if last
+                        claimed = true;
+                        continue
+                    end
+                    before = numel(obj.Unmatched);
+                    if obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, ancestors)
+                        claimed = true;
+                    else
+                        % nothing below the folder is an entity: the folder is the topmost unmatched entry and
+                        % stands in for whatever its contents were reported as
+                        obj.Unmatched(before+1:end) = [];
+                        obj.unmatch(locId, rootId, entry{1}, "no-match", sprintf( ...
+                            "matches structural level '%s' but holds nothing that matches level '%s'", ...
+                            level.name, layout{levelIndex + 1}.name));
                     end
                     continue
                 end
@@ -128,6 +144,7 @@ classdef Walker < handle
                         sprintf("identity of %s could not be extracted from '%s'", entityType, name));
                     continue
                 end
+                claimed = true;
                 if expectsDir && ~last
                     obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, [ancestors, {{entityType, identity}}]);
                 end

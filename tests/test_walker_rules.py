@@ -63,3 +63,16 @@ def test_records_are_ordered_by_declaration_then_key():
     assert [(r.entity_type, r.identity) for r in result.records] == [
         ("subject", {"subject_id": "m110"}), ("subject", {"subject_id": "m220"}),
         ("session", {"session_id": "a"}), ("session", {"session_id": "b"})]
+
+
+def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
+    doc = minimal_config()
+    layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
+    layout.insert(1, {"name": "years", "matchPattern": "^\\d{4}$"})
+    result = _walk(doc, ["m110/", "m110/2025/", "m110/2025/20250523_a/",
+                         "m110/2024/",                               # empty
+                         "m110/2023/", "m110/2023/notes.txt",        # holds only an entry the next level rejects
+                         "m110/2022/", "m110/2022/20220101_b/", "m110/2022/x.txt"])  # holds an entity: only x.txt is reported
+    assert [(u.path, u.reason) for u in result.unmatched] == [
+        ("m110/2022/x.txt", "no-match"), ("m110/2023/", "no-match"), ("m110/2024/", "no-match")]
+    assert sorted(r.identity["session_id"] for r in result.records if r.entity_type == "session") == ["a", "b"]

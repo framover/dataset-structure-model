@@ -58,7 +58,7 @@ or, for a config the reader must refuse:
 { "error": { "code": "reference-integrity", "message": "..." } }
 ```
 
-`unmatched` lists the **topmost** entries no entity accounts for, with `reason` `excluded` (an `excludePatterns` hit) or `no-match` (anything else: wrong pattern, a file where folders are expected, a folder deeper than the layout). Descendants of an unmatched entry are implied.
+`unmatched` lists the **topmost** entries no entity accounts for, with `reason` `excluded` (an `excludePatterns` hit) or `no-match` (anything else: wrong pattern, a file where folders are expected, a folder deeper than the layout, a folder that matches a structural level but holds nothing an entity accounts for). Descendants of an unmatched entry are implied.
 
 `requiresExtractors` names the `function` registry keys the case needs. A harness registers an implementation of the described contract before running the case, or skips it.
 
@@ -80,8 +80,8 @@ A reader passes a case when:
 These are the rules a reader implements; each is exercised by at least one case.
 
 - **Folder entities.** A record's folder path ends with `/`. `files` and `isComplete` are present exactly when the level declares `filePatterns`; candidates for `files` are the direct children of the folder. Everything inside an innermost entity folder — including subfolders and `additionalFolders` — is covered by the entity, whether or not a pattern matches it.
-- **File entities.** At a `file` level, an entity's `paths` are every file at that level whose extracted identity is the entity's, whether or not a pattern matches it; `files` are the named-pattern matches among them. `{token}` references in patterns are replaced by the regex-escaped identity value before matching.
-- **Structural levels** are walked and readable by extraction rules but never appear in `parents`.
+- **File entities.** At a `file` level, an entity's `paths` are every file at that level whose extracted identity is the entity's, under the same parent entities, whether or not a pattern matches it; `files` are the named-pattern matches among them. When a structural level between the parent and the file level alternates between sibling folders (`funct/` and `timing/` under one session), the files of one entity are pooled across those folders, because the record key does not see structural levels. `{token}` references in patterns are replaced by the regex-escaped identity value before matching.
+- **Structural levels** are walked and readable by extraction rules but never appear in `parents`. A structural folder with nothing below it that an entity accounts for (empty, or holding only entries the next level rejects) is reported `no-match` itself, as the topmost unmatched entry; an innermost structural folder covers its contents.
 - **Ancestors inferred from descendants** — a subject whose id is read from session names in a location without subject folders — get a record with `locations: []`. An ancestor that has a folder somewhere lists only those locations. Every field of the ancestor's type that the inferring paths yield attaches to it, not only its identity: a subject's sex read from its session names lands on the subject record.
 - **`metadata`** is the union of the entity's own fields across every path it was read from — its own paths where it has a level, and the descendant paths it was inferred from where it has none — plus the identity fields of its entity-typed ancestors (not their other fields). A field with a rule that matched nothing on any of those paths takes the definition's `defaultValue`; without one it is absent and the record carries `extraction-failed`. A field with no rule in any visited location is absent without an issue.
 - **`duplicate-entity`**: several folders in one location yield the same identity → one record, all folder paths listed, files pooled.
@@ -101,6 +101,7 @@ These are the rules a reader implements; each is exercised by at least one case.
 | `raw-processed-matching` | structural date level, cross-location matching, one-sided entities, derived `matchPattern`, `additionalFolders` (mirrors `examples/raw_processed_two_photon.json`) |
 | `extraction-methods` | every declarative method and modifier: slices, groups, whole match, template, fixed, normalize, LDML formats including a two-digit year and its 1969–2068 pivot, integer typing, `defaultValue`, `extraction-failed`, fixed structural level |
 | `function-extractor` | the registry-key contract, null return, `requiresExtractors` |
+| `structural-siblings-between-levels` | files of one entity pooled across sibling folders of a structural level between its parent and the file level; a structural folder with nothing matching below it, empty or not, is `no-match` itself |
 | `invalid-reference` | must be refused with `reference-integrity` |
 | `invalid-schema` | must be refused with `schema-validation` |
 
@@ -134,7 +135,7 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `ebrains-salgueiro-pereira-2020` | EBRAINS flat files in group folders | subject fields from a structural level, `defaultValue` on a non-identity field |
 | `ebrains-kanter-2025` | EBRAINS NWB per session | two identity tokens in one pattern, a month name in the date (G19) |
 | `ebrains-blackstad-2024` | EBRAINS Axona and Neuralynx sessions | twelve file kinds, requirements that differ by recording system (G20), listing reduced by name shape |
-| `ebrains-murris-2021` | EBRAINS paper supplement | four locations inside one tree, composite identity with a `fixed` part, `duplicate-entity` from a structural level above the subject (G3), folders the model cannot place (G21, G22) |
+| `ebrains-murris-2021` | EBRAINS paper supplement | four locations inside one tree, composite identity with a `fixed` part, `duplicate-entity` from a structural level above the subject (G3), a scan that belongs to the scanning day (G6) |
 
 ## Using the fixtures from a reader
 
