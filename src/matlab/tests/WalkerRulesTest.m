@@ -66,6 +66,25 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyTrue(contains(text, "session: 1"));
             testCase.verifyTrue(contains(text, "Unmatched: 1"));
         end
+
+        function identityDefaultAppliesBeforeTheIdentityCheck(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.run = struct("name", "run", "dataType", "integer", "ofEntity", "session", "defaultValue", 1);
+            types = num2cell(doc.entityTypes');
+            types{2} = struct("name", "session", "identifierRefs", {{"session_id", "run"}});
+            doc.entityTypes = types;
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            mapping{2}.extraction.pattern = "^\d{8}_([a-z]+)";
+            mapping{end+1} = struct("metadataRef", "run", "extraction", struct("method", "regex", "pattern", "_run(\d+)$", "entityLayoutLevel", "sessions"));
+            doc.dataLocations.filesystemSource.metadataMapping = mapping;
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a/', 'm110/20250523_a_run2/'});
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            testCase.verifyEqual(cellfun(@(r) r.identity.run, sessions), [1, 2]);
+            testCase.verifyEqual(cellfun(@(r) r.identity.session_id, sessions), ["a", "a"]);
+            testCase.verifyEqual(sessions{1}.metadata.run, 1);
+            testCase.verifyEmpty(sessions{1}.issues);
+            testCase.verifyEmpty(result.Unmatched);
+        end
     end
 end
 

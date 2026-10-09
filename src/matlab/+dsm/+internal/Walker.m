@@ -154,6 +154,7 @@ classdef Walker < handle
                 end
                 [values, unresolved] = dsm.internal.evaluateFields(config, locId, relPath, ancestorType, seed, obj.Registry, fullPath);
                 keys = config.identityKeys(ancestorType);
+                values = applyIdentityDefaults(values, keys, config.definitions());
                 if all(arrayfun(@(k) isfield(values, k) && ~dsm.internal.isNone(values.(k)), keys))
                     ancestorIdentity = struct();
                     for k = keys
@@ -170,6 +171,7 @@ classdef Walker < handle
 
             [values, unresolved] = dsm.internal.evaluateFields(config, locId, relPath, entityType, seed, obj.Registry, fullPath);
             keys = config.identityKeys(entityType);
+            values = applyIdentityDefaults(values, keys, config.definitions());
             identity = struct();
             for k = keys
                 if ~isfield(values, k) || dsm.internal.isNone(values.(k))
@@ -359,6 +361,16 @@ function seed = seedFrom(parents)
     for parent = parents
         for key = string(fieldnames(parent{1}{2}))'
             seed.(key) = parent{1}{2}.(key);
+        end
+    end
+end
+
+function values = applyIdentityDefaults(values, keys, definitions)
+%applyIdentityDefaults An identity field with no value takes its defaultValue before the identity is checked
+%   This is what lets an optional part of a composite identity (a run index absent when there is one run) default.
+    for k = keys
+        if (~isfield(values, k) || dsm.internal.isNone(values.(k))) && isfield(definitions.(k), "defaultValue")
+            values.(k) = definitions.(k).defaultValue;
         end
     end
 end

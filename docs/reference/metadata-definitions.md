@@ -54,6 +54,8 @@ In [entity records](entity-record.md), `date`, `time` and `datetime` values are 
 
 Display name, prose, unit of measurement (UCUM notation recommended: `"um"`, `"Hz"`, `"s"`), and the value to use when extraction yields nothing.
 
+On an identity field, `defaultValue` is applied before the identity is checked, so an optional part of a composite identity can default: a BIDS-style run index that is absent when the task was run once defaults to `1`, and the files become the acquisition `(task, 1)` rather than `no-match`. A default on a single-field identity is refused (`reference-integrity`), because every entry that matched the level but yielded no value would become one entity and nothing would be reported `no-match`.
+
 ### `validation`
 
 | Field | Type | Applies to | Description |

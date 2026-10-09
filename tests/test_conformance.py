@@ -283,6 +283,9 @@ def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
 def record_identity_from_path(case, loc_id, rel_path, entity_type):
     values = evaluate_rules(case, loc_id, rel_path, entity_type, {})
     keys = case.identity_keys(entity_type)
+    for k in keys:  # an identity field with no value takes its defaultValue before the identity is checked
+        if values.get(k) is None and "defaultValue" in case.definitions[k]:
+            values[k] = case.definitions[k]["defaultValue"]
     if any(values.get(k) in (None, SKIP) for k in keys):
         return None
     return {k: values[k] for k in keys}

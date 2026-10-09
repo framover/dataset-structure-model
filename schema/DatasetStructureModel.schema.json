@@ -81,7 +81,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Composite identity key: all listed fields must be equal for two instances to be the same entity. Every listed field must belong to this entity type (ofEntity); ancestor identity is implicit and must not be listed. Exactly one of identifierRef and identifierRefs is required."
+          "description": "Composite identity key: all listed fields must be equal for two instances to be the same entity. Every listed field must belong to this entity type (ofEntity); ancestor identity is implicit and must not be listed. Exactly one of identifierRef and identifierRefs is required. A listed field may carry a defaultValue, which applies before the identity is checked."
         }
       },
       "oneOf": [
@@ -128,7 +128,7 @@
         },
         "defaultValue": {
           "type": ["string", "number", "boolean", "null"],
-          "description": "Value to use when the field cannot be extracted."
+          "description": "Value to use when the field cannot be extracted. On an identity field it is applied before the identity is checked, so an optional part of a composite identity can default (a run index that is 1 when absent from the name). Readers refuse a defaultValue on a single-field identity: every entry that matched the level but yielded no value would collapse into one entity."
         },
         "ofEntity": {
           "type": "string",

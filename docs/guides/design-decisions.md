@@ -36,6 +36,8 @@ Fields are defined once and extracted differently per location. This keeps names
 
 Identity is **required**. Earlier drafts fell back to comparing raw folder names, which made identity depend on which location an entity was found in — the opposite of what a cross-location table needs. Requiring the declaration costs one line per entity type.
 
+A `defaultValue` on an identity field applies **before** the identity is checked, so an optional part of a composite identity can default: a BIDS-style `run-` index that is written only when a task was run more than once is run 1 when absent. The default is allowed only on a part of a composite identity. On a single-field identity it would make every entry that matched the level but yielded no value one entity, and the `no-match` report for names the rules cannot read would disappear; readers refuse it as `reference-integrity`.
+
 ---
 
 ## Structural levels instead of an `"other"` entity type
