@@ -47,6 +47,8 @@ function problems = referenceProblems(doc)
                 problems(end+1) = sprintf("entityType '%s' identity field '%s' is not in metadataDefinitions", item.name, ref); %#ok<AGROW>
             elseif string(definitions.(ref).ofEntity) ~= string(item.name)
                 problems(end+1) = sprintf("entityType '%s' identity field '%s' belongs to '%s'", item.name, ref, definitions.(ref).ofEntity); %#ok<AGROW>
+            elseif numel(refs) < 2 && isfield(definitions.(ref), "defaultValue")
+                problems(end+1) = sprintf("entityType '%s' identity field '%s' has a defaultValue; a default is allowed only on a part of a composite identity (identifierRefs with more than one field)", item.name, ref); %#ok<AGROW>
             end
         end
     end

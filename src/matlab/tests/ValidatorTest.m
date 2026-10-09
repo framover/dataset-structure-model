@@ -104,6 +104,17 @@ classdef ValidatorTest < matlab.unittest.TestCase
             config = dsm.loadConfig(fullfile(folder, "ds.json"));
             testCase.verifyEqual(config.preferences().defaultDataLocationIdentifier, 'raw');
         end
+
+        function defaultOnSingleFieldIdentityIsReferenceProblem(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.session_id.defaultValue = "unknown";
+            testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "has a defaultValue")));
+            doc.metadataDefinitions.run = struct("name", "run", "dataType", "integer", "ofEntity", "session", "defaultValue", 1);
+            types = num2cell(doc.entityTypes');
+            types{2} = struct("name", "session", "identifierRefs", {{"session_id", "run"}});
+            doc.entityTypes = types;
+            testCase.verifyEmpty(dsm.referenceProblems(doc));
+        end
     end
 end
 

@@ -51,3 +51,14 @@ def test_checker_requires_layout_order_to_follow_declaration_order():
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
     layout.reverse()  # sessions above subjects, but subject is declared first
     assert any("declaration order" in p for p in check_references(doc))
+
+
+def test_checker_allows_a_default_only_on_a_composite_identity():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    doc["metadataDefinitions"]["session_id"]["defaultValue"] = "unknown"
+    assert any("has a defaultValue" in p for p in check_references(doc))
+    doc["metadataDefinitions"]["run"] = {"name": "run", "dataType": "integer", "ofEntity": "session", "defaultValue": 1}
+    doc["entityTypes"][1] = {"name": "session", "identifierRefs": ["session_id", "run"]}
+    assert check_references(doc) == []

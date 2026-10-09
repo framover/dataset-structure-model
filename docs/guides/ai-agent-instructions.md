@@ -98,6 +98,7 @@ The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 ## Cross-reference rules (checked by readers)
 
 - Every `identifierRef`, `metadataRef` and `{token}` names a key in `metadataDefinitions`.
+- A `defaultValue` on an identity field is allowed only on a part of a composite identity (`identifierRefs` with more than one field); it applies before the identity is checked.
 - Every `ofEntity`, layout `entityType`, `sourceEntity`, `targetEntity` names an `entityTypes` entry.
 - Every `derivedFrom` and `preferences.defaultDataLocationIdentifier` names a `dataLocations` identifier.
 - Every extraction `entityLayoutLevel` string names a level in that location's layout.

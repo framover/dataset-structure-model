@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "reference-integrity",
+    "message": "The config validates against the schema, but session_id is the single identity field of session and carries a defaultValue. With a default on a single-field identity, every folder that matched the sessions level but yielded no id would become one entity 'unknown' and nothing would be reported no-match; a default is allowed only on a part of a composite identity (identifierRefs with more than one field)."
+  }
+}

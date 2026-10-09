@@ -41,6 +41,9 @@ def check_references(doc: dict) -> List[str]:
                 problems.append(f"entityType '{et['name']}' identity field '{ref}' is not in metadataDefinitions")
             elif definitions[ref]["ofEntity"] != et["name"]:
                 problems.append(f"entityType '{et['name']}' identity field '{ref}' belongs to '{definitions[ref]['ofEntity']}'")
+            elif "defaultValue" in definitions[ref] and len(refs) < 2:
+                problems.append(f"entityType '{et['name']}' identity field '{ref}' has a defaultValue; a default is allowed only on "
+                                f"a part of a composite identity (identifierRefs with more than one field)")
 
     for key, definition in definitions.items():
         if definition["ofEntity"] not in entity_type_set:

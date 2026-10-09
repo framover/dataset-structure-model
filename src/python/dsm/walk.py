@@ -129,6 +129,7 @@ class Walker:
             if not self.config.rules_for(loc_id, ancestor_type):
                 continue
             values, unresolved = evaluate_fields(self.config, loc_id, rel_path, ancestor_type, seed, self.registry, full_path)
+            self._apply_identity_defaults(values, ancestor_type)
             keys = self.config.identity_keys(ancestor_type)
             if all(values.get(k) is not None for k in keys):
                 identity = {k: values[k] for k in keys}
@@ -139,6 +140,7 @@ class Walker:
         seed = {k: v for _, identity in parents for k, v in identity.items()}
 
         values, unresolved = evaluate_fields(self.config, loc_id, rel_path, entity_type, seed, self.registry, full_path)
+        self._apply_identity_defaults(values, entity_type)
         keys = self.config.identity_keys(entity_type)
         if any(values.get(k) is None for k in keys):
             return None
@@ -156,6 +158,14 @@ class Walker:
             ancestor.observations.append((loc_id, ancestor_values))
             ancestor.unresolved |= ancestor_unresolved
         return entity
+
+    def _apply_identity_defaults(self, values, entity_type):
+        """An identity field with no value takes its defaultValue before the identity is checked, so an
+        optional part of a composite identity (a run index absent when there is one run) can default."""
+        for key in self.config.identity_keys(entity_type):
+            definition = self.config.definitions[key]
+            if values.get(key) is None and "defaultValue" in definition:
+                values[key] = definition["defaultValue"]
 
     def _get_or_create(self, entity_type, identity, parents) -> _Entity:
         candidate = _Entity(entity_type, identity, parents)

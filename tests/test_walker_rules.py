@@ -63,3 +63,17 @@ def test_records_are_ordered_by_declaration_then_key():
     assert [(r.entity_type, r.identity) for r in result.records] == [
         ("subject", {"subject_id": "m110"}), ("subject", {"subject_id": "m220"}),
         ("session", {"session_id": "a"}), ("session", {"session_id": "b"})]
+
+
+def test_identity_default_applies_before_the_identity_check():
+    doc = minimal_config()
+    doc["metadataDefinitions"]["run"] = {"name": "run", "dataType": "integer", "ofEntity": "session", "defaultValue": 1}
+    doc["entityTypes"][1] = {"name": "session", "identifierRefs": ["session_id", "run"]}
+    mapping = doc["dataLocations"][0]["filesystemSource"]["metadataMapping"]
+    mapping[1]["extraction"]["pattern"] = "^\\d{8}_([a-z]+)"
+    mapping.append({"metadataRef": "run", "extraction": {"method": "regex", "pattern": "_run(\\d+)$", "entityLayoutLevel": "sessions"}})
+    result = _walk(doc, ["m110/", "m110/20250523_a/", "m110/20250523_a_run2/"])
+    sessions = [r for r in result.records if r.entity_type == "session"]
+    assert [r.identity for r in sessions] == [{"session_id": "a", "run": 1}, {"session_id": "a", "run": 2}]
+    assert sessions[0].metadata["run"] == 1 and sessions[0].issues == []
+    assert result.unmatched == []

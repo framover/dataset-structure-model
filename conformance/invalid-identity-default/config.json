@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "identifierRef": "subject_id" },
+    { "name": "session", "identifierRef": "session_id" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject" },
+    "session_id": { "name": "session_id", "dataType": "string", "ofEntity": "session", "defaultValue": "unknown" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "raw",
+      "displayName": "Raw",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [ { "identifier": "main", "path": "/data/raw" } ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^m\\d{3}$" },
+          { "name": "sessions", "entityType": "session", "matchPattern": "^\\d{8}_.+$" }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^\\d{8}_(.+)$", "entityLayoutLevel": "sessions" } }
+        ]
+      }
+    }
+  ]
+}
