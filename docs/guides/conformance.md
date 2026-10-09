@@ -84,7 +84,7 @@ These are the rules a reader implements; each is exercised by at least one case.
 - **Structural levels** are walked and readable by extraction rules but never appear in `parents`.
 - **Ancestors inferred from descendants** — a subject whose id is read from session names in a location without subject folders — get a record with `locations: []`. An ancestor that has a folder somewhere lists only those locations. Every field of the ancestor's type that the inferring paths yield attaches to it, not only its identity: a subject's sex read from its session names lands on the subject record.
 - **`metadata`** is the union of the entity's own fields across every path it was read from — its own paths where it has a level, and the descendant paths it was inferred from where it has none — plus the identity fields of its entity-typed ancestors (not their other fields). A field with a rule that matched nothing on any of those paths takes the definition's `defaultValue`; without one it is absent and the record carries `extraction-failed`. A field with no rule in any visited location is absent without an issue.
-- **`duplicate-entity`**: several folders in one location yield the same identity → one record, all folder paths listed, files pooled.
+- **`duplicate-entity`**: several folders **under the same parent folder** in one location yield the same identity → one record, all folder paths listed, files pooled, and the issue. Folders under different parents — a structural level above the entity, or alternating branches — are one entity in several places: all paths listed, files pooled, no issue.
 - **`cardinality-violation`**: a `cardinality: one` pattern matched several files; all are reported. **`missing-required-file`**: an `isRequired` pattern matched none; `isComplete` is `false`.
 - **`metadata-conflict`**: the paths an entity was read from disagree on a field's value — two locations, or two descendants that infer the same ancestor. The reader keeps the first value in walk order (locations in listing order, entries sorted) and reports the conflict.
 - **`unresolved-extractor`**: a `function` key the reader has not registered; the field is absent.
@@ -112,14 +112,14 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `dandi-nwb-session-variants` | DANDI dandiset (000409) | several NWB files per session distinguished by `desc-`, UUID identities, `+` in names, partial download unmatched |
 | `gin-blackrock-flat-files` | GIN repository, Blackrock files | fixed level above a file level, subject from one character with `enum`, two-digit year, seven file kinds, sibling branch (G5) |
 | `crcns-hc3-numbered-extensions` | CRCNS hc-3 | four entity types on three levels, file entities keyed by numeric extension, two ancestors' tokens in one pattern, outer-entity files double-accounted (G2) |
-| `ibl-alf-session-path` | IBL ONE/ALF | fixed level between entities, composite identity from a structural date level, whole-path rule, one entity in two branches (G3), branching (G5) |
+| `ibl-alf-session-path` | IBL ONE/ALF | fixed level between entities, composite identity from a structural date level, whole-path rule, one entity in two branches without `duplicate-entity` (G3), branching (G5) |
 | `bids-multimodal-sessions` | BIDS (OpenNeuro ds000117) | structural datatype level with alternation, stem-keyed file entities, optional entities (G4), `scans.tsv` (G2), session-level files under `meg/` (G6) |
 | `allen-ecephys-cache` | AllenSDK ecephys cache | integer identities, a session folder owning a file next to probe files (G2), root tables (G1) |
 | `open-ephys-binary` | Open Ephys binary format | four entity levels, fixed `continuous` level, names with spaces, recording-level files (G2), `events/` and `spikes/` branches (G5) |
 | `spikeglx-folder-per-probe` | SpikeGLX, folder per probe | composite gate identity, tokens from parent and own identity, per-trigger series, nidq files at the gate level (G2) |
 | `suite2p-output-planes` | suite2p output | fixed level between entities, `combined/` excluded, seven fixed-name kinds, files inside a structural folder (G7) |
 | `deeplabcut-project` | DeepLabCut project | one tree as two locations (the G5 workaround), file group in one and folder in the other, one regex for two naming forms (G8) |
-| `scanimage-caiman-two-photon` | ScanImage TIFF series, CaImAn outputs | file-level ↔ folder-level matching on a three-field identity, two environments, subject under dates flagged `duplicate-entity` (G3), zero-padded counter as text (G9), metadata in member names (G10) |
+| `scanimage-caiman-two-photon` | ScanImage TIFF series, CaImAn outputs | file-level ↔ folder-level matching on a three-field identity, two environments, subject under two dates as one record without `duplicate-entity` (G3), zero-padded counter as text (G9), metadata in member names (G10) |
 | `zenodo-adhoc-date-folders` | ad-hoc Zenodo deposit | single entity type, date level on top, `enum` and integer from one name, exactly-three planes not expressible (G11) |
 | `zenodo-adhoc-flat-mat` | ad-hoc Zenodo deposit | one file level at the root, an entity split over numbered files |
 | `nansen-project-layout` | NANSEN data locations | two roots in one location, raw timestamp folders matched to generated `subject-`/`session-` folders, MATLAB index ranges as slices, variables in subfolders not describable (G12) |
@@ -134,7 +134,7 @@ The cases below describe layouts from outside the authors' lab; each README name
 | `ebrains-salgueiro-pereira-2020` | EBRAINS flat files in group folders | subject fields from a structural level, `defaultValue` on a non-identity field |
 | `ebrains-kanter-2025` | EBRAINS NWB per session | two identity tokens in one pattern, a month name in the date (G19) |
 | `ebrains-blackstad-2024` | EBRAINS Axona and Neuralynx sessions | twelve file kinds, requirements that differ by recording system (G20), listing reduced by name shape |
-| `ebrains-murris-2021` | EBRAINS paper supplement | four locations inside one tree, composite identity with a `fixed` part, `duplicate-entity` from a structural level above the subject (G3), folders the model cannot place (G21, G22) |
+| `ebrains-murris-2021` | EBRAINS paper supplement | four locations inside one tree, composite identity with a `fixed` part, a subject under two structural folders as one record without `duplicate-entity` (G3), folders the model cannot place (G21, G22) |
 
 ## Using the fixtures from a reader
 

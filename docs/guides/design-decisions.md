@@ -44,6 +44,12 @@ Folders that are part of the path but are not entities — date folders, a fixed
 
 ---
 
+## `duplicate-entity` is scoped to one parent folder
+
+A structural level above an entity level gives one entity one folder per structural value: a subject under each date folder, a probe under `alf/` and under `raw_ephys_data/`. That is the layout's design, not an error, so two folders yield `duplicate-entity` only when they share a parent folder. The parent *folder*, not the parent entity: structural levels between the parent entity and the entity are exactly what creates the legitimate case, and those folders share a parent entity but not a parent path. Files are pooled across the folders either way.
+
+---
+
 ## Ancestor levels may be missing; ancestor identity may come from a descendant
 
 A processed location that holds session folders with no subject folder above them is common. The subject still exists — its id is in the session name — so extraction rules for an ancestor type run on the nearest descendant level and identify the parent. Requiring every location to mirror the full hierarchy would exclude most real processed-data layouts.

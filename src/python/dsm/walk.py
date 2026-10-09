@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .config import TOKEN, Config
 from .extract import ExtractorRegistry, evaluate_fields, validate_value
-from .listing import Listing, Tree, basename, is_dir
+from .listing import Listing, Tree, basename, is_dir, parent_of
 from .records import Issue, LocationEntry, Record, Unmatched, WalkResult
 
 Identity = Dict[str, Any]
@@ -210,7 +210,14 @@ class Walker:
             level = cfg.layout(loc_id)[cfg.entity_level_index(loc_id, entity.entity_type)]
             entry = LocationEntry(loc_id, root_id, acc.file_system_type, sorted(acc.paths))
             if acc.file_system_type == "folder" and len(acc.paths) > 1:
-                issues.append(Issue("duplicate-entity", f"{len(acc.paths)} folders in '{loc_id}' yield {entity.identity}: {sorted(acc.paths)}"))
+                # the same identity twice under one parent folder is a duplicate; under different parents
+                # (a structural level above the entity, or alternating branches) it is one entity in several places
+                by_parent: Dict[str, List[str]] = {}
+                for path in acc.paths:
+                    by_parent.setdefault(parent_of(path), []).append(path)
+                for parent, paths in sorted(by_parent.items()):
+                    if len(paths) > 1:
+                        issues.append(Issue("duplicate-entity", f"{len(paths)} folders under '{parent}' in '{loc_id}' yield {entity.identity}: {sorted(paths)}"))
             patterns = level.get("filePatterns")
             if patterns is not None:
                 tree = self._tree_for(loc_id, root_id)

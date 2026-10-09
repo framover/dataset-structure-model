@@ -57,6 +57,21 @@ def test_structural_innermost_level_is_covered():
     assert [u.path for u in result.unmatched] == ["m110/20250523_baseline/raw/"]
 
 
+def test_duplicate_entity_needs_the_same_parent_folder():
+    doc = minimal_config()
+    source = doc["dataLocations"][0]["filesystemSource"]
+    # a structural date level above the subject: one subject folder per date is the layout's design
+    source["entityLayout"].insert(0, {"name": "dates", "matchPattern": "^\\d{8}$"})
+    source["entityLayout"][1]["matchPattern"] = "^m\\d{3}(_copy)?$"
+    source["metadataMapping"][0]["extraction"]["pattern"] = "0:4"
+    result = _walk(doc, ["20250101/", "20250101/m110/", "20250102/", "20250102/m110/", "20250102/m110_copy/"])
+    subject = [r for r in result.records if r.entity_type == "subject"][0]
+    assert sorted(subject.locations[0].paths) == ["20250101/m110/", "20250102/m110/", "20250102/m110_copy/"]
+    # the folder under a different date is not a duplicate; the _copy beside its original is
+    assert [i.code for i in subject.issues] == ["duplicate-entity"]
+    assert "20250102/" in subject.issues[0].message and "20250101" not in subject.issues[0].message
+
+
 def test_records_are_ordered_by_declaration_then_key():
     doc = minimal_config()
     result = _walk(doc, ["m220/", "m220/20250523_b/", "m110/", "m110/20250523_a/"])

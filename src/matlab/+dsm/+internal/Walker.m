@@ -302,7 +302,15 @@ classdef Walker < handle
                 entry = struct("dataLocationIdentifier", locId, "rootStoragePathIdentifier", rootId, ...
                     "fileSystemType", string(accumulator.FileSystemType), "paths", {sort(accumulator.Paths)});
                 if accumulator.FileSystemType == "folder" && numel(accumulator.Paths) > 1
-                    issues{end+1} = issue("duplicate-entity", sprintf("%d folders in '%s' yield the same identity", numel(accumulator.Paths), locId)); %#ok<AGROW>
+                    % the same identity twice under one parent folder is a duplicate; under different parents
+                    % (a structural level above the entity, or alternating branches) it is one entity in several places
+                    parentFolders = cellfun(@(p) dsm.internal.pathParent(p), accumulator.Paths);
+                    for parentFolder = unique(parentFolders)
+                        count = sum(parentFolders == parentFolder);
+                        if count > 1
+                            issues{end+1} = issue("duplicate-entity", sprintf("%d folders under '%s' in '%s' yield the same identity", count, parentFolder, locId)); %#ok<AGROW>
+                        end
+                    end
                 end
                 if isfield(level, "filePatterns")
                     tree = obj.Trees(char(locationKey));

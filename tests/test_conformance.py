@@ -327,7 +327,10 @@ def analyse(case, record):
             candidates = sorted(loc["paths"])
         else:
             candidates = sorted({f for folder in loc["paths"] for f in direct_child_files(folder, entries)})
-            if len(loc["paths"]) > 1:
+            # duplicate only when two folders share a parent folder; a structural level above the
+            # entity gives one entity several folders by design
+            parents = ["/".join(components(p)[:-1]) for p in loc["paths"]]
+            if len(parents) != len(set(parents)):
                 codes.add("duplicate-entity")
         files, complete = {}, True
         for pattern in patterns or []:
