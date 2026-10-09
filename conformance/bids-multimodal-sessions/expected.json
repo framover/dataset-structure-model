@@ -506,18 +506,6 @@
       "rootStoragePathIdentifier": "local",
       "path": "participants.tsv",
       "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "bids",
-      "rootStoragePathIdentifier": "local",
-      "path": "sub-01/ses-meg/sub-01_ses-meg_scans.tsv",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "bids",
-      "rootStoragePathIdentifier": "local",
-      "path": "sub-01/ses-mri/sub-01_ses-mri_scans.tsv",
-      "reason": "no-match"
     }
   ]
 }

@@ -122,6 +122,19 @@ def direct_child_files(folder, entries):
     return sorted(e for e in entries if e.startswith(folder) and not is_dir(e) and "/" not in e[len(folder):])
 
 
+def claimed_files(case, loc_id, root_id):
+    """Files a folder entity's filePatterns claim in one root; they belong to that entity, whatever the next level says."""
+    claimed = set()
+    for record in case.expected["records"]:
+        for loc in record["locations"]:
+            if (loc["dataLocationIdentifier"], loc["rootStoragePathIdentifier"]) != (loc_id, root_id):
+                continue
+            if loc.get("fileSystemType", "folder") == "folder":
+                for files in loc.get("files", {}).values():
+                    claimed |= set(files)
+    return claimed
+
+
 # --------------------------------------------------------------------------- level matching
 
 def strip_anchors(pattern):
@@ -505,13 +518,17 @@ def test_listing_fully_accounted(case):
                 if (loc["dataLocationIdentifier"], loc["rootStoragePathIdentifier"]) != (loc_id, root_id):
                     continue
                 # contents of an entity folder belong to the entity only at the innermost level;
-                # children of an outer entity folder are governed by the next level
+                # children of an outer entity folder are governed by the next level, except the
+                # files the entity's own filePatterns claim
                 layout = case.layout(loc_id)
                 innermost = case.entity_level_index(loc_id, record["entityType"]) == len(layout) - 1
                 for path in loc["paths"]:
                     covered |= {path} | set(ancestors(path))
                     if innermost:
                         covered |= descendants(path, entries)
+                if loc.get("fileSystemType", "folder") == "folder":
+                    for files in loc.get("files", {}).values():
+                        covered |= set(files)
         for item in case.expected["unmatched"]:
             if (item["dataLocationIdentifier"], item["rootStoragePathIdentifier"]) != (loc_id, root_id):
                 continue
@@ -563,9 +580,11 @@ def test_paths_match_levels(case):
                 folder = folder + "/" if folder else ""
                 entries = case.entries(loc_id, loc["rootStoragePathIdentifier"])
                 level = layout[level_index]
+                claimed = claimed_files(case, loc_id, loc["rootStoragePathIdentifier"])
                 same_identity = sorted(
                     f for f in direct_child_files(folder, entries)
-                    if name_matches(level, basename(f), case.definitions)
+                    if f not in claimed  # claimed by the enclosing entity, never offered to this level
+                    and name_matches(level, basename(f), case.definitions)
                     and record_identity_from_path(case, loc_id, f, record["entityType"]) == record["identity"]
                 )
                 assert sorted(loc["paths"]) == same_identity, f"{case.name}: paths of {record['identity']} should be {same_identity}"

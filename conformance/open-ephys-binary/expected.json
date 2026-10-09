@@ -471,43 +471,7 @@
     {
       "dataLocationIdentifier": "openephys",
       "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 101/experiment1/recording1/structure.oebin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 101/experiment1/recording1/sync_messages.txt",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
       "path": "Record Node 101/experiment1/recording2/events/",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 101/experiment1/recording2/structure.oebin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 101/settings.xml",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 102/experiment1/recording1/structure.oebin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "openephys",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "Record Node 102/settings.xml",
       "reason": "no-match"
     }
   ]

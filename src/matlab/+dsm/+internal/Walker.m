@@ -53,6 +53,7 @@ classdef Walker < handle
                 obj.visit(root{1}.DataLocation, root{1}.RootStoragePath, tree, 1, "", {});
             end
             records = obj.finalize();
+            obj.dropClaimedUnmatched(records);
             unresolved = string.empty(1, 0);
             for key = obj.EntityKeys
                 unresolved = [unresolved, obj.Entities(char(key)).Unresolved]; %#ok<AGROW>
@@ -84,12 +85,19 @@ classdef Walker < handle
             items = items(order);
         end
 
-        function visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors)
+        function visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors, claimed)
+            if nargin < 8
+                claimed = string.empty(1, 0);
+            end
             layout = obj.Config.layout(locId);
             level = layout{levelIndex};
             last = levelIndex == numel(layout);
             expectsDir = string(dsm.internal.getField(level, "fileSystemType", "folder")) == "folder";
             for entry = tree.children(parentPath)
+                if ismember(string(entry{1}), claimed)
+                    % the enclosing entity's filePatterns claimed it; it is not offered to this level
+                    continue
+                end
                 name = dsm.internal.pathBase(entry{1});
                 if obj.Config.isExcluded(level, name)
                     obj.unmatch(locId, rootId, entry{1}, "excluded", sprintf("matches an excludePattern of level '%s'", level.name));
@@ -122,19 +130,76 @@ classdef Walker < handle
                 else
                     fileSystemType = "file";
                 end
-                [entityKey, identity] = obj.resolveEntity(locId, rootId, entry{1}, entityType, ancestors, fileSystemType);
+                [entityKey, identity, values] = obj.resolveEntity(locId, rootId, entry{1}, entityType, ancestors, fileSystemType);
                 if entityKey == ""
                     obj.unmatch(locId, rootId, entry{1}, "no-match", ...
                         sprintf("identity of %s could not be extracted from '%s'", entityType, name));
                     continue
                 end
                 if expectsDir && ~last
-                    obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, [ancestors, {{entityType, identity}}]);
+                    obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, [ancestors, {{entityType, identity}}], ...
+                        obj.claimedFiles(level, entry{1}, tree, entityKey, values));
                 end
             end
         end
 
-        function [entityKey, identity] = resolveEntity(obj, locId, rootId, relPath, entityType, ancestors, fileSystemType)
+        function claimed = claimedFiles(obj, level, folder, tree, entityKey, values)
+        %claimedFiles Direct child files of an entity folder that its filePatterns match
+        %
+        %   They belong to the entity and are not offered to the next level. Tokens are
+        %   substituted from the same values buildRecord will use for this path: the parents'
+        %   identities, the entity's own fields, and a definition's defaultValue where a field
+        %   yielded nothing.
+            claimed = string.empty(1, 0);
+            if ~isfield(level, "filePatterns")
+                return
+            end
+            entity = obj.Entities(char(entityKey));
+            metadata = seedFrom(entity.Parents);
+            for key = string(fieldnames(entity.Identity))'
+                metadata.(key) = entity.Identity.(key);
+            end
+            definitions = obj.Config.definitions();
+            for field = string(fieldnames(values))'
+                if ~dsm.internal.isNone(values.(field))
+                    metadata.(field) = values.(field);
+                elseif isfield(definitions, field) && isfield(definitions.(field), "defaultValue")
+                    metadata.(field) = definitions.(field).defaultValue;
+                end
+            end
+            candidates = tree.childFiles(folder);
+            for pattern = dsm.internal.asCellOfStructs(level.filePatterns)
+                regex = substituteTokens(pattern{1}.pattern, metadata);
+                hits = candidates(cellfun(@(c) ~isempty(regexp(char(dsm.internal.pathBase(c)), regex, "once")), candidates));
+                if ~isempty(hits)
+                    claimed = [claimed, reshape(string(hits), 1, [])]; %#ok<AGROW>
+                end
+            end
+            claimed = unique(claimed);
+        end
+
+        function dropClaimedUnmatched(obj, records)
+        %dropClaimedUnmatched A file listed in a folder entity's files is never unmatched
+            claimed = string.empty(1, 0);
+            for record = records
+                for location = record{1}.locations
+                    if location{1}.fileSystemType == "folder" && isfield(location{1}, "files")
+                        for files = values(location{1}.files)
+                            if ~isempty(files{1})
+                                claimed = [claimed, location{1}.dataLocationIdentifier + "|" + location{1}.rootStoragePathIdentifier + "|" + string(files{1})]; %#ok<AGROW>
+                            end
+                        end
+                    end
+                end
+            end
+            if isempty(claimed) || isempty(obj.Unmatched)
+                return
+            end
+            keys = cellfun(@(u) u.dataLocationIdentifier + "|" + u.rootStoragePathIdentifier + "|" + u.path, obj.Unmatched);
+            obj.Unmatched = obj.Unmatched(~ismember(keys, claimed));
+        end
+
+        function [entityKey, identity, values] = resolveEntity(obj, locId, rootId, relPath, entityType, ancestors, fileSystemType)
             config = obj.Config;
             rootPath = regexprep(string(config.rootStoragePath(locId, rootId).path), "[/\\]+$", "");
             fullPath = rootPath + "/" + regexprep(string(relPath), "/$", "");
@@ -174,6 +239,7 @@ classdef Walker < handle
             for k = keys
                 if ~isfield(values, k) || dsm.internal.isNone(values.(k))
                     entityKey = "";
+                    values = struct();
                     return
                 end
                 identity.(k) = values.(k);

@@ -8,6 +8,6 @@ What it checks:
 - File-level entities keyed by the file-name stem, so a data file and its sidecars are one acquisition.
 - `datatype` read from the structural level above; `suffix`, `task` and `run` read from the file name.
 - **Gap G4 (optional fields):** `task` and `run` are legitimately absent from anatomical scans, but a field with a rule and no `defaultValue` raises `extraction-failed`. The T1w acquisitions carry that issue although nothing is wrong.
-- **Gap G2 (files of an outer entity):** `sub-01_ses-meg_scans.tsv` is in the session's `files` and also `no-match`.
+- **Files of an outer entity (G2):** `sub-01_ses-meg_scans.tsv` matches the session's `filePatterns`, so it is in the session's `files` and is not offered to the datatype level.
 - **Gap G6 (files belonging to an ancestor inside a descendant folder):** `sub-01_ses-meg_coordsystem.json` and `_headshape.pos` are session-level MEG files placed in `meg/`. They become an acquisition `sub-01_ses-meg` with `missing-required-file`, because the file level can only assign files to entities of its own type.
 - `derivatives/` and the root files are `no-match` (gaps **G1**, **G5**).

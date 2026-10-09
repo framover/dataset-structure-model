@@ -208,42 +208,6 @@
     {
       "dataLocationIdentifier": "spikeglx",
       "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.bin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.meta",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.bin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.meta",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.bin",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
-      "path": "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.meta",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "spikeglx",
-      "rootStoragePathIdentifier": "acquisition-pc",
       "path": "m0123_20240315_g1/notes.txt",
       "reason": "no-match"
     }
