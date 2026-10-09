@@ -238,7 +238,7 @@ Readers report matched files per named pattern and flag incomplete entities. Thi
 | `fixed` | A constant `value` |
 | `function` | A reader-registered extractor by registry key. Needs code in every reader; avoid when a declarative rule will do |
 
-Reference levels by **name**. Dates and times need `valueFormat` in LDML notation (`yyyyMMdd`, `HH_mm_ss`).
+Reference levels by **name**. Dates and times need `valueFormat` in LDML notation (`yyyyMMdd`, `HH_mm_ss`). Several rules for one field are an ordered fallback: the first that yields a value wins.
 
 ---
 

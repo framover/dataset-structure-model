@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "subject",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "session",
+      "identifierRef": "session_id"
+    }
+  ],
+  "metadataDefinitions": {
+    "subject_id": {
+      "name": "subject_id",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^m\\d{3}$"
+      }
+    },
+    "session_id": {
+      "name": "session_id",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "Read from either naming form, <date>_<name> or <name>_<date>, by one rule each"
+    },
+    "session_label": {
+      "name": "session_label",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "Composed after both session_id rules have run"
+    },
+    "source": {
+      "name": "source",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "Two fixed rules; the first wins"
+    },
+    "tag": {
+      "name": "tag",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "A regex that matches nothing, then a fixed value"
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "raw",
+      "displayName": "Raw",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "main",
+            "path": "/data/raw"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "subjects",
+            "entityType": "subject",
+            "matchPattern": "^m\\d{3}$"
+          },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "matchPattern": "^(\\d{8}_[a-z]+|[a-z]+_\\d{8})$"
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "session_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^\\d{8}_([a-z]+)$",
+              "entityLayoutLevel": "sessions"
+            }
+          },
+          {
+            "metadataRef": "session_id",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^([a-z]+)_\\d{8}$",
+              "entityLayoutLevel": "sessions"
+            }
+          },
+          {
+            "metadataRef": "session_label",
+            "extraction": {
+              "method": "template",
+              "pattern": "{subject_id}-{session_id}"
+            }
+          },
+          {
+            "metadataRef": "source",
+            "extraction": {
+              "method": "fixed",
+              "value": "first"
+            }
+          },
+          {
+            "metadataRef": "source",
+            "extraction": {
+              "method": "fixed",
+              "value": "second"
+            }
+          },
+          {
+            "metadataRef": "tag",
+            "extraction": {
+              "method": "regex",
+              "pattern": "#([a-z]+)$",
+              "entityLayoutLevel": "sessions"
+            }
+          },
+          {
+            "metadataRef": "tag",
+            "extraction": {
+              "method": "fixed",
+              "value": "untagged"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

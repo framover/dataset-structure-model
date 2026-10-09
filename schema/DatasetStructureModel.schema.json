@@ -331,7 +331,7 @@
         },
         "metadataMapping": {
           "type": "array",
-          "description": "How the globally defined metadata fields are extracted from path components in this location. One entry per field; the same field may be extracted differently in other locations.",
+          "description": "How the globally defined metadata fields are extracted from path components in this location. Several entries for one field are an ordered fallback: the first rule in config order that yields a value wins. The same field may be extracted differently in other locations.",
           "items": {
             "type": "object",
             "required": ["metadataRef", "extraction"],

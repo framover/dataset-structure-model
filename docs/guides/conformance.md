@@ -100,6 +100,7 @@ These are the rules a reader implements; each is exercised by at least one case.
 | `inferred-ancestor-fields` | non-identity fields of an inferred ancestor read from its descendants' names, `metadata-conflict` between descendants, `extraction-failed` on an inferred ancestor |
 | `raw-processed-matching` | structural date level, cross-location matching, one-sided entities, derived `matchPattern`, `additionalFolders` (mirrors `examples/raw_processed_two_photon.json`) |
 | `extraction-methods` | every declarative method and modifier: slices, groups, whole match, template, fixed, normalize, LDML formats including a two-digit year and its 1969–2068 pivot, integer typing, `defaultValue`, `extraction-failed`, fixed structural level |
+| `extraction-fallback-rules` | several rules for one field are an ordered fallback: two naming forms for one identity, two fixed values, a template over the fallback's result |
 | `function-extractor` | the registry-key contract, null return, `requiresExtractors` |
 | `invalid-reference` | must be refused with `reference-integrity` |
 | `invalid-schema` | must be refused with `schema-validation` |

@@ -271,9 +271,13 @@ def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
             rule = item["extraction"]
             if rule["method"] == "template" and any(t not in values for t in TOKEN.findall(rule["pattern"]) if t in {r["metadataRef"] for r in pending}):
                 continue
-            results[item["metadataRef"]] = extract(rule, case.definitions[item["metadataRef"]], layout, rel_path, values)
-            if results[item["metadataRef"]] not in (None, SKIP):
-                values[item["metadataRef"]] = results[item["metadataRef"]]
+            ref = item["metadataRef"]
+            value = extract(rule, case.definitions[ref], layout, rel_path, values)
+            # several rules for one field are an ordered fallback: the first that yields a value wins
+            if results.get(ref) is None:
+                results[ref] = value
+                if value not in (None, SKIP):
+                    values[ref] = value
             pending.remove(item)
             progressed = True
         assert progressed, f"{case.name}: template dependency cycle in {loc_id}"
