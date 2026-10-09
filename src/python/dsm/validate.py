@@ -159,6 +159,9 @@ def unsupported_draft_blocks(doc: dict) -> List[str]:
     for loc in doc.get("dataLocations", []):
         if loc.get("sourceType") in DRAFT_SOURCE_TYPES:
             problems.append(f"dataLocation '{loc['identifier']}': sourceType '{loc['sourceType']}' is DRAFT and not supported")
+        for level in loc.get("filesystemSource", {}).get("entityLayout", []):
+            if level.get("isRequired") is False:
+                problems.append(f"dataLocation '{loc['identifier']}': level '{level['name']}' isRequired false is DRAFT and not supported")
         for item in loc.get("filesystemSource", {}).get("metadataMapping", []):
             if item["extraction"]["method"] == "sidecar":
                 problems.append(f"dataLocation '{loc['identifier']}': extraction method 'sidecar' for '{item['metadataRef']}' is DRAFT and not supported")

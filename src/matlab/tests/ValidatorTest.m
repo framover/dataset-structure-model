@@ -97,6 +97,13 @@ classdef ValidatorTest < matlab.unittest.TestCase
             dsm.validateConfig(doc, "RejectDraft", false);
         end
 
+        function levelIsRequiredFalseIsDraft(testCase)
+            doc = minimalConfigDoc();
+            doc.dataLocations.filesystemSource.entityLayout(1).isRequired = false;
+            testCase.verifyError(@() dsm.validateConfig(doc), "dsm:config:unsupportedDraft");
+            dsm.validateConfig(doc, "RejectDraft", false);
+        end
+
         function localOverlaySuppliesPreferences(testCase)
             folder = testCase.applyFixture(matlab.unittest.fixtures.TemporaryFolderFixture).Folder;
             writeJson(fullfile(folder, "ds.json"), minimalConfigDoc());
