@@ -10,7 +10,10 @@ classdef ExtractTest < matlab.unittest.TestCase
                     {"yyyy-MM-dd'T'HHmmss", "2025-05-23T100000", "datetime", "2025-05-23T10:00:00"}, ...
                     {"yyMMdd", "170518", "date", "2017-05-18"}, ...
                     {"yyMMdd", "690518", "date", "1969-05-18"}, ...  % two-digit years: 1969-2068, as strptime
-                    {"yyMMdd", "680518", "date", "2068-05-18"}}
+                    {"yyMMdd", "680518", "date", "2068-05-18"}, ...
+                    {"yyyy-MMM-dd", "2020-Nov-04", "date", "2020-11-04"}, ...  % MMM: English month abbreviation, any case
+                    {"yyyy-MMM-dd", "2020-NOV-04", "date", "2020-11-04"}, ...
+                    {"dd-MMM-yyyy'T'HH-mm-ss", "04-Nov-2020T12-46-06", "datetime", "2020-11-04T12:46:06"}}
     end
 
     methods (Test)
@@ -26,6 +29,8 @@ classdef ExtractTest < matlab.unittest.TestCase
 
         function unparsableTemporalIsNone(testCase)
             value = dsm.internal.coerceValue("not-a-date", struct("dataType", "date"), struct("valueFormat", "yyyyMMdd"));
+            testCase.verifyTrue(dsm.internal.isNone(value));
+            value = dsm.internal.coerceValue("2020-Nvo-04", struct("dataType", "date"), struct("valueFormat", "yyyy-MMM-dd"));
             testCase.verifyTrue(dsm.internal.isNone(value));
         end
 

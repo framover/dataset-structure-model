@@ -81,12 +81,15 @@ Readers support this token subset and nothing else; a format outside it is not p
 |-------|---------|------------|
 | `yyyy` | four-digit year | `%Y` |
 | `yy` | two-digit year | `%y` |
+| `MMM` | month, English three-letter abbreviation (`Jan` … `Dec`), any letter case | `%m`, after the name is mapped to its number |
 | `MM` | month, two digits | `%m` |
 | `dd` | day, two digits | `%d` |
 | `HH` | hour 00–23 | `%H` |
 | `mm` | minute | `%M` |
 | `ss` | second | `%S` |
 | `'…'` | literal text | as is |
+
+**Month names** resolve against a fixed English table, not the machine's locale: a Python reader maps the abbreviation to its number before parsing, a MATLAB reader passes `Locale` `en_US` to `datetime`. Both accept `Nov`, `NOV` and `nov`; any other spelling yields no value.
 
 **Two-digit years** fall in 1969–2068: `69` is 1969, `68` is 2068. This is the window Python's `strptime` uses; a MATLAB reader must pass `PivotYear` 1969 to `datetime`, because its default pivot moves with the current year and the two readers would otherwise disagree on the same config.
 

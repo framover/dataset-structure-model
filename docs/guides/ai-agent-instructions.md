@@ -91,7 +91,7 @@ An **array** of `{ "metadataRef": key, "extraction": {...} }`. The extraction ob
 | `fixed` | `value` | A constant. |
 | `function` | `extractorFunction` | **Do not emit by default.** It needs code in every reader. Propose it only when no declarative rule can express the value, and say so. |
 
-Plus `entityLayoutLevel` (a level **name**; `null` means the whole relative path), `valueFormat` for date/time fields in LDML notation (`"yyyyMMdd"`, `"yyyy_MM_dd"`, `"HH_mm_ss"`, `"yyMMdd"`; only the tokens `yyyy yy MM dd HH mm ss` are portable, and a two-digit year falls in 1969–2068), and optional `normalize`.
+Plus `entityLayoutLevel` (a level **name**; `null` means the whole relative path), `valueFormat` for date/time fields in LDML notation (`"yyyyMMdd"`, `"yyyy_MM_dd"`, `"HH_mm_ss"`, `"yyMMdd"`; only the tokens `yyyy yy MMM MM dd HH mm ss` are portable, `MMM` is an English month abbreviation such as `Nov`, and a two-digit year falls in 1969–2068), and optional `normalize`.
 
 The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 

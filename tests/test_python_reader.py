@@ -11,7 +11,7 @@ from dsm import (Config, ConfigError, ExtractorRegistry, Listing, compare_result
                  validate_config, walk)
 from dsm.cli import main
 from dsm.conformance import FIXTURE_EXTRACTORS, run_case, run_cases
-from dsm.extract import apply_slice, ldml_to_strftime, normalize, parse_temporal
+from dsm.extract import apply_slice, coerce, ldml_to_strftime, normalize, parse_temporal
 from dsm.listing import listing_from_dict, root_from_lines
 
 
@@ -57,9 +57,17 @@ def test_slices_are_python_slices(spec, expected):
     # two-digit years fall in 1969-2068, the strptime window; the MATLAB reader pins the same pivot
     ("yyMMdd", "690518", "date", "1969-05-18"),
     ("yyMMdd", "680518", "date", "2068-05-18"),
+    # MMM is an English three-letter month abbreviation, matched without regard to case
+    ("yyyy-MMM-dd", "2020-Nov-04", "date", "2020-11-04"),
+    ("yyyy-MMM-dd", "2020-NOV-04", "date", "2020-11-04"),
+    ("dd-MMM-yyyy'T'HH-mm-ss", "04-Nov-2020T12-46-06", "datetime", "2020-11-04T12:46:06"),
 ])
 def test_ldml_formats_parse_to_iso(fmt, text, data_type, expected):
     assert parse_temporal(text, fmt, data_type) == expected
+
+
+def test_unknown_month_abbreviation_is_no_value():
+    assert coerce("2020-Nvo-04", {"dataType": "date"}, {"valueFormat": "yyyy-MMM-dd"}) is None
 
 
 def test_ldml_translation():
