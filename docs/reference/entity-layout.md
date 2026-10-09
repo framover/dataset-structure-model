@@ -84,7 +84,7 @@ Whether entries at this level are folders or files. A file level must be the las
 |--|--|
 | Type | `array` of file pattern objects |
 
-The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity.
+The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity. Allowed only on a level with `entityType`: a structural level has no entity to attach files to, and a config that puts `filePatterns` on one is refused with `reference-integrity`.
 
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
