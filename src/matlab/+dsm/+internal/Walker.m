@@ -46,6 +46,10 @@ classdef Walker < handle
                     obj.Warnings(end+1) = sprintf("%s/%s is for environment '%s', listing is for '%s'", ...
                         root{1}.DataLocation, root{1}.RootStoragePath, rootEnvironment, environment);
                 end
+                if ~isfield(rootPath, "path") && obj.needsRootPath(root{1}.DataLocation)
+                    obj.Warnings(end+1) = sprintf("%s/%s has no path in the config or its overlay; function extractors receive paths relative to the root", ...
+                        root{1}.DataLocation, root{1}.RootStoragePath);
+                end
                 obj.Roots{end+1} = struct("DataLocation", root{1}.DataLocation, ...
                     "RootStoragePath", root{1}.RootStoragePath, "EntryCount", numel(root{1}.Entries));
                 tree = dsm.internal.Tree(root{1}.Entries);
@@ -68,6 +72,11 @@ classdef Walker < handle
     end
 
     methods (Access = private)
+        function tf = needsRootPath(obj, locId)
+        %needsRootPath Only function extractors see a real path; walking a listing needs none
+            tf = any(cellfun(@(item) string(item.extraction.method) == "function", obj.Config.mapping(locId)));
+        end
+
         function unmatch(obj, locId, rootId, path, reason, detail)
             obj.Unmatched{end+1} = struct("dataLocationIdentifier", string(locId), ...
                 "rootStoragePathIdentifier", string(rootId), "path", string(path), ...
@@ -136,8 +145,13 @@ classdef Walker < handle
 
         function [entityKey, identity] = resolveEntity(obj, locId, rootId, relPath, entityType, ancestors, fileSystemType)
             config = obj.Config;
-            rootPath = regexprep(string(config.rootStoragePath(locId, rootId).path), "[/\\]+$", "");
-            fullPath = rootPath + "/" + regexprep(string(relPath), "/$", "");
+            rootPath = string(dsm.internal.getField(config.rootStoragePath(locId, rootId), "path", ""));
+            relative = regexprep(string(relPath), "/$", "");
+            if rootPath == ""
+                fullPath = relative;  % no path in the config or its overlay: extractors get the path relative to the root
+            else
+                fullPath = regexprep(rootPath, "[/\\]+$", "") + "/" + relative;
+            end
             seed = seedFrom(ancestors);
 
             % ancestors that have no level of their own in this location are read from this path;
