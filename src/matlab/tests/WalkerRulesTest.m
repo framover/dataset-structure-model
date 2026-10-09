@@ -66,6 +66,21 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyTrue(contains(text, "session: 1"));
             testCase.verifyTrue(contains(text, "Unmatched: 1"));
         end
+
+        function structuralFolderWithNothingMatchingBelowIsUnmatchedItself(testCase)
+            doc = minimalConfigDoc();
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout = [layout(1), {struct("name", "years", "matchPattern", "^\d{4}$")}, layout(2)];
+            doc.dataLocations.filesystemSource.entityLayout = layout;
+            result = walkEntries(doc, {'m110/', 'm110/2025/', 'm110/2025/20250523_a/', ...
+                'm110/2024/', ...                            % empty
+                'm110/2023/', 'm110/2023/notes.txt', ...     % holds only an entry the next level rejects
+                'm110/2022/', 'm110/2022/20220101_b/', 'm110/2022/x.txt'});  % holds an entity: only x.txt is reported
+            testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), ["m110/2022/x.txt", "m110/2023/", "m110/2024/"]);
+            testCase.verifyEqual(cellfun(@(u) u.reason, result.Unmatched), repmat("no-match", 1, 3));
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            testCase.verifyEqual(sort(cellfun(@(r) r.identity.session_id, sessions)), ["a", "b"]);
+        end
     end
 end
 

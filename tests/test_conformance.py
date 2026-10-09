@@ -280,6 +280,17 @@ def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
     return results
 
 
+def path_yields_parents(case, loc_id, rel_path, parents):
+    """Whether a path's components yield the given parent identities. A parent identity the path cannot yield
+    (a function rule, a template that needs a seed) is accepted, as in test_extractions_reproduce_metadata."""
+    for parent in parents:
+        values = evaluate_rules(case, loc_id, rel_path, parent["entityType"], {})
+        for k, v in parent["identity"].items():
+            if values.get(k) not in (None, SKIP) and values[k] != v:
+                return False
+    return True
+
+
 def record_identity_from_path(case, loc_id, rel_path, entity_type):
     values = evaluate_rules(case, loc_id, rel_path, entity_type, {})
     keys = case.identity_keys(entity_type)
@@ -539,7 +550,9 @@ def test_unmatched_reasons(case):
         assert item["reason"] == "no-match"
         wants_dir = level.get("fileSystemType", "folder") == "folder"
         type_mismatch = wants_dir != is_dir(item["path"])
-        assert type_mismatch or not name_matches(level, name, case.definitions), \
+        # a folder that matches a structural level but holds nothing an entity accounts for is unmatched itself
+        structural_folder = level.get("entityType") is None and is_dir(item["path"]) and depth < len(layout) - 1
+        assert type_mismatch or structural_folder or not name_matches(level, name, case.definitions), \
             f"{case.name}: {item['path']} matches level '{level['name']}' and should be an entity"
 
 
@@ -558,15 +571,16 @@ def test_paths_match_levels(case):
                         f"{case.name}: component '{part}' of {path} does not match level '{layout[i]['name']}'"
             if layout[level_index].get("fileSystemType", "folder") == "file":
                 assert level_index == len(layout) - 1
-                # every listed file at this level with this identity is one of the entity's paths, and vice versa
-                folder = "/".join(components(loc["paths"][0])[:-1])
-                folder = folder + "/" if folder else ""
+                # every listed file at this level that yields this identity under the same parents is one of the
+                # entity's paths, and vice versa; the folders between may differ where a structural level between
+                # the parent and the file level alternates (funct/ and timing/ under one session)
                 entries = case.entries(loc_id, loc["rootStoragePathIdentifier"])
-                level = layout[level_index]
                 same_identity = sorted(
-                    f for f in direct_child_files(folder, entries)
-                    if name_matches(level, basename(f), case.definitions)
+                    f for f in entries
+                    if not is_dir(f) and len(components(f)) == level_index + 1
+                    and all(name_matches(layout[i], part, case.definitions) for i, part in enumerate(components(f)))
                     and record_identity_from_path(case, loc_id, f, record["entityType"]) == record["identity"]
+                    and path_yields_parents(case, loc_id, f, record.get("parents", []))
                 )
                 assert sorted(loc["paths"]) == same_identity, f"{case.name}: paths of {record['identity']} should be {same_identity}"
 

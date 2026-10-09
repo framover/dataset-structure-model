@@ -1,0 +1,161 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "fmri",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "m1/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m1"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "day_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m1"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "fmri",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "m1/d1/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m1",
+        "day_number": 1
+      }
+    },
+    {
+      "entityType": "run",
+      "identity": {
+        "run_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m1"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "day_number": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "fmri",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "m1/d1/funct/m1_d1_run_1.json",
+            "m1/d1/funct/m1_d1_run_1.nii.gz",
+            "m1/d1/timing/m1_d1_run_SPM_1.mat"
+          ],
+          "files": {
+            "bold": [
+              "m1/d1/funct/m1_d1_run_1.nii.gz"
+            ],
+            "sidecar": [
+              "m1/d1/funct/m1_d1_run_1.json"
+            ],
+            "timing": [
+              "m1/d1/timing/m1_d1_run_SPM_1.mat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m1",
+        "day_number": 1,
+        "run_number": 1
+      }
+    },
+    {
+      "entityType": "run",
+      "identity": {
+        "run_number": 2
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m1"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "day_number": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "fmri",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "m1/d1/funct/m1_d1_run_2.json",
+            "m1/d1/funct/m1_d1_run_2.nii.gz"
+          ],
+          "files": {
+            "bold": [
+              "m1/d1/funct/m1_d1_run_2.nii.gz"
+            ],
+            "sidecar": [
+              "m1/d1/funct/m1_d1_run_2.json"
+            ],
+            "timing": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "m1",
+        "day_number": 1,
+        "run_number": 2
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "fmri",
+      "rootStoragePathIdentifier": "local",
+      "path": "m1/d1/logs/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "fmri",
+      "rootStoragePathIdentifier": "local",
+      "path": "m1/d1/struct/",
+      "reason": "no-match"
+    }
+  ]
+}
