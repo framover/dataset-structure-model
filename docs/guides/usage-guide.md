@@ -81,6 +81,8 @@ See [Schema Reference → Top-Level Structure](../reference/overview.md) for the
 
 They describe semantics, not folders. If all sessions of all subjects sit in one flat folder, `oneToMany` still holds.
 
+A relationship cannot say that one entity's *name* lists several entities of another type, because an extraction rule yields one value per field. Example: an experiment folder `150917_c9_11_D1_D1_D2` holds cells 9, 10 and 11, while each cell also has a folder of its own, `150917_c10_D1`. No declarative rule links the cell to its experiment. Keep the `oneToMany` relationship as it is and compute the link on the child: give the cell an `experiment_id` field with a `function` extractor whose implementation parses the range in the parent's name. The conformance case `ebrains-kozlov-2019-projection-neurons` shows the layout.
+
 ---
 
 ## Metadata Definitions
