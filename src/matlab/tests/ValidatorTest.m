@@ -99,7 +99,9 @@ classdef ValidatorTest < matlab.unittest.TestCase
 
         function levelIsRequiredFalseIsDraft(testCase)
             doc = minimalConfigDoc();
-            doc.dataLocations.filesystemSource.entityLayout(1).isRequired = false;
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout{1}.isRequired = false;
+            doc.dataLocations.filesystemSource.entityLayout = layout;
             testCase.verifyError(@() dsm.validateConfig(doc), "dsm:config:unsupportedDraft");
             dsm.validateConfig(doc, "RejectDraft", false);
         end
