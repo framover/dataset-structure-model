@@ -27,13 +27,7 @@
       ],
       "metadata": {
         "subject_id": "m0123"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'scanimage' yield {'subject_id': 'm0123'}: ['2024-03-15/m0123/', '2024-03-16/m0123/']"
-        }
-      ]
+      }
     },
     {
       "entityType": "subject",

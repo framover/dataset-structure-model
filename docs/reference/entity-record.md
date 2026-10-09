@@ -61,7 +61,7 @@ Each `locations` entry:
 |------|---------|
 | `missing-required-file` | An `isRequired` pattern matched nothing |
 | `cardinality-violation` | A `cardinality: one` pattern matched several files |
-| `duplicate-entity` | Several folders in one location yield this identity |
+| `duplicate-entity` | Several folders under the same parent folder in one location yield the same identity |
 | `extraction-failed` | A rule matched nothing and the field has no `defaultValue` |
 | `metadata-conflict` | Locations disagree on a field's value |
 | `validation-failed` | A value violates its definition's `validation` |

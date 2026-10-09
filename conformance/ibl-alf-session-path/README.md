@@ -8,5 +8,5 @@ What it checks:
 - Composite session identity `[session_date, session_number]` where the date comes from the structural `dates` level above the session's own level.
 - `session_path` read from the whole relative path (`entityLayoutLevel: null`).
 - Two sessions on one day (`001`, `002`) are distinct.
-- **Gap G3 (one entity, several folders by design):** `probe00` has a folder under `alf/` and another under `raw_ephys_data/`. The structural `collections` level makes both folders resolve to the same probe, which is what the dataset means, but the reader reports `duplicate-entity` because two folders in one location yielded one identity. The fixture pins this as current behaviour.
+- **One entity, several folders by design (G3):** `probe00` has a folder under `alf/` and another under `raw_ephys_data/`. The structural `collections` level makes both resolve to the same probe, which is what the dataset means. The two folders have different parent folders, so the record lists both paths and carries no `duplicate-entity`.
 - **Gap G5 (branching):** `alf/_ibl_trials.*.npy` (files where the next level expects probe folders), the nidq files in `raw_ephys_data/`, `raw_video_data/` and `raw_behavior_data/` all belong to the session but are `no-match`, because a location has one linear layout.
