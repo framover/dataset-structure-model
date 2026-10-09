@@ -16,28 +16,35 @@ function [values, unresolved] = evaluateFields(config, locId, relPath, entityTyp
     pendingRefs = string(cellfun(@(item) item.metadataRef, rules, "UniformOutput", false));
     while ~isempty(pending)
         progressed = false;
-        for i = numel(pending):-1:1
+        remaining = {};
+        % config order decides between several rules for one field, so the pass runs forward
+        for i = 1:numel(pending)
             ref = string(pending{i}.metadataRef);
             rule = pending{i}.extraction;
             if string(rule.method) == "template"
                 tokens = templateTokens(rule.pattern);
                 waiting = tokens(ismember(tokens, pendingRefs) & tokens ~= ref);
                 if ~isempty(waiting)
+                    remaining{end+1} = pending{i}; %#ok<AGROW>
                     continue
                 end
             end
             [value, unresolvedKey] = evaluateRule(rule, definitions.(ref), levelNames, relPath, known, registry, fullPath, locId);
-            values.(ref) = value;
-            if ~dsm.internal.isNone(value)
-                known.(ref) = value;
+            % several rules for one field are an ordered fallback: the first that yields a value wins
+            if ~isfield(values, ref) || dsm.internal.isNone(values.(ref))
+                values.(ref) = value;
+                if ~dsm.internal.isNone(value)
+                    known.(ref) = value;
+                end
             end
             if unresolvedKey ~= ""
                 unresolved(end+1) = unresolvedKey; %#ok<AGROW>
             end
-            pending(i) = [];
-            pendingRefs(pendingRefs == ref) = [];
             progressed = true;
         end
+        pending = remaining;
+        % a template waits until every rule for the field it references has run
+        pendingRefs = string(cellfun(@(item) item.metadataRef, pending, "UniformOutput", false));
         if ~progressed
             % a dependency cycle; validation rejects these, so this is defensive
             for i = 1:numel(pending)

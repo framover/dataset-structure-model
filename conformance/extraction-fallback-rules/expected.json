@@ -1,0 +1,87 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "m110"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "raw",
+          "rootStoragePathIdentifier": "main",
+          "fileSystemType": "folder",
+          "paths": [
+            "m110/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "m110"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "baseline"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m110"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "raw",
+          "rootStoragePathIdentifier": "main",
+          "fileSystemType": "folder",
+          "paths": [
+            "m110/20250523_baseline/"
+          ]
+        }
+      ],
+      "metadata": {
+        "session_id": "baseline",
+        "session_label": "m110-baseline",
+        "source": "first",
+        "tag": "untagged",
+        "subject_id": "m110"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "drug"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "m110"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "raw",
+          "rootStoragePathIdentifier": "main",
+          "fileSystemType": "folder",
+          "paths": [
+            "m110/drug_20250601/"
+          ]
+        }
+      ],
+      "metadata": {
+        "session_id": "drug",
+        "session_label": "m110-drug",
+        "source": "first",
+        "tag": "untagged",
+        "subject_id": "m110"
+      }
+    }
+  ],
+  "unmatched": []
+}

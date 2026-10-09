@@ -71,6 +71,10 @@ A config that uses `function` needs an implementation in every reader that consu
 
 Read the value from a file inside the entity folder (`filePattern`, `contentPath`, `fileFormat`). Outside the core; readers may reject it.
 
+## Several rules for one field
+
+A location may list more than one rule for the same field. The rules are an ordered fallback: readers evaluate them in config order, and the first rule that yields a value wins. A later rule neither overwrites that value nor removes it when it yields nothing, and a `template` that references the field is evaluated after every rule for it has run. Use this when one identity is written in two forms — `<date>_<name>` in some folders and `<name>_<date>` in others — with one regex per form, instead of one regex with alternation. The conformance case `extraction-fallback-rules` pins the order.
+
 ## `valueFormat`
 
 For `date`, `time` and `datetime` fields: the pattern the extracted text is parsed with, in **Unicode LDML** notation as used by MATLAB `datetime` and Java — `yyyyMMdd`, `yyyy_MM_dd`, `HH_mm_ss`, `yyyy-MM-dd'T'HHmmss`, `yyMMdd`. Python readers translate to `strftime` directives.

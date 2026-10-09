@@ -62,6 +62,12 @@ Indices are how people specify fixed positions, and configuration UIs let users 
 
 ---
 
+## Several rules for one field are an ordered fallback
+
+The schema does not forbid two `metadataMapping` entries for one field, and a layout that writes one identity in two forms needs two rules. Readers evaluate the rules in config order and keep the first value; a later rule that yields nothing does not erase an earlier one. The alternative, one rule per field enforced by validation, would force the two forms into one regex with alternation, which is harder to read and to check. Config order is the only order both readers can see, so it is the fallback order.
+
+---
+
 ## `function` names a registry key, with a fixed call contract
 
 A function extractor is portable when two things hold: the name is language-neutral, and every implementation receives the same inputs. So `extractorFunction` is a registry key resolved by each reader, and the call is `(fullPath, levelName, dataLocationIdentifier)` returning a value of the field's `dataType`. Whether two implementations agree is checked by conformance fixtures, not by the schema. A config that uses `function` does not run until someone writes code, so LLM-generated configs should prefer the declarative methods.

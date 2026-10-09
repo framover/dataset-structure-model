@@ -171,11 +171,14 @@ def evaluate_fields(config: Config, loc_id: str, rel_path: str, entity_type: str
                     continue
             value = _evaluate(rule, config.definitions[ref], level_names, rel_path, known,
                               registry, full_path, loc_id, unresolved)
-            values[ref] = value
-            if value is not None:
-                known[ref] = value
+            # several rules for one field are an ordered fallback: the first that yields a value wins
+            if values.get(ref) is None:
+                values[ref] = value
+                if value is not None:
+                    known[ref] = value
             pending.remove(item)
-            pending_refs.discard(ref)
+            if not any(other["metadataRef"] == ref for other in pending):
+                pending_refs.discard(ref)
             progressed = True
         if not progressed:  # a dependency cycle; validation rejects these, so this is defensive
             for item in pending:
