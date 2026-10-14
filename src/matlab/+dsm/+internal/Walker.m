@@ -11,7 +11,8 @@ classdef Walker < handle
 
     properties (Access = private)
         Entities containers.Map   % key -> entity accumulator struct
-        EntityKeys (1,:) string = string.empty(1, 0)   % insertion order
+        EntityKeys (1,:) string = string.empty(1, 0)   % insertion order; the first EntityCount are in use
+        EntityCount (1,1) double = 0
         Unmatched (1,:) cell = {}
         Warnings (1,:) string = string.empty(1, 0)
         Roots (1,:) cell = {}
@@ -54,7 +55,7 @@ classdef Walker < handle
             end
             records = obj.finalize();
             unresolved = string.empty(1, 0);
-            for key = obj.EntityKeys
+            for key = obj.EntityKeys(1:obj.EntityCount)
                 unresolved = [unresolved, obj.Entities(char(key)).Unresolved]; %#ok<AGROW>
             end
             result = dsm.WalkResult();
@@ -146,7 +147,7 @@ classdef Walker < handle
             inferredValues = {};
             inferredUnresolved = {};
             for ancestorType = config.typesBefore(entityType)
-                if any(cellfun(@(a) string(a{1}) == ancestorType, ancestors))
+                if hasType(ancestors, ancestorType)
                     continue
                 end
                 if isempty(config.rulesFor(locId, ancestorType))
@@ -154,7 +155,7 @@ classdef Walker < handle
                 end
                 [values, unresolved] = dsm.internal.evaluateFields(config, locId, relPath, ancestorType, seed, obj.Registry, fullPath);
                 keys = config.identityKeys(ancestorType);
-                if all(arrayfun(@(k) isfield(values, k) && ~dsm.internal.isNone(values.(k)), keys))
+                if hasAll(values, keys)
                     ancestorIdentity = struct();
                     for k = keys
                         ancestorIdentity.(k) = values.(k);
@@ -209,7 +210,7 @@ classdef Walker < handle
         end
 
         function parents = sortParents(obj, parents)
-            if isempty(parents)
+            if numel(parents) < 2
                 return
             end
             orders = cellfun(@(p) obj.Config.typeOrder(p{1}), parents);
@@ -223,14 +224,18 @@ classdef Walker < handle
                 obj.Entities(char(key)) = struct("EntityType", string(entityType), "Identity", identity, ...
                     "Parents", {parents}, "LocationOrder", string.empty(1, 0), "LocationPaths", {{}}, ...
                     "Observations", {{}}, "Unresolved", string.empty(1, 0));
-                obj.EntityKeys(end+1) = key;
+                if obj.EntityCount == numel(obj.EntityKeys)   % grow by doubling: appending one by one copies
+                    obj.EntityKeys(end + 1:2 * end + 16) = "";
+                end
+                obj.EntityCount = obj.EntityCount + 1;
+                obj.EntityKeys(obj.EntityCount) = key;
             end
         end
 
         function records = finalize(obj)
-            records = cell(1, numel(obj.EntityKeys));
-            sortKeys = strings(1, numel(obj.EntityKeys));
-            for i = 1:numel(obj.EntityKeys)
+            records = cell(1, obj.EntityCount);
+            sortKeys = strings(1, obj.EntityCount);
+            for i = 1:obj.EntityCount
                 entity = obj.Entities(char(obj.EntityKeys(i)));
                 records{i} = obj.buildRecord(entity);
                 sortKeys(i) = sprintf("%03d|%s|%s", obj.Config.typeOrder(entity.EntityType), ...
@@ -249,7 +254,11 @@ classdef Walker < handle
             % own fields: union over every path the entity was read from (its own, or the descendants
             % it was inferred from), in walk order
             % Observations is {{locId, values}, ...}; unique() on the location ids keeps first occurrence order
-            observedLocations = unique(cellfun(@(o) o{1}, entity.Observations), "stable");
+            if isscalar(entity.Observations)
+                observedLocations = entity.Observations{1}{1};
+            else
+                observedLocations = unique(cellfun(@(o) o{1}, entity.Observations), "stable");
+            end
             mappedFields = string.empty(1, 0);
             functionFields = string.empty(1, 0);      % fields read by an extractor function,
             functionNames = string.empty(1, 0);       % and the function's name
@@ -346,7 +355,7 @@ classdef Walker < handle
                 end
                 locations{i} = entry;
             end
-            if ~isempty(locations)
+            if numel(locations) > 1
                 locationIds = config.locationIds();
                 keys = cellfun(@(l) sprintf("%03d|%s", find(locationIds == l.dataLocationIdentifier, 1), l.rootStoragePathIdentifier), locations);
                 [~, order] = sort(keys);
@@ -359,6 +368,28 @@ classdef Walker < handle
             end
             record = struct("entityType", entity.EntityType, "identity", entity.Identity, ...
                 "parents", {parents}, "locations", {locations}, "metadata", metadata, "issues", {issues});
+        end
+    end
+end
+
+function tf = hasType(parents, entityType)
+    % Whether one of the {entityType, identity} pairs is of the type
+    tf = false;
+    for i = 1:numel(parents)
+        if string(parents{i}{1}) == entityType
+            tf = true;
+            return
+        end
+    end
+end
+
+function tf = hasAll(values, keys)
+    % Whether values has a value (not none) for every key
+    tf = true;
+    for k = keys
+        if ~isfield(values, k) || dsm.internal.isNone(values.(k))
+            tf = false;
+            return
         end
     end
 end
