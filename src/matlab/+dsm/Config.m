@@ -11,6 +11,12 @@ classdef Config
         Source (1,1) string = ""
     end
 
+    properties (SetAccess = immutable, Hidden)
+        % The lists above, read once: a walk asks for them tens of thousands of times. Empty when the
+        % document could not be indexed (an invalid one); the accessors then read the document itself.
+        Index struct = struct.empty
+    end
+
     methods
         function obj = Config(doc, source)
             arguments
@@ -19,6 +25,11 @@ classdef Config
             end
             obj.Document = doc;
             obj.Source = source;
+            try
+                obj.Index = buildIndex(obj);
+            catch
+                obj.Index = struct.empty;
+            end
         end
 
         function definitions = definitions(obj)
@@ -26,6 +37,10 @@ classdef Config
         end
 
         function names = entityTypes(obj)
+            if ~isempty(obj.Index)
+                names = obj.Index.types;
+                return
+            end
             items = dsm.internal.asCellOfStructs(dsm.internal.getField(obj.Document, "entityTypes", {}));
             names = string(cellfun(@(e) e.name, items, "UniformOutput", false));
             names = reshape(names, 1, []);
@@ -44,6 +59,13 @@ classdef Config
         end
 
         function keys = identityKeys(obj, entityType)
+            if ~isempty(obj.Index)
+                index = find(obj.Index.types == string(entityType), 1);
+                if ~isempty(index)
+                    keys = obj.Index.identityKeys{index};
+                    return
+                end
+            end
             for item = dsm.internal.asCellOfStructs(obj.Document.entityTypes)
                 if string(item{1}.name) == string(entityType)
                     if isfield(item{1}, "identifierRef")
@@ -63,15 +85,30 @@ classdef Config
         end
 
         function locations = locations(obj)
+            if ~isempty(obj.Index)
+                locations = obj.Index.locations;
+                return
+            end
             locations = dsm.internal.asCellOfStructs(obj.Document.dataLocations);
         end
 
         function ids = locationIds(obj)
+            if ~isempty(obj.Index)
+                ids = obj.Index.locationIds;
+                return
+            end
             ids = string(cellfun(@(l) l.identifier, obj.locations(), "UniformOutput", false));
             ids = reshape(ids, 1, []);
         end
 
         function location = location(obj, locId)
+            if ~isempty(obj.Index)
+                index = find(obj.Index.locationIds == string(locId), 1);
+                if ~isempty(index)
+                    location = obj.Index.locations{index};
+                    return
+                end
+            end
             for candidate = obj.locations()
                 if string(candidate{1}.identifier) == string(locId)
                     location = candidate{1};
@@ -86,6 +123,11 @@ classdef Config
         end
 
         function levels = layout(obj, locId)
+            index = obj.indexOfLocation(locId);
+            if ~isempty(index)
+                levels = obj.Index.layouts{index};
+                return
+            end
             levels = dsm.internal.asCellOfStructs(obj.filesystem(locId).entityLayout);
         end
 
@@ -95,10 +137,23 @@ classdef Config
         end
 
         function items = mapping(obj, locId)
+            index = obj.indexOfLocation(locId);
+            if ~isempty(index)
+                items = obj.Index.mappings{index};
+                return
+            end
             items = dsm.internal.asCellOfStructs(dsm.internal.getField(obj.filesystem(locId), "metadataMapping", {}));
         end
 
         function items = rulesFor(obj, locId, entityType)
+            index = obj.indexOfLocation(locId);
+            if ~isempty(index)
+                typeIndex = find(obj.Index.types == string(entityType), 1);
+                if ~isempty(typeIndex)
+                    items = obj.Index.rules{index}{typeIndex};
+                    return
+                end
+            end
             definitions = obj.definitions();
             items = obj.mapping(locId);
             keep = cellfun(@(item) string(definitions.(item.metadataRef).ofEntity) == string(entityType), items);
@@ -106,6 +161,14 @@ classdef Config
         end
 
         function rootPath = rootStoragePath(obj, locId, rootId)
+            index = obj.indexOfLocation(locId);
+            if ~isempty(index)
+                rootIndex = find(obj.Index.rootIds{index} == string(rootId), 1);
+                if ~isempty(rootIndex)
+                    rootPath = obj.Index.roots{index}{rootIndex};
+                    return
+                end
+            end
             for candidate = dsm.internal.asCellOfStructs(obj.filesystem(locId).rootStoragePaths)
                 if string(candidate{1}.identifier) == string(rootId)
                     rootPath = candidate{1};
@@ -169,6 +232,34 @@ classdef Config
         function tf = nameMatches(obj, level, name)
             tf = ~isempty(regexp(char(name), obj.matchRegex(level), "once"));
         end
+    end
+
+    methods (Access = private)
+        function index = indexOfLocation(obj, locId)
+            index = [];
+            if ~isempty(obj.Index)
+                index = find(obj.Index.locationIds == string(locId), 1);
+            end
+        end
+    end
+end
+
+function index = buildIndex(config)
+    % Everything the uncached accessors would return, computed with them before Index is set
+    index = struct();
+    index.types = config.entityTypes();
+    index.identityKeys = arrayfun(@(t) config.identityKeys(t), index.types, "UniformOutput", false);
+    index.locations = config.locations();
+    index.locationIds = config.locationIds();
+    count = numel(index.locations);
+    [index.layouts, index.mappings, index.rules, index.roots, index.rootIds] = deal(cell(1, count));
+    for i = 1:count
+        locId = index.locationIds(i);
+        index.layouts{i} = config.layout(locId);
+        index.mappings{i} = config.mapping(locId);
+        index.rules{i} = arrayfun(@(t) config.rulesFor(locId, t), index.types, "UniformOutput", false);
+        index.roots{i} = dsm.internal.asCellOfStructs(config.filesystem(locId).rootStoragePaths);
+        index.rootIds{i} = reshape(string(cellfun(@(r) r.identifier, index.roots{i}, "UniformOutput", false)), 1, []);
     end
 end
 

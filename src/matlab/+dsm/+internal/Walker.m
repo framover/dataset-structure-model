@@ -181,17 +181,18 @@ classdef Walker < handle
 
             entityKey = obj.getOrCreate(entityType, identity, parents);
             entity = obj.Entities(char(entityKey));
-            locationKey = char(string(locId) + "|" + string(rootId));
-            if isKey(entity.Locations, locationKey)
-                accumulator = entity.Locations(locationKey);
-            else
-                accumulator = struct("FileSystemType", fileSystemType, "Paths", {{}});
-                entity.LocationOrder(end+1) = string(locationKey);
+            locationKey = string(locId) + "|" + string(rootId);
+            slot = find(entity.LocationOrder == locationKey, 1);
+            if isempty(slot)
+                entity.LocationOrder(end+1) = locationKey;
+                entity.LocationPaths{end+1} = struct("FileSystemType", fileSystemType, "Paths", {{}});
+                slot = numel(entity.LocationOrder);
             end
-            accumulator.Paths{end+1} = char(relPath);
-            entity.Locations(locationKey) = accumulator;
+            entity.LocationPaths{slot}.Paths{end+1} = char(relPath);
             entity.Observations{end+1} = {string(locId), values};
-            entity.Unresolved = unique([entity.Unresolved, unresolved]);
+            if ~isempty(unresolved)
+                entity.Unresolved = unique([entity.Unresolved, unresolved]);
+            end
             obj.Entities(char(entityKey)) = entity;
 
             for i = 1:numel(inferred)
@@ -200,7 +201,9 @@ classdef Walker < handle
                 ancestorKey = obj.getOrCreate(ancestorType, inferred{i}{2}, ancestorParents);
                 ancestor = obj.Entities(char(ancestorKey));
                 ancestor.Observations{end+1} = {string(locId), inferredValues{i}};
-                ancestor.Unresolved = unique([ancestor.Unresolved, inferredUnresolved{i}]);
+                if ~isempty(inferredUnresolved{i})
+                    ancestor.Unresolved = unique([ancestor.Unresolved, inferredUnresolved{i}]);
+                end
                 obj.Entities(char(ancestorKey)) = ancestor;
             end
         end
@@ -218,8 +221,8 @@ classdef Walker < handle
             key = entityKeyFor(entityType, identity, parents);
             if ~isKey(obj.Entities, char(key))
                 obj.Entities(char(key)) = struct("EntityType", string(entityType), "Identity", identity, ...
-                    "Parents", {parents}, "Locations", containers.Map("KeyType", "char", "ValueType", "any"), ...
-                    "LocationOrder", string.empty(1, 0), "Observations", {{}}, "Unresolved", string.empty(1, 0));
+                    "Parents", {parents}, "LocationOrder", string.empty(1, 0), "LocationPaths", {{}}, ...
+                    "Observations", {{}}, "Unresolved", string.empty(1, 0));
                 obj.EntityKeys(end+1) = key;
             end
         end
@@ -248,7 +251,8 @@ classdef Walker < handle
             % Observations is {{locId, values}, ...}; unique() on the location ids keeps first occurrence order
             observedLocations = unique(cellfun(@(o) o{1}, entity.Observations), "stable");
             mappedFields = string.empty(1, 0);
-            functionFields = containers.Map("KeyType", "char", "ValueType", "any");
+            functionFields = string.empty(1, 0);      % fields read by an extractor function,
+            functionNames = string.empty(1, 0);       % and the function's name
             for locId = observedLocations
                 for item = config.rulesFor(locId, entity.EntityType)
                     ref = string(item{1}.metadataRef);
@@ -256,7 +260,12 @@ classdef Walker < handle
                         mappedFields(end+1) = ref; %#ok<AGROW>
                     end
                     if string(item{1}.extraction.method) == "function"
-                        functionFields(char(ref)) = string(item{1}.extraction.extractorFunction);
+                        slot = find(functionFields == ref, 1);
+                        if isempty(slot)
+                            slot = numel(functionFields) + 1;
+                        end
+                        functionFields(slot) = ref;
+                        functionNames(slot) = string(item{1}.extraction.extractorFunction);
                     end
                 end
             end
@@ -273,8 +282,8 @@ classdef Walker < handle
                 end
                 if ~isempty(distinct)
                     metadata.(field) = distinct{1};
-                elseif isKey(functionFields, char(field)) && ismember(functionFields(char(field)), entity.Unresolved)
-                    issues{end+1} = issue("unresolved-extractor", sprintf("%s: no implementation registered for '%s'", field, functionFields(char(field)))); %#ok<AGROW>
+                elseif any(functionFields == field) && ismember(functionNames(functionFields == field), entity.Unresolved)
+                    issues{end+1} = issue("unresolved-extractor", sprintf("%s: no implementation registered for '%s'", field, functionNames(functionFields == field))); %#ok<AGROW>
                 elseif isfield(definitions.(field), "defaultValue")
                     metadata.(field) = definitions.(field).defaultValue;
                 else
@@ -296,7 +305,7 @@ classdef Walker < handle
                 locationKey = entity.LocationOrder(i);
                 locId = extractBefore(locationKey, "|");
                 rootId = extractAfter(locationKey, "|");
-                accumulator = entity.Locations(char(locationKey));
+                accumulator = entity.LocationPaths{i};
                 level = config.layout(locId);
                 level = level{config.entityLevelIndex(locId, entity.EntityType)};
                 entry = struct("dataLocationIdentifier", locId, "rootStoragePathIdentifier", rootId, ...
@@ -369,17 +378,23 @@ end
 
 function key = identityKeyFor(identity)
     names = sort(string(fieldnames(identity)))';
-    parts = arrayfun(@(n) n + "=" + string(identity.(n)), names);
+    parts = strings(1, numel(names));
+    for i = 1:numel(names)
+        parts(i) = names(i) + "=" + string(identity.(names(i)));
+    end
     key = strjoin(parts, ";");
 end
 
 function key = parentsKeyFor(parents)
-    parts = cellfun(@(p) string(p{1}) + ":" + identityKeyFor(p{2}), parents);
-    if isempty(parts)
-        key = "";
-    else
-        key = strjoin(parts, ",");
+    key = "";
+    if isempty(parents)
+        return
     end
+    parts = strings(1, numel(parents));
+    for i = 1:numel(parents)
+        parts(i) = string(parents{i}{1}) + ":" + identityKeyFor(parents{i}{2});
+    end
+    key = strjoin(parts, ",");
 end
 
 function key = entityKeyFor(entityType, identity, parents)
