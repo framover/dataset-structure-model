@@ -14,6 +14,7 @@ One directory per case:
 | `listing.json` | A directory snapshot under one or more root paths — [`schema/DirectoryListing.schema.json`](https://github.com/framover/dataset-structure-model/blob/main/schema/DirectoryListing.schema.json) |
 | `expected.json` | The records and unmatched entries a reader must produce, or the error it must raise |
 | `README.md` | What the case checks |
+| `generate.json` | Optional: path generation requests and the path or error code each must give (see [Pipeline Integration](pipeline-integration.md#generating-output-paths)) |
 
 ## The listing
 

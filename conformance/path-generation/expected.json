@@ -1,0 +1,35 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": { "subject_id": "AB01" },
+      "parents": [],
+      "locations": [
+        { "dataLocationIdentifier": "derived", "rootStoragePathIdentifier": "main", "fileSystemType": "folder", "paths": ["sub-AB01/"] }
+      ],
+      "metadata": { "subject_id": "AB01" }
+    },
+    {
+      "entityType": "session",
+      "identity": { "session_date": "2025-05-10", "session_number": 1 },
+      "parents": [ { "entityType": "subject", "identity": { "subject_id": "AB01" } } ],
+      "locations": [
+        { "dataLocationIdentifier": "derived", "rootStoragePathIdentifier": "main", "fileSystemType": "folder", "paths": ["sub-AB01/data/2025-05-10_s1/"] }
+      ],
+      "metadata": { "subject_id": "AB01", "session_date": "2025-05-10", "session_number": 1 }
+    },
+    {
+      "entityType": "trial",
+      "identity": { "trial_number": 3 },
+      "parents": [
+        { "entityType": "subject", "identity": { "subject_id": "AB01" } },
+        { "entityType": "session", "identity": { "session_date": "2025-05-10", "session_number": 1 } }
+      ],
+      "locations": [
+        { "dataLocationIdentifier": "derived", "rootStoragePathIdentifier": "main", "fileSystemType": "file", "paths": ["sub-AB01/data/2025-05-10_s1/trial-3.json"] }
+      ],
+      "metadata": { "subject_id": "AB01", "session_date": "2025-05-10", "session_number": 1, "trial_number": 3 }
+    }
+  ],
+  "unmatched": []
+}

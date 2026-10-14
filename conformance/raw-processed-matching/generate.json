@@ -1,0 +1,35 @@
+{
+  "description": "Where new entities go. processed is readwrite with a pathComponentTemplate on every level; raw is read-only.",
+  "requests": [
+    {
+      "dataLocation": "processed", "entityType": "session",
+      "values": { "subject_id": "m110", "session_id": "m110-20250523-002", "session_date": "2025-05-23" },
+      "expected": { "path": "subject-m110/session-m110-20250523-002/" }
+    },
+    {
+      "dataLocation": "processed", "entityType": "subject",
+      "values": { "subject_id": "m222" },
+      "expected": { "path": "subject-m222/" }
+    },
+    {
+      "dataLocation": "processed", "entityType": "session",
+      "values": { "session_id": "m110-20250523-002" },
+      "expected": { "error": "missing-value" }
+    },
+    {
+      "dataLocation": "processed", "entityType": "session",
+      "values": { "subject_id": "m110", "session_id": "not-a-session" },
+      "expected": { "error": "name-mismatch" }
+    },
+    {
+      "dataLocation": "raw", "entityType": "session",
+      "values": { "subject_id": "m110", "session_id": "m110-20250523-002" },
+      "expected": { "error": "not-writable" }
+    },
+    {
+      "dataLocation": "archive", "entityType": "session",
+      "values": { "subject_id": "m110", "session_id": "m110-20250523-002" },
+      "expected": { "error": "unknown-location" }
+    }
+  ]
+}

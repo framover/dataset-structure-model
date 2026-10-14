@@ -1,0 +1,21 @@
+{
+  "description": "Generating paths: templates, a fixed structural level, an integer and a date token, a file-level entity, and each error code.",
+  "requests": [
+    { "dataLocation": "derived", "entityType": "subject", "values": { "subject_id": "AB02" },
+      "expected": { "path": "sub-AB02/" } },
+    { "dataLocation": "derived", "entityType": "session",
+      "values": { "subject_id": "AB01", "session_date": "2025-05-11", "session_number": 2 },
+      "expected": { "path": "sub-AB01/data/2025-05-11_s2/" } },
+    { "dataLocation": "derived", "entityType": "trial",
+      "values": { "subject_id": "AB01", "session_date": "2025-05-10", "session_number": 1, "trial_number": 12 },
+      "expected": { "path": "sub-AB01/data/2025-05-10_s1/trial-12.json" } },
+    { "dataLocation": "derived", "entityType": "subject", "values": { "subject_id": "ab02" },
+      "expected": { "error": "name-mismatch" } },
+    { "dataLocation": "derived", "entityType": "session", "values": { "subject_id": "AB01", "session_date": "2025-05-11" },
+      "expected": { "error": "missing-value" } },
+    { "dataLocation": "dated", "entityType": "subject", "values": { "subject_id": "AB01" },
+      "expected": { "error": "no-template" } },
+    { "dataLocation": "dated", "entityType": "trial", "values": { "trial_number": 1 },
+      "expected": { "error": "no-level" } }
+  ]
+}

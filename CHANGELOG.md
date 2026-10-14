@@ -5,6 +5,9 @@ This project uses [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Path generation in both readers: `dsm.generate_path` (Python) and `dsm.generatePath` (MATLAB) give where a new entity goes in a `readwrite` location, from each level's `pathComponentTemplate` or `fixedName`, and check every component against its level's pattern. Errors carry a code (`unknown-location`, `not-writable`, `no-level`, `no-template`, `missing-value`, `name-mismatch`). Conformance cases may include a `generate.json` with requests and expected paths or codes; `raw-processed-matching` has one, and the new `path-generation` case covers a fixed structural level, integer and date tokens, a file-level entity and every error code.
+
 ### Changed
 - The version is 0.1.0, not 1.0.0. The 1.0.0 label was applied before the mapping had met any dataset outside the authors' lab, and no tag, release or consumer ever carried it. Under semantic versioning, 1.0 promises that breaking changes become major versions; that promise waits for the evidence described in the README. The `schemaVersion` in every config, fixture and example, the Python package version and the schema default now read `0.1.0`.
 - An ancestor inferred from its descendants' names now carries every field of its type those names yield, not only its identity. A cell with no folder gets the recording date and slice number read from its ABF file names; descendants that disagree raise `metadata-conflict`. Both readers implement it; the new `inferred-ancestor-fields` conformance case pins it. Previously the values were evaluated and discarded without an issue.

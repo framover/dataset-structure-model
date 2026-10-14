@@ -70,6 +70,19 @@ For each source entity record:
 
 Reading back works through the same templates and patterns, so generation and parsing cannot drift apart.
 
+Both readers implement steps 1 and 2: `dsm.generate_path(config, location, entity_type, values)` in Python and `dsm.generatePath(config, location, entityType, values)` in MATLAB return the entity's path relative to the location's root (folders end with `/`). `values` is an entity record's `metadata`, or the same fields for an entity that does not exist yet. A structural level contributes its `fixedName`, or its `pathComponentTemplate` when it is variable. Every generated component must match its level's pattern, so the next walk finds what was written. Generation fails with a code:
+
+| Code | When |
+|------|------|
+| `unknown-location` | The data location does not exist |
+| `not-writable` | The location's `access` is not `readwrite` |
+| `no-level` | The entity type has no level in the location |
+| `no-template` | A variable level on the way has no `pathComponentTemplate` |
+| `missing-value` | A template token has no value |
+| `name-mismatch` | A generated component does not match its level's pattern |
+
+File names (step 3) stay with the tool: `filePatterns` are regular expressions, not templates, so a tool names its files and checks them against the pattern.
+
 ---
 
 ## Matching outputs to sources

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "identifierRefs": ["session_date", "session_number"] },
+    { "name": "trial", "identifierRef": "trial_number" }
+  ],
+  "metadataDefinitions": {
+    "subject_id":     { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Z]{2}\\d{2}$" } },
+    "session_date":   { "name": "session_date", "dataType": "date", "ofEntity": "session" },
+    "session_number": { "name": "session_number", "dataType": "integer", "ofEntity": "session" },
+    "trial_number":   { "name": "trial_number", "dataType": "integer", "ofEntity": "trial" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "derived",
+      "displayName": "Derived",
+      "dataCategory": "derived",
+      "access": "readwrite",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [ { "identifier": "main", "path": "/data/derived" } ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "pathComponentTemplate": "sub-{subject_id}" },
+          { "name": "data", "isVariable": false, "fixedName": "data" },
+          { "name": "sessions", "entityType": "session", "pathComponentTemplate": "{session_date}_s{session_number}",
+            "matchPattern": "^\\d{4}-\\d{2}-\\d{2}_s\\d+$" },
+          { "name": "trials", "entityType": "trial", "fileSystemType": "file", "pathComponentTemplate": "trial-{trial_number}.json",
+            "matchPattern": "^trial-\\d+\\.json$" }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "^sub-(.+)$", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_date", "extraction": { "method": "regex", "pattern": "^(\\d{4}-\\d{2}-\\d{2})_", "valueFormat": "yyyy-MM-dd", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "session_number", "extraction": { "method": "regex", "pattern": "_s(\\d+)$", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "trial_number", "extraction": { "method": "regex", "pattern": "^trial-(\\d+)\\.json$", "entityLayoutLevel": "trials" } }
+        ]
+      }
+    },
+    {
+      "identifier": "dated",
+      "displayName": "Dated",
+      "dataCategory": "processed",
+      "access": "readwrite",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [ { "identifier": "main", "path": "/data/dated" } ],
+        "entityLayout": [
+          { "name": "dates", "matchPattern": "^\\d{8}$" },
+          { "name": "subjects", "entityType": "subject", "pathComponentTemplate": "{subject_id}" }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "subjects" } }
+        ]
+      }
+    }
+  ]
+}

@@ -9,3 +9,12 @@ class ConfigError(Exception):
 
 class ListingError(Exception):
     """A directory listing that does not follow DirectoryListing.schema.json."""
+
+
+class GenerationError(Exception):
+    """A location that cannot be generated for an entity. `code` is one of the generation error codes."""
+
+    def __init__(self, code, message):
+        self.code = code
+        self.message = message
+        super().__init__(f"{code}: {message}")

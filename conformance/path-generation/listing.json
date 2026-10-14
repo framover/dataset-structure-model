@@ -1,0 +1,14 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "derived",
+      "rootStoragePathIdentifier": "main",
+      "entries": [
+        "sub-AB01/",
+        "sub-AB01/data/",
+        "sub-AB01/data/2025-05-10_s1/",
+        "sub-AB01/data/2025-05-10_s1/trial-3.json"
+      ]
+    }
+  ]
+}

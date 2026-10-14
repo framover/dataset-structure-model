@@ -5,7 +5,8 @@ compare readers against the conformance fixtures.
 """
 from .compare import compare_results
 from .config import Config
-from .errors import ConfigError, ListingError
+from .errors import ConfigError, GenerationError, ListingError
+from .generate import generate_path
 from .extract import ExtractorRegistry
 from .listing import Listing, Root, load_listing, root_from_directory, root_from_lines
 from .records import Issue, LocationEntry, Record, Unmatched, WalkResult
@@ -16,7 +17,7 @@ from .walk import Walker, walk
 __version__ = "0.1.0"
 
 __all__ = [
-    "Config", "ConfigError", "ListingError", "ExtractorRegistry",
+    "Config", "ConfigError", "GenerationError", "ListingError", "ExtractorRegistry", "generate_path",
     "Listing", "Root", "load_listing", "root_from_directory", "root_from_lines",
     "Issue", "LocationEntry", "Record", "Unmatched", "WalkResult",
     "Walker", "walk", "compare_results", "render_report",
