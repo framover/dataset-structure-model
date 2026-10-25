@@ -77,7 +77,7 @@ Reference levels by **name** from extraction rules.
 
 ## `filePatterns`
 
-Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`. No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
+Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `minCount`, `maxCount` (bounds on the number of matches; `isRequired` is `minCount: 1`, `cardinality: one` is `maxCount: 1`, and the two forms must agree when both are written), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`. No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
 
 ## `metadataMapping`
 
@@ -103,6 +103,7 @@ The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 - Every `ofEntity`, layout `entityType`, `sourceEntity`, `targetEntity` names an `entityTypes` entry.
 - Every `derivedFrom` and `preferences.defaultDataLocationIdentifier` names a `dataLocations` identifier.
 - Every extraction `entityLayoutLevel` string names a level in that location's layout.
+- `filePatterns` appear only on levels that have an `entityType`; a structural level has no entity to attach files to.
 - Identity extraction rules produce the **same value** for the same entity in every location.
 
 ## Common mistakes

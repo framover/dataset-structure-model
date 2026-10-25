@@ -44,6 +44,15 @@ def test_checker_detects_template_cycles():
     assert any("template cycle" in p for p in check_references(doc))
 
 
+def test_checker_rejects_file_patterns_on_a_structural_level():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
+    layout.append({"name": "processed", "isVariable": False, "fixedName": "processed", "filePatterns": [{"pattern": "\\.dat$"}]})
+    assert any("structural level 'processed' has filePatterns" in p for p in check_references(doc))
+
+
 def test_checker_requires_layout_order_to_follow_declaration_order():
     from conftest import minimal_config
 
@@ -97,3 +106,21 @@ def test_checker_rejects_a_default_whose_type_does_not_match_the_data_type():
         assert problems_for(text_type, 1) and problems_for(text_type, "x") == []
     assert problems_for("array", "x") and problems_for("object", 1)
     assert problems_for("integer", None) == []  # a null default is no default
+
+
+@pytest.mark.parametrize("pattern,expected", [
+    ({"isRequired": False, "minCount": 1}, "isRequired false and minCount 1 disagree"),
+    ({"isRequired": True, "minCount": 0}, "isRequired true and minCount 0 disagree"),
+    ({"cardinality": "one", "maxCount": 3}, "cardinality 'one' and maxCount 3 disagree"),
+    ({"cardinality": "many", "maxCount": 1}, "cardinality 'many' and maxCount 1 disagree"),
+    ({"minCount": 3, "maxCount": 2}, "minCount 3 exceeds maxCount 2"),
+])
+def test_checker_rejects_file_counts_that_disagree(pattern, expected):
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    doc["dataLocations"][0]["filesystemSource"]["entityLayout"][1]["filePatterns"] = [dict(pattern, name="planes", pattern="^plane\\d\\.tif$")]
+    assert any(expected in p for p in check_references(doc)), check_references(doc)
+    agreeing = {"isRequired": True, "minCount": 3, "cardinality": "many", "maxCount": 3, "name": "planes", "pattern": "^plane\\d\\.tif$"}
+    doc["dataLocations"][0]["filesystemSource"]["entityLayout"][1]["filePatterns"] = [agreeing]
+    assert check_references(doc) == []
