@@ -7,5 +7,5 @@ What it checks:
 - A dataset with a single entity type and no subject: the recording is the root of its own hierarchy.
 - A structural date level as the top level, read into `recording_date`.
 - `condition` with an `enum` validation and `recording_number` as an integer, both parsed from one folder name.
-- **Gap G11 (exact cardinality):** every recording should have exactly three planes. `cardinality` is `one` or `many`, so `spontaneous_2` with two planes is complete and carries no issue.
+- **An exact file count:** every recording holds exactly three planes, stated as `minCount: 3, maxCount: 3`. `spontaneous_2` has two, so it is incomplete and carries `missing-required-file`.
 - `stim_times.csv` inside `opto_1/` matches no pattern and is covered silently; `Thumbs.db`, `README.txt` and `processed_traces.mat` are `no-match` (gap **G1**).
