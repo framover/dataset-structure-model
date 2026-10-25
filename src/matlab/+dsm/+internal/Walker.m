@@ -324,12 +324,13 @@ classdef Walker < handle
                         if isfield(pattern{1}, "name")
                             files(char(pattern{1}.name)) = matched;
                         end
-                        if dsm.internal.getField(pattern{1}, "isRequired", false) && isempty(matched)
+                        [atLeast, atMost] = dsm.internal.countBounds(pattern{1});
+                        if numel(matched) < atLeast
                             complete = false;
-                            issues{end+1} = issue("missing-required-file", sprintf("%s: pattern '%s' is required, matched 0", locId, label)); %#ok<AGROW>
+                            issues{end+1} = issue("missing-required-file", sprintf("%s: pattern '%s' expects at least %d file(s), matched %d", locId, label, atLeast, numel(matched))); %#ok<AGROW>
                         end
-                        if string(dsm.internal.getField(pattern{1}, "cardinality", "many")) == "one" && numel(matched) > 1
-                            issues{end+1} = issue("cardinality-violation", sprintf("%s: pattern '%s' expects one file, matched %d", locId, label, numel(matched))); %#ok<AGROW>
+                        if numel(matched) > atMost
+                            issues{end+1} = issue("cardinality-violation", sprintf("%s: pattern '%s' expects at most %d file(s), matched %d", locId, label, atMost, numel(matched))); %#ok<AGROW>
                         end
                     end
                     entry.files = files;

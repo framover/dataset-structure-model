@@ -335,10 +335,13 @@ def analyse(case, record):
             matched = sorted(c for c in candidates if re.search(regex, basename(c)))
             if "name" in pattern:
                 files[pattern["name"]] = matched
-            if pattern.get("isRequired") and not matched:
+            # isRequired is the one-file spelling of minCount, cardinality 'one' of maxCount
+            at_least = pattern["minCount"] if "minCount" in pattern else (1 if pattern.get("isRequired") else 0)
+            at_most = pattern["maxCount"] if "maxCount" in pattern else (1 if pattern.get("cardinality", "many") == "one" else None)
+            if len(matched) < at_least:
                 complete = False
                 codes.add("missing-required-file")
-            if pattern.get("cardinality", "many") == "one" and len(matched) > 1:
+            if at_most is not None and len(matched) > at_most:
                 codes.add("cardinality-violation")
         files_by_location.append((loc, patterns is not None, files, complete))
 

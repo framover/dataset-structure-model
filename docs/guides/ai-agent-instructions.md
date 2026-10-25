@@ -77,7 +77,7 @@ Reference levels by **name** from extraction rules.
 
 ## `filePatterns`
 
-Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`. No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
+Each: `pattern` (required regex on the file name); optional `name`, `isRequired`, `cardinality` (`one` | `many`), `minCount`, `maxCount` (bounds on the number of matches; `isRequired` is `minCount: 1`, `cardinality: one` is `maxCount: 1`, and the two forms must agree when both are written), `description`. The pattern may contain `{field_key}` tokens for the entity's own metadata: `"^{session_id}_raw\\.tif$"`. No `role`, `format`, `groupKey` or `metadataExtractors` — those do not exist.
 
 ## `metadataMapping`
 

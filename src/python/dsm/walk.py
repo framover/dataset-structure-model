@@ -7,7 +7,7 @@ import re
 from collections import OrderedDict
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-from .config import TOKEN, Config
+from .config import TOKEN, Config, count_bounds
 from .extract import ExtractorRegistry, evaluate_fields, validate_value
 from .listing import Listing, Tree, basename, is_dir
 from .records import Issue, LocationEntry, Record, Unmatched, WalkResult
@@ -225,11 +225,12 @@ class Walker:
                     if "name" in pattern:
                         files[pattern["name"]] = matched
                     label = pattern.get("name", pattern["pattern"])
-                    if pattern.get("isRequired") and not matched:
+                    at_least, at_most = count_bounds(pattern)
+                    if len(matched) < at_least:
                         complete = False
-                        issues.append(Issue("missing-required-file", f"{loc_id}: pattern '{label}' is required, matched 0"))
-                    if pattern.get("cardinality", "many") == "one" and len(matched) > 1:
-                        issues.append(Issue("cardinality-violation", f"{loc_id}: pattern '{label}' expects one file, matched {len(matched)}"))
+                        issues.append(Issue("missing-required-file", f"{loc_id}: pattern '{label}' expects at least {at_least} file(s), matched {len(matched)}"))
+                    if at_most is not None and len(matched) > at_most:
+                        issues.append(Issue("cardinality-violation", f"{loc_id}: pattern '{label}' expects at most {at_most} file(s), matched {len(matched)}"))
                 entry.files = files
                 entry.is_complete = complete
             locations.append(entry)
