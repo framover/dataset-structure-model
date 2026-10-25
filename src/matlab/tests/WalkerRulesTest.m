@@ -133,6 +133,8 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.reason, result.Unmatched), repmat("no-match", 1, 3));
             sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
             testCase.verifyEqual(sort(cellfun(@(r) r.identity.session_id, sessions)), ["a", "b"]);
+        end
+
         function minAndMaxCountBoundTheMatchedFiles(testCase)
             doc = minimalConfigDoc();
             layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
