@@ -53,6 +53,23 @@ def test_checker_requires_layout_order_to_follow_declaration_order():
     assert any("declaration order" in p for p in check_references(doc))
 
 
+@pytest.mark.parametrize("suffix", ["5d", "05", "05x", "005d"])
+def test_checker_rejects_a_malformed_token_format_at_every_token_site(suffix):
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    doc["metadataDefinitions"]["subject_id"]["dataType"] = "integer"
+    doc["metadataDefinitions"]["session_id"]["dataType"] = "integer"
+    source = doc["dataLocations"][0]["filesystemSource"]
+    source["entityLayout"][1]["filePatterns"] = [{"pattern": f"^{{session_id:{suffix}}}\\.tif$"}]
+    source["entityLayout"][0] = {"name": "subjects", "entityType": "subject", "pathComponentTemplate": f"{{subject_id:{suffix}}}"}
+    source["metadataMapping"].append({"metadataRef": "session_id", "extraction": {"method": "template", "pattern": f"{{subject_id:{suffix}}}"}})
+    problems = check_references(doc)
+    malformed = [p for p in problems if "has a malformed format" in p]
+    assert len(malformed) == 3 and len(problems) == 3, problems
+    assert all(f":{suffix}}}'" in p for p in malformed), malformed
+
+
 def test_checker_allows_a_token_format_only_on_integer_fields():
     from conftest import minimal_config
 

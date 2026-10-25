@@ -103,4 +103,4 @@ Patterns must behave the same in MATLAB `regexp` and Python `re`. Stay inside th
 - No lookbehind, no possessive or atomic groups, no inline flags other than `(?i)`.
 - Escape literal dots: `\.tif$`, not `.tif$`.
 
-Template tokens `{token}` are substituted before a pattern is used as a regex; braces containing only digits and commas are quantifiers. A token may carry a format, `{name:0Nd}` — zero-fill to `N` digits, integer fields only; this is the whole format grammar.
+Template tokens `{token}` are substituted before a pattern is used as a regex; braces containing only digits and commas are quantifiers. A token may carry a format, `{name:0Nd}` — zero-fill to `N` digits, integer fields only; this is the whole format grammar, and a `{name:...}` group with any other format is refused as `reference-integrity`.

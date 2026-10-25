@@ -97,7 +97,7 @@ The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 
 ## Cross-reference rules (checked by readers)
 
-- Every `identifierRef`, `metadataRef` and `{token}` names a key in `metadataDefinitions`; a token with a format (`{name:05d}`) names an `integer` field.
+- Every `identifierRef`, `metadataRef` and `{token}` names a key in `metadataDefinitions`; a token with a format (`{name:05d}`) names an `integer` field, and the format is exactly `0Nd`: `{name:5d}` or `{name:05x}` is refused.
 - Every `ofEntity`, layout `entityType`, `sourceEntity`, `targetEntity` names an `entityTypes` entry.
 - Every `derivedFrom` and `preferences.defaultDataLocationIdentifier` names a `dataLocations` identifier.
 - Every extraction `entityLayoutLevel` string names a level in that location's layout.

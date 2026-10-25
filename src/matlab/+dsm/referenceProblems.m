@@ -102,6 +102,7 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
     import dsm.internal.getField
 
     definitionKeys = string(fieldnames(definitions))';
+    formatRule = "the only token format is 0Nd, a zero followed by the width (for example {name:05d})";
     problems = string.empty(1, 0);
     layout = asCellOfStructs(source.entityLayout);
     levelNames = string(cellfun(@(l) l.name, layout, "UniformOutput", false));
@@ -122,7 +123,10 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
         if string(getField(level, "fileSystemType", "folder")) == "file" && i ~= numel(layout)
             problems(end+1) = sprintf("%s: file level '%s' must be the last level", locId, level.name); %#ok<AGROW>
         end
-        [tokens, widths] = dsm.internal.tokenParts(getField(level, "pathComponentTemplate", ""));
+        [tokens, widths, ~, malformed] = dsm.internal.tokenParts(getField(level, "pathComponentTemplate", ""));
+        for raw = malformed
+            problems(end+1) = sprintf("%s: level '%s' template token '%s' has a malformed format; %s", locId, level.name, raw, formatRule); %#ok<AGROW>
+        end
         for t = 1:numel(tokens)
             if ~ismember(tokens(t), definitionKeys)
                 problems(end+1) = sprintf("%s: level '%s' template token '%s' is not a metadata field", locId, level.name, tokens(t)); %#ok<AGROW>
@@ -136,7 +140,10 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
             if isfield(pattern{1}, "name")
                 names(end+1) = string(pattern{1}.name); %#ok<AGROW>
             end
-            [tokens, widths] = dsm.internal.tokenParts(pattern{1}.pattern);
+            [tokens, widths, ~, malformed] = dsm.internal.tokenParts(pattern{1}.pattern);
+            for raw = malformed
+                problems(end+1) = sprintf("%s: filePattern '%s' token '%s' has a malformed format; %s", locId, pattern{1}.pattern, raw, formatRule); %#ok<AGROW>
+            end
             for t = 1:numel(tokens)
                 if ~ismember(tokens(t), definitionKeys)
                     problems(end+1) = sprintf("%s: filePattern '%s' token '%s' is not a metadata field", locId, pattern{1}.pattern, tokens(t)); %#ok<AGROW>
@@ -178,8 +185,11 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
             problems(end+1) = sprintf("%s: extraction for '%s' level index %d is out of range", locId, ref, levelRef); %#ok<AGROW>
         end
         if string(extraction.method) == "template"
-            [tokens, widths] = dsm.internal.tokenParts(extraction.pattern);
+            [tokens, widths, ~, malformed] = dsm.internal.tokenParts(extraction.pattern);
             templates(char(ref)) = tokens;
+            for raw = malformed
+                problems(end+1) = sprintf("%s: template for '%s' token '%s' has a malformed format; %s", locId, ref, raw, formatRule); %#ok<AGROW>
+            end
             for t = 1:numel(tokens)
                 if ~ismember(tokens(t), definitionKeys)
                     problems(end+1) = sprintf("%s: template for '%s' token '%s' is not a metadata field", locId, ref, tokens(t)); %#ok<AGROW>

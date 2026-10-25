@@ -5,7 +5,7 @@ from typing import List
 
 import jsonschema
 
-from .config import TOKEN, Config, token_names
+from .config import FORMAT_RULE, TOKEN, Config, malformed_token_formats, token_names
 from .errors import ConfigError
 from .schemas import CONFIG_SCHEMA, load_schema
 
@@ -88,6 +88,8 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
                 layout_types.append(et)
         if level.get("fileSystemType") == "file" and i != len(layout) - 1:
             problems.append(f"{loc_id}: file level '{level['name']}' must be the last level")
+        for raw in malformed_token_formats(level.get("pathComponentTemplate", "")):
+            problems.append(f"{loc_id}: level '{level['name']}' template token '{raw}' has a malformed format; {FORMAT_RULE}")
         for token, width in TOKEN.findall(level.get("pathComponentTemplate", "")):
             if token not in definitions:
                 problems.append(f"{loc_id}: level '{level['name']}' template token '{token}' is not a metadata field")
@@ -97,6 +99,8 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
         if len(set(pattern_names)) != len(pattern_names):
             problems.append(f"{loc_id}: level '{level['name']}' filePatterns names are not unique")
         for fp in level.get("filePatterns", []):
+            for raw in malformed_token_formats(fp["pattern"]):
+                problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{raw}' has a malformed format; {FORMAT_RULE}")
             for token, width in TOKEN.findall(fp["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' is not a metadata field")
@@ -125,6 +129,8 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
             problems.append(f"{loc_id}: extraction for '{ref}' level index {level_ref} is out of range")
         if extraction["method"] == "template":
             templates[ref] = token_names(extraction["pattern"])
+            for raw in malformed_token_formats(extraction["pattern"]):
+                problems.append(f"{loc_id}: template for '{ref}' token '{raw}' has a malformed format; {FORMAT_RULE}")
             for token, width in TOKEN.findall(extraction["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: template for '{ref}' token '{token}' is not a metadata field")

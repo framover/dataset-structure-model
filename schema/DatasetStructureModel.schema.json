@@ -424,7 +424,7 @@
         },
         "pathComponentTemplate": {
           "type": "string",
-          "description": "How an entry name is composed from metadata fields, e.g. 'session-{session_id}'. Tokens in braces reference keys in metadataDefinitions. Used to generate names when writing to a readwrite location, and to derive matchPattern when that is absent: each {token} matches the referenced definition's validation.pattern if it has one, else [^/\\\\]+, and the result is anchored with ^ and $. A token may carry a format, {name:05d}: the field must be an integer, the value is written zero-filled to the given width when a name is generated, and the token matches \\\\d{5,} when matchPattern is derived."
+          "description": "How an entry name is composed from metadata fields, e.g. 'session-{session_id}'. Tokens in braces reference keys in metadataDefinitions. Used to generate names when writing to a readwrite location, and to derive matchPattern when that is absent: each {token} matches the referenced definition's validation.pattern if it has one, else [^/\\\\]+, and the result is anchored with ^ and $. A token may carry a format, {name:05d}: the field must be an integer, the value is written zero-filled to the given width when a name is generated, and the token matches \\\\d{5,} when matchPattern is derived. Any other format after the colon is refused (reference-integrity)."
         },
         "matchPattern": {
           "type": "string",
@@ -502,7 +502,7 @@
         },
         "pattern": {
           "type": "string",
-          "description": "Regular expression (portable subset) matched against file names. May contain {token} references to metadata fields of the entity, e.g. '^{session_id}_raw\\\\.tif$'; each token is replaced by the regex-escaped value for the entity being resolved before matching, so membership is exact rather than by substring. A token may carry a format, {name:05d}: the integer value is written zero-filled to the given width before it is escaped. Braces containing only digits and commas are regex quantifiers, not tokens."
+          "description": "Regular expression (portable subset) matched against file names. May contain {token} references to metadata fields of the entity, e.g. '^{session_id}_raw\\\\.tif$'; each token is replaced by the regex-escaped value for the entity being resolved before matching, so membership is exact rather than by substring. A token may carry a format, {name:05d}: the integer value is written zero-filled to the given width before it is escaped; any other format after the colon is refused (reference-integrity). Braces containing only digits and commas are regex quantifiers, not tokens."
         },
         "isRequired": {
           "type": "boolean",

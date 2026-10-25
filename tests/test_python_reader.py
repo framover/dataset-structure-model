@@ -187,3 +187,13 @@ def test_token_format_zero_fills_integers():
     assert format_token("7", "03") == "007"
     assert format_token(123456, "05") == "123456"  # wider values keep their digits
     assert format_token(7) == "7" and format_token("00007") == "00007"
+    # a value that is not an integer is substituted as plain text, never an error
+    assert format_token("n/a", "05") == "n/a" and format_token(1.5, "05") == "1.5" and format_token(True, "05") == "True"
+    assert format_token(2.0, "05") == "00002"
+
+
+def test_malformed_token_formats_are_listed_as_written():
+    from dsm.config import malformed_token_formats
+
+    assert malformed_token_formats("a{x:5d}_{y:05d}{z:05}{w:005d}{v:05x}") == ["{x:5d}", "{z:05}", "{w:005d}", "{v:05x}"]
+    assert malformed_token_formats("^{session_id}_\\d{2,3}$") == []

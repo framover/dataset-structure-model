@@ -4,17 +4,45 @@ from typing import Dict, List, Optional
 
 # {name} or {name:0Nd}: group 1 is the field key, group 2 the digits of the zero-fill width or None
 TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)(?::(0[1-9][0-9]*)d)?\}")
+# any {name:...} group; one that TOKEN does not accept is a malformed format, not literal text
+_FORMATTED_BRACE = re.compile(r"\{[A-Za-z_][A-Za-z0-9_]*:[^}]*\}")
+FORMAT_RULE = "the only token format is 0Nd, a zero followed by the width (for example {name:05d})"
 
 
 def token_names(text: str) -> List[str]:
     return [m.group(1) for m in TOKEN.finditer(text)]
 
 
+def malformed_token_formats(text: str) -> List[str]:
+    """The `{name:format}` groups in text whose format is not the `0Nd` grammar, as written."""
+    return [m.group(0) for m in _FORMATTED_BRACE.finditer(text) if not TOKEN.fullmatch(m.group(0))]
+
+
+def is_integer_value(value) -> bool:
+    """Whether value is an integer or integral text; a bool is not."""
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, int):
+        return True
+    if isinstance(value, float):
+        return value.is_integer()
+    if isinstance(value, str):
+        try:
+            return float(value).is_integer()
+        except ValueError:
+            return False
+    return False
+
+
 def format_token(value, width: Optional[str] = None) -> str:
-    """The text a token substitutes: the value as is, or, with a `:0Nd` format, the integer zero-filled to N digits."""
-    if width is None:
+    """The text a token substitutes: the value as is, or, with a `:0Nd` format, the integer zero-filled to N digits.
+
+    A value that is not an integer is substituted as plain text; the validators keep formats off non-integer
+    fields, so this only happens through a value that bypassed them, such as a mistyped defaultValue.
+    """
+    if width is None or not is_integer_value(value):
         return str(value)
-    return format(int(value), f"0{int(width)}d")
+    return format(int(float(value)), f"0{int(width)}d")
 
 
 def strip_anchors(pattern):

@@ -214,7 +214,14 @@ def normalize(value, rule):
 
 
 def format_token(value, width=None):
-    return str(value) if width is None else format(int(value), f"0{int(width)}d")
+    # a value that is not an integer is substituted as plain text, as in both readers
+    if width is None or isinstance(value, bool):
+        return str(value)
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return str(value)
+    return format(int(number), f"0{int(width)}d") if number.is_integer() else str(value)
 
 
 def component_for(rule, layout, rel_path):

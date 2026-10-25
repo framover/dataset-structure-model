@@ -105,6 +105,25 @@ classdef ValidatorTest < matlab.unittest.TestCase
             testCase.verifyEqual(config.preferences().defaultDataLocationIdentifier, 'raw');
         end
 
+        function malformedTokenFormatIsReferenceProblemAtEveryTokenSite(testCase)
+            for suffix = ["5d", "05", "05x", "005d"]
+                doc = minimalConfigDoc();
+                doc.metadataDefinitions.subject_id.dataType = "integer";
+                doc.metadataDefinitions.session_id.dataType = "integer";
+                layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+                layout{1} = struct("name", "subjects", "entityType", "subject", "pathComponentTemplate", "{subject_id:" + suffix + "}");
+                layout{2}.filePatterns = {struct("pattern", "^{session_id:" + suffix + "}\.tif$")};
+                doc.dataLocations.filesystemSource.entityLayout = layout;
+                mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+                mapping{end+1} = struct("metadataRef", "session_id", "extraction", struct("method", "template", "pattern", "{subject_id:" + suffix + "}")); %#ok<AGROW>
+                doc.dataLocations.filesystemSource.metadataMapping = mapping;
+                problems = dsm.referenceProblems(doc);
+                testCase.verifyEqual(sum(contains(problems, "has a malformed format")), 3, strjoin(problems, newline));
+                testCase.verifyEqual(numel(problems), 3, strjoin(problems, newline));
+                testCase.verifyTrue(all(contains(problems, ":" + suffix + "}'")), strjoin(problems, newline));
+            end
+        end
+
         function tokenFormatOnANonIntegerFieldIsReferenceProblem(testCase)
             doc = minimalConfigDoc();
             layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');

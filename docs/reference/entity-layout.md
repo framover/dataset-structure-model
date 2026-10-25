@@ -63,7 +63,7 @@ How an entry name is composed from metadata fields. Tokens in braces reference k
 
 With `session_id` validated by `^m\d{3}-\d{8}-\d{3}$`, the template `session-{session_id}` derives `^session-m\d{3}-\d{8}-\d{3}$`.
 
-**Token formats.** A token may carry a format, `{name:0Nd}`: the referenced field must be an `integer`, and the value is written zero-filled to `N` digits. This is the whole format grammar, width and zero-fill, which is what counters in file names need. `{acquisition_number:05d}` writes `1` as `00001` when a name is generated, matches `\d{5,}` when `matchPattern` is derived, and substitutes `00001` into `filePatterns` and `template` rules, so the counter stays a number in entity records and still round-trips into names. A format on a non-integer field is refused (`reference-integrity`).
+**Token formats.** A token may carry a format, `{name:0Nd}`: the referenced field must be an `integer`, and the value is written zero-filled to `N` digits. This is the whole format grammar, width and zero-fill, which is what counters in file names need. `{acquisition_number:05d}` writes `1` as `00001` when a name is generated, matches `\d{5,}` when `matchPattern` is derived, and substitutes `00001` into `filePatterns` and `template` rules, so the counter stays a number in entity records and still round-trips into names. A format on a non-integer field is refused (`reference-integrity`), and so is any other text after the colon, such as `{name:5d}`, `{name:05}` or `{name:05x}`: a malformed format is not a token, and left alone it would stay in the pattern as literal braces that match nothing.
 
 ---
 
