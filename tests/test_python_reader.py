@@ -128,6 +128,15 @@ def test_draft_blocks_are_rejected_unless_allowed():
     validate_config(doc, reject_draft=False)
 
 
+def test_level_is_required_false_is_draft():
+    doc = minimal_config()
+    doc["dataLocations"][0]["filesystemSource"]["entityLayout"][0]["isRequired"] = False
+    with pytest.raises(ConfigError) as e:
+        validate_config(doc)
+    assert e.value.code == "unsupported-draft"
+    validate_config(doc, reject_draft=False)
+
+
 def test_local_overlay_supplies_preferences(tmp_path):
     doc = minimal_config()
     (tmp_path / "ds.json").write_text(json.dumps(doc))

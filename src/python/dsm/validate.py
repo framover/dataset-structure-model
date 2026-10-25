@@ -89,6 +89,8 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
                 problems.append(f"{loc_id}: level '{level['name']}' entityType '{et}' is not an entity type")
             else:
                 layout_types.append(et)
+        if et is None and level.get("filePatterns"):
+            problems.append(f"{loc_id}: structural level '{level['name']}' has filePatterns; a level without entityType has no entity to attach files to")
         if level.get("fileSystemType") == "file" and i != len(layout) - 1:
             problems.append(f"{loc_id}: file level '{level['name']}' must be the last level")
         for token in TOKEN.findall(level.get("pathComponentTemplate", "")):
@@ -101,6 +103,15 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
             for token in TOKEN.findall(fp["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' is not a metadata field")
+            # isRequired and cardinality are the one-file spellings of minCount and maxCount; both forms may be
+            # written, but they must say the same thing
+            label = fp.get("name", fp["pattern"])
+            if "isRequired" in fp and "minCount" in fp and fp["isRequired"] != (fp["minCount"] >= 1):
+                problems.append(f"{loc_id}: filePattern '{label}' isRequired {json.dumps(fp['isRequired'])} and minCount {fp['minCount']} disagree")
+            if "cardinality" in fp and "maxCount" in fp and (fp["cardinality"] == "one") != (fp["maxCount"] == 1):
+                problems.append(f"{loc_id}: filePattern '{label}' cardinality '{fp['cardinality']}' and maxCount {fp['maxCount']} disagree")
+            if "minCount" in fp and "maxCount" in fp and fp["minCount"] > fp["maxCount"]:
+                problems.append(f"{loc_id}: filePattern '{label}' minCount {fp['minCount']} exceeds maxCount {fp['maxCount']}")
     if len(set(layout_types)) != len(layout_types):
         problems.append(f"{loc_id}: an entity type appears on more than one level")
     orders = [entity_types.index(t) for t in layout_types if t in entity_types]
@@ -162,6 +173,9 @@ def unsupported_draft_blocks(doc: dict) -> List[str]:
     for loc in doc.get("dataLocations", []):
         if loc.get("sourceType") in DRAFT_SOURCE_TYPES:
             problems.append(f"dataLocation '{loc['identifier']}': sourceType '{loc['sourceType']}' is DRAFT and not supported")
+        for level in loc.get("filesystemSource", {}).get("entityLayout", []):
+            if level.get("isRequired") is False:
+                problems.append(f"dataLocation '{loc['identifier']}': level '{level['name']}' isRequired false is DRAFT and not supported")
         for item in loc.get("filesystemSource", {}).get("metadataMapping", []):
             if item["extraction"]["method"] == "sidecar":
                 problems.append(f"dataLocation '{loc['identifier']}': extraction method 'sidecar' for '{item['metadataRef']}' is DRAFT and not supported")

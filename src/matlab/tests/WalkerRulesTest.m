@@ -85,6 +85,40 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(numel(result.Warnings), 1);
             testCase.verifyTrue(contains(result.Warnings, "raw/main has no path"));
         end
+
+        function structuralFolderWithNothingMatchingBelowIsUnmatchedItself(testCase)
+            doc = minimalConfigDoc();
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout = [layout(1), {struct("name", "years", "matchPattern", "^\d{4}$")}, layout(2)];
+            doc.dataLocations.filesystemSource.entityLayout = layout;
+            result = walkEntries(doc, {'m110/', 'm110/2025/', 'm110/2025/20250523_a/', ...
+                'm110/2024/', ...                            % empty
+                'm110/2023/', 'm110/2023/notes.txt', ...     % holds only an entry the next level rejects
+                'm110/2022/', 'm110/2022/20220101_b/', 'm110/2022/x.txt'});  % holds an entity: only x.txt is reported
+            testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), ["m110/2022/x.txt", "m110/2023/", "m110/2024/"]);
+            testCase.verifyEqual(cellfun(@(u) u.reason, result.Unmatched), repmat("no-match", 1, 3));
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            testCase.verifyEqual(sort(cellfun(@(r) r.identity.session_id, sessions)), ["a", "b"]);
+        end
+
+        function minAndMaxCountBoundTheMatchedFiles(testCase)
+            doc = minimalConfigDoc();
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout{2}.filePatterns = {struct("name", "planes", "pattern", "^plane\d\.tif$", "minCount", 2, "maxCount", 2)};
+            doc.dataLocations.filesystemSource.entityLayout = layout;
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a/', 'm110/20250523_a/plane1.tif', ...
+                'm110/20250523_b/', 'm110/20250523_b/plane1.tif', 'm110/20250523_b/plane2.tif', ...
+                'm110/20250523_c/', 'm110/20250523_c/plane1.tif', 'm110/20250523_c/plane2.tif', 'm110/20250523_c/plane3.tif'});
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            byId = containers.Map(cellfun(@(r) char(r.identity.session_id), sessions, "UniformOutput", false), sessions);
+            testCase.verifyEqual(cellfun(@(i) i.code, byId('a').issues), "missing-required-file");
+            testCase.verifyFalse(byId('a').locations{1}.isComplete);
+            testCase.verifyEmpty(byId('b').issues);
+            testCase.verifyTrue(byId('b').locations{1}.isComplete);
+            testCase.verifyEqual(cellfun(@(i) i.code, byId('c').issues), "cardinality-violation");
+            testCase.verifyTrue(byId('c').locations{1}.isComplete);
+            testCase.verifyEqual(numel(byId('c').locations{1}.files('planes')), 3);
+        end
     end
 end
 
