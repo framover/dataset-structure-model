@@ -42,6 +42,6 @@ These values describe a machine or a user session, not the dataset, and they cha
 }
 ```
 
-The overlay composes with `environment` on the root paths: `environment` says which of the roots a lab knows is the active one on this machine, the overlay says where that root is on this checkout. An entry that names no root of the config is refused as `reference-integrity`, a malformed overlay as `schema-validation`, and the merged config is validated again. Walking a listing needs no path at all; a reader that has to open files (a `function` extractor) under a root without one reports it in the walk's warnings and passes paths relative to the root.
+The overlay composes with `environment` on the root paths: `environment` says which of the roots a lab knows is the active one on this machine, the overlay says where that root is on this checkout. An entry that names no root of the config, or a root named by two entries, is refused as `reference-integrity`; a malformed overlay as `schema-validation`; an absent, `null` or empty `rootStoragePaths` sets nothing; and the merged config is validated again. Walking a listing needs no path at all; a reader that has to open files (a `function` extractor) under a root without one reports it in the walk's warnings and passes paths relative to the root.
 
 Whether a root path is currently reachable is runtime state as well; readers report it, the config does not store it.

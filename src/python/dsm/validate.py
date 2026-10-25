@@ -185,17 +185,22 @@ def validate_config(doc: dict, reject_draft: bool = True) -> None:
 def apply_overlay(doc: dict, local: dict) -> dict:
     """Merge a '<name>.local.json' overlay into a config document; a copy is returned.
 
-    The overlay holds `preferences`, which replace the config's, and `rootStoragePaths` entries
-    {dataLocationIdentifier, rootStoragePathIdentifier, path}, which set the path of the root they
-    name. Raises ConfigError 'schema-validation' for a malformed overlay and 'reference-integrity'
-    for an entry that names no root path of the config.
+    doc is a config document that has passed validate_config. The overlay holds `preferences`,
+    which replace the config's, and `rootStoragePaths` entries {dataLocationIdentifier,
+    rootStoragePathIdentifier, path}, which set the path of the root they name; an absent, null or
+    empty `rootStoragePaths` sets nothing. Raises ConfigError 'schema-validation' for a malformed
+    overlay and 'reference-integrity' for an entry that names no root path of the config or names
+    one root twice.
     """
     if not isinstance(local, dict):
         raise ConfigError("schema-validation", ["the overlay must be a JSON object"])
     unknown = sorted(set(local) - OVERLAY_KEYS)
     if unknown:
         raise ConfigError("schema-validation", [f"overlay: unknown key(s) {', '.join(unknown)}; an overlay holds preferences and rootStoragePaths only"])
-    entries = local.get("rootStoragePaths", [])
+    # null means no entries: MATLAB's jsondecode cannot tell null from an empty list, so both readers accept it
+    entries = local.get("rootStoragePaths")
+    if entries is None:
+        entries = []
     if not isinstance(entries, list) or any(
             not isinstance(e, dict) or any(not isinstance(e.get(k), str) for k in ROOT_PATH_ENTRY_KEYS) for e in entries):
         raise ConfigError("schema-validation", ["overlay: rootStoragePaths must be a list of objects with the strings "
@@ -204,7 +209,13 @@ def apply_overlay(doc: dict, local: dict) -> dict:
     if "preferences" in local:
         doc["preferences"] = local["preferences"]
     problems = []
+    seen = set()
     for entry in entries:
+        key = (entry["dataLocationIdentifier"], entry["rootStoragePathIdentifier"])
+        if key in seen:
+            problems.append(f"overlay rootStoragePaths names '{key[0]}/{key[1]}' more than once")
+            continue
+        seen.add(key)
         targets = [rp for loc in doc.get("dataLocations", []) if loc["identifier"] == entry["dataLocationIdentifier"]
                    for rp in loc.get("filesystemSource", {}).get("rootStoragePaths", [])
                    if rp["identifier"] == entry["rootStoragePathIdentifier"]]

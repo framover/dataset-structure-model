@@ -3,9 +3,10 @@ function doc = applyOverlay(doc, local)
 %
 %   The overlay holds preferences, which replace the config's, and
 %   rootStoragePaths entries {dataLocationIdentifier, rootStoragePathIdentifier,
-%   path}, which set the path of the root they name. Throws dsm.ConfigError
-%   "schema-validation" for a malformed overlay and "reference-integrity" for
-%   an entry that names no root path of the config.
+%   path}, which set the path of the root they name; an absent, null or empty
+%   rootStoragePaths sets nothing. Throws dsm.ConfigError "schema-validation"
+%   for a malformed overlay and "reference-integrity" for an entry that names
+%   no root path of the config or names one root twice.
 
     import dsm.internal.asCellOfStructs
 
@@ -24,17 +25,25 @@ function doc = applyOverlay(doc, local)
         return
     end
     entries = local.rootStoragePaths;
-    if ~(isstruct(entries) || iscell(entries) || isempty(entries))
+    % null and an empty list both decode to [] and mean no entries; a string or any other scalar is refused
+    if ~(isstruct(entries) || iscell(entries) || (isnumeric(entries) && isempty(entries)))
         throw(dsm.ConfigError("schema-validation", "overlay: rootStoragePaths must be a list of objects with the strings dataLocationIdentifier, rootStoragePathIdentifier and path"))
     end
     problems = string.empty(1, 0);
     locations = asCellOfStructs(doc.dataLocations);
+    seen = string.empty(1, 0);
     for entry = asCellOfStructs(entries)
         for key = ["dataLocationIdentifier", "rootStoragePathIdentifier", "path"]
             if ~(isstruct(entry{1}) && isfield(entry{1}, key) && (ischar(entry{1}.(key)) || isstring(entry{1}.(key))))
                 throw(dsm.ConfigError("schema-validation", "overlay: rootStoragePaths must be a list of objects with the strings dataLocationIdentifier, rootStoragePathIdentifier and path"))
             end
         end
+        rootKey = string(entry{1}.dataLocationIdentifier) + "/" + string(entry{1}.rootStoragePathIdentifier);
+        if ismember(rootKey, seen)
+            problems(end+1) = sprintf("overlay rootStoragePaths names '%s' more than once", rootKey); %#ok<AGROW>
+            continue
+        end
+        seen(end+1) = rootKey; %#ok<AGROW>
         found = false;
         for i = 1:numel(locations)
             if string(locations{i}.identifier) ~= string(entry{1}.dataLocationIdentifier) || ~isfield(locations{i}, "filesystemSource")

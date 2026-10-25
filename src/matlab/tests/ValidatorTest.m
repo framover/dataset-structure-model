@@ -117,6 +117,18 @@ classdef ValidatorTest < matlab.unittest.TestCase
             testCase.verifyEmpty(fieldnames(config.preferences()));
         end
 
+        function localOverlayWithoutEntriesSetsNoPath(testCase)
+            folder = testCase.applyFixture(matlab.unittest.fixtures.TemporaryFolderFixture).Folder;
+            doc = minimalConfigDoc();
+            doc.dataLocations.filesystemSource.rootStoragePaths = rmfield(doc.dataLocations.filesystemSource.rootStoragePaths, "path");
+            writeJson(fullfile(folder, "ds.json"), doc);
+            for overlayText = ["{""rootStoragePaths"": null}", "{""rootStoragePaths"": []}"]
+                writeText(fullfile(folder, "ds.local.json"), overlayText);
+                config = dsm.loadConfig(fullfile(folder, "ds.json"));
+                testCase.verifyFalse(isfield(config.rootStoragePath("raw", "main"), "path"));
+            end
+        end
+
         function localOverlayIsValidated(testCase)
             folder = testCase.applyFixture(matlab.unittest.fixtures.TemporaryFolderFixture).Folder;
             writeJson(fullfile(folder, "ds.json"), minimalConfigDoc());
@@ -124,6 +136,11 @@ classdef ValidatorTest < matlab.unittest.TestCase
                 struct("rootStoragePaths", {{struct("dataLocationIdentifier", "raw", "rootStoragePathIdentifier", "nope", "path", "/x")}}), "dsm:config:referenceIntegrity"; ...
                 struct("rootStoragePaths", {{struct("dataLocationIdentifier", "raw", "path", "/x")}}), "dsm:config:schemaValidation"; ...
                 struct("rootStoragePaths", "/x"), "dsm:config:schemaValidation"; ...
+                struct("rootStoragePaths", ""), "dsm:config:schemaValidation"; ...
+                struct("rootStoragePaths", {{ ...
+                    struct("dataLocationIdentifier", "raw", "rootStoragePathIdentifier", "main", "path", "/x"), ...
+                    struct("dataLocationIdentifier", "raw", "rootStoragePathIdentifier", "main", "path", "/y")}}), ...
+                    "dsm:config:referenceIntegrity"; ...
                 struct("paths", {{}}), "dsm:config:schemaValidation"; ...
                 struct("preferences", struct("environmentIdentifier", "nowhere")), "dsm:config:referenceIntegrity"};
             for i = 1:size(overlays, 1)
@@ -138,4 +155,10 @@ function writeJson(path, doc)
     fid = fopen(path, "w");
     cleanup = onCleanup(@() fclose(fid));
     fwrite(fid, jsonencode(doc), "char");
+end
+
+function writeText(path, text)
+    fid = fopen(path, "w");
+    cleanup = onCleanup(@() fclose(fid));
+    fprintf(fid, "%s", text);
 end

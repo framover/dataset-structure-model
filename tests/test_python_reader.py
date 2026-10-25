@@ -196,6 +196,10 @@ def test_local_overlay_supplies_root_paths(tmp_path):
     ({"rootStoragePaths": [{"dataLocationIdentifier": "raw", "rootStoragePathIdentifier": "nope", "path": "/x"}]}, "reference-integrity"),
     ({"rootStoragePaths": [{"dataLocationIdentifier": "raw", "path": "/x"}]}, "schema-validation"),
     ({"rootStoragePaths": "/x"}, "schema-validation"),
+    ({"rootStoragePaths": ""}, "schema-validation"),
+    ({"rootStoragePaths": [{"dataLocationIdentifier": "raw", "rootStoragePathIdentifier": "main", "path": "/x"},
+                           {"dataLocationIdentifier": "raw", "rootStoragePathIdentifier": "main", "path": "/y"}]},
+     "reference-integrity"),
     ({"paths": []}, "schema-validation"),
     ({"preferences": {"environmentIdentifier": "nowhere"}}, "reference-integrity"),
 ])
@@ -205,6 +209,16 @@ def test_local_overlay_is_validated(tmp_path, overlay, code):
     with pytest.raises(ConfigError) as e:
         load_config(tmp_path / "ds.json")
     assert e.value.code == code
+
+
+@pytest.mark.parametrize("entries", [None, []])
+def test_local_overlay_without_entries_sets_no_path(tmp_path, entries):
+    doc = minimal_config()
+    del doc["dataLocations"][0]["filesystemSource"]["rootStoragePaths"][0]["path"]
+    (tmp_path / "ds.json").write_text(json.dumps(doc))
+    (tmp_path / "ds.local.json").write_text(json.dumps({"rootStoragePaths": entries}))
+    config = load_config(tmp_path / "ds.json")
+    assert "path" not in config.root_storage_path("raw", "main")
 
 
 def test_root_path_is_optional_for_walking():
