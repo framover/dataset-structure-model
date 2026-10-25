@@ -84,7 +84,7 @@ Whether entries at this level are folders or files. A file level must be the las
 |--|--|
 | Type | `array` of file pattern objects |
 
-The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity.
+The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity. Allowed only on a level with `entityType`: a structural level has no entity to attach files to, and a config that puts `filePatterns` on one is refused with `reference-integrity`.
 
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
@@ -117,14 +117,14 @@ Regular expressions for entry names to skip. Applied before `matchPattern`.
 
 ---
 
-### `isRequired`
+### `isRequired` — DRAFT
 
 | | |
 |--|--|
 | Type | `boolean` |
 | Default | `true` |
 
-Whether this level must exist. A location need not contain every ancestor level of its entities — a processed location may hold session folders directly, with subject identity extracted from the session name. See [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to).
+**DRAFT.** No reader consumes this field: every level in `entityLayout` is walked as required, and a config that sets it to `false` is refused as `unsupported-draft`. A location that lacks an ancestor level omits that level from its `entityLayout`; the ancestor's identity is then read from a descendant's name — see [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to). A hierarchy whose depth varies within one location, such as a `ses-` level present for some subjects only, is not describable yet.
 
 ---
 

@@ -86,6 +86,8 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
                 problems.append(f"{loc_id}: level '{level['name']}' entityType '{et}' is not an entity type")
             else:
                 layout_types.append(et)
+        if et is None and level.get("filePatterns"):
+            problems.append(f"{loc_id}: structural level '{level['name']}' has filePatterns; a level without entityType has no entity to attach files to")
         if level.get("fileSystemType") == "file" and i != len(layout) - 1:
             problems.append(f"{loc_id}: file level '{level['name']}' must be the last level")
         for token in TOKEN.findall(level.get("pathComponentTemplate", "")):
@@ -159,6 +161,9 @@ def unsupported_draft_blocks(doc: dict) -> List[str]:
     for loc in doc.get("dataLocations", []):
         if loc.get("sourceType") in DRAFT_SOURCE_TYPES:
             problems.append(f"dataLocation '{loc['identifier']}': sourceType '{loc['sourceType']}' is DRAFT and not supported")
+        for level in loc.get("filesystemSource", {}).get("entityLayout", []):
+            if level.get("isRequired") is False:
+                problems.append(f"dataLocation '{loc['identifier']}': level '{level['name']}' isRequired false is DRAFT and not supported")
         for item in loc.get("filesystemSource", {}).get("metadataMapping", []):
             if item["extraction"]["method"] == "sidecar":
                 problems.append(f"dataLocation '{loc['identifier']}': extraction method 'sidecar' for '{item['metadataRef']}' is DRAFT and not supported")
