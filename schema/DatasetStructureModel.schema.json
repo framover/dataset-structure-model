@@ -454,7 +454,7 @@
         },
         "filePatterns": {
           "type": "array",
-          "description": "Kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity.",
+          "description": "Kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity. Allowed only on a level with entityType: a structural level has no entity to attach files to, and readers refuse filePatterns on it (reference-integrity).",
           "items": {
             "$ref": "#/definitions/fileGroupingPattern"
           }

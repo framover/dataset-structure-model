@@ -82,6 +82,16 @@ classdef ValidatorTest < matlab.unittest.TestCase
             testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "declaration order")));
         end
 
+        function filePatternsOnStructuralLevelIsReferenceProblem(testCase)
+            doc = minimalConfigDoc();
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout{end+1} = struct("name", "processed", "isVariable", false, "fixedName", "processed", ...
+                "filePatterns", {{struct("pattern", "\.dat$")}});
+            doc.dataLocations.filesystemSource.entityLayout = layout;
+            testCase.verifyEmpty(dsm.schemaErrors(doc));
+            testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "structural level 'processed' has filePatterns")));
+        end
+
         function validateConfigThrowsCodedErrors(testCase)
             doc = minimalConfigDoc();
             doc.dataLocations.filesystemSource.rootStoragePaths.isAvailable = true;
