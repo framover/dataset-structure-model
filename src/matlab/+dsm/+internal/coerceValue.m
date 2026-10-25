@@ -5,7 +5,9 @@ function value = coerceValue(value, definition, rule)
 %   which datetime reads natively) and returned as ISO 8601 strings. A
 %   two-digit year (yy) is placed in 1969-2068, the window Python's strptime
 %   uses, so both readers give the same date; datetime's default pivot would
-%   move with the current year.
+%   move with the current year. Month names (MMM) resolve against English
+%   with Locale en_US whatever the machine's locale, as the Python reader's
+%   fixed English table does.
 
     dataType = string(dsm.internal.getField(definition, "dataType", "string"));
     try
@@ -13,7 +15,7 @@ function value = coerceValue(value, definition, rule)
             case {"date", "time", "datetime"}
                 format = string(dsm.internal.getField(rule, "valueFormat", ""));
                 if (ischar(value) || isstring(value)) && format ~= ""
-                    parsed = datetime(char(value), "InputFormat", char(format), "PivotYear", 1969);
+                    parsed = datetime(char(value), "InputFormat", char(format), "PivotYear", 1969, "Locale", "en_US");
                     switch dataType
                         case "date"
                             parsed.Format = "yyyy-MM-dd";

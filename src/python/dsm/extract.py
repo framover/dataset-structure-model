@@ -7,6 +7,65 @@ from .config import TOKEN, Config
 
 LDML_TOKENS = [("yyyy", "%Y"), ("yy", "%y"), ("MM", "%m"), ("dd", "%d"), ("HH", "%H"), ("mm", "%M"), ("ss", "%S")]
 TEMPORAL = ("date", "time", "datetime")
+MONTH_ABBREVIATIONS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+# What each portable token matches in the text. The numeric two-letter tokens accept one digit because
+# strptime and MATLAB datetime both do; the regex only has to find the MMM spans, the parser types the rest.
+_TOKEN_REGEX = {"yyyy": r"\d{4}", "yy": r"\d{2}", "MMM": r"[A-Za-z]{3}",
+                "MM": r"\d{1,2}", "dd": r"\d{1,2}", "HH": r"\d{1,2}", "mm": r"\d{1,2}", "ss": r"\d{1,2}"}
+# tried longest first, so yyyy is read before yy and MMM before MM
+_TOKENS_LONGEST_FIRST = sorted(_TOKEN_REGEX, key=len, reverse=True)
+
+
+def _format_parts(fmt: str):
+    """Split a valueFormat into ("token", name) and ("literal", text) parts, in order.
+
+    A quoted literal keeps its quotes in text so the parts can be joined back into a format.
+    """
+    parts, i = [], 0
+    while i < len(fmt):
+        if fmt[i] == "'":
+            end = fmt.index("'", i + 1)
+            parts.append(("literal", fmt[i:end + 1]))
+            i = end + 1
+            continue
+        for token in _TOKENS_LONGEST_FIRST:
+            if fmt.startswith(token, i):
+                parts.append(("token", token))
+                i += len(token)
+                break
+        else:
+            parts.append(("literal", fmt[i]))
+            i += 1
+    return parts
+
+
+def months_as_numbers(text: str, fmt: str) -> Tuple[str, str]:
+    """Replace each English month abbreviation an `MMM` token denotes with its two-digit number.
+
+    The whole format is matched against the text, one group per token, so the abbreviation is found
+    wherever the parsers' leniency puts it: a one-digit day before `MMM` parses in MATLAB and must
+    parse here too. Resolving the name against a fixed English table, without regard to case, keeps
+    strptime's locale-dependent `%b` out of the readers; MATLAB's reader passes Locale en_US for the
+    same reason. Text that does not fit the format, or an unknown name, raises ValueError, which
+    coerce() turns into no value.
+    """
+    if "MMM" not in fmt:
+        return text, fmt
+    parts = _format_parts(fmt)
+    regex = "".join(f"({_TOKEN_REGEX[part]})" if kind == "token" else re.escape(part.strip("'"))
+                    for kind, part in parts)
+    match = re.fullmatch(regex, text)
+    if match is None:
+        raise ValueError(f"{text!r} does not match the format {fmt!r}")
+    tokens = [part for kind, part in parts if kind == "token"]
+    for group, token in reversed(list(enumerate(tokens, start=1))):  # from the end, so earlier spans stay valid
+        if token == "MMM":
+            name = match.group(group).capitalize()
+            if name not in MONTH_ABBREVIATIONS:
+                raise ValueError(f"{match.group(group)!r} is not an English month abbreviation")
+            start, end = match.span(group)
+            text = text[:start] + f"{MONTH_ABBREVIATIONS.index(name) + 1:02d}" + text[end:]
+    return text, "".join("MM" if (kind, part) == ("token", "MMM") else part for kind, part in parts)
 
 
 class ExtractorRegistry:
@@ -54,6 +113,7 @@ def ldml_to_strftime(fmt: str) -> str:
 
 
 def parse_temporal(text: str, fmt: str, data_type: str) -> str:
+    text, fmt = months_as_numbers(text, fmt)
     parsed = dt.datetime.strptime(text, ldml_to_strftime(fmt))
     if data_type == "date":
         return parsed.date().isoformat()
