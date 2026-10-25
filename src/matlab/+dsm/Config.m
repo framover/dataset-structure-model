@@ -134,17 +134,19 @@ classdef Config
             elseif isfield(level, "matchPattern")
                 regex = string(level.matchPattern);
             else
-                template = char(level.pathComponentTemplate);
-                [tokens, literals] = regexp(template, "\{([A-Za-z_][A-Za-z0-9_]*)\}", "tokens", "split");
+                [names, widths, literals] = dsm.internal.tokenParts(level.pathComponentTemplate);
                 definitions = obj.definitions();
                 regex = "^" + regexptranslate("escape", literals{1});
-                for i = 1:numel(tokens)
-                    key = tokens{i}{1};
+                for i = 1:numel(names)
+                    key = names(i);
                     pattern = "";
                     if isfield(definitions, key) && isfield(definitions.(key), "validation")
                         pattern = string(dsm.internal.getField(definitions.(key).validation, "pattern", ""));
                     end
-                    if pattern ~= ""
+                    if ~isnan(widths(i))
+                        % a zero-filled integer: at least that many digits
+                        regex = regex + "\d{" + string(widths(i)) + ",}";
+                    elseif pattern ~= ""
                         regex = regex + "(?:" + stripAnchors(pattern) + ")";
                     else
                         regex = regex + "[^/\\]+";

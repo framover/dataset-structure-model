@@ -3,7 +3,7 @@ import datetime as dt
 import re
 from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 
-from .config import TOKEN, Config
+from .config import TOKEN, Config, format_token, token_names
 
 LDML_TOKENS = [("yyyy", "%Y"), ("yy", "%y"), ("MM", "%m"), ("dd", "%d"), ("HH", "%H"), ("mm", "%M"), ("ss", "%S")]
 TEMPORAL = ("date", "time", "datetime")
@@ -102,10 +102,6 @@ def coerce(value: Any, definition: dict, rule: dict) -> Any:
         return None
 
 
-def format_token(value: Any) -> str:
-    return str(value)
-
-
 def validate_value(value: Any, definition: dict) -> Optional[str]:
     """A problem description when the value violates the definition's validation, else None."""
     rules = definition.get("validation")
@@ -166,7 +162,7 @@ def evaluate_fields(config: Config, loc_id: str, rel_path: str, entity_type: str
         for item in list(pending):
             ref, rule = item["metadataRef"], item["extraction"]
             if rule["method"] == "template":
-                deps = [t for t in TOKEN.findall(rule["pattern"]) if t in pending_refs and t != ref]
+                deps = [t for t in token_names(rule["pattern"]) if t in pending_refs and t != ref]
                 if deps:
                     continue
             value = _evaluate(rule, config.definitions[ref], level_names, rel_path, known,
@@ -198,7 +194,7 @@ def _evaluate(rule, definition, level_names, rel_path, known, registry, full_pat
         return None if raw is None else coerce(raw, definition, rule)
     if method == "template":
         try:
-            raw = TOKEN.sub(lambda m: format_token(known[m.group(1)]), rule["pattern"])
+            raw = TOKEN.sub(lambda m: format_token(known[m.group(1)], m.group(2)), rule["pattern"])
         except KeyError:
             return None
     elif method == "sidecar":  # DRAFT: not implemented by this reader

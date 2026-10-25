@@ -5,7 +5,7 @@ from typing import List
 
 import jsonschema
 
-from .config import TOKEN, Config
+from .config import FORMAT_RULE, TOKEN, Config, malformed_token_formats, token_names
 from .errors import ConfigError
 from .schemas import CONFIG_SCHEMA, load_schema
 
@@ -90,16 +90,24 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
             problems.append(f"{loc_id}: structural level '{level['name']}' has filePatterns; a level without entityType has no entity to attach files to")
         if level.get("fileSystemType") == "file" and i != len(layout) - 1:
             problems.append(f"{loc_id}: file level '{level['name']}' must be the last level")
-        for token in TOKEN.findall(level.get("pathComponentTemplate", "")):
+        for raw in malformed_token_formats(level.get("pathComponentTemplate", "")):
+            problems.append(f"{loc_id}: level '{level['name']}' template token '{raw}' has a malformed format; {FORMAT_RULE}")
+        for token, width in TOKEN.findall(level.get("pathComponentTemplate", "")):
             if token not in definitions:
                 problems.append(f"{loc_id}: level '{level['name']}' template token '{token}' is not a metadata field")
+            elif width and definitions[token]["dataType"] != "integer":
+                problems.append(f"{loc_id}: level '{level['name']}' template token '{token}' has a format, but the field is not an integer")
         pattern_names = [fp["name"] for fp in level.get("filePatterns", []) if "name" in fp]
         if len(set(pattern_names)) != len(pattern_names):
             problems.append(f"{loc_id}: level '{level['name']}' filePatterns names are not unique")
         for fp in level.get("filePatterns", []):
-            for token in TOKEN.findall(fp["pattern"]):
+            for raw in malformed_token_formats(fp["pattern"]):
+                problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{raw}' has a malformed format; {FORMAT_RULE}")
+            for token, width in TOKEN.findall(fp["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' is not a metadata field")
+                elif width and definitions[token]["dataType"] != "integer":
+                    problems.append(f"{loc_id}: filePattern '{fp['pattern']}' token '{token}' has a format, but the field is not an integer")
             # isRequired and cardinality are the one-file spellings of minCount and maxCount; both forms may be
             # written, but they must say the same thing
             label = fp.get("name", fp["pattern"])
@@ -131,11 +139,14 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
         if isinstance(level_ref, int) and not 0 <= level_ref < len(layout):
             problems.append(f"{loc_id}: extraction for '{ref}' level index {level_ref} is out of range")
         if extraction["method"] == "template":
-            tokens = TOKEN.findall(extraction["pattern"])
-            templates[ref] = tokens
-            for token in tokens:
+            templates[ref] = token_names(extraction["pattern"])
+            for raw in malformed_token_formats(extraction["pattern"]):
+                problems.append(f"{loc_id}: template for '{ref}' token '{raw}' has a malformed format; {FORMAT_RULE}")
+            for token, width in TOKEN.findall(extraction["pattern"]):
                 if token not in definitions:
                     problems.append(f"{loc_id}: template for '{ref}' token '{token}' is not a metadata field")
+                elif width and definitions[token]["dataType"] != "integer":
+                    problems.append(f"{loc_id}: template for '{ref}' token '{token}' has a format, but the field is not an integer")
                 if token == ref:
                     problems.append(f"{loc_id}: template for '{ref}' references itself")
     problems += _template_cycles(loc_id, templates)

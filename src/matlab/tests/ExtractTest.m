@@ -61,5 +61,34 @@ classdef ExtractTest < matlab.unittest.TestCase
             testCase.verifyFalse(config.nameMatches(level, "scratch"));
             testCase.verifyFalse(config.nameMatches(level, "session-m110-20250523-0011"));
         end
+
+        function tokenFormatZeroFillsIntegers(testCase)
+            testCase.verifyEqual(dsm.internal.formatToken(7, 5), "00007");
+            testCase.verifyEqual(dsm.internal.formatToken("7", 3), "007");
+            testCase.verifyEqual(dsm.internal.formatToken(123456, 5), "123456");  % wider values keep their digits
+            testCase.verifyEqual(dsm.internal.formatToken(7, NaN), "7");
+            testCase.verifyEqual(dsm.internal.formatToken("00007", NaN), "00007");
+            % a value that is not an integer is substituted as plain text, never an error
+            testCase.verifyEqual(dsm.internal.formatToken("n/a", 5), "n/a");
+            testCase.verifyEqual(dsm.internal.formatToken(1.5, 5), "1.5");
+            [~, ~, ~, malformed] = dsm.internal.tokenParts("a{x:5d}_{y:05d}{z:05}{w:005d}{v:05x}");
+            testCase.verifyEqual(malformed, ["{x:5d}", "{z:05}", "{w:005d}", "{v:05x}"]);
+            [~, ~, ~, malformed] = dsm.internal.tokenParts("^{session_id}_\d{2,3}$");
+            testCase.verifyEmpty(malformed);
+            [names, widths, literals] = dsm.internal.tokenParts("a{x}_{y:05d}");
+            testCase.verifyEqual(names, ["x", "y"]);
+            testCase.verifyEqual(widths, [NaN, 5]);
+            testCase.verifyEqual(literals, {'a', '_', ''});
+        end
+
+        function tokenFormatDerivesADigitPattern(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.session_id.dataType = "integer";
+            config = dsm.Config(doc);
+            level = struct("name", "sessions", "entityType", "session", "pathComponentTemplate", "run-{session_id:03d}");
+            testCase.verifyTrue(endsWith(config.matchRegex(level), '\d{3,}$'), config.matchRegex(level));
+            testCase.verifyTrue(config.nameMatches(level, "run-007"));
+            testCase.verifyFalse(config.nameMatches(level, "run-7"));
+        end
     end
 end

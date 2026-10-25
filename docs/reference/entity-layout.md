@@ -59,9 +59,11 @@ Entries whose names match are entries at this level; others are ignored. Require
 How an entry name is composed from metadata fields. Tokens in braces reference keys in `metadataDefinitions`. Two uses:
 
 1. **Generation** — when writing to a `readwrite` location, tools substitute the source entity's metadata to build the folder name.
-2. **Matching** — when `matchPattern` is absent, it is derived: each `{token}` becomes the referenced definition's `validation.pattern` if it has one, otherwise `[^/\\]+`; the result is anchored with `^` and `$`. Literal text between tokens is regex-escaped.
+2. **Matching** — when `matchPattern` is absent, it is derived: each `{token}` becomes the referenced definition's `validation.pattern` if it has one, otherwise `[^/\\]+`; a token with a format (below) becomes `\d{N,}`; the result is anchored with `^` and `$`. Literal text between tokens is regex-escaped.
 
 With `session_id` validated by `^m\d{3}-\d{8}-\d{3}$`, the template `session-{session_id}` derives `^session-m\d{3}-\d{8}-\d{3}$`.
+
+**Token formats.** A token may carry a format, `{name:0Nd}`: the referenced field must be an `integer`, and the value is written zero-filled to `N` digits. This is the whole format grammar, width and zero-fill, which is what counters in file names need. `{acquisition_number:05d}` writes `1` as `00001` when a name is generated, matches `\d{5,}` when `matchPattern` is derived, and substitutes `00001` into `filePatterns` and `template` rules, so the counter stays a number in entity records and still round-trips into names. A format on a non-integer field is refused (`reference-integrity`), and so is any other text after the colon, such as `{name:5d}`, `{name:05}` or `{name:05x}`: a malformed format is not a token, and left alone it would stay in the pattern as literal braces that match nothing.
 
 ---
 
@@ -88,7 +90,7 @@ The kinds of files that belong to an entity at this level. For a folder level: f
 
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
-| `pattern` | Yes | string (regex) | Matched against file names. May contain `{token}` references to the entity's metadata fields; each token is replaced by the regex-escaped value for the entity being resolved. |
+| `pattern` | Yes | string (regex) | Matched against file names. May contain `{token}` references to the entity's metadata fields; each token is replaced by the regex-escaped value for the entity being resolved. A token may carry a format, `{counter:05d}`, for an integer written zero-filled (see [token formats](#pathcomponenttemplate)). |
 | `name` | No | string | Name of this file kind, unique within the level. Readers report matched files under it in entity records. |
 | `isRequired` | No | boolean | At least one match must exist for the entity to be complete (default `false`). The same as `minCount: 1`. |
 | `cardinality` | No | `"one"` \| `"many"` | At most one file, or any number (default `"many"`). `"one"` is the same as `maxCount: 1`. |

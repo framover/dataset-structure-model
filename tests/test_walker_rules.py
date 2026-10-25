@@ -65,6 +65,24 @@ def test_records_are_ordered_by_declaration_then_key():
         ("session", {"session_id": "a"}), ("session", {"session_id": "b"})]
 
 
+def test_token_format_applies_in_patterns_templates_and_derived_names():
+    doc = minimal_config()
+    doc["entityTypes"][1] = {"name": "session", "identifierRef": "run_number"}
+    doc["metadataDefinitions"]["run_number"] = {"name": "run_number", "dataType": "integer", "ofEntity": "session"}
+    doc["metadataDefinitions"]["label"] = {"name": "label", "dataType": "string", "ofEntity": "session"}
+    del doc["metadataDefinitions"]["session_id"]
+    source = doc["dataLocations"][0]["filesystemSource"]
+    source["entityLayout"][1] = {"name": "sessions", "entityType": "session", "pathComponentTemplate": "run-{run_number:03d}",
+                                 "filePatterns": [{"name": "frames", "pattern": "^frame_{run_number:03d}\\.tif$"}]}
+    source["metadataMapping"][1] = {"metadataRef": "run_number", "extraction": {"method": "regex", "pattern": "^run-(\\d+)$", "entityLayoutLevel": "sessions"}}
+    source["metadataMapping"].append({"metadataRef": "label", "extraction": {"method": "template", "pattern": "{subject_id}-{run_number:03d}"}})
+    result = _walk(doc, ["m110/", "m110/run-007/", "m110/run-007/frame_007.tif", "m110/run-007/frame_7.tif", "m110/run-7/"])
+    session = [r for r in result.records if r.entity_type == "session"][0]
+    assert session.identity == {"run_number": 7} and session.metadata["label"] == "m110-007"
+    assert session.locations[0].files == {"frames": ["m110/run-007/frame_007.tif"]}
+    assert [u.path for u in result.unmatched] == ["m110/run-7/"]  # the derived pattern wants at least three digits
+
+
 def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
     doc = minimal_config()
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
@@ -76,6 +94,8 @@ def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
     assert [(u.path, u.reason) for u in result.unmatched] == [
         ("m110/2022/x.txt", "no-match"), ("m110/2023/", "no-match"), ("m110/2024/", "no-match")]
     assert sorted(r.identity["session_id"] for r in result.records if r.entity_type == "session") == ["a", "b"]
+
+
 def test_min_and_max_count_bound_the_matched_files():
     doc = minimal_config()
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]

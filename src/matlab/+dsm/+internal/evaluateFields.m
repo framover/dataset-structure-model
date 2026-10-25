@@ -71,15 +71,14 @@ function [value, unresolvedKey] = evaluateRule(rule, definition, levelNames, rel
             end
             return
         case "template"
-            [tokens, literals] = regexp(char(rule.pattern), "\{([A-Za-z_][A-Za-z0-9_]*)\}", "tokens", "split");
+            [names, widths, literals] = dsm.internal.tokenParts(rule.pattern);
             raw = string(literals{1});
-            for i = 1:numel(tokens)
-                key = tokens{i}{1};
-                if ~isfield(known, key)
+            for i = 1:numel(names)
+                if ~isfield(known, names(i))
                     value = [];
                     return
                 end
-                raw = raw + string(known.(key)) + string(literals{i+1});
+                raw = raw + dsm.internal.formatToken(known.(names(i)), widths(i)) + string(literals{i+1});
             end
         case "sidecar"
             % DRAFT: not implemented by this reader
@@ -112,6 +111,5 @@ function [value, unresolvedKey] = evaluateRule(rule, definition, levelNames, rel
 end
 
 function tokens = templateTokens(text)
-    found = regexp(char(text), "\{([A-Za-z_][A-Za-z0-9_]*)\}", "tokens");
-    tokens = reshape(string(cellfun(@(t) t{1}, found, "UniformOutput", false)), 1, []);
+    tokens = dsm.internal.tokenParts(text);
 end
