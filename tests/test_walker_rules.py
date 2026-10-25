@@ -76,3 +76,15 @@ def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
     assert [(u.path, u.reason) for u in result.unmatched] == [
         ("m110/2022/x.txt", "no-match"), ("m110/2023/", "no-match"), ("m110/2024/", "no-match")]
     assert sorted(r.identity["session_id"] for r in result.records if r.entity_type == "session") == ["a", "b"]
+def test_min_and_max_count_bound_the_matched_files():
+    doc = minimal_config()
+    layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
+    layout[1]["filePatterns"] = [{"name": "planes", "pattern": "^plane\\d\\.tif$", "minCount": 2, "maxCount": 2}]
+    result = _walk(doc, ["m110/", "m110/20250523_a/", "m110/20250523_a/plane1.tif",
+                         "m110/20250523_b/", "m110/20250523_b/plane1.tif", "m110/20250523_b/plane2.tif",
+                         "m110/20250523_c/", "m110/20250523_c/plane1.tif", "m110/20250523_c/plane2.tif", "m110/20250523_c/plane3.tif"])
+    by_id = {r.identity["session_id"]: r for r in result.records if r.entity_type == "session"}
+    assert {i.code for i in by_id["a"].issues} == {"missing-required-file"} and by_id["a"].locations[0].is_complete is False
+    assert by_id["b"].issues == [] and by_id["b"].locations[0].is_complete is True
+    assert {i.code for i in by_id["c"].issues} == {"cardinality-violation"} and by_id["c"].locations[0].is_complete is True
+    assert len(by_id["c"].locations[0].files["planes"]) == 3

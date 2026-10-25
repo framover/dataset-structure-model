@@ -80,6 +80,23 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.reason, result.Unmatched), repmat("no-match", 1, 3));
             sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
             testCase.verifyEqual(sort(cellfun(@(r) r.identity.session_id, sessions)), ["a", "b"]);
+        function minAndMaxCountBoundTheMatchedFiles(testCase)
+            doc = minimalConfigDoc();
+            layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');
+            layout{2}.filePatterns = {struct("name", "planes", "pattern", "^plane\d\.tif$", "minCount", 2, "maxCount", 2)};
+            doc.dataLocations.filesystemSource.entityLayout = layout;
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a/', 'm110/20250523_a/plane1.tif', ...
+                'm110/20250523_b/', 'm110/20250523_b/plane1.tif', 'm110/20250523_b/plane2.tif', ...
+                'm110/20250523_c/', 'm110/20250523_c/plane1.tif', 'm110/20250523_c/plane2.tif', 'm110/20250523_c/plane3.tif'});
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            byId = containers.Map(cellfun(@(r) char(r.identity.session_id), sessions, "UniformOutput", false), sessions);
+            testCase.verifyEqual(cellfun(@(i) i.code, byId('a').issues), "missing-required-file");
+            testCase.verifyFalse(byId('a').locations{1}.isComplete);
+            testCase.verifyEmpty(byId('b').issues);
+            testCase.verifyTrue(byId('b').locations{1}.isComplete);
+            testCase.verifyEqual(cellfun(@(i) i.code, byId('c').issues), "cardinality-violation");
+            testCase.verifyTrue(byId('c').locations{1}.isComplete);
+            testCase.verifyEqual(numel(byId('c').locations{1}.files('planes')), 3);
         end
     end
 end

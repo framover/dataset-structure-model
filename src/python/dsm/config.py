@@ -5,6 +5,17 @@ from typing import Dict, List, Optional
 TOKEN = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 
+def count_bounds(pattern: dict):
+    """(smallest, largest) number of files a fileGroupingPattern expects per entity; largest is None when unbounded.
+
+    isRequired means at least one and cardinality 'one' means at most one; minCount and maxCount say any
+    bound. Validation refuses a pattern whose two spellings disagree, so either may be read here.
+    """
+    at_least = pattern["minCount"] if "minCount" in pattern else (1 if pattern.get("isRequired") else 0)
+    at_most = pattern["maxCount"] if "maxCount" in pattern else (1 if pattern.get("cardinality", "many") == "one" else None)
+    return at_least, at_most
+
+
 def strip_anchors(pattern):
     if pattern.startswith("^"):
         pattern = pattern[1:]
