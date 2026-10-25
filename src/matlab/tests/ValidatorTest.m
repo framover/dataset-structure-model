@@ -82,6 +82,19 @@ classdef ValidatorTest < matlab.unittest.TestCase
             testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "declaration order")));
         end
 
+        function cycleThroughASecondTemplateRuleIsDetected(testCase)
+            doc = minimalConfigDoc();
+            for name = ["a", "b", "c"]
+                doc.metadataDefinitions.(name) = struct("name", name, "dataType", "string", "ofEntity", "session");
+            end
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            mapping{end+1} = struct("metadataRef", "a", "extraction", struct("method", "template", "pattern", "{b}-x"));
+            mapping{end+1} = struct("metadataRef", "a", "extraction", struct("method", "template", "pattern", "{c}-y"));
+            mapping{end+1} = struct("metadataRef", "b", "extraction", struct("method", "template", "pattern", "{a}-z"));
+            doc.dataLocations.filesystemSource.metadataMapping = mapping;
+            testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "template cycle")));
+        end
+
         function filePatternsOnStructuralLevelIsReferenceProblem(testCase)
             doc = minimalConfigDoc();
             layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');

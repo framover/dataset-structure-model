@@ -331,7 +331,7 @@
         },
         "metadataMapping": {
           "type": "array",
-          "description": "How the globally defined metadata fields are extracted from path components in this location. One entry per field; the same field may be extracted differently in other locations.",
+          "description": "How the globally defined metadata fields are extracted from path components in this location. Several entries for one field are an ordered fallback: a rule is evaluated only when it is the first remaining rule for its field and, for a template, no other field it references still has a remaining rule; the first rule that yields a value wins and the field's later rules are not evaluated. The same field may be extracted differently in other locations.",
           "items": {
             "type": "object",
             "required": ["metadataRef", "extraction"],

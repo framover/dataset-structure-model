@@ -1,0 +1,13 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "raw",
+      "rootStoragePathIdentifier": "main",
+      "entries": [
+        "m110/",
+        "m110/20250523_baseline/",
+        "m110/drug_20250601/"
+      ]
+    }
+  ]
+}
