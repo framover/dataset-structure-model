@@ -79,7 +79,7 @@ A reader passes a case when:
 
 These are the rules a reader implements; each is exercised by at least one case.
 
-- **Folder entities.** A record's folder path ends with `/`. `files` and `isComplete` are present exactly when the level declares `filePatterns`; candidates for `files` are the direct children of the folder. Everything inside an innermost entity folder — including subfolders and `additionalFolders` — is covered by the entity, whether or not a pattern matches it.
+- **Folder entities.** A record's folder path ends with `/`. `files` and `isComplete` are present exactly when the level declares `filePatterns`; candidates for `files` are the direct children of the folder. Everything inside an innermost entity folder — including subfolders, listed in the deprecated `additionalFolders` or not — is covered by the entity, whether or not a pattern matches it.
 - **File entities.** At a `file` level, an entity's `paths` are every file at that level whose extracted identity is the entity's, whether or not a pattern matches it; `files` are the named-pattern matches among them. `{token}` references in patterns are replaced by the regex-escaped identity value before matching.
 - **Structural levels** are walked and readable by extraction rules but never appear in `parents`.
 - **Ancestors inferred from descendants** — a subject whose id is read from session names in a location without subject folders — get a record with `locations: []`. An ancestor that has a folder somewhere lists only those locations. Every field of the ancestor's type that the inferring paths yield attaches to it, not only its identity: a subject's sex read from its session names lands on the subject record.

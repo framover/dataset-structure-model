@@ -353,7 +353,7 @@
         },
         "additionalFolders": {
           "type": "array",
-          "description": "Folder names that may exist inside an entity folder at the innermost level but are not entities (e.g. 'logs', 'temp').",
+          "description": "Deprecated: no reader consumes this field. Everything inside an innermost entity folder is covered whether or not its subfolders are listed here, so the field changes no record. Kept so existing configs stay valid; a subfolder field on file patterns, which names the files inside a subfolder, is proposed to replace it.",
           "items": {
             "type": "string"
           }
