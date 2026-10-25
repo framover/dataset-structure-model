@@ -82,11 +82,17 @@ class Walker:
     def _unmatch(self, loc_id, root_id, path, reason, detail=""):
         self._unmatched.append(Unmatched(loc_id, root_id, path, reason, detail))
 
-    def _visit(self, loc_id, root_id, tree, level_index, parent_path, ancestors: Parents):
+    def _visit(self, loc_id, root_id, tree, level_index, parent_path, ancestors: Parents) -> bool:
+        """Walk the children of one folder against one level.
+
+        Returns whether anything below the folder is accounted for: an entity resolved at this level or
+        deeper, or an innermost structural folder, which covers its contents.
+        """
         layout = self.config.layout(loc_id)
         level = layout[level_index]
         last = level_index == len(layout) - 1
         expects_dir = level.get("fileSystemType", "folder") == "folder"
+        claimed = False
         for entry in tree.children(parent_path):
             name = basename(entry)
             if self.config.is_excluded(level, name):
@@ -102,8 +108,19 @@ class Walker:
                 continue
             entity_type = level.get("entityType")
             if entity_type is None:  # structural level
-                if not last:
-                    self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors)
+                if last:
+                    claimed = True  # an innermost structural folder covers its contents
+                    continue
+                before = len(self._unmatched)
+                if self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors):
+                    claimed = True
+                else:
+                    # nothing below the folder is an entity: the folder is the topmost unmatched entry and
+                    # stands in for whatever its contents were reported as
+                    del self._unmatched[before:]
+                    self._unmatch(loc_id, root_id, entry, "no-match",
+                                  f"matches structural level '{level['name']}' but holds nothing that matches "
+                                  f"level '{layout[level_index + 1]['name']}'")
                 continue
             entity = self._resolve_entity(loc_id, root_id, entry, entity_type, ancestors,
                                           "folder" if expects_dir else "file")
@@ -111,8 +128,10 @@ class Walker:
                 self._unmatch(loc_id, root_id, entry, "no-match",
                               f"identity of {entity_type} could not be extracted from '{name}'")
                 continue
+            claimed = True
             if expects_dir and not last:
                 self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors + [(entity_type, entity.identity)])
+        return claimed
 
     def _resolve_entity(self, loc_id, root_id, rel_path, entity_type, ancestors: Parents, file_system_type):
         root_path = self.config.root_storage_path(loc_id, root_id)["path"].rstrip("/\\")

@@ -28,7 +28,7 @@ Name of the level, unique within the layout. Extraction rules reference levels b
 
 The entity type that entries at this level represent; must match a name in `entityTypes`.
 
-**Omit it for a structural level** — a folder that is part of the path but not an entity, such as a date folder above the sessions or a fixed `processed/` folder. Structural levels are walked and can be read by extraction rules, but they are skipped when building entity identity:
+**Omit it for a structural level** — a folder that is part of the path but not an entity, such as a date folder above the sessions or a fixed `processed/` folder. Structural levels are walked and can be read by extraction rules, but they are skipped when building entity identity. Two consequences: a structural folder that holds nothing an entity accounts for (empty, or holding only entries the next level rejects) is reported `no-match` itself; and when a structural level between an entity level and a file level alternates between sibling folders (`funct/`, `timing/`), the files of one entity are pooled across those folders.
 
 ```json
 "entityLayout": [
