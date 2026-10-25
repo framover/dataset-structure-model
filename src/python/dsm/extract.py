@@ -151,8 +151,14 @@ def evaluate_fields(config: Config, loc_id: str, rel_path: str, entity_type: str
 
     Returns (values, unresolved): values maps each mapped field to its value or
     None; unresolved holds registry keys of function rules with no implementation.
-    Templates are evaluated after the own-type fields they reference; ancestor
-    identity comes in through seed.
+    Ancestor identity comes in through seed.
+
+    Several rules for one field are an ordered fallback. In every pass over the
+    pending rules a rule is evaluated only when it is the first remaining rule
+    for its field and, for a template, no other field it references still has a
+    remaining rule. The first rule that yields a value wins and the field's
+    later rules are dropped unevaluated; a deferred template blocks the later
+    rules for its field until it has run.
     """
     level_names = config.level_names(loc_id)
     rules = config.rules_for(loc_id, entity_type)
@@ -160,29 +166,28 @@ def evaluate_fields(config: Config, loc_id: str, rel_path: str, entity_type: str
     known = dict(seed)
     unresolved: Set[str] = set()
     pending = list(rules)
-    pending_refs = {item["metadataRef"] for item in rules}
     while pending:
         progressed = False
         for item in list(pending):
             ref, rule = item["metadataRef"], item["extraction"]
+            if item is not next((p for p in pending if p["metadataRef"] == ref), None):
+                continue  # dropped by an earlier winner, or an earlier rule for this field is still deferred
+            pending_refs = {p["metadataRef"] for p in pending}
             if rule["method"] == "template":
-                deps = [t for t in TOKEN.findall(rule["pattern"]) if t in pending_refs and t != ref]
-                if deps:
+                if any(t in pending_refs and t != ref for t in TOKEN.findall(rule["pattern"])):
                     continue
             value = _evaluate(rule, config.definitions[ref], level_names, rel_path, known,
                               registry, full_path, loc_id, unresolved)
-            # several rules for one field are an ordered fallback: the first that yields a value wins
+            pending.remove(item)
             if values.get(ref) is None:
                 values[ref] = value
                 if value is not None:
                     known[ref] = value
-            pending.remove(item)
-            if not any(other["metadataRef"] == ref for other in pending):
-                pending_refs.discard(ref)
+                    pending = [p for p in pending if p["metadataRef"] != ref]
             progressed = True
         if not progressed:  # a dependency cycle; validation rejects these, so this is defensive
             for item in pending:
-                values[item["metadataRef"]] = None
+                values.setdefault(item["metadataRef"], None)
             break
     return values, unresolved
 

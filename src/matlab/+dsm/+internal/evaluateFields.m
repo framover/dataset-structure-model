@@ -3,8 +3,14 @@ function [values, unresolved] = evaluateFields(config, locId, relPath, entityTyp
 %
 %   values is a struct mapping each mapped field to its value, or [] when
 %   the rule produced nothing. unresolved lists registry keys of function
-%   rules with no implementation. Templates are evaluated after the own-type
-%   fields they reference; ancestor identity comes in through seed.
+%   rules with no implementation. Ancestor identity comes in through seed.
+%
+%   Several rules for one field are an ordered fallback. In every pass over
+%   the pending rules a rule is evaluated only when it is the first remaining
+%   rule for its field and, for a template, no other field it references still
+%   has a remaining rule. The first rule that yields a value wins and the
+%   field's later rules are dropped unevaluated; a deferred template blocks
+%   the later rules for its field until it has run.
 
     levelNames = config.levelNames(locId);
     definitions = config.definitions();
@@ -13,28 +19,32 @@ function [values, unresolved] = evaluateFields(config, locId, relPath, entityTyp
     known = seed;
     unresolved = string.empty(1, 0);
     pending = rules;
-    pendingRefs = string(cellfun(@(item) item.metadataRef, rules, "UniformOutput", false));
     while ~isempty(pending)
         progressed = false;
-        remaining = {};
-        % config order decides between several rules for one field, so the pass runs forward
-        for i = 1:numel(pending)
-            ref = string(pending{i}.metadataRef);
-            rule = pending{i}.extraction;
+        snapshot = pending;
+        for i = 1:numel(snapshot)
+            item = snapshot{i};
+            ref = string(item.metadataRef);
+            rule = item.extraction;
+            pendingRefs = refsOf(pending);
+            position = find(cellfun(@(p) isequal(p, item), pending), 1);
+            if isempty(position) || position ~= find(pendingRefs == ref, 1)
+                continue  % dropped by an earlier winner, or an earlier rule for this field is still deferred
+            end
             if string(rule.method) == "template"
                 tokens = templateTokens(rule.pattern);
-                waiting = tokens(ismember(tokens, pendingRefs) & tokens ~= ref);
-                if ~isempty(waiting)
-                    remaining{end+1} = pending{i}; %#ok<AGROW>
+                if any(ismember(tokens, pendingRefs) & tokens ~= ref)
                     continue
                 end
             end
-            [value, unresolvedKey] = evaluateRule(rule, definitions.(ref), levelNames, relPath, known, registry, fullPath, locId);
-            % several rules for one field are an ordered fallback: the first that yields a value wins
+            [value, unresolvedKey] = evaluateRule(rule, definitions.(ref), levelNames, relPath, known, ...
+                registry, fullPath, locId);
+            pending(position) = [];
             if ~isfield(values, ref) || dsm.internal.isNone(values.(ref))
                 values.(ref) = value;
                 if ~dsm.internal.isNone(value)
                     known.(ref) = value;
+                    pending = pending(refsOf(pending) ~= ref);
                 end
             end
             if unresolvedKey ~= ""
@@ -42,17 +52,21 @@ function [values, unresolved] = evaluateFields(config, locId, relPath, entityTyp
             end
             progressed = true;
         end
-        pending = remaining;
-        % a template waits until every rule for the field it references has run
-        pendingRefs = string(cellfun(@(item) item.metadataRef, pending, "UniformOutput", false));
         if ~progressed
             % a dependency cycle; validation rejects these, so this is defensive
             for i = 1:numel(pending)
-                values.(pending{i}.metadataRef) = [];
+                ref = pending{i}.metadataRef;
+                if ~isfield(values, ref)
+                    values.(ref) = [];
+                end
             end
             break
         end
     end
+end
+
+function refs = refsOf(items)
+    refs = reshape(string(cellfun(@(item) item.metadataRef, items, "UniformOutput", false)), 1, []);
 end
 
 function [value, unresolvedKey] = evaluateRule(rule, definition, levelNames, relPath, known, registry, fullPath, locId)

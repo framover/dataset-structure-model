@@ -73,7 +73,7 @@ Read the value from a file inside the entity folder (`filePattern`, `contentPath
 
 ## Several rules for one field
 
-A location may list more than one rule for the same field. The rules are an ordered fallback: readers evaluate them in config order, and the first rule that yields a value wins. A later rule neither overwrites that value nor removes it when it yields nothing, and a `template` that references the field is evaluated after every rule for it has run. Use this when one identity is written in two forms — `<date>_<name>` in some folders and `<name>_<date>` in others — with one regex per form, instead of one regex with alternation. The conformance case `extraction-fallback-rules` pins the order.
+A location may list more than one rule for the same field. Several rules for one field are an ordered fallback. In every pass over the pending rules, a rule is evaluated only when it is the first remaining rule for its field and, for a `template`, no other field it references still has a remaining rule. The first rule that yields a value wins and the field's later rules are not evaluated; a later rule neither overwrites a value nor removes it. A deferred template blocks the later rules for its field until it has run, so a template placed before a fallback rule still wins whatever the position of the fields it references. Use this when one identity is written in two forms — `<date>_<name>` in some folders and `<name>_<date>` in others — with one regex per form, instead of one regex with alternation. The conformance case `extraction-fallback-rules` pins the order.
 
 ## `valueFormat`
 

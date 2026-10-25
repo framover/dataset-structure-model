@@ -43,6 +43,18 @@
       "dataType": "string",
       "ofEntity": "session",
       "description": "A regex that matches nothing, then a fixed value"
+    },
+    "day": {
+      "name": "day",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "Read from either naming form by one rule each; its rules come after the template that uses it"
+    },
+    "day_label": {
+      "name": "day_label",
+      "dataType": "string",
+      "ofEntity": "session",
+      "description": "A template placed before a fixed fallback; the template wins although day is read later in the config"
     }
   },
   "dataLocations": [
@@ -129,6 +141,36 @@
             "extraction": {
               "method": "fixed",
               "value": "untagged"
+            }
+          },
+          {
+            "metadataRef": "day_label",
+            "extraction": {
+              "method": "template",
+              "pattern": "{day}-label"
+            }
+          },
+          {
+            "metadataRef": "day_label",
+            "extraction": {
+              "method": "fixed",
+              "value": "no-day"
+            }
+          },
+          {
+            "metadataRef": "day",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^(\\d{8})_[a-z]+$",
+              "entityLayoutLevel": "sessions"
+            }
+          },
+          {
+            "metadataRef": "day",
+            "extraction": {
+              "method": "regex",
+              "pattern": "^[a-z]+_(\\d{8})$",
+              "entityLayoutLevel": "sessions"
             }
           }
         ]

@@ -259,7 +259,12 @@ def extract(rule, definition, layout, rel_path, known):
 
 
 def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
-    """All rules for fields of entity_type in one location, on one path. Templates after their inputs."""
+    """All rules for fields of entity_type in one location, on one path.
+
+    Several rules for one field are an ordered fallback: in every pass a rule runs only when it is the
+    first remaining rule for its field and, for a template, no other field it references still has a
+    remaining rule; the first rule that yields a value wins and the field's later rules are dropped.
+    """
     layout = case.layout(loc_id)
     rules = [item for item in case.mapping(loc_id) if case.definitions[item["metadataRef"]]["ofEntity"] == entity_type]
     values = dict(seed)
@@ -268,17 +273,19 @@ def evaluate_rules(case, loc_id, rel_path, entity_type, seed):
     while pending:
         progressed = False
         for item in list(pending):
-            rule = item["extraction"]
-            if rule["method"] == "template" and any(t not in values for t in TOKEN.findall(rule["pattern"]) if t in {r["metadataRef"] for r in pending}):
+            rule, ref = item["extraction"], item["metadataRef"]
+            if item is not next((p for p in pending if p["metadataRef"] == ref), None):
                 continue
-            ref = item["metadataRef"]
+            pending_refs = {p["metadataRef"] for p in pending}
+            if rule["method"] == "template" and any(t in pending_refs and t != ref for t in TOKEN.findall(rule["pattern"])):
+                continue
             value = extract(rule, case.definitions[ref], layout, rel_path, values)
-            # several rules for one field are an ordered fallback: the first that yields a value wins
+            pending.remove(item)
             if results.get(ref) is None:
                 results[ref] = value
                 if value not in (None, SKIP):
                     values[ref] = value
-            pending.remove(item)
+                    pending = [p for p in pending if p["metadataRef"] != ref]
             progressed = True
         assert progressed, f"{case.name}: template dependency cycle in {loc_id}"
     return results

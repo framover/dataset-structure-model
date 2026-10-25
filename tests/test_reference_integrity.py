@@ -44,6 +44,19 @@ def test_checker_detects_template_cycles():
     assert any("template cycle" in p for p in check_references(doc))
 
 
+def test_checker_detects_a_cycle_through_a_second_template_rule():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    for name in "abc":
+        doc["metadataDefinitions"][name] = {"name": name, "dataType": "string", "ofEntity": "session"}
+    mapping = doc["dataLocations"][0]["filesystemSource"]["metadataMapping"]
+    mapping.append({"metadataRef": "a", "extraction": {"method": "template", "pattern": "{b}-x"}})
+    mapping.append({"metadataRef": "a", "extraction": {"method": "template", "pattern": "{c}-y"}})
+    mapping.append({"metadataRef": "b", "extraction": {"method": "template", "pattern": "{a}-z"}})
+    assert any("template cycle" in p for p in check_references(doc))
+
+
 def test_checker_requires_layout_order_to_follow_declaration_order():
     from conftest import minimal_config
 

@@ -172,7 +172,12 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
         end
         if string(extraction.method) == "template"
             tokens = templateTokens(extraction.pattern);
-            templates(char(ref)) = tokens;
+            % every template rule for a field takes part in cycle detection
+            if isKey(templates, char(ref))
+                templates(char(ref)) = [templates(char(ref)), tokens];
+            else
+                templates(char(ref)) = tokens;
+            end
             for token = tokens
                 if ~ismember(token, definitionKeys)
                     problems(end+1) = sprintf("%s: template for '%s' token '%s' is not a metadata field", locId, ref, token); %#ok<AGROW>

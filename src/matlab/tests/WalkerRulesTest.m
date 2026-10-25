@@ -26,6 +26,38 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(i) i.code, session.issues), "metadata-conflict");
         end
 
+        function templateBeforeOrAfterItsInputBeatsALaterFallbackRule(testCase)
+            template = struct("metadataRef", "session_label", ...
+                "extraction", struct("method", "template", "pattern", "{session_id}-x"));
+            fallback = struct("metadataRef", "session_label", ...
+                "extraction", struct("method", "fixed", "value", "fallback"));
+            % the template's input is read earlier in the config
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.session_label = struct("name", "session_label", "dataType", "string", "ofEntity", "session");
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            doc.dataLocations.filesystemSource.metadataMapping = [mapping, {template, fallback}];
+            testCase.verifyEqual(onlySession(doc).metadata.session_label, "baseline-x");
+            % the template's input is read later in the config: the deferred template holds back the fallback
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.session_label = struct("name", "session_label", "dataType", "string", "ofEntity", "session");
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            doc.dataLocations.filesystemSource.metadataMapping = [mapping(1), {template, fallback}, mapping(2)];
+            testCase.verifyEqual(onlySession(doc).metadata.session_label, "baseline-x");
+        end
+
+        function aRuleThatYieldsNothingFallsBackToTheNextRule(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.tag = struct("name", "tag", "dataType", "string", "ofEntity", "session");
+            mapping = num2cell(doc.dataLocations.filesystemSource.metadataMapping');
+            mapping{end+1} = struct("metadataRef", "tag", "extraction", ...
+                struct("method", "regex", "pattern", "#([a-z]+)$", "entityLayoutLevel", "sessions"));
+            mapping{end+1} = struct("metadataRef", "tag", "extraction", struct("method", "fixed", "value", "untagged"));
+            doc.dataLocations.filesystemSource.metadataMapping = mapping;
+            session = onlySession(doc);
+            testCase.verifyEqual(session.metadata.tag, "untagged");
+            testCase.verifyEmpty(session.issues);
+        end
+
         function validationFailedIsReportedButValueKept(testCase)
             doc = minimalConfigDoc();
             doc.metadataDefinitions.subject_id.validation = struct("pattern", "^m1");
@@ -71,4 +103,9 @@ end
 
 function result = walkEntries(doc, entries)
     result = dsm.walk(dsm.Config(doc), dsm.Listing({dsm.Listing.makeRoot("raw", "main", entries)}));
+end
+
+function session = onlySession(doc)
+    result = walkEntries(doc, {'m110/', 'm110/20250523_baseline/'});
+    session = result.Records{cellfun(@(r) r.entityType == "session", result.Records)};
 end

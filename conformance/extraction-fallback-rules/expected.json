@@ -48,6 +48,8 @@
         "session_label": "m110-baseline",
         "source": "first",
         "tag": "untagged",
+        "day": "20250523",
+        "day_label": "20250523-label",
         "subject_id": "m110"
       }
     },
@@ -79,6 +81,8 @@
         "session_label": "m110-drug",
         "source": "first",
         "tag": "untagged",
+        "day": "20250601",
+        "day_label": "20250601-label",
         "subject_id": "m110"
       }
     }

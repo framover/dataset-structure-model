@@ -31,6 +31,42 @@ def test_metadata_conflict_between_locations():
     assert {i.code for i in session.issues} == {"metadata-conflict"}
 
 
+def _session_mapping(doc):
+    return doc["dataLocations"][0]["filesystemSource"]["metadataMapping"]
+
+
+def _only_session(doc, entry="m110/20250523_baseline/"):
+    return [r for r in _walk(doc, ["m110/", entry]).records if r.entity_type == "session"][0]
+
+
+def test_template_before_or_after_its_input_beats_a_later_fallback_rule():
+    template = {"metadataRef": "session_label", "extraction": {"method": "template", "pattern": "{session_id}-x"}}
+    fallback = {"metadataRef": "session_label", "extraction": {"method": "fixed", "value": "fallback"}}
+    # the template's input is read earlier in the config
+    doc = minimal_config()
+    doc["metadataDefinitions"]["session_label"] = {"name": "session_label", "dataType": "string", "ofEntity": "session"}
+    _session_mapping(doc).extend([template, fallback])
+    assert _only_session(doc).metadata["session_label"] == "baseline-x"
+    # the template's input is read later in the config: the deferred template holds back the fallback
+    doc = minimal_config()
+    doc["metadataDefinitions"]["session_label"] = {"name": "session_label", "dataType": "string", "ofEntity": "session"}
+    mapping = _session_mapping(doc)
+    session_id_rule = mapping.pop(1)
+    mapping.extend([template, fallback, session_id_rule])
+    assert _only_session(doc).metadata["session_label"] == "baseline-x"
+
+
+def test_a_rule_that_yields_nothing_falls_back_to_the_next_rule():
+    doc = minimal_config()
+    doc["metadataDefinitions"]["tag"] = {"name": "tag", "dataType": "string", "ofEntity": "session"}
+    _session_mapping(doc).extend([
+        {"metadataRef": "tag", "extraction": {"method": "regex", "pattern": "#([a-z]+)$", "entityLayoutLevel": "sessions"}},
+        {"metadataRef": "tag", "extraction": {"method": "fixed", "value": "untagged"}}])
+    session = _only_session(doc)
+    assert session.metadata["tag"] == "untagged"
+    assert session.issues == []
+
+
 def test_validation_failed_is_reported_but_value_kept():
     doc = minimal_config()
     doc["metadataDefinitions"]["subject_id"]["validation"] = {"pattern": "^m1"}

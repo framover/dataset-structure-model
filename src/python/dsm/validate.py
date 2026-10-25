@@ -121,7 +121,7 @@ def _check_filesystem_source(loc_id, source, entity_types, definitions):
             problems.append(f"{loc_id}: extraction for '{ref}' level index {level_ref} is out of range")
         if extraction["method"] == "template":
             tokens = TOKEN.findall(extraction["pattern"])
-            templates[ref] = tokens
+            templates.setdefault(ref, []).extend(tokens)  # every template rule for a field takes part in cycle detection
             for token in tokens:
                 if token not in definitions:
                     problems.append(f"{loc_id}: template for '{ref}' token '{token}' is not a metadata field")
