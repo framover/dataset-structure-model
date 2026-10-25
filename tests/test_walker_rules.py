@@ -76,6 +76,8 @@ def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
     assert [(u.path, u.reason) for u in result.unmatched] == [
         ("m110/2022/x.txt", "no-match"), ("m110/2023/", "no-match"), ("m110/2024/", "no-match")]
     assert sorted(r.identity["session_id"] for r in result.records if r.entity_type == "session") == ["a", "b"]
+
+
 def test_min_and_max_count_bound_the_matched_files():
     doc = minimal_config()
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]
