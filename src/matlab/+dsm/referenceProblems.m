@@ -118,6 +118,9 @@ function problems = filesystemProblems(locId, source, entityTypes, definitionKey
                 layoutTypes(end+1) = string(entityType); %#ok<AGROW>
             end
         end
+        if isempty(entityType) && ~isempty(getField(level, "filePatterns", {}))
+            problems(end+1) = sprintf("%s: structural level '%s' has filePatterns; a level without entityType has no entity to attach files to", locId, level.name); %#ok<AGROW>
+        end
         if string(getField(level, "fileSystemType", "folder")) == "file" && i ~= numel(layout)
             problems(end+1) = sprintf("%s: file level '%s' must be the last level", locId, level.name); %#ok<AGROW>
         end

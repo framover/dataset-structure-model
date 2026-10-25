@@ -101,6 +101,7 @@ The methods `filename` and `filepath` do not exist; use `substring` with `":"`.
 - Every `ofEntity`, layout `entityType`, `sourceEntity`, `targetEntity` names an `entityTypes` entry.
 - Every `derivedFrom` and `preferences.defaultDataLocationIdentifier` names a `dataLocations` identifier.
 - Every extraction `entityLayoutLevel` string names a level in that location's layout.
+- `filePatterns` appear only on levels that have an `entityType`; a structural level has no entity to attach files to.
 - Identity extraction rules produce the **same value** for the same entity in every location.
 
 ## Common mistakes
