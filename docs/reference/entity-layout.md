@@ -117,14 +117,14 @@ Regular expressions for entry names to skip. Applied before `matchPattern`.
 
 ---
 
-### `isRequired`
+### `isRequired` — DRAFT
 
 | | |
 |--|--|
 | Type | `boolean` |
 | Default | `true` |
 
-Whether this level must exist. A location need not contain every ancestor level of its entities — a processed location may hold session folders directly, with subject identity extracted from the session name. See [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to).
+**DRAFT.** No reader consumes this field: every level in `entityLayout` is walked as required, and a config that sets it to `false` is refused as `unsupported-draft`. A location that lacks an ancestor level omits that level from its `entityLayout`; the ancestor's identity is then read from a descendant's name — see [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to). A hierarchy whose depth varies within one location, such as a `ses-` level present for some subjects only, is not describable yet.
 
 ---
 

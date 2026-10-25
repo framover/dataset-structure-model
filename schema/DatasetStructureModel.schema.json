@@ -441,7 +441,7 @@
         "isRequired": {
           "type": "boolean",
           "default": true,
-          "description": "Whether this level must exist. A location need not contain every ancestor level of its entities: a processed location may hold session folders directly, with subject identity extracted from the session name."
+          "description": "DRAFT: no reader consumes this field; every level in entityLayout is walked as required, and readers refuse a level with isRequired false as unsupported DRAFT. A location that lacks an ancestor level omits that level from its entityLayout, and the ancestor's identity is read from a descendant's name."
         },
         "isVariable": {
           "type": "boolean",

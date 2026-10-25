@@ -48,6 +48,8 @@ Folders that are part of the path but are not entities — date folders, a fixed
 
 A processed location that holds session folders with no subject folder above them is common. The subject still exists — its id is in the session name — so extraction rules for an ancestor type run on the nearest descendant level and identify the parent. Requiring every location to mirror the full hierarchy would exclude most real processed-data layouts.
 
+The `isRequired` flag on a level is DRAFT for the same reason: the readers express a missing ancestor by omitting the level from that location's layout, not by a flag, and a depth that varies within one location is not described yet.
+
 ---
 
 ## File-level entities are groups keyed by identity
