@@ -49,7 +49,7 @@ Each `locations` entry:
 | `dataLocationIdentifier` | Yes | `identifier` of the data location |
 | `rootStoragePathIdentifier` | Yes | `identifier` of the root path the entity was found under |
 | `fileSystemType` | No | `folder` (default) or `file` |
-| `paths` | Yes | Relative to the root, `/`-separated; folder paths end with `/`. One folder path (more only with `duplicate-entity`), or every file at the level that carries this entity's identity |
+| `paths` | Yes | Relative to the root, `/`-separated; folder paths end with `/`. For a folder entity, its folder paths: one per structural folder it sits under, and several under one parent folder only with `duplicate-entity`. For a file entity, every file at the level that carries this entity's identity |
 | `files` | No | Files matched per **named** `filePatterns` entry; present exactly when the level declares `filePatterns` |
 | `isComplete` | No | `true` when every `isRequired` pattern matched; present exactly when the level declares `filePatterns` |
 
