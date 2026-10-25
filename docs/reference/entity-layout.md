@@ -28,7 +28,7 @@ Name of the level, unique within the layout. Extraction rules reference levels b
 
 The entity type that entries at this level represent; must match a name in `entityTypes`.
 
-**Omit it for a structural level** — a folder that is part of the path but not an entity, such as a date folder above the sessions or a fixed `processed/` folder. Structural levels are walked and can be read by extraction rules, but they are skipped when building entity identity:
+**Omit it for a structural level** — a folder that is part of the path but not an entity, such as a date folder above the sessions or a fixed `processed/` folder. Structural levels are walked and can be read by extraction rules, but they are skipped when building entity identity. Two consequences: a structural folder that holds nothing an entity accounts for (empty, or holding only entries the next level rejects) is reported `no-match` itself; and when a structural level between an entity level and a file level alternates between sibling folders (`funct/`, `timing/`), the files of one entity are pooled across those folders.
 
 ```json
 "entityLayout": [
@@ -86,14 +86,16 @@ Whether entries at this level are folders or files. A file level must be the las
 |--|--|
 | Type | `array` of file pattern objects |
 
-The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity.
+The kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity. Allowed only on a level with `entityType`: a structural level has no entity to attach files to, and a config that puts `filePatterns` on one is refused with `reference-integrity`.
 
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `pattern` | Yes | string (regex) | Matched against file names. May contain `{token}` references to the entity's metadata fields; each token is replaced by the regex-escaped value for the entity being resolved. A token may carry a format, `{counter:05d}`, for an integer written zero-filled (see [token formats](#pathcomponenttemplate)). |
 | `name` | No | string | Name of this file kind, unique within the level. Readers report matched files under it in entity records. |
-| `isRequired` | No | boolean | At least one match must exist for the entity to be complete (default `false`). |
-| `cardinality` | No | `"one"` \| `"many"` | Exactly one file or any number (default `"many"`). |
+| `isRequired` | No | boolean | At least one match must exist for the entity to be complete (default `false`). The same as `minCount: 1`. |
+| `cardinality` | No | `"one"` \| `"many"` | At most one file, or any number (default `"many"`). `"one"` is the same as `maxCount: 1`. |
+| `minCount` | No | integer ≥ 0 | Smallest number of matches per entity. Fewer: the entity is incomplete and carries `missing-required-file`. |
+| `maxCount` | No | integer ≥ 1 | Largest number of matches per entity. More: `cardinality-violation`; the entity stays complete. |
 | `description` | No | string | What the file contains. |
 
 ```json
@@ -104,6 +106,12 @@ The kinds of files that belong to an entity at this level. For a folder level: f
 ```
 
 Because the token is substituted with the exact identity, `m110-20250510-001` never claims the files of `m110-20250510-0010`. Braces that contain only digits and commas (`\d{2}`, `{1,3}`) are regex quantifiers, not tokens.
+
+`isRequired` and `cardinality` are the one-file spellings of `minCount` and `maxCount`. Write whichever reads better; when both forms appear on one pattern they must agree (`isRequired: true` with `minCount: 0`, or `cardinality: "one"` with `maxCount: 3`, is refused as `reference-integrity`). An exact count is `minCount` and `maxCount` together:
+
+```json
+{ "name": "planes", "pattern": "^plane\\d\\.tif$", "minCount": 3, "maxCount": 3 }
+```
 
 ---
 
@@ -119,14 +127,14 @@ Regular expressions for entry names to skip. Applied before `matchPattern`.
 
 ---
 
-### `isRequired`
+### `isRequired` — DRAFT
 
 | | |
 |--|--|
 | Type | `boolean` |
 | Default | `true` |
 
-Whether this level must exist. A location need not contain every ancestor level of its entities — a processed location may hold session folders directly, with subject identity extracted from the session name. See [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to).
+**DRAFT.** No reader consumes this field: every level in `entityLayout` is walked as required, and a config that sets it to `false` is refused as `unsupported-draft`. A location that lacks an ancestor level omits that level from its `entityLayout`; the ancestor's identity is then read from a descendant's name — see [Metadata Extraction → Which entity a value belongs to](metadata-extraction.md#which-entity-a-value-belongs-to). A hierarchy whose depth varies within one location, such as a `ses-` level present for some subjects only, is not describable yet.
 
 ---
 

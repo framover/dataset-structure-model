@@ -120,6 +120,9 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
                 layoutTypes(end+1) = string(entityType); %#ok<AGROW>
             end
         end
+        if isempty(entityType) && ~isempty(getField(level, "filePatterns", {}))
+            problems(end+1) = sprintf("%s: structural level '%s' has filePatterns; a level without entityType has no entity to attach files to", locId, level.name); %#ok<AGROW>
+        end
         if string(getField(level, "fileSystemType", "folder")) == "file" && i ~= numel(layout)
             problems(end+1) = sprintf("%s: file level '%s' must be the last level", locId, level.name); %#ok<AGROW>
         end
@@ -150,6 +153,18 @@ function problems = filesystemProblems(locId, source, entityTypes, definitions)
                 elseif ~isnan(widths(t)) && string(definitions.(tokens(t)).dataType) ~= "integer"
                     problems(end+1) = sprintf("%s: filePattern '%s' token '%s' has a format, but the field is not an integer", locId, pattern{1}.pattern, tokens(t)); %#ok<AGROW>
                 end
+            end
+            % isRequired and cardinality are the one-file spellings of minCount and maxCount; both forms may be
+            % written, but they must say the same thing
+            label = string(getField(pattern{1}, "name", pattern{1}.pattern));
+            if isfield(pattern{1}, "isRequired") && isfield(pattern{1}, "minCount") && pattern{1}.isRequired ~= (pattern{1}.minCount >= 1)
+                problems(end+1) = sprintf("%s: filePattern '%s' isRequired %s and minCount %d disagree", locId, label, string(pattern{1}.isRequired), pattern{1}.minCount); %#ok<AGROW>
+            end
+            if isfield(pattern{1}, "cardinality") && isfield(pattern{1}, "maxCount") && (string(pattern{1}.cardinality) == "one") ~= (pattern{1}.maxCount == 1)
+                problems(end+1) = sprintf("%s: filePattern '%s' cardinality '%s' and maxCount %d disagree", locId, label, pattern{1}.cardinality, pattern{1}.maxCount); %#ok<AGROW>
+            end
+            if isfield(pattern{1}, "minCount") && isfield(pattern{1}, "maxCount") && pattern{1}.minCount > pattern{1}.maxCount
+                problems(end+1) = sprintf("%s: filePattern '%s' minCount %d exceeds maxCount %d", locId, label, pattern{1}.minCount, pattern{1}.maxCount); %#ok<AGROW>
             end
         end
         if numel(unique(names)) ~= numel(names)

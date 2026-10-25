@@ -98,7 +98,7 @@ Optional stable identifier for tools that persist references to this location ou
 | `entityLayout` | Yes | array (≥1) of `entityLayoutLevel` | Hierarchy below the root. See [entityLayout](entity-layout.md). |
 | `metadataMapping` | No | array | How global metadata fields are extracted here. See [Metadata Extraction](metadata-extraction.md). |
 | `pathTemplate` | No | string | Informational path template, e.g. `"{rootPath}/{subject_id}/{session_id}"`. |
-| `additionalFolders` | No | array of string | Folder names inside an innermost entity folder that are not entities. |
+| `additionalFolders` | No | array of string | **Deprecated.** Read by no reader: everything inside an innermost entity folder is covered whether or not it is listed. Kept so existing configs stay valid. |
 
 **`rootStoragePaths`** — each entry:
 
