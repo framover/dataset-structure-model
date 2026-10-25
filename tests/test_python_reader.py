@@ -61,6 +61,11 @@ def test_slices_are_python_slices(spec, expected):
     ("yyyy-MMM-dd", "2020-Nov-04", "date", "2020-11-04"),
     ("yyyy-MMM-dd", "2020-NOV-04", "date", "2020-11-04"),
     ("dd-MMM-yyyy'T'HH-mm-ss", "04-Nov-2020T12-46-06", "datetime", "2020-11-04T12:46:06"),
+    ("yyyy-MMM-dd", "2020-nov-04", "date", "2020-11-04"),
+    # a one-digit day or month is accepted around MMM as it is without it, so both readers agree on it
+    ("dd-MMM-yyyy", "4-Nov-2020", "date", "2020-11-04"),
+    ("yyyy-MMM-dd", "2020-Nov-4", "date", "2020-11-04"),
+    ("dd-MM-yyyy", "4-11-2020", "date", "2020-11-04"),
 ])
 def test_ldml_formats_parse_to_iso(fmt, text, data_type, expected):
     assert parse_temporal(text, fmt, data_type) == expected
@@ -68,6 +73,7 @@ def test_ldml_formats_parse_to_iso(fmt, text, data_type, expected):
 
 def test_unknown_month_abbreviation_is_no_value():
     assert coerce("2020-Nvo-04", {"dataType": "date"}, {"valueFormat": "yyyy-MMM-dd"}) is None
+    assert coerce("2020-November-04", {"dataType": "date"}, {"valueFormat": "yyyy-MMM-dd"}) is None
 
 
 def test_ldml_translation():

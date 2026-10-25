@@ -13,7 +13,11 @@ classdef ExtractTest < matlab.unittest.TestCase
                     {"yyMMdd", "680518", "date", "2068-05-18"}, ...
                     {"yyyy-MMM-dd", "2020-Nov-04", "date", "2020-11-04"}, ...  % MMM: English month abbreviation, any case
                     {"yyyy-MMM-dd", "2020-NOV-04", "date", "2020-11-04"}, ...
-                    {"dd-MMM-yyyy'T'HH-mm-ss", "04-Nov-2020T12-46-06", "datetime", "2020-11-04T12:46:06"}}
+                    {"dd-MMM-yyyy'T'HH-mm-ss", "04-Nov-2020T12-46-06", "datetime", "2020-11-04T12:46:06"}, ...
+                    {"yyyy-MMM-dd", "2020-nov-04", "date", "2020-11-04"}, ...
+                    {"dd-MMM-yyyy", "4-Nov-2020", "date", "2020-11-04"}, ...  % a one-digit day parses around MMM as without it
+                    {"yyyy-MMM-dd", "2020-Nov-4", "date", "2020-11-04"}, ...
+                    {"dd-MM-yyyy", "4-11-2020", "date", "2020-11-04"}}
     end
 
     methods (Test)
@@ -31,6 +35,8 @@ classdef ExtractTest < matlab.unittest.TestCase
             value = dsm.internal.coerceValue("not-a-date", struct("dataType", "date"), struct("valueFormat", "yyyyMMdd"));
             testCase.verifyTrue(dsm.internal.isNone(value));
             value = dsm.internal.coerceValue("2020-Nvo-04", struct("dataType", "date"), struct("valueFormat", "yyyy-MMM-dd"));
+            testCase.verifyTrue(dsm.internal.isNone(value));
+            value = dsm.internal.coerceValue("2020-November-04", struct("dataType", "date"), struct("valueFormat", "yyyy-MMM-dd"));
             testCase.verifyTrue(dsm.internal.isNone(value));
         end
 
