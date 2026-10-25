@@ -353,7 +353,7 @@
         },
         "additionalFolders": {
           "type": "array",
-          "description": "Folder names that may exist inside an entity folder at the innermost level but are not entities (e.g. 'logs', 'temp').",
+          "description": "Deprecated: no reader consumes this field. Everything inside an innermost entity folder is covered whether or not its subfolders are listed here, so the field changes no record. Kept so existing configs stay valid; a subfolder field on file patterns, which names the files inside a subfolder, is proposed to replace it.",
           "items": {
             "type": "string"
           }
@@ -441,7 +441,7 @@
         "isRequired": {
           "type": "boolean",
           "default": true,
-          "description": "Whether this level must exist. A location need not contain every ancestor level of its entities: a processed location may hold session folders directly, with subject identity extracted from the session name."
+          "description": "DRAFT: no reader consumes this field; every level in entityLayout is walked as required, and readers refuse a level with isRequired false as unsupported DRAFT. A location that lacks an ancestor level omits that level from its entityLayout, and the ancestor's identity is read from a descendant's name."
         },
         "isVariable": {
           "type": "boolean",
@@ -454,7 +454,7 @@
         },
         "filePatterns": {
           "type": "array",
-          "description": "Kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity.",
+          "description": "Kinds of files that belong to an entity at this level. For a folder level: files inside the entity folder. For a file level: files in the parent folder that belong to the entity. Allowed only on a level with entityType: a structural level has no entity to attach files to, and readers refuse filePatterns on it (reference-integrity).",
           "items": {
             "$ref": "#/definitions/fileGroupingPattern"
           }
@@ -507,13 +507,23 @@
         "isRequired": {
           "type": "boolean",
           "default": false,
-          "description": "Whether at least one matching file must exist for the entity to be complete."
+          "description": "Whether at least one matching file must exist for the entity to be complete. Equivalent to minCount 1; when both are given they must agree."
         },
         "cardinality": {
           "type": "string",
           "enum": ["one", "many"],
           "default": "many",
-          "description": "Whether exactly one file ('one') or any number of files ('many', e.g. a numbered series) is expected to match per entity."
+          "description": "Whether at most one file ('one') or any number of files ('many', e.g. a numbered series) is expected to match per entity. 'one' is equivalent to maxCount 1; when both are given they must agree."
+        },
+        "minCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Smallest number of matching files expected per entity. Fewer matches make the entity incomplete and raise missing-required-file. Use it with maxCount for an exact count, e.g. three imaging planes."
+        },
+        "maxCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Largest number of matching files expected per entity. More matches raise cardinality-violation; the entity stays complete. Must not be below minCount."
         },
         "description": {
           "type": "string",
