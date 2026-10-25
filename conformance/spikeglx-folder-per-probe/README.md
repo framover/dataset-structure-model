@@ -7,4 +7,4 @@ What it checks:
 - Composite gate identity `[run_name, gate_index]` with an integer component; probe identity as an integer scoped by the gate.
 - File patterns with tokens from the parent (`{run_name}`, `{gate_index}`) and from the entity itself (`{probe_index}`), and `cardinality: many` for the per-trigger series (gate 1 has `t0` and `t1`).
 - A CatGT output `…_tcat.imec0.ap.bin` inside the probe folder matches no pattern; it is covered by the innermost entity and not reported.
-- **Gap G2 (files of an outer entity):** the nidq files are in the gate's `files` and also `no-match` at the probe level. `notes.txt` at that level is `no-match` only.
+- **Files of an outer entity (G2):** the nidq files match the gate's `filePatterns`, so they are in the gate's `files` and are not offered to the probe level. `notes.txt` beside them matches no gate pattern and is `no-match`.

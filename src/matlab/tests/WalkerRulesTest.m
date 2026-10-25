@@ -52,6 +52,59 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), "m110/20250523_baseline/raw/");
         end
 
+        function outerEntityFilePatternsClaimFilesBeforeTheNextLevel(testCase)
+            doc = minimalConfigDoc();
+            source = doc.dataLocations.filesystemSource;
+            layout = num2cell(source.entityLayout');
+            layout{1}.filePatterns = {struct("name", "notes", "pattern", '^notes\.txt$'), ...
+                                      struct("name", "log", "pattern", '^{subject_id}_log\.txt$')};
+            % a file level below whose pattern and identity rule would also accept the subject's files
+            layout{2} = struct("name", "sessions", "entityType", "session", "fileSystemType", "file", "matchPattern", '\.txt$');
+            source.entityLayout = layout;
+            source.metadataMapping(2).extraction.pattern = '^(.+)\.txt$';
+            doc.dataLocations.filesystemSource = source;
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a.txt', 'm110/m110_log.txt', 'm110/notes.txt', 'm110/readme.md'});
+            subject = result.Records{cellfun(@(r) r.entityType == "subject", result.Records)};
+            testCase.verifyEqual(string(subject.locations{1}.files("notes")), "m110/notes.txt");
+            testCase.verifyEqual(string(subject.locations{1}.files("log")), "m110/m110_log.txt");
+            % the claimed files are neither sessions nor unmatched; the unclaimed file is still no-match
+            sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
+            testCase.verifyEqual(cellfun(@(r) r.identity.session_id, sessions), "20250523_a");
+            testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), "m110/readme.md");
+        end
+
+        function folderFilesAreClaimedWithEachFoldersOwnValues(testCase)
+            doc = minimalConfigDoc();
+            doc.entityTypes(end+1) = struct("name", "recording", "identifierRef", "recording_id");
+            doc.metadataDefinitions.run_tag = struct("name", "run_tag", "dataType", "string", "ofEntity", "session");
+            doc.metadataDefinitions.recording_id = struct("name", "recording_id", "dataType", "string", "ofEntity", "recording");
+            source = doc.dataLocations.filesystemSource;
+            layout = num2cell(source.entityLayout');
+            layout{2}.filePatterns = {struct("name", "data", "pattern", '^run{run_tag}\.dat$')};
+            layout{3} = struct("name", "recordings", "entityType", "recording", "fileSystemType", "file", "matchPattern", '\.dat$');
+            source.entityLayout = layout;
+            source.metadataMapping(2).extraction.pattern = '^\d{8}_([a-z]+)';
+            mapping = num2cell(source.metadataMapping');
+            mapping{end+1} = struct("metadataRef", "run_tag", ...
+                "extraction", struct("method", "regex", "pattern", '_(\d+)$', "entityLayoutLevel", "sessions"));
+            mapping{end+1} = struct("metadataRef", "recording_id", ...
+                "extraction", struct("method", "regex", "pattern", '^(.+)\.dat$', "entityLayoutLevel", "recordings"));
+            source.metadataMapping = mapping;
+            doc.dataLocations.filesystemSource = source;
+            % two folders under one parent yield session a with run_tag 1 and 2; each claims the run file named by its own tag
+            result = walkEntries(doc, {'m110/', 'm110/20250523_a_1/', 'm110/20250523_a_1/run1.dat', ...
+                'm110/20250523_a_2/', 'm110/20250523_a_2/run2.dat', 'm110/20250523_a_2/run1.dat'});
+            session = result.Records{cellfun(@(r) r.entityType == "session", result.Records)};
+            testCase.verifyEqual(string(session.locations{1}.files("data")), ...
+                ["m110/20250523_a_1/run1.dat", "m110/20250523_a_2/run2.dat"]);
+            testCase.verifyEqual(sort(cellfun(@(i) i.code, session.issues)), ["duplicate-entity", "metadata-conflict"]);
+            % the run1 file of the second folder is not claimed there, so it is offered to the next level once and only once
+            recordings = result.Records(cellfun(@(r) r.entityType == "recording", result.Records));
+            testCase.verifyEqual(cellfun(@(r) r.identity.recording_id, recordings), "run1");
+            testCase.verifyEqual(string(recordings{1}.locations{1}.paths), "m110/20250523_a_2/run1.dat");
+            testCase.verifyEmpty(result.Unmatched);
+        end
+
         function recordsAreOrderedByDeclarationThenKey(testCase)
             result = walkEntries(minimalConfigDoc(), {'m220/', 'm220/20250523_b/', 'm110/', 'm110/20250523_a/'});
             labels = cellfun(@(r) r.entityType + ":" + strjoin(string(struct2cell(r.identity))', ","), result.Records);
@@ -80,6 +133,8 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.reason, result.Unmatched), repmat("no-match", 1, 3));
             sessions = result.Records(cellfun(@(r) r.entityType == "session", result.Records));
             testCase.verifyEqual(sort(cellfun(@(r) r.identity.session_id, sessions)), ["a", "b"]);
+        end
+
         function minAndMaxCountBoundTheMatchedFiles(testCase)
             doc = minimalConfigDoc();
             layout = num2cell(doc.dataLocations.filesystemSource.entityLayout');

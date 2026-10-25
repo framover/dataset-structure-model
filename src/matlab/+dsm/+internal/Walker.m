@@ -53,6 +53,7 @@ classdef Walker < handle
                 obj.visit(root{1}.DataLocation, root{1}.RootStoragePath, tree, 1, "", {});
             end
             records = obj.finalize();
+            obj.dropClaimedUnmatched(records);
             unresolved = string.empty(1, 0);
             for key = obj.EntityKeys
                 unresolved = [unresolved, obj.Entities(char(key)).Unresolved]; %#ok<AGROW>
@@ -84,16 +85,25 @@ classdef Walker < handle
             items = items(order);
         end
 
-        function claimed = visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors)
+        function claimed = visit(obj, locId, rootId, tree, levelIndex, parentPath, ancestors, claimedFiles)
         %visit Walk the children of one folder against one level
-        %   claimed says whether anything below the folder is accounted for: an entity resolved at this
-        %   level or deeper, or an innermost structural folder, which covers its contents.
+        %   claimedFiles are the children the enclosing entity's filePatterns claimed; they are not
+        %   offered to this level. claimed says whether anything below the folder is accounted for: an
+        %   entity resolved at this level or deeper, or an innermost structural folder, which covers
+        %   its contents.
+            if nargin < 8
+                claimedFiles = string.empty(1, 0);
+            end
             layout = obj.Config.layout(locId);
             level = layout{levelIndex};
             last = levelIndex == numel(layout);
             expectsDir = string(dsm.internal.getField(level, "fileSystemType", "folder")) == "folder";
             claimed = false;
             for entry = tree.children(parentPath)
+                if ismember(string(entry{1}), claimedFiles)
+                    % the enclosing entity's filePatterns claimed it; it is not offered to this level
+                    continue
+                end
                 name = dsm.internal.pathBase(entry{1});
                 if obj.Config.isExcluded(level, name)
                     obj.unmatch(locId, rootId, entry{1}, "excluded", sprintf("matches an excludePattern of level '%s'", level.name));
@@ -138,7 +148,8 @@ classdef Walker < handle
                 else
                     fileSystemType = "file";
                 end
-                [entityKey, identity] = obj.resolveEntity(locId, rootId, entry{1}, entityType, ancestors, fileSystemType);
+                [entityKey, identity, values, unresolved] = obj.resolveEntity(locId, rootId, entry{1}, entityType, ...
+                    ancestors, fileSystemType);
                 if entityKey == ""
                     obj.unmatch(locId, rootId, entry{1}, "no-match", ...
                         sprintf("identity of %s could not be extracted from '%s'", entityType, name));
@@ -146,12 +157,85 @@ classdef Walker < handle
                 end
                 claimed = true;
                 if expectsDir && ~last
-                    obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, [ancestors, {{entityType, identity}}]);
+                    obj.visit(locId, rootId, tree, levelIndex + 1, entry{1}, [ancestors, {{entityType, identity}}], ...
+                        obj.claimedFiles(locId, level, entry{1}, tree, entityKey, values, unresolved));
                 end
             end
         end
 
-        function [entityKey, identity] = resolveEntity(obj, locId, rootId, relPath, entityType, ancestors, fileSystemType)
+        function claimed = claimedFiles(obj, locId, level, folder, tree, entityKey, values, unresolved)
+        %claimedFiles Direct child files of an entity folder that its filePatterns match
+        %
+        %   They belong to the entity and are not offered to the next level. The patterns are
+        %   substituted and matched exactly as buildRecord lists this folder's files, so the
+        %   two cannot disagree.
+            claimed = string.empty(1, 0);
+            if ~isfield(level, "filePatterns")
+                return
+            end
+            entity = obj.Entities(char(entityKey));
+            substitution = obj.folderSubstitution(locId, entity, values, unresolved);
+            patterns = dsm.internal.asCellOfStructs(level.filePatterns);
+            matched = matchPatterns(patterns, tree.childFiles(folder), substitution);
+            hits = [matched{:}];
+            if ~isempty(hits)
+                claimed = unique(reshape(string(hits), 1, []));
+            end
+        end
+
+        function substitution = folderSubstitution(obj, locId, entity, values, unresolved)
+        %folderSubstitution Token values for a folder entity's filePatterns on one of its folders
+        %
+        %   The parents' identities, the entity's identity, the fields read on this folder's
+        %   path, and a definition's defaultValue where a field yielded nothing. A field whose
+        %   function extractor is unresolved on this path gets no value: the record reports
+        %   unresolved-extractor for it, not a default.
+            substitution = seedFrom(entity.Parents);
+            for key = string(fieldnames(entity.Identity))'
+                substitution.(key) = entity.Identity.(key);
+            end
+            unresolvedFields = string.empty(1, 0);
+            for item = obj.Config.rulesFor(locId, entity.EntityType)
+                extraction = item{1}.extraction;
+                if string(extraction.method) == "function" && ismember(string(extraction.extractorFunction), unresolved)
+                    unresolvedFields(end+1) = string(item{1}.metadataRef); %#ok<AGROW>
+                end
+            end
+            definitions = obj.Config.definitions();
+            for field = string(fieldnames(values))'
+                if ~dsm.internal.isNone(values.(field))
+                    substitution.(field) = values.(field);
+                elseif ~ismember(field, unresolvedFields) && isfield(definitions, field) ...
+                        && isfield(definitions.(field), "defaultValue")
+                    substitution.(field) = definitions.(field).defaultValue;
+                end
+            end
+        end
+
+        function dropClaimedUnmatched(obj, records)
+        %dropClaimedUnmatched A file listed in a folder entity's files is never unmatched
+            claimed = string.empty(1, 0);
+            for record = records
+                for location = record{1}.locations
+                    if location{1}.fileSystemType == "folder" && isfield(location{1}, "files")
+                        for files = values(location{1}.files)
+                            if ~isempty(files{1})
+                                prefix = location{1}.dataLocationIdentifier + "|" + location{1}.rootStoragePathIdentifier + "|";
+                                claimed = [claimed, prefix + string(files{1})]; %#ok<AGROW>
+                            end
+                        end
+                    end
+                end
+            end
+            if isempty(claimed) || isempty(obj.Unmatched)
+                return
+            end
+            keys = cellfun(@(u) u.dataLocationIdentifier + "|" + u.rootStoragePathIdentifier + "|" + u.path, obj.Unmatched);
+            obj.Unmatched = obj.Unmatched(~ismember(keys, claimed));
+        end
+
+        function [entityKey, identity, values, unresolved] = resolveEntity(obj, locId, rootId, relPath, entityType, ...
+                ancestors, fileSystemType)
             config = obj.Config;
             rootPath = regexprep(string(config.rootStoragePath(locId, rootId).path), "[/\\]+$", "");
             fullPath = rootPath + "/" + regexprep(string(relPath), "/$", "");
@@ -191,6 +275,8 @@ classdef Walker < handle
             for k = keys
                 if ~isfield(values, k) || dsm.internal.isNone(values.(k))
                     entityKey = "";
+                    values = struct();
+                    unresolved = string.empty(1, 0);
                     return
                 end
                 identity.(k) = values.(k);
@@ -202,10 +288,14 @@ classdef Walker < handle
             if isKey(entity.Locations, locationKey)
                 accumulator = entity.Locations(locationKey);
             else
-                accumulator = struct("FileSystemType", fileSystemType, "Paths", {{}});
+                % Values and Unresolved are per path, aligned with Paths: a folder's filePatterns are substituted
+                % from these, both when the walk claims files and when the record lists them
+                accumulator = struct("FileSystemType", fileSystemType, "Paths", {{}}, "Values", {{}}, "Unresolved", {{}});
                 entity.LocationOrder(end+1) = string(locationKey);
             end
             accumulator.Paths{end+1} = char(relPath);
+            accumulator.Values{end+1} = values;
+            accumulator.Unresolved{end+1} = unresolved;
             entity.Locations(locationKey) = accumulator;
             entity.Observations{end+1} = {string(locId), values};
             entity.Unresolved = unique([entity.Unresolved, unresolved]);
@@ -323,25 +413,33 @@ classdef Walker < handle
                 end
                 if isfield(level, "filePatterns")
                     tree = obj.Trees(char(locationKey));
+                    patterns = dsm.internal.asCellOfStructs(level.filePatterns);
                     if accumulator.FileSystemType == "file"
-                        candidates = sort(accumulator.Paths);
+                        % a file entity's candidates are its own paths, substituted from the record's metadata
+                        perPattern = matchPatterns(patterns, sort(accumulator.Paths), metadata);
                     else
-                        candidates = {};
-                        for folder = accumulator.Paths
-                            candidates = [candidates, tree.childFiles(folder{1})]; %#ok<AGROW>
+                        % a folder entity's candidates are each folder's direct children, substituted from the
+                        % values read on that folder: the same match the walk used to claim them from the next level
+                        perPattern = repmat({{}}, 1, numel(patterns));
+                        for j = 1:numel(accumulator.Paths)
+                            substitution = obj.folderSubstitution(locId, entity, accumulator.Values{j}, ...
+                                accumulator.Unresolved{j});
+                            hits = matchPatterns(patterns, tree.childFiles(accumulator.Paths{j}), substitution);
+                            for p = 1:numel(patterns)
+                                perPattern{p} = [perPattern{p}, hits{p}];
+                            end
                         end
-                        candidates = sort(unique(candidates));
                     end
                     files = containers.Map("KeyType", "char", "ValueType", "any");
                     complete = true;
-                    for pattern = dsm.internal.asCellOfStructs(level.filePatterns)
-                        regex = substituteTokens(pattern{1}.pattern, metadata);
-                        matched = candidates(cellfun(@(c) ~isempty(regexp(char(dsm.internal.pathBase(c)), regex, "once")), candidates));
-                        label = string(dsm.internal.getField(pattern{1}, "name", pattern{1}.pattern));
-                        if isfield(pattern{1}, "name")
-                            files(char(pattern{1}.name)) = matched;
+                    for p = 1:numel(patterns)
+                        pattern = patterns{p};
+                        matched = reshape(unique(perPattern{p}), 1, []);
+                        label = string(dsm.internal.getField(pattern, "name", pattern.pattern));
+                        if isfield(pattern, "name")
+                            files(char(pattern.name)) = matched;
                         end
-                        [atLeast, atMost] = dsm.internal.countBounds(pattern{1});
+                        [atLeast, atMost] = dsm.internal.countBounds(pattern);
                         if numel(matched) < atLeast
                             complete = false;
                             issues{end+1} = issue("missing-required-file", sprintf("%s: pattern '%s' expects at least %d file(s), matched %d", locId, label, atLeast, numel(matched))); %#ok<AGROW>
@@ -402,6 +500,16 @@ end
 
 function key = entityKeyFor(entityType, identity, parents)
     key = string(entityType) + "|" + identityKeyFor(identity) + "|" + parentsKeyFor(parents);
+end
+
+function matched = matchPatterns(patterns, candidates, substitution)
+%matchPatterns Per pattern, the candidate files whose base name matches it after token substitution
+    matched = cell(1, numel(patterns));
+    for i = 1:numel(patterns)
+        regex = substituteTokens(patterns{i}.pattern, substitution);
+        isHit = cellfun(@(c) ~isempty(regexp(char(dsm.internal.pathBase(c)), regex, "once")), candidates);
+        matched{i} = candidates(isHit);
+    end
 end
 
 function regex = substituteTokens(pattern, metadata)

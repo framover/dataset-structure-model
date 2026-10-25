@@ -57,6 +57,46 @@ def test_structural_innermost_level_is_covered():
     assert [u.path for u in result.unmatched] == ["m110/20250523_baseline/raw/"]
 
 
+def test_outer_entity_file_patterns_claim_files_before_the_next_level():
+    doc = minimal_config()
+    source = doc["dataLocations"][0]["filesystemSource"]
+    source["entityLayout"][0]["filePatterns"] = [{"name": "notes", "pattern": "^notes\\.txt$"},
+                                                 {"name": "log", "pattern": "^{subject_id}_log\\.txt$"}]
+    # a file level below whose pattern and identity rule would also accept the subject's files
+    source["entityLayout"][1] = {"name": "sessions", "entityType": "session", "fileSystemType": "file", "matchPattern": "\\.txt$"}
+    source["metadataMapping"][1]["extraction"]["pattern"] = "^(.+)\\.txt$"
+    result = _walk(doc, ["m110/", "m110/20250523_a.txt", "m110/m110_log.txt", "m110/notes.txt", "m110/readme.md"])
+    subject = [r for r in result.records if r.entity_type == "subject"][0]
+    assert subject.locations[0].files == {"notes": ["m110/notes.txt"], "log": ["m110/m110_log.txt"]}
+    # the claimed files are neither sessions nor unmatched; the unclaimed file is still no-match
+    assert [r.identity for r in result.records if r.entity_type == "session"] == [{"session_id": "20250523_a"}]
+    assert [u.path for u in result.unmatched] == ["m110/readme.md"]
+
+
+def test_folder_files_are_claimed_with_each_folders_own_values():
+    doc = minimal_config()
+    doc["entityTypes"].append({"name": "recording", "identifierRef": "recording_id"})
+    doc["metadataDefinitions"]["run_tag"] = {"name": "run_tag", "dataType": "string", "ofEntity": "session"}
+    doc["metadataDefinitions"]["recording_id"] = {"name": "recording_id", "dataType": "string", "ofEntity": "recording"}
+    source = doc["dataLocations"][0]["filesystemSource"]
+    source["entityLayout"][1]["filePatterns"] = [{"name": "data", "pattern": "^run{run_tag}\\.dat$"}]
+    source["entityLayout"].append({"name": "recordings", "entityType": "recording", "fileSystemType": "file", "matchPattern": "\\.dat$"})
+    source["metadataMapping"][1]["extraction"]["pattern"] = "^\\d{8}_([a-z]+)"
+    source["metadataMapping"] += [
+        {"metadataRef": "run_tag", "extraction": {"method": "regex", "pattern": "_(\\d+)$", "entityLayoutLevel": "sessions"}},
+        {"metadataRef": "recording_id", "extraction": {"method": "regex", "pattern": "^(.+)\\.dat$", "entityLayoutLevel": "recordings"}}]
+    # two folders under one parent yield session a with run_tag 1 and 2; each claims the run file named by its own tag
+    result = _walk(doc, ["m110/", "m110/20250523_a_1/", "m110/20250523_a_1/run1.dat",
+                         "m110/20250523_a_2/", "m110/20250523_a_2/run2.dat", "m110/20250523_a_2/run1.dat"])
+    session = [r for r in result.records if r.entity_type == "session"][0]
+    assert session.locations[0].files == {"data": ["m110/20250523_a_1/run1.dat", "m110/20250523_a_2/run2.dat"]}
+    assert {i.code for i in session.issues} == {"duplicate-entity", "metadata-conflict"}
+    # the run1 file of the second folder is not claimed there, so it is offered to the next level once and only once
+    recordings = [(r.identity, r.locations[0].paths) for r in result.records if r.entity_type == "recording"]
+    assert recordings == [({"recording_id": "run1"}, ["m110/20250523_a_2/run1.dat"])]
+    assert result.unmatched == []
+
+
 def test_records_are_ordered_by_declaration_then_key():
     doc = minimal_config()
     result = _walk(doc, ["m220/", "m220/20250523_b/", "m110/", "m110/20250523_a/"])
@@ -76,6 +116,8 @@ def test_structural_folder_with_nothing_matching_below_is_unmatched_itself():
     assert [(u.path, u.reason) for u in result.unmatched] == [
         ("m110/2022/x.txt", "no-match"), ("m110/2023/", "no-match"), ("m110/2024/", "no-match")]
     assert sorted(r.identity["session_id"] for r in result.records if r.entity_type == "session") == ["a", "b"]
+
+
 def test_min_and_max_count_bound_the_matched_files():
     doc = minimal_config()
     layout = doc["dataLocations"][0]["filesystemSource"]["entityLayout"]

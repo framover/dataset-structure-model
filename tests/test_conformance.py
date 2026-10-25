@@ -122,6 +122,19 @@ def direct_child_files(folder, entries):
     return sorted(e for e in entries if e.startswith(folder) and not is_dir(e) and "/" not in e[len(folder):])
 
 
+def claimed_files(case, loc_id, root_id):
+    """Files a folder entity's filePatterns claim in one root; they belong to that entity, whatever the next level says."""
+    claimed = set()
+    for record in case.expected["records"]:
+        for loc in record["locations"]:
+            if (loc["dataLocationIdentifier"], loc["rootStoragePathIdentifier"]) != (loc_id, root_id):
+                continue
+            if loc.get("fileSystemType", "folder") == "folder":
+                for files in loc.get("files", {}).values():
+                    claimed |= set(files)
+    return claimed
+
+
 # --------------------------------------------------------------------------- level matching
 
 def strip_anchors(pattern):
@@ -299,6 +312,25 @@ def record_identity_from_path(case, loc_id, rel_path, entity_type):
     return {k: values[k] for k in keys}
 
 
+def folder_substitution(case, loc_id, record, parent_seed, folder):
+    """Token values for a folder entity's filePatterns on one of its folders.
+
+    The parents' identities, the entity's identity, the fields read on this folder, and a defaultValue where a
+    rule yielded nothing. A function field cannot be evaluated here, so the record's value for it is taken as is.
+    """
+    substitution = dict(parent_seed)
+    substitution.update(record["identity"])
+    for field, value in evaluate_rules(case, loc_id, folder, record["entityType"], parent_seed).items():
+        if value is SKIP:
+            if field in record["metadata"]:
+                substitution[field] = record["metadata"][field]
+        elif value is not None:
+            substitution[field] = value
+        elif "defaultValue" in case.definitions[field]:
+            substitution[field] = case.definitions[field]["defaultValue"]
+    return substitution
+
+
 # --------------------------------------------------------------------------- analysis of one record
 
 def analyse(case, record):
@@ -332,18 +364,23 @@ def analyse(case, record):
                     if value is not None:
                         per_field[field].add(value)
 
-        # file patterns
+        # file patterns: a file entity's candidates are its paths, substituted from the record's metadata; a
+        # folder entity's are each folder's direct children, substituted from the values read on that folder
         patterns = level.get("filePatterns")
         if level.get("fileSystemType", "folder") == "file":
-            candidates = sorted(loc["paths"])
+            candidates = [(sorted(loc["paths"]), record["metadata"])]
         else:
-            candidates = sorted({f for folder in loc["paths"] for f in direct_child_files(folder, entries)})
+            candidates = [(sorted(direct_child_files(folder, entries)),
+                           folder_substitution(case, loc_id, record, parent_seed, folder)) for folder in loc["paths"]]
             if len(loc["paths"]) > 1:
                 codes.add("duplicate-entity")
         files, complete = {}, True
         for pattern in patterns or []:
-            regex = TOKEN.sub(lambda m: re.escape(str(record["metadata"][m.group(1)])), pattern["pattern"])
-            matched = sorted(c for c in candidates if re.search(regex, basename(c)))
+            matched = set()
+            for folder_candidates, substitution in candidates:
+                regex = TOKEN.sub(lambda m: re.escape(str(substitution.get(m.group(1), ""))), pattern["pattern"])
+                matched |= {c for c in folder_candidates if re.search(regex, basename(c))}
+            matched = sorted(matched)
             if "name" in pattern:
                 files[pattern["name"]] = matched
             # isRequired is the one-file spelling of minCount, cardinality 'one' of maxCount
@@ -519,13 +556,17 @@ def test_listing_fully_accounted(case):
                 if (loc["dataLocationIdentifier"], loc["rootStoragePathIdentifier"]) != (loc_id, root_id):
                     continue
                 # contents of an entity folder belong to the entity only at the innermost level;
-                # children of an outer entity folder are governed by the next level
+                # children of an outer entity folder are governed by the next level, except the
+                # files the entity's own filePatterns claim
                 layout = case.layout(loc_id)
                 innermost = case.entity_level_index(loc_id, record["entityType"]) == len(layout) - 1
                 for path in loc["paths"]:
                     covered |= {path} | set(ancestors(path))
                     if innermost:
                         covered |= descendants(path, entries)
+                if loc.get("fileSystemType", "folder") == "folder":
+                    for files in loc.get("files", {}).values():
+                        covered |= set(files)
         for item in case.expected["unmatched"]:
             if (item["dataLocationIdentifier"], item["rootStoragePathIdentifier"]) != (loc_id, root_id):
                 continue
@@ -578,9 +619,11 @@ def test_paths_match_levels(case):
                 # entity's paths, and vice versa; the folders between may differ where a structural level between
                 # the parent and the file level alternates (funct/ and timing/ under one session)
                 entries = case.entries(loc_id, loc["rootStoragePathIdentifier"])
+                claimed = claimed_files(case, loc_id, loc["rootStoragePathIdentifier"])
                 same_identity = sorted(
                     f for f in entries
                     if not is_dir(f) and len(components(f)) == level_index + 1
+                    and f not in claimed  # claimed by the enclosing entity, never offered to this level
                     and all(name_matches(layout[i], part, case.definitions) for i, part in enumerate(components(f)))
                     and record_identity_from_path(case, loc_id, f, record["entityType"]) == record["identity"]
                     and path_yields_parents(case, loc_id, f, record.get("parents", []))

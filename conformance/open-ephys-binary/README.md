@@ -7,5 +7,5 @@ What it checks:
 - Four entity levels with a fixed structural level (`continuous`) in between; folder names with spaces and dots.
 - Integer identities scoped by parents: `recording1` under `Record Node 101/experiment1` and under `Record Node 102/experiment1` are two recordings; stream `Neuropix-PXI-100.ProbeA-AP` recurs under two recordings.
 - `processor_id` read out of the stream folder name.
-- **Gap G2 (files of an outer entity):** `structure.oebin`, `sync_messages.txt` and `settings.xml` are in their entity's `files` and also `no-match`.
+- **Files of an outer entity (G2):** `structure.oebin`, `sync_messages.txt` and `settings.xml` match their entity's `filePatterns`, so they are in its `files` and are not offered to the next level.
 - **Gap G5 (branching):** `events/` and `spikes/` are sibling branches under the recording with their own hierarchy; one linear layout cannot describe both, so they are `no-match`.

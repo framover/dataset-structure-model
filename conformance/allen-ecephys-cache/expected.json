@@ -207,18 +207,6 @@
     {
       "dataLocationIdentifier": "ecephys-cache",
       "rootStoragePathIdentifier": "local",
-      "path": "session_715093703/session_715093703.nwb",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "ecephys-cache",
-      "rootStoragePathIdentifier": "local",
-      "path": "session_719161530/session_719161530.nwb",
-      "reason": "no-match"
-    },
-    {
-      "dataLocationIdentifier": "ecephys-cache",
-      "rootStoragePathIdentifier": "local",
       "path": "sessions.csv",
       "reason": "no-match"
     },

@@ -7,5 +7,5 @@ What it checks:
 - Four entity types on three levels: the animal (`ec013`) is inferred from the top directory name and has no folder; the recording day and the session are folders; the shank is a file-level entity keyed by the numeric extension (`integer`, so `.clu.10` is shank 10, not a string after shank 1).
 - Two ancestors' identity substituted into one pattern: `^{session_id}\.clu\.{shank_number}$`.
 - `ec013.157` shank 2 has a `.clu.2` but no `.res.2` → `missing-required-file`.
-- **Gap G2 (files of an outer entity):** `ec013.156.xml`, `.eeg` and `.whl` are direct children of the session folder and match the session's `filePatterns`, so they appear in the session's `files`, *and* they are reported `no-match` because the level below expects shank files. The fixture pins this double accounting as the current behaviour; the validation report proposes the fix.
+- **Files of an outer entity (G2):** `ec013.156.xml`, `.eeg` and `.whl` are direct children of the session folder and match the session's `filePatterns`. They belong to the session: they appear in its `files` and are not offered to the shank level, so they are not `unmatched`.
 - `docs/` and `hc3-metadata-tables/` are `no-match` (gap **G1**).
