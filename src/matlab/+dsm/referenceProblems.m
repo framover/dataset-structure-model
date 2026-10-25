@@ -47,7 +47,15 @@ function problems = referenceProblems(doc)
                 problems(end+1) = sprintf("entityType '%s' identity field '%s' is not in metadataDefinitions", item.name, ref); %#ok<AGROW>
             elseif string(definitions.(ref).ofEntity) ~= string(item.name)
                 problems(end+1) = sprintf("entityType '%s' identity field '%s' belongs to '%s'", item.name, ref, definitions.(ref).ofEntity); %#ok<AGROW>
+            elseif numel(refs) < 2 && isfield(definitions.(ref), "defaultValue")
+                problems(end+1) = sprintf("entityType '%s' identity field '%s' has a defaultValue; a default is allowed only on a part of a composite identity (identifierRefs with more than one field)", item.name, ref); %#ok<AGROW>
             end
+        end
+        % at least one part of a composite identity must have no default, or every entry that matched the level
+        % but yielded nothing would become the one entity made of defaults
+        if numel(refs) >= 2 && all(cellfun(@(r) ismember(string(r), definitionKeys) && hasDefault(definitions.(string(r))), refs))
+            names = strjoin("'" + string(refs) + "'", ", ");
+            problems(end+1) = sprintf("entityType '%s' identity fields %s all have a defaultValue; at least one field of a composite identity must have none, or every entry that matched the level but yielded nothing would collapse into one entity", item.name, names); %#ok<AGROW>
         end
     end
 
@@ -55,6 +63,10 @@ function problems = referenceProblems(doc)
         ofEntity = string(definitions.(key).ofEntity);
         if ~ismember(ofEntity, entityTypes)
             problems(end+1) = sprintf("metadataDefinitions['%s'].ofEntity '%s' is not an entity type", key, ofEntity); %#ok<AGROW>
+        end
+        if hasDefault(definitions.(key)) && ~defaultMatchesType(definitions.(key))
+            dataType = string(getField(definitions.(key), "dataType", "string"));
+            problems(end+1) = sprintf("metadataDefinitions['%s'].defaultValue %s does not match dataType '%s'", key, jsonencode(definitions.(key).defaultValue), dataType); %#ok<AGROW>
         end
     end
 
@@ -94,6 +106,35 @@ function problems = referenceProblems(doc)
         if ~ismember(string(environment), environments)
             problems(end+1) = sprintf("preferences.environmentIdentifier '%s' matches no rootStoragePath.environment", environment);
         end
+    end
+end
+
+function tf = hasDefault(definition)
+%hasDefault True when the definition carries a defaultValue that is not JSON null
+    tf = isfield(definition, "defaultValue") && ~dsm.internal.isNone(definition.defaultValue);
+end
+
+function tf = defaultMatchesType(definition)
+%defaultMatchesType Whether the defaultValue has the JSON type the dataType expects
+%
+%   A default is substituted as written, where an extracted value is coerced,
+%   so a mistyped default would give the field two types. jsondecode makes
+%   every JSON number a double, so an integer accepts any integral number.
+    value = definition.defaultValue;
+    dataType = string(dsm.internal.getField(definition, "dataType", "string"));
+    isNumber = isnumeric(value) && isscalar(value) && ~islogical(value);
+    switch dataType
+        case "integer"
+            tf = isNumber && mod(value, 1) == 0;
+        case "number"
+            tf = isNumber;
+        case "boolean"
+            tf = islogical(value) && isscalar(value);
+        case {"string", "date", "time", "datetime"}
+            tf = ischar(value) || (isstring(value) && isscalar(value));
+        otherwise
+            % array and object have no scalar form, and a default is a scalar
+            tf = false;
     end
 end
 

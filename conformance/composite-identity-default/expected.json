@@ -1,0 +1,199 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "01"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-01/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "01"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "02"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-02/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "02"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "task": "rest",
+        "run": 1
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/sub-01_task-rest_bold.json",
+            "sub-01/sub-01_task-rest_bold.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-01/sub-01_task-rest_bold.nii.gz"
+            ],
+            "sidecar": [
+              "sub-01/sub-01_task-rest_bold.json"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "task": "rest",
+        "run": 1
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "task": "rest",
+        "run": 2
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/sub-01_task-rest_run-02_bold.json",
+            "sub-01/sub-01_task-rest_run-02_bold.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-01/sub-01_task-rest_run-02_bold.nii.gz"
+            ],
+            "sidecar": [
+              "sub-01/sub-01_task-rest_run-02_bold.json"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "task": "rest",
+        "run": 2
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "task": "rest",
+        "run": 1
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-02/sub-02_task-rest_run-01_bold.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-02/sub-02_task-rest_run-01_bold.nii.gz"
+            ],
+            "sidecar": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "task": "rest",
+        "run": 1
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "task": "rest",
+        "run": 2
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "runs",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-02/sub-02_task-rest_run-02_bold.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-02/sub-02_task-rest_run-02_bold.nii.gz"
+            ],
+            "sidecar": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "task": "rest",
+        "run": 2
+      }
+    }
+  ],
+  "unmatched": []
+}

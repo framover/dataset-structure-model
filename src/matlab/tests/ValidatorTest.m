@@ -124,6 +124,58 @@ classdef ValidatorTest < matlab.unittest.TestCase
             testCase.verifyEqual(config.preferences().defaultDataLocationIdentifier, 'raw');
         end
 
+        function defaultOnSingleFieldIdentityIsReferenceProblem(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.session_id.defaultValue = "unknown";
+            testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "has a defaultValue")));
+            doc.metadataDefinitions.session_id = rmfield(doc.metadataDefinitions.session_id, "defaultValue");
+            doc.metadataDefinitions.run = struct("name", "run", "dataType", "integer", "ofEntity", "session", "defaultValue", 1);
+            types = num2cell(doc.entityTypes');
+            types{2} = struct("name", "session", "identifierRefs", {{"session_id", "run"}});
+            doc.entityTypes = types;
+            testCase.verifyEmpty(dsm.referenceProblems(doc));
+        end
+
+        function defaultOnEveryPartOfCompositeIdentityIsReferenceProblem(testCase)
+            doc = minimalConfigDoc();
+            doc.metadataDefinitions.run = struct("name", "run", "dataType", "integer", "ofEntity", "session", "defaultValue", 1);
+            types = num2cell(doc.entityTypes');
+            types{2} = struct("name", "session", "identifierRefs", {{"session_id", "run"}});
+            doc.entityTypes = types;
+            doc.metadataDefinitions.session_id.defaultValue = "rest";
+            testCase.verifyTrue(any(contains(dsm.referenceProblems(doc), "all have a defaultValue")));
+            doc.metadataDefinitions.session_id.defaultValue = [];  % JSON null: no default
+            testCase.verifyEmpty(dsm.referenceProblems(doc));
+        end
+
+        function defaultWhoseTypeDoesNotMatchDataTypeIsReferenceProblem(testCase)
+            function problems = problemsFor(dataType, default)
+                doc = minimalConfigDoc();
+                doc.metadataDefinitions.experiment = struct("name", "experiment", "dataType", dataType, ...
+                    "ofEntity", "session", "defaultValue", default);
+                problems = dsm.referenceProblems(doc);
+                problems = problems(contains(problems, "does not match dataType"));
+            end
+            testCase.verifyEqual(problemsFor("integer", '1'), ...
+                "metadataDefinitions['experiment'].defaultValue ""1"" does not match dataType 'integer'");
+            testCase.verifyNotEmpty(problemsFor("integer", 1.5));
+            testCase.verifyNotEmpty(problemsFor("integer", true));
+            testCase.verifyEmpty(problemsFor("integer", 1));
+            testCase.verifyNotEmpty(problemsFor("number", "1.5"));
+            testCase.verifyNotEmpty(problemsFor("number", false));
+            testCase.verifyEmpty(problemsFor("number", 1.5));
+            testCase.verifyNotEmpty(problemsFor("boolean", 1));
+            testCase.verifyNotEmpty(problemsFor("boolean", "true"));
+            testCase.verifyEmpty(problemsFor("boolean", true));
+            for textType = ["string", "date", "time", "datetime"]
+                testCase.verifyNotEmpty(problemsFor(textType, 1));
+                testCase.verifyEmpty(problemsFor(textType, "x"));
+            end
+            testCase.verifyNotEmpty(problemsFor("array", "x"));
+            testCase.verifyNotEmpty(problemsFor("object", 1));
+            testCase.verifyEmpty(problemsFor("integer", []));  % JSON null: no default
+        end
+
         function fileCountsThatDisagreeAreReferenceProblems(testCase)
             disagreeing = { ...
                 struct("isRequired", false, "minCount", 1), "isRequired false and minCount 1 disagree"; ...

@@ -1,0 +1,18 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "runs",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "sub-01/",
+        "sub-01/sub-01_task-rest_bold.json",
+        "sub-01/sub-01_task-rest_bold.nii.gz",
+        "sub-01/sub-01_task-rest_run-02_bold.json",
+        "sub-01/sub-01_task-rest_run-02_bold.nii.gz",
+        "sub-02/",
+        "sub-02/sub-02_task-rest_run-01_bold.nii.gz",
+        "sub-02/sub-02_task-rest_run-02_bold.nii.gz"
+      ]
+    }
+  ]
+}

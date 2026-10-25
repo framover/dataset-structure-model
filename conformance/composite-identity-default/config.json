@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "acquisition", "description": "One run of a task: the data file and its sidecar. The run index is absent from the name when the task was run once, which means run 1.", "identifierRefs": ["task", "run"] }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "acquisition", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^\\d{2}$" } },
+    "task": { "name": "task", "dataType": "string", "ofEntity": "acquisition", "validation": { "pattern": "^[a-z]+$" } },
+    "run": { "name": "run", "description": "run-<index> in the file name; absent when the task was run once, so the default is 1", "dataType": "integer", "ofEntity": "acquisition", "defaultValue": 1 }
+  },
+  "dataLocations": [
+    {
+      "identifier": "runs",
+      "displayName": "Task runs, BIDS-style names",
+      "description": "sub-XX/sub-XX_task-<label>[_run-<index>]_bold.<ext>: one NIfTI and one JSON sidecar per run. The run index is written only when a task was run more than once.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/runs" }
+        ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^sub-\\d{2}$" },
+          {
+            "name": "run-files",
+            "entityType": "acquisition",
+            "fileSystemType": "file",
+            "matchPattern": "^sub-\\d{2}_task-[a-z]+(_run-\\d+)?_bold\\.(nii\\.gz|json)$",
+            "filePatterns": [
+              { "name": "data", "pattern": "^sub-{subject_id}_task-{task}(_run-\\d+)?_bold\\.nii\\.gz$", "isRequired": true, "cardinality": "one" },
+              { "name": "sidecar", "pattern": "^sub-{subject_id}_task-{task}(_run-\\d+)?_bold\\.json$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": "4:", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "task", "extraction": { "method": "regex", "pattern": "_task-([a-z]+)", "entityLayoutLevel": "run-files" } },
+          { "metadataRef": "run", "extraction": { "method": "regex", "pattern": "_run-(\\d+)", "entityLayoutLevel": "run-files" } }
+        ],
+        "pathTemplate": "{rootPath}/sub-{subject_id}/sub-{subject_id}_task-{task}[_run-{run}]_bold.<ext>"
+      }
+    }
+  ]
+}
