@@ -301,6 +301,25 @@ def record_identity_from_path(case, loc_id, rel_path, entity_type):
     return {k: values[k] for k in keys}
 
 
+def folder_substitution(case, loc_id, record, parent_seed, folder):
+    """Token values for a folder entity's filePatterns on one of its folders.
+
+    The parents' identities, the entity's identity, the fields read on this folder, and a defaultValue where a
+    rule yielded nothing. A function field cannot be evaluated here, so the record's value for it is taken as is.
+    """
+    substitution = dict(parent_seed)
+    substitution.update(record["identity"])
+    for field, value in evaluate_rules(case, loc_id, folder, record["entityType"], parent_seed).items():
+        if value is SKIP:
+            if field in record["metadata"]:
+                substitution[field] = record["metadata"][field]
+        elif value is not None:
+            substitution[field] = value
+        elif "defaultValue" in case.definitions[field]:
+            substitution[field] = case.definitions[field]["defaultValue"]
+    return substitution
+
+
 # --------------------------------------------------------------------------- analysis of one record
 
 def analyse(case, record):
@@ -334,18 +353,23 @@ def analyse(case, record):
                     if value is not None:
                         per_field[field].add(value)
 
-        # file patterns
+        # file patterns: a file entity's candidates are its paths, substituted from the record's metadata; a
+        # folder entity's are each folder's direct children, substituted from the values read on that folder
         patterns = level.get("filePatterns")
         if level.get("fileSystemType", "folder") == "file":
-            candidates = sorted(loc["paths"])
+            candidates = [(sorted(loc["paths"]), record["metadata"])]
         else:
-            candidates = sorted({f for folder in loc["paths"] for f in direct_child_files(folder, entries)})
+            candidates = [(sorted(direct_child_files(folder, entries)),
+                           folder_substitution(case, loc_id, record, parent_seed, folder)) for folder in loc["paths"]]
             if len(loc["paths"]) > 1:
                 codes.add("duplicate-entity")
         files, complete = {}, True
         for pattern in patterns or []:
-            regex = TOKEN.sub(lambda m: re.escape(str(record["metadata"][m.group(1)])), pattern["pattern"])
-            matched = sorted(c for c in candidates if re.search(regex, basename(c)))
+            matched = set()
+            for folder_candidates, substitution in candidates:
+                regex = TOKEN.sub(lambda m: re.escape(str(substitution.get(m.group(1), ""))), pattern["pattern"])
+                matched |= {c for c in folder_candidates if re.search(regex, basename(c))}
+            matched = sorted(matched)
             if "name" in pattern:
                 files[pattern["name"]] = matched
             if pattern.get("isRequired") and not matched:

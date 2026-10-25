@@ -28,6 +28,9 @@ class _LocationAccumulator:
     def __init__(self, file_system_type: str):
         self.file_system_type = file_system_type
         self.paths: List[str] = []
+        # per path: the entity's own field values read on it and the unresolved extractor keys; a folder's
+        # filePatterns are substituted from these, both when the walk claims files and when the record lists them
+        self.path_values: Dict[str, Tuple[Dict[str, Any], Set[str]]] = {}
 
 
 class _Entity:
@@ -111,38 +114,56 @@ class Walker:
                 if not last:
                     self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors)
                 continue
-            entity, values = self._resolve_entity(loc_id, root_id, entry, entity_type, ancestors,
-                                                  "folder" if expects_dir else "file")
+            entity, values, unresolved = self._resolve_entity(loc_id, root_id, entry, entity_type, ancestors,
+                                                              "folder" if expects_dir else "file")
             if entity is None:
                 self._unmatch(loc_id, root_id, entry, "no-match",
                               f"identity of {entity_type} could not be extracted from '{name}'")
                 continue
             if expects_dir and not last:
                 self._visit(loc_id, root_id, tree, level_index + 1, entry, ancestors + [(entity_type, entity.identity)],
-                            self._claimed_files(level, entry, tree, entity, values))
+                            self._claimed_files(loc_id, level, entry, tree, entity, values, unresolved))
 
-    def _claimed_files(self, level, folder, tree, entity, values) -> frozenset:
+    def _claimed_files(self, loc_id, level, folder, tree, entity, values, unresolved) -> frozenset:
         """Direct child files of an entity folder that its filePatterns match.
 
-        They belong to the entity and are not offered to the next level. Tokens are substituted
-        from the same values _build_record will use for this path: the parents' identities, the
-        entity's own fields, and a definition's defaultValue where a field yielded nothing.
+        They belong to the entity and are not offered to the next level. The patterns are substituted
+        and matched exactly as _build_record lists this folder's files, so the two cannot disagree.
         """
         patterns = level.get("filePatterns")
         if not patterns:
             return frozenset()
+        substitution = self._folder_substitution(loc_id, entity, values, unresolved)
+        return frozenset().union(*self._match_patterns(patterns, tree.children(folder), substitution))
+
+    def _folder_substitution(self, loc_id, entity, values, unresolved) -> Dict[str, Any]:
+        """Token values for a folder entity's filePatterns on one of its folders.
+
+        The parents' identities, the entity's identity, the fields read on this folder's path, and a
+        definition's defaultValue where a field yielded nothing. A field whose function extractor is
+        unresolved on this path gets no value: the record reports unresolved-extractor for it, not a default.
+        """
         metadata = {k: v for _, identity in entity.parents for k, v in identity.items()}
         metadata.update(entity.identity)
+        unresolved_fields = {item["metadataRef"] for item in self.config.rules_for(loc_id, entity.entity_type)
+                             if item["extraction"]["method"] == "function"
+                             and item["extraction"]["extractorFunction"] in unresolved}
         for field, value in values.items():
             if value is not None:
                 metadata[field] = value
-            elif "defaultValue" in self.config.definitions.get(field, {}):
+            elif field not in unresolved_fields and "defaultValue" in self.config.definitions.get(field, {}):
                 metadata[field] = self.config.definitions[field]["defaultValue"]
-        claimed = set()
+        return metadata
+
+    @staticmethod
+    def _match_patterns(patterns, candidates, substitution) -> List[Set[str]]:
+        """Per pattern, the candidate files whose basename matches it after token substitution."""
+        files = [c for c in candidates if not is_dir(c)]
+        matched = []
         for pattern in patterns:
-            regex = TOKEN.sub(lambda m: re.escape(str(metadata.get(m.group(1), ""))), pattern["pattern"])
-            claimed |= {e for e in tree.children(folder) if not is_dir(e) and re.search(regex, basename(e))}
-        return frozenset(claimed)
+            regex = TOKEN.sub(lambda m: re.escape(str(substitution.get(m.group(1), ""))), pattern["pattern"])
+            matched.append({f for f in files if re.search(regex, basename(f))})
+        return matched
 
     def _resolve_entity(self, loc_id, root_id, rel_path, entity_type, ancestors: Parents, file_system_type):
         root_path = self.config.root_storage_path(loc_id, root_id)["path"].rstrip("/\\")
@@ -171,12 +192,13 @@ class Walker:
         values, unresolved = evaluate_fields(self.config, loc_id, rel_path, entity_type, seed, self.registry, full_path)
         keys = self.config.identity_keys(entity_type)
         if any(values.get(k) is None for k in keys):
-            return None, None
+            return None, None, None
         identity = {k: values[k] for k in keys}
 
         entity = self._get_or_create(entity_type, identity, parents)
         accumulator = entity.locations.setdefault((loc_id, root_id), _LocationAccumulator(file_system_type))
         accumulator.paths.append(rel_path)
+        accumulator.path_values[rel_path] = (values, unresolved)
         entity.observations.append((loc_id, values))
         entity.unresolved |= unresolved
         for ancestor_type, ancestor_identity in inferred:
@@ -185,7 +207,7 @@ class Walker:
             ancestor_values, ancestor_unresolved = inferred_values[ancestor_type]
             ancestor.observations.append((loc_id, ancestor_values))
             ancestor.unresolved |= ancestor_unresolved
-        return entity, values
+        return entity, values, unresolved
 
     def _get_or_create(self, entity_type, identity, parents) -> _Entity:
         candidate = _Entity(entity_type, identity, parents)
@@ -245,13 +267,19 @@ class Walker:
             if patterns is not None:
                 tree = self._tree_for(loc_id, root_id)
                 if acc.file_system_type == "file":
-                    candidates = sorted(acc.paths)
+                    # a file entity's candidates are its own paths, substituted from the record's metadata
+                    per_pattern = self._match_patterns(patterns, acc.paths, metadata)
                 else:
-                    candidates = sorted({e for folder in acc.paths for e in tree.children(folder) if not is_dir(e)})
+                    # a folder entity's candidates are each folder's direct children, substituted from the values
+                    # read on that folder: the same match the walk used to claim them from the next level
+                    per_pattern = [set() for _ in patterns]
+                    for folder in acc.paths:
+                        substitution = self._folder_substitution(loc_id, entity, *acc.path_values[folder])
+                        for i, hits in enumerate(self._match_patterns(patterns, tree.children(folder), substitution)):
+                            per_pattern[i] |= hits
                 files, complete = {}, True
-                for pattern in patterns:
-                    regex = TOKEN.sub(lambda m: re.escape(str(metadata.get(m.group(1), ""))), pattern["pattern"])
-                    matched = sorted(c for c in candidates if re.search(regex, basename(c)))
+                for pattern, hits in zip(patterns, per_pattern):
+                    matched = sorted(hits)
                     if "name" in pattern:
                         files[pattern["name"]] = matched
                     label = pattern.get("name", pattern["pattern"])
