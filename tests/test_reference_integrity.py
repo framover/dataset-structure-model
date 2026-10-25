@@ -56,6 +56,7 @@ def test_checker_detects_a_cycle_through_a_second_template_rule():
     mapping.append({"metadataRef": "b", "extraction": {"method": "template", "pattern": "{a}-z"}})
     assert any("template cycle" in p for p in check_references(doc))
 
+
 def test_checker_rejects_file_patterns_on_a_structural_level():
     from conftest import minimal_config
 
