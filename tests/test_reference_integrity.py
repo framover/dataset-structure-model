@@ -59,6 +59,41 @@ def test_checker_allows_a_default_only_on_a_composite_identity():
     doc = minimal_config()
     doc["metadataDefinitions"]["session_id"]["defaultValue"] = "unknown"
     assert any("has a defaultValue" in p for p in check_references(doc))
+    del doc["metadataDefinitions"]["session_id"]["defaultValue"]
     doc["metadataDefinitions"]["run"] = {"name": "run", "dataType": "integer", "ofEntity": "session", "defaultValue": 1}
     doc["entityTypes"][1] = {"name": "session", "identifierRefs": ["session_id", "run"]}
     assert check_references(doc) == []
+
+
+def test_checker_rejects_a_default_on_every_part_of_a_composite_identity():
+    from conftest import minimal_config
+
+    doc = minimal_config()
+    doc["metadataDefinitions"]["run"] = {"name": "run", "dataType": "integer", "ofEntity": "session", "defaultValue": 1}
+    doc["entityTypes"][1] = {"name": "session", "identifierRefs": ["session_id", "run"]}
+    doc["metadataDefinitions"]["session_id"]["defaultValue"] = "rest"
+    assert any("all have a defaultValue" in p for p in check_references(doc))
+    doc["metadataDefinitions"]["session_id"]["defaultValue"] = None  # a null default is no default
+    assert check_references(doc) == []
+
+
+def test_checker_rejects_a_default_whose_type_does_not_match_the_data_type():
+    from conftest import minimal_config
+
+    def problems_for(data_type, default):
+        doc = minimal_config()
+        doc["metadataDefinitions"]["experiment"] = {"name": "experiment", "dataType": data_type, "ofEntity": "session",
+                                                     "defaultValue": default}
+        return [p for p in check_references(doc) if "does not match dataType" in p]
+
+    assert problems_for("integer", "1") == ["metadataDefinitions['experiment'].defaultValue \"1\" does not match dataType 'integer'"]
+    assert problems_for("integer", 1.5) and problems_for("integer", True)
+    assert problems_for("integer", 1) == [] and problems_for("integer", 1.0) == []
+    assert problems_for("number", "1.5") and problems_for("number", False)
+    assert problems_for("number", 1.5) == [] and problems_for("number", 2) == []
+    assert problems_for("boolean", 1) and problems_for("boolean", "true")
+    assert problems_for("boolean", True) == []
+    for text_type in ("string", "date", "time", "datetime"):
+        assert problems_for(text_type, 1) and problems_for(text_type, "x") == []
+    assert problems_for("array", "x") and problems_for("object", 1)
+    assert problems_for("integer", None) == []  # a null default is no default

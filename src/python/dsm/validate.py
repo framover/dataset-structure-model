@@ -17,6 +17,32 @@ def schema_errors(doc: dict, schema_name: str = CONFIG_SCHEMA) -> List[str]:
     return [f"[{e.json_path}] {e.message}" for e in validator.iter_errors(doc)]
 
 
+def _has_default(definition: dict) -> bool:
+    """A JSON null defaultValue is no default."""
+    return definition.get("defaultValue") is not None
+
+
+def _default_matches_type(definition: dict) -> bool:
+    """Whether the defaultValue has the JSON type the dataType expects.
+
+    A default is substituted as written, where an extracted value is coerced, so a mistyped default
+    would give the field two types. JSON numbers are not told apart by integrality in every reader,
+    so an integer accepts any integral number.
+    """
+    value = definition["defaultValue"]
+    data_type = definition.get("dataType", "string")
+    is_number = isinstance(value, (int, float)) and not isinstance(value, bool)
+    if data_type == "integer":
+        return is_number and float(value).is_integer()
+    if data_type == "number":
+        return is_number
+    if data_type == "boolean":
+        return isinstance(value, bool)
+    if data_type in ("string", "date", "time", "datetime"):
+        return isinstance(value, str)
+    return False  # array and object have no scalar form, and a default is a scalar
+
+
 def check_references(doc: dict) -> List[str]:
     """Problems with cross-references; empty when the document is coherent."""
     problems: List[str] = []
@@ -44,10 +70,20 @@ def check_references(doc: dict) -> List[str]:
             elif "defaultValue" in definitions[ref] and len(refs) < 2:
                 problems.append(f"entityType '{et['name']}' identity field '{ref}' has a defaultValue; a default is allowed only on "
                                 f"a part of a composite identity (identifierRefs with more than one field)")
+        # at least one part of a composite identity must have no default, or every entry that matched the level
+        # but yielded nothing would become the one entity made of defaults
+        if len(refs) >= 2 and all(ref in definitions and _has_default(definitions[ref]) for ref in refs):
+            names = ", ".join(f"'{ref}'" for ref in refs)
+            problems.append(f"entityType '{et['name']}' identity fields {names} all have a defaultValue; at least one field of a "
+                            f"composite identity must have none, or every entry that matched the level but yielded nothing "
+                            f"would collapse into one entity")
 
     for key, definition in definitions.items():
         if definition["ofEntity"] not in entity_type_set:
             problems.append(f"metadataDefinitions['{key}'].ofEntity '{definition['ofEntity']}' is not an entity type")
+        if _has_default(definition) and not _default_matches_type(definition):
+            problems.append(f"metadataDefinitions['{key}'].defaultValue {json.dumps(definition['defaultValue'])} does not match "
+                            f"dataType '{definition.get('dataType', 'string')}'")
 
     for rel in doc.get("entityRelationships", []):
         for side in ("sourceEntity", "targetEntity"):

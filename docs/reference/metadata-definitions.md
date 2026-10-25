@@ -54,7 +54,9 @@ In [entity records](entity-record.md), `date`, `time` and `datetime` values are 
 
 Display name, prose, unit of measurement (UCUM notation recommended: `"um"`, `"Hz"`, `"s"`), and the value to use when extraction yields nothing.
 
-On an identity field, `defaultValue` is applied before the identity is checked, so an optional part of a composite identity can default: a BIDS-style run index that is absent when the task was run once defaults to `1`, and the files become the acquisition `(task, 1)` rather than `no-match`. A default on a single-field identity is refused (`reference-integrity`), because every entry that matched the level but yielded no value would become one entity and nothing would be reported `no-match`.
+On an identity field, `defaultValue` is applied before the identity is checked, so an optional part of a composite identity can default: a BIDS-style run index that is absent when the task was run once defaults to `1`, and the files become the acquisition `(task, 1)` rather than `no-match`. A default on a single-field identity is refused (`reference-integrity`), because every entry that matched the level but yielded no value would become one entity and nothing would be reported `no-match`; for the same reason at least one field of a composite identity must have no default. The default is applied after extraction, so a `template` rule does not see it: `{task}_run-{run}` on an index-less file yields nothing even though the record's `run` is `1`.
+
+A `defaultValue` must have the JSON type its `dataType` expects, on any field: an integral number for `integer`, a number for `number`, a boolean for `boolean`, a string for `string`, `date`, `time` and `datetime`; `array` and `object` take none. A default is substituted as written, where an extracted value is coerced, so a mistyped default such as `"1"` on an integer field is refused (`reference-integrity`). A `null` default is no default.
 
 ### `validation`
 
