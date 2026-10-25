@@ -47,7 +47,7 @@ An implementation returns a value of the field's `dataType`, or `[]` when it can
 
 | Function / class | Purpose |
 |------------------|---------|
-| `dsm.loadConfig(path, RejectDraft=true)` | Read, validate, apply a sibling `<name>.local.json` overlay's preferences; returns `dsm.Config` |
+| `dsm.loadConfig(path, RejectDraft=true)` | Read, validate, apply a sibling `<name>.local.json` overlay's preferences and root paths, validate the merged document; returns `dsm.Config` |
 | `dsm.validateConfig(doc)`, `dsm.schemaErrors(doc)`, `dsm.referenceProblems(doc)` | Validation pieces; `validateConfig` throws `dsm.ConfigError` with `Code` `schema-validation`, `reference-integrity` or `unsupported-draft` (identifier `dsm:config:<codeInCamelCase>`) |
 | `dsm.Config` | Accessors over the validated document (`layout`, `mapping`, `rulesFor`, `identityKeys`, `matchRegex`, …) |
 | `dsm.Listing`, `dsm.loadListing`, `dsm.listing.fromDirectory`, `dsm.listing.fromLines` | Listings; `Listing.makeRoot` normalises entries (ancestors added, sorted) |

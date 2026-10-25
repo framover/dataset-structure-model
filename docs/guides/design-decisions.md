@@ -106,6 +106,8 @@ The count has two spellings. `isRequired` and `cardinality` cover the common cas
 
 Active environment and default location describe a machine, not the dataset. Keeping them only in a shared, version-controlled file means every checkout edits the same line. The overlay convention (`<config>.local.json`) keeps the shared config machine-independent. For the same reason there is no `isAvailable` on root paths: reachability is runtime state that readers report.
 
+A root path's `path` is instance state too when the config describes a published dataset: every user copies the deposit to a folder of their own, so a path written into the shared config is wrong for everyone but its author. `path` is therefore optional, and the overlay carries `rootStoragePaths` entries keyed by data location and root identifier. `environment` keeps its job of choosing among the roots a lab knows; the overlay says where the chosen root is on this checkout. Walking a listing never needed a path, so a config without one still supports every dry run.
+
 ---
 
 ## `uuid` alongside `identifier`

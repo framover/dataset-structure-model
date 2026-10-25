@@ -11,4 +11,4 @@ What it checks:
 - A required kind (`spikes`) beside two optional kinds. One session has `_lfps_clean.nio` instead of `_lfps.nio`, a suffix the data descriptor does not mention; it is a kind of its own (`lfp_clean`) rather than folded into `lfp`.
 - The 25 session records equal the 25 rows of `sessions_df.csv` in key, animal and date, and the sessions per subject equal Table 1 of the data descriptor (7, 10, 4, 4).
 - The data descriptor, the licence, `code/` and `data/sessions_df.csv` are parts of the dataset that belong to no entity; all four are `no-match` (gap **G1**).
-- The root path in the config is a placeholder: a published dataset has no file system path that holds for its users (gap **G17**).
+- The root path has no `path`: a published dataset has no file system path that holds for its users. Whoever walks a real copy supplies the path in the `<config>.local.json` overlay under `rootStoragePaths`; the listing names the root by identifier, so walking it needs no path.

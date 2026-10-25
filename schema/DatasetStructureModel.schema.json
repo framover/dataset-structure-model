@@ -167,7 +167,7 @@
     "preferences": {
       "type": "object",
       "additionalProperties": false,
-      "description": "Instance-level context: which computing environment is active and which data location is the default. Optional in the shared config. A reader that finds a sibling file named '<config basename>.local.json' takes the preferences from that file in preference to these, so that per-machine settings stay out of a config that is shared or version-controlled.",
+      "description": "Instance-level context: which computing environment is active and which data location is the default. Optional in the shared config. A reader that finds a sibling file named '<config basename>.local.json' takes the preferences from that file in preference to these, and the root paths listed in its rootStoragePaths, so that per-machine settings stay out of a config that is shared or version-controlled.",
       "properties": {
         "defaultDataLocationIdentifier": {
           "type": "string",
@@ -362,7 +362,7 @@
     },
     "rootStoragePath": {
       "type": "object",
-      "required": ["identifier", "path"],
+      "required": ["identifier"],
       "additionalProperties": false,
       "properties": {
         "identifier": {
@@ -376,7 +376,7 @@
         },
         "path": {
           "type": "string",
-          "description": "Absolute file system path of the root on this environment."
+          "description": "Absolute file system path of the root on this environment. Optional: a config shipped with a published dataset has no path that holds for every user, so each user supplies it in the '<config basename>.local.json' overlay under rootStoragePaths, keyed by dataLocationIdentifier and rootStoragePathIdentifier. Walking a listing needs no path; a reader that opens files reports a root without one."
         },
         "volumeName": {
           "type": "string",

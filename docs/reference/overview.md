@@ -76,4 +76,4 @@ Global dictionary of metadata fields. Keys match `^[A-Za-z_][A-Za-z0-9_]*$` and 
 |--|--|
 | Type | `object` |
 
-Runtime context: which environment is active and which data location to use by default. Optional in the shared config, and readers prefer a sibling `<config>.local.json` overlay when one exists. See [preferences](preferences.md).
+Runtime context: which environment is active and which data location to use by default. Optional in the shared config, and readers prefer a sibling `<config>.local.json` overlay when one exists; the overlay also carries this machine's root paths. See [preferences](preferences.md).

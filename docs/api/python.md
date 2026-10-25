@@ -48,7 +48,7 @@ result.to_dict()                                # {"records": [...], "unmatched"
 
 | Piece | Module | Notes |
 |-------|--------|-------|
-| `load_config`, `validate_config`, `check_references`, `schema_errors` | `dsm.validate` | `load_config` also applies a sibling `<name>.local.json` overlay's `preferences` |
+| `load_config`, `validate_config`, `check_references`, `schema_errors`, `apply_overlay` | `dsm.validate` | `load_config` also applies a sibling `<name>.local.json` overlay's `preferences` and root paths, then validates the merged document |
 | `Config` | `dsm.config` | Accessors over the validated document; there are no typed models — the document is the model |
 | `load_listing`, `root_from_directory`, `root_from_lines`, `Listing`, `Root` | `dsm.listing` | |
 | `ExtractorRegistry`, `evaluate_fields` | `dsm.extract` | The extraction contract: slices, regex, templates, LDML formats, normalize, typing |

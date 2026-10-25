@@ -61,7 +61,7 @@ Never put `rootStoragePaths` or `entityLayout` directly on the location — they
 
 ## `rootStoragePaths`
 
-Each: `identifier`, `path` (required); optional `environment`, `storageType` (`local, external, network, cloud, removable, virtual`), `volumeName`, `priority`, `uuid`, `customProperties`. There is no `isAvailable`.
+Each: `identifier` (required); `path` (optional: leave it out for a published dataset, whose users supply it in the `<config>.local.json` overlay); optional `environment`, `storageType` (`local, external, network, cloud, removable, virtual`), `volumeName`, `priority`, `uuid`, `customProperties`. There is no `isAvailable`.
 
 ## `entityLayout`
 

@@ -22,7 +22,7 @@
       "sourceType": "filesystem",
       "filesystemSource": {
         "rootStoragePaths": [
-          { "identifier": "local-copy", "path": "/data/ebrains/d-d406a98c-ae5c-4fb3-9f0c-4cf4de9b1094" }
+          { "identifier": "local-copy" }
         ],
         "entityLayout": [
           { "name": "dataset-folder", "isVariable": false, "fixedName": "hbp-data-002061" },

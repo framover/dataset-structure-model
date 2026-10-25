@@ -105,7 +105,7 @@ Optional stable identifier for tools that persist references to this location ou
 | Field | Required | Type | Description |
 |-------|----------|------|-------------|
 | `identifier` | Yes | string | Unique within the location; referenced from entity records |
-| `path` | Yes | string | Absolute file system path |
+| `path` | No | string | Absolute file system path. Leave it out of a config shipped with a published dataset; each user supplies it in the [overlay](preferences.md#the-local-overlay) |
 | `uuid` | No | string | Stable identifier for tools that persist references |
 | `environment` | No | string | Environment this path is for (matches `preferences.environmentIdentifier`); omit for single-environment configs |
 | `storageType` | No | enum | `local` \| `external` \| `network` \| `cloud` \| `removable` \| `virtual` |
