@@ -86,7 +86,7 @@
           "paths": {
             "type": "array",
             "minItems": 1,
-            "description": "Paths relative to the root, '/'-separated; folder paths end with '/'. One folder path for a folder entity (more only when duplicate-entity is reported); for a file entity, every file at the level whose extracted identity is this entity's, whether or not a filePatterns entry matches it.",
+            "description": "Paths relative to the root, '/'-separated; folder paths end with '/'. For a folder entity, its folder paths: one per structural folder it sits under, and several under one parent folder only when duplicate-entity is reported; for a file entity, every file at the level whose extracted identity is this entity's, whether or not a filePatterns entry matches it.",
             "items": {
               "type": "string"
             }
@@ -134,7 +134,7 @@
               "validation-failed",
               "unresolved-extractor"
             ],
-            "description": "missing-required-file: an isRequired pattern matched nothing. cardinality-violation: a cardinality 'one' pattern matched several files. duplicate-entity: several folders in one location yield this identity. extraction-failed: a rule matched nothing and the field has no defaultValue. metadata-conflict: locations disagree on a field's value. validation-failed: a value violates its definition's validation. unresolved-extractor: a function rule's registry key is not implemented by this reader."
+            "description": "missing-required-file: an isRequired pattern matched nothing. cardinality-violation: a cardinality 'one' pattern matched several files. duplicate-entity: several folders under the same parent folder in one location yield this identity. extraction-failed: a rule matched nothing and the field has no defaultValue. metadata-conflict: locations disagree on a field's value. validation-failed: a value violates its definition's validation. unresolved-extractor: a function rule's registry key is not implemented by this reader."
           },
           "message": {
             "type": "string"

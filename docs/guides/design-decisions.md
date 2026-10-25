@@ -44,6 +44,9 @@ Folders that are part of the path but are not entities — date folders, a fixed
 
 ---
 
+## `duplicate-entity` is scoped to one parent folder
+
+A structural level above an entity level gives one entity one folder per structural value: a subject under each date folder, a probe under `alf/` and under `raw_ephys_data/`. That is the layout's design, not an error, so two folders yield `duplicate-entity` only when they share a parent folder. The parent *folder*, not the parent entity: structural levels between the parent entity and the entity are exactly what creates the legitimate case, and those folders share a parent entity but not a parent path. Files are pooled across the folders either way.
 ## A structural folder is walked through or reported, never silent
 
 Two consequences of "structural levels are not in the key" are stated so that readers and the self-consistency suite agree. First, when a structural level sits between an entity level and a file level and alternates between sibling folders, the files of one entity are pooled across those folders: a run's NIfTI in `funct/` and its timing file in `timing/` have the same identity under the same session, and the key cannot tell the folders apart. One folder per entity is not an alternative, because it would give two records with one key. Second, a structural folder that holds nothing an entity accounts for, whether empty or holding only entries the next level rejects, is reported `no-match` itself: `unmatched` lists topmost entries, and a folder nothing was found in is the topmost thing to report, not each of its contents.

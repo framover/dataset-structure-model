@@ -27,13 +27,7 @@
       ],
       "metadata": {
         "subject_id": "m1"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'fmri-vta-em' yield {'subject_id': 'm1'}: ['POST_stim/m1/', 'PRE_stim/m1/']"
-        }
-      ]
+      }
     },
     {
       "entityType": "subject",
@@ -62,13 +56,7 @@
       ],
       "metadata": {
         "subject_id": "m2"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'fmri-vta-em' yield {'subject_id': 'm2'}: ['POST_stim/m2/', 'PRE_stim/m2/']"
-        }
-      ]
+      }
     },
     {
       "entityType": "fmri_session",

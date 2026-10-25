@@ -220,13 +220,7 @@
         "session_date": "2019-12-10",
         "session_number": 1,
         "probe_label": "probe00"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe00'}: ['cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/', 'cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/']"
-        }
-      ]
+      }
     },
     {
       "entityType": "probe",
@@ -286,13 +280,7 @@
         "session_date": "2019-12-10",
         "session_number": 1,
         "probe_label": "probe01"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe01'}: ['cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/', 'cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/']"
-        }
-      ]
+      }
     },
     {
       "entityType": "probe",
@@ -350,13 +338,7 @@
         "session_date": "2019-12-11",
         "session_number": 1,
         "probe_label": "probe00"
-      },
-      "issues": [
-        {
-          "code": "duplicate-entity",
-          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe00'}: ['cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/', 'cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/']"
-        }
-      ]
+      }
     }
   ],
   "unmatched": [

@@ -52,6 +52,24 @@ classdef WalkerRulesTest < matlab.unittest.TestCase
             testCase.verifyEqual(cellfun(@(u) u.path, result.Unmatched), "m110/20250523_baseline/raw/");
         end
 
+        function duplicateEntityNeedsTheSameParentFolder(testCase)
+            doc = minimalConfigDoc();
+            source = doc.dataLocations.filesystemSource;
+            layout = num2cell(source.entityLayout');
+            layout{1}.matchPattern = '^m\d{3}(_copy)?$';
+            % a structural date level above the subject: one subject folder per date is the layout's design
+            layout = [{struct("name", "dates", "matchPattern", '^\d{8}$')}, layout];
+            source.entityLayout = layout;
+            source.metadataMapping(1).extraction.pattern = '0:4';
+            doc.dataLocations.filesystemSource = source;
+            result = walkEntries(doc, {'20250101/', '20250101/m110/', '20250102/', '20250102/m110/', '20250102/m110_copy/'});
+            subject = result.Records{cellfun(@(r) r.entityType == "subject", result.Records)};
+            testCase.verifyEqual(sort(string(subject.locations{1}.paths)), ["20250101/m110/", "20250102/m110/", "20250102/m110_copy/"]);
+            % the folder under a different date is not a duplicate; the _copy beside its original is
+            testCase.verifyEqual(cellfun(@(i) i.code, subject.issues), "duplicate-entity");
+            testCase.verifyTrue(contains(subject.issues{1}.message, "20250102/"));
+        end
+
         function recordsAreOrderedByDeclarationThenKey(testCase)
             result = walkEntries(minimalConfigDoc(), {'m220/', 'm220/20250523_b/', 'm110/', 'm110/20250523_a/'});
             labels = cellfun(@(r) r.entityType + ":" + strjoin(string(struct2cell(r.identity))', ","), result.Records);

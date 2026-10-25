@@ -49,7 +49,7 @@ Each `locations` entry:
 | `dataLocationIdentifier` | Yes | `identifier` of the data location |
 | `rootStoragePathIdentifier` | Yes | `identifier` of the root path the entity was found under |
 | `fileSystemType` | No | `folder` (default) or `file` |
-| `paths` | Yes | Relative to the root, `/`-separated; folder paths end with `/`. One folder path (more only with `duplicate-entity`), or every file at the level that carries this entity's identity under the same parents, across the sibling folders of any structural level between them |
+| `paths` | Yes | Relative to the root, `/`-separated; folder paths end with `/`. For a folder entity, its folder paths: one per structural folder it sits under, and several under one parent folder only with `duplicate-entity`. For a file entity, every file at the level that carries this entity's identity under the same parents, across the sibling folders of any structural level between them |
 | `files` | No | Files matched per **named** `filePatterns` entry; present exactly when the level declares `filePatterns` |
 | `isComplete` | No | `true` when every `isRequired` pattern matched; present exactly when the level declares `filePatterns` |
 
@@ -61,7 +61,7 @@ Each `locations` entry:
 |------|---------|
 | `missing-required-file` | A pattern matched fewer files than its minimum (`isRequired` means at least one; `minCount` says any minimum) |
 | `cardinality-violation` | A pattern matched more files than its maximum (`cardinality: one` means at most one; `maxCount` says any maximum) |
-| `duplicate-entity` | Several folders in one location yield this identity |
+| `duplicate-entity` | Several folders under the same parent folder in one location yield the same identity |
 | `extraction-failed` | A rule matched nothing and the field has no `defaultValue` |
 | `metadata-conflict` | Locations disagree on a field's value |
 | `validation-failed` | A value violates its definition's `validation` |
