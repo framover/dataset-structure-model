@@ -1,0 +1,1757 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Ramachandran"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Taskmaster"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Turing"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp20"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp20/hbp-01681_TouchAndSee_Ramachandran_samp20__2012-08-09.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp20/hbp-01681_TouchAndSee_Ramachandran_samp20__2012-08-09.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp20",
+        "session_number": 20,
+        "session_date": "2012-08-09"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp21"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp21/hbp-01681_TouchAndSee_Ramachandran_samp21__2012-08-10.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp21/hbp-01681_TouchAndSee_Ramachandran_samp21__2012-08-10.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp21",
+        "session_number": 21,
+        "session_date": "2012-08-10"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp22/hbp-01681_TouchAndSee_Ramachandran_samp22__2012-08-11.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp22/hbp-01681_TouchAndSee_Ramachandran_samp22__2012-08-11.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp22",
+        "session_number": 22,
+        "session_date": "2012-08-11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp23/hbp-01681_TouchAndSee_Ramachandran_samp23__2012-08-12.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp23/hbp-01681_TouchAndSee_Ramachandran_samp23__2012-08-12.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp23",
+        "session_number": 23,
+        "session_date": "2012-08-12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp24/hbp-01681_TouchAndSee_Ramachandran_samp24__2012-08-13.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp24/hbp-01681_TouchAndSee_Ramachandran_samp24__2012-08-13.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp24",
+        "session_number": 24,
+        "session_date": "2012-08-13"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp25"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp25/hbp-01681_TouchAndSee_Ramachandran_samp25__2012-08-14.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp25/hbp-01681_TouchAndSee_Ramachandran_samp25__2012-08-14.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp25",
+        "session_number": 25,
+        "session_date": "2012-08-14"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp26"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp26/hbp-01681_TouchAndSee_Ramachandran_samp26__2012-08-15.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp26/hbp-01681_TouchAndSee_Ramachandran_samp26__2012-08-15.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp26",
+        "session_number": 26,
+        "session_date": "2012-08-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp27"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp27/hbp-01681_TouchAndSee_Ramachandran_samp27__2012-08-16.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp27/hbp-01681_TouchAndSee_Ramachandran_samp27__2012-08-16.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp27",
+        "session_number": 27,
+        "session_date": "2012-08-16"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp28"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp28/hbp-01681_TouchAndSee_Ramachandran_samp28__2012-08-17.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp28/hbp-01681_TouchAndSee_Ramachandran_samp28__2012-08-17.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp28",
+        "session_number": 28,
+        "session_date": "2012-08-17"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp29"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp29/hbp-01681_TouchAndSee_Ramachandran_samp29__2012-08-18.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp29/hbp-01681_TouchAndSee_Ramachandran_samp29__2012-08-18.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp29",
+        "session_number": 29,
+        "session_date": "2012-08-18"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp30"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp30/hbp-01681_TouchAndSee_Ramachandran_samp30__2012-08-20.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp30/hbp-01681_TouchAndSee_Ramachandran_samp30__2012-08-20.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp30",
+        "session_number": 30,
+        "session_date": "2012-08-20"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp31/hbp-01681_TouchAndSee_Ramachandran_samp31__2012-08-21.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp31/hbp-01681_TouchAndSee_Ramachandran_samp31__2012-08-21.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp31",
+        "session_number": 31,
+        "session_date": "2012-08-21"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp32"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp32/hbp-01681_TouchAndSee_Ramachandran_samp32__2012-08-22.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp32/hbp-01681_TouchAndSee_Ramachandran_samp32__2012-08-22.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp32",
+        "session_number": 32,
+        "session_date": "2012-08-22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp33"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Ramachandran"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Ramachandran/samp33/hbp-01681_TouchAndSee_Ramachandran_samp33__2012-08-22.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Ramachandran/samp33/hbp-01681_TouchAndSee_Ramachandran_samp33__2012-08-22.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Ramachandran",
+        "session_id": "samp33",
+        "session_number": 33,
+        "session_date": "2012-08-22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp1"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp1/hbp-01681_TouchAndSee_Taskmaster_samp1__2012-01-03.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp1/hbp-01681_TouchAndSee_Taskmaster_samp1__2012-01-03.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp1",
+        "session_number": 1,
+        "session_date": "2012-01-03"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp10"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp10/hbp-01681_TouchAndSee_Taskmaster_samp10__2012-01-15.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp10/hbp-01681_TouchAndSee_Taskmaster_samp10__2012-01-15.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp10",
+        "session_number": 10,
+        "session_date": "2012-01-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp11"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp11/hbp-01681_TouchAndSee_Taskmaster_samp11__2012-01-16.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp11/hbp-01681_TouchAndSee_Taskmaster_samp11__2012-01-16.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp11",
+        "session_number": 11,
+        "session_date": "2012-01-16"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp12"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp12/hbp-01681_TouchAndSee_Taskmaster_samp12__2012-01-17.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp12/hbp-01681_TouchAndSee_Taskmaster_samp12__2012-01-17.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp12",
+        "session_number": 12,
+        "session_date": "2012-01-17"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp13"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp13/hbp-01681_TouchAndSee_Taskmaster_samp13__2012-01-18.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp13/hbp-01681_TouchAndSee_Taskmaster_samp13__2012-01-18.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp13",
+        "session_number": 13,
+        "session_date": "2012-01-18"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp14"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp14/hbp-01681_TouchAndSee_Taskmaster_samp14__2011-12-22.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp14/hbp-01681_TouchAndSee_Taskmaster_samp14__2011-12-22.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp14",
+        "session_number": 14,
+        "session_date": "2011-12-22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp15"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp15/hbp-01681_TouchAndSee_Taskmaster_samp15__2011-12-23.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp15/hbp-01681_TouchAndSee_Taskmaster_samp15__2011-12-23.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp15",
+        "session_number": 15,
+        "session_date": "2011-12-23"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp16"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp16/hbp-01681_TouchAndSee_Taskmaster_samp16__2011-12-24.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp16/hbp-01681_TouchAndSee_Taskmaster_samp16__2011-12-24.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp16",
+        "session_number": 16,
+        "session_date": "2011-12-24"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp17"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp17/hbp-01681_TouchAndSee_Taskmaster_samp17__2011-12-25.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp17/hbp-01681_TouchAndSee_Taskmaster_samp17__2011-12-25.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp17",
+        "session_number": 17,
+        "session_date": "2011-12-25"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp18"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp18/hbp-01681_TouchAndSee_Taskmaster_samp18__2011-12-29.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp18/hbp-01681_TouchAndSee_Taskmaster_samp18__2011-12-29.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp18",
+        "session_number": 18,
+        "session_date": "2011-12-29"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp19"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp19/hbp-01681_TouchAndSee_Taskmaster_samp19__2011-12-30.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp19/hbp-01681_TouchAndSee_Taskmaster_samp19__2011-12-30.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp19",
+        "session_number": 19,
+        "session_date": "2011-12-30"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp2"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp2/hbp-01681_TouchAndSee_Taskmaster_samp2__2012-01-03.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp2/hbp-01681_TouchAndSee_Taskmaster_samp2__2012-01-03.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp2",
+        "session_number": 2,
+        "session_date": "2012-01-03"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp3"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp3/hbp-01681_TouchAndSee_Taskmaster_samp3__2012-01-04.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp3/hbp-01681_TouchAndSee_Taskmaster_samp3__2012-01-04.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp3",
+        "session_number": 3,
+        "session_date": "2012-01-04"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp4"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp4/hbp-01681_TouchAndSee_Taskmaster_samp4__2012-01-05.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp4/hbp-01681_TouchAndSee_Taskmaster_samp4__2012-01-05.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp4",
+        "session_number": 4,
+        "session_date": "2012-01-05"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp5"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp5/hbp-01681_TouchAndSee_Taskmaster_samp5__2012-01-06.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp5/hbp-01681_TouchAndSee_Taskmaster_samp5__2012-01-06.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp5",
+        "session_number": 5,
+        "session_date": "2012-01-06"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp6"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp6/hbp-01681_TouchAndSee_Taskmaster_samp6__2012-01-10.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp6/hbp-01681_TouchAndSee_Taskmaster_samp6__2012-01-10.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp6",
+        "session_number": 6,
+        "session_date": "2012-01-10"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp7"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp7/hbp-01681_TouchAndSee_Taskmaster_samp7__2012-01-11.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp7/hbp-01681_TouchAndSee_Taskmaster_samp7__2012-01-11.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp7",
+        "session_number": 7,
+        "session_date": "2012-01-11"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp8"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp8/hbp-01681_TouchAndSee_Taskmaster_samp8__2012-01-12.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp8/hbp-01681_TouchAndSee_Taskmaster_samp8__2012-01-12.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp8",
+        "session_number": 8,
+        "session_date": "2012-01-12"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp9"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Taskmaster"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Taskmaster/samp9/hbp-01681_TouchAndSee_Taskmaster_samp9__2012-01-14.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Taskmaster/samp9/hbp-01681_TouchAndSee_Taskmaster_samp9__2012-01-14.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Taskmaster",
+        "session_id": "samp9",
+        "session_number": 9,
+        "session_date": "2012-01-14"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp34"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp34/hbp-01681_TouchAndSee_Turing_samp34__2012-09-14.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp34/hbp-01681_TouchAndSee_Turing_samp34__2012-09-14.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp34",
+        "session_number": 34,
+        "session_date": "2012-09-14"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp35"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp35/hbp-01681_TouchAndSee_Turing_samp35__2012-09-15.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp35/hbp-01681_TouchAndSee_Turing_samp35__2012-09-15.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp35",
+        "session_number": 35,
+        "session_date": "2012-09-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp36"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp36/hbp-01681_TouchAndSee_Turing_samp36__2012-09-15.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp36/hbp-01681_TouchAndSee_Turing_samp36__2012-09-15.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp36",
+        "session_number": 36,
+        "session_date": "2012-09-15"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp37"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp37/hbp-01681_TouchAndSee_Turing_samp37__2012-09-16.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp37/hbp-01681_TouchAndSee_Turing_samp37__2012-09-16.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp37",
+        "session_number": 37,
+        "session_date": "2012-09-16"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp38"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp38/hbp-01681_TouchAndSee_Turing_samp38__2012-09-17.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp38/hbp-01681_TouchAndSee_Turing_samp38__2012-09-17.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp38",
+        "session_number": 38,
+        "session_date": "2012-09-17"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp39"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp39/hbp-01681_TouchAndSee_Turing_samp39__2012-09-18.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp39/hbp-01681_TouchAndSee_Turing_samp39__2012-09-18.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp39",
+        "session_number": 39,
+        "session_date": "2012-09-18"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp40"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp40/hbp-01681_TouchAndSee_Turing_samp40__2012-09-19.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp40/hbp-01681_TouchAndSee_Turing_samp40__2012-09-19.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp40",
+        "session_number": 40,
+        "session_date": "2012-09-19"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp41"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp41/hbp-01681_TouchAndSee_Turing_samp41__2012-09-19.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp41/hbp-01681_TouchAndSee_Turing_samp41__2012-09-19.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp41",
+        "session_number": 41,
+        "session_date": "2012-09-19"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp42"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp42/hbp-01681_TouchAndSee_Turing_samp42__2012-09-20.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp42/hbp-01681_TouchAndSee_Turing_samp42__2012-09-20.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp42",
+        "session_number": 42,
+        "session_date": "2012-09-20"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp43"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp43/hbp-01681_TouchAndSee_Turing_samp43__2012-09-21.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp43/hbp-01681_TouchAndSee_Turing_samp43__2012-09-21.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp43",
+        "session_number": 43,
+        "session_date": "2012-09-21"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp44"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp44/hbp-01681_TouchAndSee_Turing_samp44__2012-09-22.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp44/hbp-01681_TouchAndSee_Turing_samp44__2012-09-22.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp44",
+        "session_number": 44,
+        "session_date": "2012-09-22"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp45"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp45/hbp-01681_TouchAndSee_Turing_samp45__2012-09-25.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp45/hbp-01681_TouchAndSee_Turing_samp45__2012-09-25.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp45",
+        "session_number": 45,
+        "session_date": "2012-09-25"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "samp46"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Turing"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "hbp-01681/TouchAndSee/Turing/samp46/hbp-01681_TouchAndSee_Turing_samp46__2012-09-26.pkl"
+          ],
+          "files": {
+            "neo_block": [
+              "hbp-01681/TouchAndSee/Turing/samp46/hbp-01681_TouchAndSee_Turing_samp46__2012-09-26.pkl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Turing",
+        "session_id": "samp46",
+        "session_number": 46,
+        "session_date": "2012-09-26"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-01681/00-hbp-01681_DataDescriptor_v1p1.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'task-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-01681/Licence (CCBY-NC-SA).pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'task-folder'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-01681/TouchAndSee/hbp-01681_TouchAndSee__example1.ipynb",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-01681/TouchAndSee/hbp-01681_TouchAndSee__neofy_session.py",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "hbp-01681/hbp-01681.json",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'task-folder'"
+    }
+  ]
+}

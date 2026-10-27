@@ -1,0 +1,30 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "MF-CA3-STDP-adult-KI-posPairing/",
+        "MF-CA3-STDP-adult-KI-posPairing/00-hbp-00005_DataDescriptor_MF-CA3-STDP-adult-KI-posPairing_v1p1.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj001/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj001/A160216/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj001/A160216/MF-CA3-STDP-adult-KI-posPairing_Sbj001_A160216__A160216_C.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj001/A160216/MF-CA3-STDP-adult-KI-posPairing_Sbj001_A160216__A160216_P.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/A170216/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/A170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_A170216__A170216_C.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/A170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_A170216__A170216_P.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/B170216/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/B170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_B170216__B170216_C.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/B170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_B170216__B170216_P.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/C170216/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/C170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_C170216__C170216_C.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj002/C170216/MF-CA3-STDP-adult-KI-posPairing_Sbj002_C170216__C170216_P.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj003/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj003/A190216/",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj003/A190216/MF-CA3-STDP-adult-KI-posPairing_Sbj003_A190216__A190216_C.txt",
+        "MF-CA3-STDP-adult-KI-posPairing/Sbj003/A190216/MF-CA3-STDP-adult-KI-posPairing_Sbj003_A190216__A190216_P.txt"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "gate", "description": "One run folder <run>_g<N>: all data of gate N of a run", "isPrimary": true, "identifierRefs": ["run_name", "gate_index"] },
+    { "name": "probe", "description": "One probe of the gate, a folder <run>_g<N>_imec<K> (folder-per-probe option)", "identifierRef": "probe_index" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "gate", "targetEntity": "probe", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "run_name": { "name": "run_name", "dataType": "string", "ofEntity": "gate", "validation": { "pattern": "^[A-Za-z0-9_-]+$" } },
+    "gate_index": { "name": "gate_index", "dataType": "integer", "ofEntity": "gate" },
+    "probe_index": { "name": "probe_index", "dataType": "integer", "ofEntity": "probe" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "spikeglx",
+      "displayName": "SpikeGLX run folders (folder per probe)",
+      "description": "<run>_g<N>/ holds the nidq files <run>_g<N>_t<T>.nidq.bin/.meta for every trigger T, and one folder <run>_g<N>_imec<K>/ per probe with <run>_g<N>_t<T>.imec<K>.ap.bin/.ap.meta/.lf.bin/.lf.meta.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "acquisition-pc", "path": "D:\\SGL_DATA", "storageType": "local" }
+        ],
+        "entityLayout": [
+          {
+            "name": "gates",
+            "entityType": "gate",
+            "matchPattern": "^[A-Za-z0-9_-]+_g\\d+$",
+            "filePatterns": [
+              { "name": "nidq_bin", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.nidq\\.bin$", "cardinality": "many" },
+              { "name": "nidq_meta", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.nidq\\.meta$", "cardinality": "many" }
+            ]
+          },
+          {
+            "name": "probes",
+            "entityType": "probe",
+            "matchPattern": "^[A-Za-z0-9_-]+_g\\d+_imec\\d+$",
+            "filePatterns": [
+              { "name": "ap_bin", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.imec{probe_index}\\.ap\\.bin$", "isRequired": true, "cardinality": "many", "description": "Action-potential band, one file per trigger" },
+              { "name": "ap_meta", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.imec{probe_index}\\.ap\\.meta$", "isRequired": true, "cardinality": "many" },
+              { "name": "lf_bin", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.imec{probe_index}\\.lf\\.bin$", "cardinality": "many" },
+              { "name": "lf_meta", "pattern": "^{run_name}_g{gate_index}_t\\d+\\.imec{probe_index}\\.lf\\.meta$", "cardinality": "many" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "run_name", "extraction": { "method": "regex", "pattern": "^([A-Za-z0-9_-]+)_g\\d+$", "entityLayoutLevel": "gates" } },
+          { "metadataRef": "gate_index", "extraction": { "method": "regex", "pattern": "_g(\\d+)$", "entityLayoutLevel": "gates" } },
+          { "metadataRef": "probe_index", "extraction": { "method": "regex", "pattern": "_imec(\\d+)$", "entityLayoutLevel": "probes" } }
+        ],
+        "pathTemplate": "{rootPath}/{run_name}_g{gate_index}/{run_name}_g{gate_index}_imec{probe_index}"
+      }
+    }
+  ]
+}

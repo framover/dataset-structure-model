@@ -1,0 +1,251 @@
+{
+  "records": [
+    {
+      "entityType": "gate",
+      "identity": {
+        "run_name": "m0123_20240315",
+        "gate_index": 0
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "spikeglx",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315_g0/"
+          ],
+          "files": {
+            "nidq_bin": [
+              "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.bin"
+            ],
+            "nidq_meta": [
+              "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "run_name": "m0123_20240315",
+        "gate_index": 0
+      }
+    },
+    {
+      "entityType": "gate",
+      "identity": {
+        "run_name": "m0123_20240315",
+        "gate_index": 1
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "spikeglx",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315_g1/"
+          ],
+          "files": {
+            "nidq_bin": [
+              "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.bin",
+              "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.bin"
+            ],
+            "nidq_meta": [
+              "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.meta",
+              "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "run_name": "m0123_20240315",
+        "gate_index": 1
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_index": 0
+      },
+      "parents": [
+        {
+          "entityType": "gate",
+          "identity": {
+            "run_name": "m0123_20240315",
+            "gate_index": 0
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "spikeglx",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315_g0/m0123_20240315_g0_imec0/"
+          ],
+          "files": {
+            "ap_bin": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec0/m0123_20240315_g0_t0.imec0.ap.bin"
+            ],
+            "ap_meta": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec0/m0123_20240315_g0_t0.imec0.ap.meta"
+            ],
+            "lf_bin": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec0/m0123_20240315_g0_t0.imec0.lf.bin"
+            ],
+            "lf_meta": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec0/m0123_20240315_g0_t0.imec0.lf.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "run_name": "m0123_20240315",
+        "gate_index": 0,
+        "probe_index": 0
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_index": 1
+      },
+      "parents": [
+        {
+          "entityType": "gate",
+          "identity": {
+            "run_name": "m0123_20240315",
+            "gate_index": 0
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "spikeglx",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315_g0/m0123_20240315_g0_imec1/"
+          ],
+          "files": {
+            "ap_bin": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec1/m0123_20240315_g0_t0.imec1.ap.bin"
+            ],
+            "ap_meta": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec1/m0123_20240315_g0_t0.imec1.ap.meta"
+            ],
+            "lf_bin": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec1/m0123_20240315_g0_t0.imec1.lf.bin"
+            ],
+            "lf_meta": [
+              "m0123_20240315_g0/m0123_20240315_g0_imec1/m0123_20240315_g0_t0.imec1.lf.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "run_name": "m0123_20240315",
+        "gate_index": 0,
+        "probe_index": 1
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_index": 0
+      },
+      "parents": [
+        {
+          "entityType": "gate",
+          "identity": {
+            "run_name": "m0123_20240315",
+            "gate_index": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "spikeglx",
+          "rootStoragePathIdentifier": "acquisition-pc",
+          "fileSystemType": "folder",
+          "paths": [
+            "m0123_20240315_g1/m0123_20240315_g1_imec0/"
+          ],
+          "files": {
+            "ap_bin": [
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t0.imec0.ap.bin",
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t1.imec0.ap.bin"
+            ],
+            "ap_meta": [
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t0.imec0.ap.meta",
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t1.imec0.ap.meta"
+            ],
+            "lf_bin": [
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t0.imec0.lf.bin",
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t1.imec0.lf.bin"
+            ],
+            "lf_meta": [
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t0.imec0.lf.meta",
+              "m0123_20240315_g1/m0123_20240315_g1_imec0/m0123_20240315_g1_t1.imec0.lf.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "run_name": "m0123_20240315",
+        "gate_index": 1,
+        "probe_index": 0
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.bin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g0/m0123_20240315_g0_t0.nidq.meta",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.bin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g1/m0123_20240315_g1_t0.nidq.meta",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.bin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g1/m0123_20240315_g1_t1.nidq.meta",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "spikeglx",
+      "rootStoragePathIdentifier": "acquisition-pc",
+      "path": "m0123_20240315_g1/notes.txt",
+      "reason": "no-match"
+    }
+  ]
+}

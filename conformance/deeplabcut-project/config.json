@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "video", "description": "One video of the project. It is a file in videos/ (with the analysed outputs beside it) and a folder in labeled-data/ (extracted frames and manual labels).", "isPrimary": true, "identifierRef": "video_name" }
+  ],
+  "metadataDefinitions": {
+    "video_name": { "name": "video_name", "description": "The video file name without extension", "dataType": "string", "ofEntity": "video", "validation": { "pattern": "^[A-Za-z0-9_-]+$" } },
+    "scorer": { "name": "scorer", "description": "Who labelled the frames: the CollectedData_<scorer> file", "dataType": "string", "ofEntity": "video" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "videos",
+      "displayName": "DeepLabCut project: videos/",
+      "description": "The videos/ folder of a project <Task>-<Experimenter>-<yyyy-mm-dd>/. The source videos (or symbolic links to them) and, after deeplabcut.analyze_videos, the outputs <video>DLC_<model>shuffle<N>_<iteration>.h5/.csv/.pickle and <video>DLC_..._labeled.mp4 beside them.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "workstation", "path": "/data/dlc/Reaching-Mackenzie-2018-08-30/videos" }
+        ],
+        "entityLayout": [
+          {
+            "name": "video-files",
+            "entityType": "video",
+            "fileSystemType": "file",
+            "matchPattern": "^[A-Za-z0-9_-]+(\\.(avi|mp4|mov)|DLC_.+)$",
+            "filePatterns": [
+              { "name": "video", "pattern": "^{video_name}\\.(avi|mp4|mov)$", "isRequired": true, "cardinality": "one" },
+              { "name": "poses_h5", "pattern": "^{video_name}DLC_[A-Za-z0-9_]+shuffle\\d+_\\d+\\.h5$", "cardinality": "many", "description": "One per trained model that analysed the video" },
+              { "name": "poses_csv", "pattern": "^{video_name}DLC_[A-Za-z0-9_]+shuffle\\d+_\\d+\\.csv$", "cardinality": "many" },
+              { "name": "metadata_pickle", "pattern": "^{video_name}DLC_[A-Za-z0-9_]+shuffle\\d+_\\d+_meta\\.pickle$", "cardinality": "many" },
+              { "name": "labeled_video", "pattern": "^{video_name}DLC_[A-Za-z0-9_]+shuffle\\d+_\\d+_labeled\\.mp4$", "cardinality": "many" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "video_name", "extraction": { "method": "regex", "pattern": "^([A-Za-z0-9_-]+?)(?:\\.(?:avi|mp4|mov)|DLC_.+)$", "entityLayoutLevel": "video-files" } }
+        ]
+      }
+    },
+    {
+      "identifier": "labeled-data",
+      "displayName": "DeepLabCut project: labeled-data/",
+      "description": "labeled-data/<video>/ holds the extracted frames img<NNN>.png and the manual labels CollectedData_<scorer>.csv and .h5; a sibling <video>_labeled/ folder holds the check_labels output.",
+      "dataCategory": "derived",
+      "derivedFrom": ["videos"],
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "workstation", "path": "/data/dlc/Reaching-Mackenzie-2018-08-30/labeled-data" }
+        ],
+        "entityLayout": [
+          {
+            "name": "video-folders",
+            "entityType": "video",
+            "matchPattern": "^[A-Za-z0-9_-]+$",
+            "excludePatterns": ["_labeled$"],
+            "filePatterns": [
+              { "name": "frames", "pattern": "^img\\d+\\.png$", "isRequired": true, "cardinality": "many" },
+              { "name": "labels_csv", "pattern": "^CollectedData_[A-Za-z0-9]+\\.csv$", "cardinality": "one" },
+              { "name": "labels_h5", "pattern": "^CollectedData_[A-Za-z0-9]+\\.h5$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "video_name", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "video-folders" } }
+        ],
+        "pathTemplate": "{rootPath}/{video_name}"
+      }
+    }
+  ]
+}

@@ -41,6 +41,12 @@ function errors = validateNode(value, schema, root, path, errors)
     if isfield(schema, "pattern") && isText(value) && isempty(regexp(char(value), schema.pattern, "once"))
         errors(end+1) = sprintf("[%s] '%s' does not match pattern %s", path, char(value), schema.pattern);
     end
+    if isfield(schema, "minimum") && isnumeric(value) && isscalar(value) && value < schema.minimum
+        errors(end+1) = sprintf("[%s] %s is less than the minimum %s", path, describe(value), string(schema.minimum));
+    end
+    if isfield(schema, "maximum") && isnumeric(value) && isscalar(value) && value > schema.maximum
+        errors(end+1) = sprintf("[%s] %s is greater than the maximum %s", path, describe(value), string(schema.maximum));
+    end
 
     if isObjectLike(value)
         names = fieldnames(value);
@@ -132,7 +138,7 @@ end
 
 function assertKnownKeywords(schema, kw)
     known = ["type", "required", "properties", "additionalProperties", "propertyNames", "minProperties", ...
-        "items", "minItems", "uniqueItems", "enum", "const", "pattern", "default", "examples", ...
+        "items", "minItems", "uniqueItems", "enum", "const", "pattern", "minimum", "maximum", "default", "examples", ...
         "allOf", "anyOf", "oneOf", "then", "definitions", "title", "description", ...
         kw.Ref, kw.Schema, kw.Id, kw.If, kw.Else, kw.Not];
     unknown = setdiff(string(fieldnames(schema)), known);

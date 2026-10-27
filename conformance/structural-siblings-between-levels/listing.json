@@ -1,0 +1,22 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "fmri",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "m1/",
+        "m1/d1/",
+        "m1/d1/funct/",
+        "m1/d1/funct/m1_d1_run_1.json",
+        "m1/d1/funct/m1_d1_run_1.nii.gz",
+        "m1/d1/funct/m1_d1_run_2.json",
+        "m1/d1/funct/m1_d1_run_2.nii.gz",
+        "m1/d1/logs/",
+        "m1/d1/struct/",
+        "m1/d1/struct/m1_d1_gre.nii",
+        "m1/d1/timing/",
+        "m1/d1/timing/m1_d1_run_SPM_1.mat"
+      ]
+    }
+  ]
+}

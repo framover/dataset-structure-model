@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "record_node", "description": "One Record Node of the Open Ephys GUI signal chain", "identifierRef": "node_id" },
+    { "name": "experiment", "description": "experimentN: incremented when acquisition is restarted", "identifierRef": "experiment_index" },
+    { "name": "recording", "description": "recordingN: incremented when recording is restarted within an experiment", "isPrimary": true, "identifierRef": "recording_index" },
+    { "name": "stream", "description": "One continuous data stream (a processor output), a folder under continuous/", "identifierRef": "stream_name" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "record_node", "targetEntity": "experiment", "relationType": "oneToMany" },
+    { "sourceEntity": "experiment", "targetEntity": "recording", "relationType": "oneToMany" },
+    { "sourceEntity": "recording", "targetEntity": "stream", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "node_id": { "name": "node_id", "dataType": "integer", "ofEntity": "record_node" },
+    "experiment_index": { "name": "experiment_index", "dataType": "integer", "ofEntity": "experiment" },
+    "recording_index": { "name": "recording_index", "dataType": "integer", "ofEntity": "recording" },
+    "stream_name": { "name": "stream_name", "description": "<processor name>-<processor id>.<stream>", "dataType": "string", "ofEntity": "stream" },
+    "processor_id": { "name": "processor_id", "dataType": "integer", "ofEntity": "stream" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "openephys",
+      "displayName": "Open Ephys binary format recording directory",
+      "description": "Record Node <id>/experiment<N>/recording<M>/ with continuous/<stream>/continuous.dat (+ timestamps.npy, sample_numbers.npy), events/<stream>/TTL/ (states.npy, ...), spikes/, structure.oebin and sync_messages.txt. settings.xml sits in the Record Node folder.",
+      "dataCategory": "raw",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "acquisition-pc", "path": "D:\\OpenEphys\\2024-03-15_10-22-31", "storageType": "local" }
+        ],
+        "entityLayout": [
+          {
+            "name": "record-nodes",
+            "entityType": "record_node",
+            "matchPattern": "^Record Node \\d+$",
+            "filePatterns": [
+              { "name": "settings", "pattern": "^settings\\.xml$", "isRequired": true, "cardinality": "one", "description": "The signal chain at the time of recording" }
+            ]
+          },
+          { "name": "experiments", "entityType": "experiment", "matchPattern": "^experiment\\d+$" },
+          {
+            "name": "recordings",
+            "entityType": "recording",
+            "matchPattern": "^recording\\d+$",
+            "filePatterns": [
+              { "name": "structure", "pattern": "^structure\\.oebin$", "isRequired": true, "cardinality": "one" },
+              { "name": "sync_messages", "pattern": "^sync_messages\\.txt$", "cardinality": "one" }
+            ]
+          },
+          { "name": "continuous", "isVariable": false, "fixedName": "continuous" },
+          {
+            "name": "streams",
+            "entityType": "stream",
+            "matchPattern": "^[A-Za-z0-9_ -]+-\\d+\\.[A-Za-z0-9_-]+$",
+            "filePatterns": [
+              { "name": "samples", "pattern": "^continuous\\.dat$", "isRequired": true, "cardinality": "one" },
+              { "name": "timestamps", "pattern": "^timestamps\\.npy$", "isRequired": true, "cardinality": "one" },
+              { "name": "sample_numbers", "pattern": "^sample_numbers\\.npy$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "node_id", "extraction": { "method": "regex", "pattern": "^Record Node (\\d+)$", "entityLayoutLevel": "record-nodes" } },
+          { "metadataRef": "experiment_index", "extraction": { "method": "regex", "pattern": "^experiment(\\d+)$", "entityLayoutLevel": "experiments" } },
+          { "metadataRef": "recording_index", "extraction": { "method": "regex", "pattern": "^recording(\\d+)$", "entityLayoutLevel": "recordings" } },
+          { "metadataRef": "stream_name", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "streams" } },
+          { "metadataRef": "processor_id", "extraction": { "method": "regex", "pattern": "-(\\d+)\\.[A-Za-z0-9_-]+$", "entityLayoutLevel": "streams" } }
+        ]
+      }
+    }
+  ]
+}

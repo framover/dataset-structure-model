@@ -1,0 +1,19 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "dandiset",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "dandiset.yaml",
+        "sub-CSHL049/",
+        "sub-CSHL049/sub-CSHL049_ses-3e6a97d3-3991-49e2-b346-6948cb4580fb_desc-processed_behavior+ecephys+image.nwb",
+        "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-processed_behavior+ecephys+image.nwb",
+        "sub-CSHL049/sub-CSHL049_ses-c99d53e6-c317-4c53-99ba-070b26673ac4_desc-raw_ecephys+image.nwb",
+        "sub-KS023/",
+        "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-processed_behavior+ecephys+image.nwb",
+        "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-raw_ecephys+image.nwb",
+        "sub-KS023/sub-KS023_ses-aad23144-0e52-4eac-80c5-c4ee2decb198_desc-raw_ecephys+image.nwb.part"
+      ]
+    }
+  ]
+}

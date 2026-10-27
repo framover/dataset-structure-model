@@ -1,0 +1,18 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "AnatInfo_AC.mat",
+        "AnatInfo_ICE.mat",
+        "Clusters_AC.mat",
+        "Clusters_ICE.mat",
+        "Data_AC1.mat",
+        "Data_AC2.mat",
+        "Data_ICE.mat",
+        "README.md"
+      ]
+    }
+  ]
+}

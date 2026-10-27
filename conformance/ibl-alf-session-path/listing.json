@@ -1,0 +1,52 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "entries": [
+        "cortexlab/",
+        "cortexlab/Subjects/",
+        "cortexlab/Subjects/KS023/",
+        "cortexlab/Subjects/KS023/2019-12-10/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_trials.choice.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_trials.intervals.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_wheel.position.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/clusters.channels.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/spikes.clusters.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/spikes.times.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/spikes.clusters.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/spikes.times.npy",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_behavior_data/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_behavior_data/_iblrig_taskData.raw.jsonable",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/_spikeglx_ephysData_g0_t0.nidq.cbin",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/_spikeglx_ephysData_g0_t0.nidq.meta",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.cbin",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.meta",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/_spikeglx_ephysData_g0_t0.imec1.ap.cbin",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/_spikeglx_ephysData_g0_t0.imec1.ap.meta",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_video_data/",
+        "cortexlab/Subjects/KS023/2019-12-10/001/raw_video_data/_iblrig_leftCamera.raw.mp4",
+        "cortexlab/Subjects/KS023/2019-12-10/002/",
+        "cortexlab/Subjects/KS023/2019-12-10/002/raw_behavior_data/",
+        "cortexlab/Subjects/KS023/2019-12-10/002/raw_behavior_data/_iblrig_taskData.raw.jsonable",
+        "cortexlab/Subjects/KS023/2019-12-11/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/alf/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/alf/_ibl_trials.intervals.npy",
+        "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/spikes.clusters.npy",
+        "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/spikes.times.npy",
+        "cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/",
+        "cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.cbin"
+      ]
+    }
+  ]
+}

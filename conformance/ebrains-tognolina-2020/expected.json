@@ -1,0 +1,2827 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject01"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject01_010818/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject01",
+        "recording_date": "2018-08-01"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject02"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject02_050918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject02",
+        "recording_date": "2018-09-05"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject03"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject03_060918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject03",
+        "recording_date": "2018-09-06"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject04"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject04_070918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject04",
+        "recording_date": "2018-09-07"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject05"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject05_080316/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject05",
+        "recording_date": "2016-03-08"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject06"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject06_090216/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject06",
+        "recording_date": "2016-02-09"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject07"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject07_100918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject07",
+        "recording_date": "2018-09-10"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject08"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject08_101018/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject08",
+        "recording_date": "2018-10-10"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject09"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject09_110918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject09",
+        "recording_date": "2018-09-11"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject10"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject10_111018/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject10",
+        "recording_date": "2018-10-11"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject11"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject11_131115/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject11",
+        "recording_date": "2015-11-13"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject12"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject12_151018/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject12",
+        "recording_date": "2018-10-15"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject13"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject13_161018/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject13",
+        "recording_date": "2018-10-16"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject14"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject14_161115/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject14",
+        "recording_date": "2015-11-16"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject15"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject15_180116/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject15",
+        "recording_date": "2016-01-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject16"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject16_180118/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject16",
+        "recording_date": "2018-01-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject17"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject17_180918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject17",
+        "recording_date": "2018-09-18"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject18"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject18_190618/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject18",
+        "recording_date": "2018-06-19"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject19"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject19_190918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject19",
+        "recording_date": "2018-09-19"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject20"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject20_191018/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject20",
+        "recording_date": "2018-10-19"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject21"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject21_200918/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject21",
+        "recording_date": "2018-09-20"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject22"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject22_220118/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject22",
+        "recording_date": "2018-01-22"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject23"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject23_250116/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject23",
+        "recording_date": "2016-01-25"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject24"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject24_260116/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject24",
+        "recording_date": "2016-01-26"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject25"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject25_270116/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject25",
+        "recording_date": "2016-01-27"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject27"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject27_230216/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject27",
+        "recording_date": "2016-02-23"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "GrC_Subject28"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "GrC_Subject28_240216/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_date": "2016-02-24"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "010818_0002 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject01_010818/010818_0002 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject01_010818/010818_0002 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject01",
+        "recording_id": "010818_0002 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "050918_0005 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject02_050918/050918_0005 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject02_050918/050918_0005 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject02",
+        "recording_id": "050918_0005 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "050918_0006 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject02_050918/050918_0006 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject02_050918/050918_0006 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject02",
+        "recording_id": "050918_0006 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "060918_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject03"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject03_060918/060918_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject03_060918/060918_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject03",
+        "recording_id": "060918_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "070918_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject04_070918/070918_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject04_070918/070918_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject04",
+        "recording_id": "070918_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "070918_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject04"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject04_070918/070918_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject04_070918/070918_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject04",
+        "recording_id": "070918_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "080316_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject05_080316/080316_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject05_080316/080316_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject05",
+        "recording_id": "080316_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "080316_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject05"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject05_080316/080316_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject05_080316/080316_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject05",
+        "recording_id": "080316_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "090216_0002  IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject06_090216/090216_0002  IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject06_090216/090216_0002  IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject06",
+        "recording_id": "090216_0002  IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "090216_0003 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject06_090216/090216_0003 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject06_090216/090216_0003 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject06",
+        "recording_id": "090216_0003 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "090216_0004 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject06"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject06_090216/090216_0004 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject06_090216/090216_0004 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject06",
+        "recording_id": "090216_0004 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100918_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject07_100918/100918_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject07_100918/100918_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject07",
+        "recording_id": "100918_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100918_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject07_100918/100918_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject07_100918/100918_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject07",
+        "recording_id": "100918_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "100918_0002 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject07"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject07_100918/100918_0002 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject07_100918/100918_0002 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject07",
+        "recording_id": "100918_0002 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "101018-A_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject08_101018/101018-A_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject08_101018/101018-A_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject08",
+        "recording_id": "101018-A_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "101018-B_0006 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject08_101018/101018-B_0006 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject08_101018/101018-B_0006 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject08",
+        "recording_id": "101018-B_0006 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "101018-B_0007 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject08_101018/101018-B_0007 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject08_101018/101018-B_0007 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject08",
+        "recording_id": "101018-B_0007 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "101018-B_0008 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject08"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject08_101018/101018-B_0008 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject08_101018/101018-B_0008 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject08",
+        "recording_id": "101018-B_0008 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "110918_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject09"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject09_110918/110918_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject09_110918/110918_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject09",
+        "recording_id": "110918_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "111018_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject10"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject10_111018/111018_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject10_111018/111018_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject10",
+        "recording_id": "111018_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "111018_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject10"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject10_111018/111018_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject10_111018/111018_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject10",
+        "recording_id": "111018_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131115_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject11"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject11_131115/131115_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject11_131115/131115_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject11",
+        "recording_id": "131115_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131115_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject11"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject11_131115/131115_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject11_131115/131115_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject11",
+        "recording_id": "131115_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "131115_0006 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject11"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject11_131115/131115_0006 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject11_131115/131115_0006 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject11",
+        "recording_id": "131115_0006 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "151018_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject12"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject12_151018/151018_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject12_151018/151018_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject12",
+        "recording_id": "151018_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "151018_0002 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject12"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject12_151018/151018_0002 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject12_151018/151018_0002 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject12",
+        "recording_id": "151018_0002 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161018_0013 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject13"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject13_161018/161018_0013 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject13_161018/161018_0013 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject13",
+        "recording_id": "161018_0013 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161018_0014 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject13"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject13_161018/161018_0014 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject13_161018/161018_0014 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject13",
+        "recording_id": "161018_0014 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161115_0004 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject14_161115/161115_0004 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject14_161115/161115_0004 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject14",
+        "recording_id": "161115_0004 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161115_0007 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject14_161115/161115_0007 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject14_161115/161115_0007 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject14",
+        "recording_id": "161115_0007 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "161115_0013 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject14"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject14_161115/161115_0013 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject14_161115/161115_0013 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject14",
+        "recording_id": "161115_0013 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180116_0004 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject15_180116/180116_0004 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject15_180116/180116_0004 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject15",
+        "recording_id": "180116_0004 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180116_0005 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject15_180116/180116_0005 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject15_180116/180116_0005 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject15",
+        "recording_id": "180116_0005 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180116_0006 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject15_180116/180116_0006 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject15_180116/180116_0006 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject15",
+        "recording_id": "180116_0006 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18118007 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject16_180118/18118007 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject16_180118/18118007 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject16",
+        "recording_id": "18118007 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "18118009 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject16"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject16_180118/18118009 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject16_180118/18118009 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject16",
+        "recording_id": "18118009 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180918-A_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject17"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject17_180918/180918-A_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject17_180918/180918-A_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject17",
+        "recording_id": "180918-A_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180918-A_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject17"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject17_180918/180918-A_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject17_180918/180918-A_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject17",
+        "recording_id": "180918-A_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180918-B_0008 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject17"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject17_180918/180918-B_0008 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject17_180918/180918-B_0008 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject17",
+        "recording_id": "180918-B_0008 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "180918-B_0011 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject17"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject17_180918/180918-B_0011 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject17_180918/180918-B_0011 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject17",
+        "recording_id": "180918-B_0011 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "190618_0011 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject18"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject18_190618/190618_0011 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject18_190618/190618_0011 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject18",
+        "recording_id": "190618_0011 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "190618_0012 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject18"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject18_190618/190618_0012 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject18_190618/190618_0012 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject18",
+        "recording_id": "190618_0012 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "190618_0013 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject18"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject18_190618/190618_0013 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject18_190618/190618_0013 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject18",
+        "recording_id": "190618_0013 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "190918_0004 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject19"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject19_190918/190918_0004 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject19_190918/190918_0004 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject19",
+        "recording_id": "190918_0004 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191018_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject20"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject20_191018/191018_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject20_191018/191018_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject20",
+        "recording_id": "191018_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191018_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject20"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject20_191018/191018_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject20_191018/191018_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject20",
+        "recording_id": "191018_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191018_0002 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject20"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject20_191018/191018_0002 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject20_191018/191018_0002 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject20",
+        "recording_id": "191018_0002 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200918_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject21"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject21_200918/200918_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject21_200918/200918_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject21",
+        "recording_id": "200918_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200918_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject21"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject21_200918/200918_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject21_200918/200918_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject21",
+        "recording_id": "200918_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "22118_0002 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject22_220118/22118_0002 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject22_220118/22118_0002 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject22",
+        "recording_id": "22118_0002 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "22118_0003 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject22_220118/22118_0003 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject22_220118/22118_0003 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject22",
+        "recording_id": "22118_0003 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250116-A_0001 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject23_250116/250116-A_0001 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject23_250116/250116-A_0001 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject23",
+        "recording_id": "250116-A_0001 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "250116-B_0003  IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject23_250116/250116-B_0003  IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject23_250116/250116-B_0003  IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject23",
+        "recording_id": "250116-B_0003  IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "260116_0009 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject24_260116/260116_0009 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject24_260116/260116_0009 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject24",
+        "recording_id": "260116_0009 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "270116_0002  CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject25"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject25_270116/270116_0002  CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject25_270116/270116_0002  CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject25",
+        "recording_id": "270116_0002  CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "230216_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject27_230216/230216_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject27_230216/230216_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject27",
+        "recording_id": "230216_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "230216_0001 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject27_230216/230216_0001 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject27_230216/230216_0001 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject27",
+        "recording_id": "230216_0001 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "230216_0004 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject27_230216/230216_0004 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject27_230216/230216_0004 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject27",
+        "recording_id": "230216_0004 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-A_0009 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-A_0009 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-A_0009 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-A_0009 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-A_0010 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-A_0010 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-A_0010 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-A_0010 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-A_0015 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-A_0015 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-A_0015 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-A_0015 CC step",
+        "protocol": "cc step"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-B_0000 IV -70"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-B_0000 IV -70.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-B_0000 IV -70.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-B_0000 IV -70",
+        "protocol": "iv"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-B_0001 EPSP"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-B_0001 EPSP.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-B_0001 EPSP.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-B_0001 EPSP",
+        "protocol": "epsp"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "240216-B_0004 CC step"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "GrC_Subject28"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "GrC_Subject28_240216/240216-B_0004 CC step.abf"
+          ],
+          "files": {
+            "abf": [
+              "GrC_Subject28_240216/240216-B_0004 CC step.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "GrC_Subject28",
+        "recording_id": "240216-B_0004 CC step",
+        "protocol": "cc step"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "HBP-DataDescriptor_PatchGrCs.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "Licence (CCBY-NC-SA).pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

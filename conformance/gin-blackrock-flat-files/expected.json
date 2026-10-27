@@ -1,0 +1,169 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "i"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "i"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "l"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "subject_id": "l"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "i140703-001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "i"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "repository",
+          "rootStoragePathIdentifier": "clone",
+          "fileSystemType": "file",
+          "paths": [
+            "datasets/i140703-001-03.nev",
+            "datasets/i140703-001.ccf",
+            "datasets/i140703-001.nev",
+            "datasets/i140703-001.ns2",
+            "datasets/i140703-001.ns6",
+            "datasets/i140703-001.odml"
+          ],
+          "files": {
+            "nev": [
+              "datasets/i140703-001.nev"
+            ],
+            "nev_sorted": [
+              "datasets/i140703-001-03.nev"
+            ],
+            "ns2": [
+              "datasets/i140703-001.ns2"
+            ],
+            "ns5": [],
+            "ns6": [
+              "datasets/i140703-001.ns6"
+            ],
+            "ccf": [
+              "datasets/i140703-001.ccf"
+            ],
+            "odml": [
+              "datasets/i140703-001.odml"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "i",
+        "session_id": "i140703-001",
+        "session_date": "2014-07-03",
+        "session_number": 1
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "l101210-001"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "l"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "repository",
+          "rootStoragePathIdentifier": "clone",
+          "fileSystemType": "file",
+          "paths": [
+            "datasets/l101210-001-02.nev",
+            "datasets/l101210-001.ccf",
+            "datasets/l101210-001.nev",
+            "datasets/l101210-001.ns2",
+            "datasets/l101210-001.ns5",
+            "datasets/l101210-001.ns6",
+            "datasets/l101210-001.odml"
+          ],
+          "files": {
+            "nev": [
+              "datasets/l101210-001.nev"
+            ],
+            "nev_sorted": [
+              "datasets/l101210-001-02.nev"
+            ],
+            "ns2": [
+              "datasets/l101210-001.ns2"
+            ],
+            "ns5": [
+              "datasets/l101210-001.ns5"
+            ],
+            "ns6": [
+              "datasets/l101210-001.ns6"
+            ],
+            "ccf": [
+              "datasets/l101210-001.ccf"
+            ],
+            "odml": [
+              "datasets/l101210-001.odml"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "l",
+        "session_id": "l101210-001",
+        "session_date": "2010-12-10",
+        "session_number": 1
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "repository",
+      "rootStoragePathIdentifier": "clone",
+      "path": "LICENSE.txt",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "repository",
+      "rootStoragePathIdentifier": "clone",
+      "path": "README.md",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "repository",
+      "rootStoragePathIdentifier": "clone",
+      "path": "code/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "repository",
+      "rootStoragePathIdentifier": "clone",
+      "path": "datasets_matlab/",
+      "reason": "no-match"
+    }
+  ]
+}

@@ -1,0 +1,2817 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S22"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "3-4_months",
+        "subject_id": "S22"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S23"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "3-4_months",
+        "subject_id": "S23"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S24"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "3-4_months",
+        "subject_id": "S24"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S26"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "3-4_months",
+        "subject_id": "S26"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S27"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "3-4_months",
+        "subject_id": "S27"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S31"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "3-4_months",
+        "subject_id": "S31"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S75"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "9-10_months",
+        "subject_id": "S75"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S76"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "9-10_months",
+        "subject_id": "S76"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S77"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "9-10_months",
+        "subject_id": "S77"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S86"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "9-10_months",
+        "subject_id": "S86"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S87"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "9-10_months",
+        "subject_id": "S87"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S95"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "control",
+        "age_group": "9-10_months",
+        "subject_id": "S95"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "S96"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "genotype": "APPPS1",
+        "age_group": "9-10_months",
+        "subject_id": "S96"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202004_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202004_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202004_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202004_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202005_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202005_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202005_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202005_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202006_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202006_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202006_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202006_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202007_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202007_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202007_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202007_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202008_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202008_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202008_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202008_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202009_rita_S22"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S22"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202009_rita_S22.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202009_rita_S22.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S22",
+        "recording_id": "191202009_rita_S22",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129000_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129000_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129000_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129000_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129002_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129002_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129002_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129002_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129003_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129003_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129003_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129003_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129006_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129006_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129006_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129006_rita_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129007_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129007_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129007_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129007_rita_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129008_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129008_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129008_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129008_rita_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129009_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191129009_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191129009_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191129009_rita_S23",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202002_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202002_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202002_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191202002_rita_S23",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202003_rita_S23"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S23"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202003_rita_S23.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202003_rita_S23.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S23",
+        "recording_id": "191202003_rita_S23",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129000_rita_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129000_rita_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129000_rita_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129000_rita_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129001_rita_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129001_rita_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129001_rita_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129001_rita_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129002_rita_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129002_rita_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129002_rita_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129002_rita_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129003_rita_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129003_rita_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129003_rita_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129003_rita_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129004_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129004_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129004_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129004_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191129005_rita_S24"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S24"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191129005_rita_S24.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191129005_rita_S24.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S24",
+        "recording_id": "191129005_rita_S24",
+        "recording_date": "2019-11-29",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202000_rita_S26"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202000_rita_S26.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202000_rita_S26.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S26",
+        "recording_id": "191202000_rita_S26",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191202001_rita_S26"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S26"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_3-4_months/191202001_rita_S26.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_3-4_months/191202001_rita_S26.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S26",
+        "recording_id": "191202001_rita_S26",
+        "recording_date": "2019-12-02",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203005_rita_S27"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203005_rita_S27.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203005_rita_S27.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S27",
+        "recording_id": "191203005_rita_S27",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203006_rita_S27"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S27"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203006_rita_S27.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203006_rita_S27.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S27",
+        "recording_id": "191203006_rita_S27",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203000_rita_S31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S31"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203000_rita_S31.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203000_rita_S31.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S31",
+        "recording_id": "191203000_rita_S31",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203001_rita_S31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S31"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203001_rita_S31.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203001_rita_S31.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S31",
+        "recording_id": "191203001_rita_S31",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203002_rita_S31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S31"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203002_rita_S31.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203002_rita_S31.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S31",
+        "recording_id": "191203002_rita_S31",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203003_rita_S31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S31"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203003_rita_S31.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203003_rita_S31.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S31",
+        "recording_id": "191203003_rita_S31",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191203004_rita_S31"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S31"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_3-4_months/191203004_rita_S31.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_3-4_months/191203004_rita_S31.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S31",
+        "recording_id": "191203004_rita_S31",
+        "recording_date": "2019-12-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191113002_S75"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S75"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191113002_S75.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191113002_S75.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S75",
+        "recording_id": "191113002_S75",
+        "recording_date": "2019-11-13",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191113004_S75"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S75"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191113004_S75.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191113004_S75.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S75",
+        "recording_id": "191113004_S75",
+        "recording_date": "2019-11-13",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191113005_S75"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S75"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191113005_S75.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191113005_S75.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S75",
+        "recording_id": "191113005_S75",
+        "recording_date": "2019-11-13",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121000_rita_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121000_rita_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121000_rita_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121000_rita_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121001_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121001_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121001_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121001_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121001_rita_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121001_rita_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121001_rita_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121001_rita_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121002_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121002_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121002_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121002_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121003_rita_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121003_rita_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121003_rita_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121003_rita_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191121004_rita_S76"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S76"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/191121004_rita_S76.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/191121004_rita_S76.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S76",
+        "recording_id": "191121004_rita_S76",
+        "recording_date": "2019-11-21",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122000_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122000_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122000_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122000_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122000_rita_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122000_rita_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122000_rita_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122000_rita_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122001_rita_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122001_rita_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122001_rita_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122001_rita_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122002_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122002_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122002_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122002_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122002_rita_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122002_rita_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122002_rita_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122002_rita_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122003_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122003_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122003_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122003_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "191122003_rita_S77"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S77"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/191122003_rita_S77.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/191122003_rita_S77.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S77",
+        "recording_id": "191122003_rita_S77",
+        "recording_date": "2019-11-22",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200123000_S86"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S86"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200123000_S86.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200123000_S86.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S86",
+        "recording_id": "200123000_S86",
+        "recording_date": "2020-01-23",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200123001_S86"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S86"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200123001_S86.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200123001_S86.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S86",
+        "recording_id": "200123001_S86",
+        "recording_date": "2020-01-23",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200123002_S86"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S86"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200123002_S86.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200123002_S86.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S86",
+        "recording_id": "200123002_S86",
+        "recording_date": "2020-01-23",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200123003_S86"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S86"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200123003_S86.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200123003_S86.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S86",
+        "recording_id": "200123003_S86",
+        "recording_date": "2020-01-23",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120000_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120000_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120000_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120000_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120004_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120004_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120004_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120004_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120005_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120005_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120005_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120005_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120006_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120006_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120006_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120006_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120007_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120007_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120007_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120007_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120008_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120008_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120008_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120008_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120009_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120009_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120009_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120009_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200120010_S87"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S87"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200120010_S87.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200120010_S87.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S87",
+        "recording_id": "200120010_S87",
+        "recording_date": "2020-01-20",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303000_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303000_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303000_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303000_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303001_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303001_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303001_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303001_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303001_rita_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303001_rita_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303001_rita_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303001_rita_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303002_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303002_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303002_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303002_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303002_rita_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303002_rita_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303002_rita_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303002_rita_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303003_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303003_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303003_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303003_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303003_rita_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303003_rita_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303003_rita_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303003_rita_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303004_S95"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S95"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "control_9-10_months/200303004_S95.abf"
+          ],
+          "files": {
+            "abf": [
+              "control_9-10_months/200303004_S95.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S95",
+        "recording_id": "200303004_S95",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303004_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303004_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303004_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303004_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303005_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303005_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303005_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303005_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "marie"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303005_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303005_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303005_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303005_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303006_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303006_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303006_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303006_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303007_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303007_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303007_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303007_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303009_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303009_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303009_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303009_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    },
+    {
+      "entityType": "recording",
+      "identity": {
+        "recording_id": "200303010_rita_S96"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "S96"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "file",
+          "paths": [
+            "APPPS1_mouse_model_9-10_months/200303010_rita_S96.abf"
+          ],
+          "files": {
+            "abf": [
+              "APPPS1_mouse_model_9-10_months/200303010_rita_S96.abf"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "S96",
+        "recording_id": "200303010_rita_S96",
+        "recording_date": "2020-03-03",
+        "experimenter": "rita"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "HBP-DataDescriptor_ADNeuronModel_v2.pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'groups'"
+    },
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "Licence (CCBY).pdf",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'groups'"
+    }
+  ]
+}

@@ -1,0 +1,631 @@
+{
+  "records": [
+    {
+      "entityType": "animal",
+      "identity": {
+        "animal_id": "ec013"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "animal_id": "ec013"
+      }
+    },
+    {
+      "entityType": "animal",
+      "identity": {
+        "animal_id": "ec014"
+      },
+      "parents": [],
+      "locations": [],
+      "metadata": {
+        "animal_id": "ec014"
+      }
+    },
+    {
+      "entityType": "recording_day",
+      "identity": {
+        "day_id": "ec013.15"
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "ec013.15/"
+          ]
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15"
+      }
+    },
+    {
+      "entityType": "recording_day",
+      "identity": {
+        "day_id": "ec014.29"
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec014"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "ec014.29/"
+          ]
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec014",
+        "day_id": "ec014.29"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "ec013.156"
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "ec013.15/ec013.156/"
+          ],
+          "files": {
+            "parameters": [
+              "ec013.15/ec013.156/ec013.156.xml"
+            ],
+            "lfp": [
+              "ec013.15/ec013.156/ec013.156.eeg"
+            ],
+            "position": [
+              "ec013.15/ec013.156/ec013.156.whl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.156",
+        "session_number": 156
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "ec013.157"
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "ec013.15/ec013.157/"
+          ],
+          "files": {
+            "parameters": [
+              "ec013.15/ec013.157/ec013.157.xml"
+            ],
+            "lfp": [
+              "ec013.15/ec013.157/ec013.157.eeg"
+            ],
+            "position": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.157",
+        "session_number": 157
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "ec014.468"
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec014"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec014.29"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "ec014.29/ec014.468/"
+          ],
+          "files": {
+            "parameters": [
+              "ec014.29/ec014.468/ec014.468.xml"
+            ],
+            "lfp": [
+              "ec014.29/ec014.468/ec014.468.eeg"
+            ],
+            "position": [
+              "ec014.29/ec014.468/ec014.468.whl"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec014",
+        "day_id": "ec014.29",
+        "session_id": "ec014.468",
+        "session_number": 468
+      }
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec013.156"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec013.15/ec013.156/ec013.156.clu.1",
+            "ec013.15/ec013.156/ec013.156.fet.1",
+            "ec013.15/ec013.156/ec013.156.res.1",
+            "ec013.15/ec013.156/ec013.156.spk.1"
+          ],
+          "files": {
+            "clusters": [
+              "ec013.15/ec013.156/ec013.156.clu.1"
+            ],
+            "spike_times": [
+              "ec013.15/ec013.156/ec013.156.res.1"
+            ],
+            "features": [
+              "ec013.15/ec013.156/ec013.156.fet.1"
+            ],
+            "waveforms": [
+              "ec013.15/ec013.156/ec013.156.spk.1"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.156",
+        "shank_number": 1
+      }
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 2
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec013.156"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec013.15/ec013.156/ec013.156.clu.2",
+            "ec013.15/ec013.156/ec013.156.fet.2",
+            "ec013.15/ec013.156/ec013.156.res.2",
+            "ec013.15/ec013.156/ec013.156.spk.2"
+          ],
+          "files": {
+            "clusters": [
+              "ec013.15/ec013.156/ec013.156.clu.2"
+            ],
+            "spike_times": [
+              "ec013.15/ec013.156/ec013.156.res.2"
+            ],
+            "features": [
+              "ec013.15/ec013.156/ec013.156.fet.2"
+            ],
+            "waveforms": [
+              "ec013.15/ec013.156/ec013.156.spk.2"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.156",
+        "shank_number": 2
+      }
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec013.157"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec013.15/ec013.157/ec013.157.clu.1",
+            "ec013.15/ec013.157/ec013.157.res.1"
+          ],
+          "files": {
+            "clusters": [
+              "ec013.15/ec013.157/ec013.157.clu.1"
+            ],
+            "spike_times": [
+              "ec013.15/ec013.157/ec013.157.res.1"
+            ],
+            "features": [],
+            "waveforms": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.157",
+        "shank_number": 1
+      }
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 2
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec013"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec013.15"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec013.157"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec013.15/ec013.157/ec013.157.clu.2"
+          ],
+          "files": {
+            "clusters": [
+              "ec013.15/ec013.157/ec013.157.clu.2"
+            ],
+            "spike_times": [],
+            "features": [],
+            "waveforms": []
+          },
+          "isComplete": false
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec013",
+        "day_id": "ec013.15",
+        "session_id": "ec013.157",
+        "shank_number": 2
+      },
+      "issues": [
+        {
+          "code": "missing-required-file",
+          "message": "hc3: pattern 'spike_times' is required, matched 0"
+        }
+      ]
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec014"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec014.29"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec014.468"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec014.29/ec014.468/ec014.468.clu.1",
+            "ec014.29/ec014.468/ec014.468.fet.1",
+            "ec014.29/ec014.468/ec014.468.res.1",
+            "ec014.29/ec014.468/ec014.468.spk.1"
+          ],
+          "files": {
+            "clusters": [
+              "ec014.29/ec014.468/ec014.468.clu.1"
+            ],
+            "spike_times": [
+              "ec014.29/ec014.468/ec014.468.res.1"
+            ],
+            "features": [
+              "ec014.29/ec014.468/ec014.468.fet.1"
+            ],
+            "waveforms": [
+              "ec014.29/ec014.468/ec014.468.spk.1"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec014",
+        "day_id": "ec014.29",
+        "session_id": "ec014.468",
+        "shank_number": 1
+      }
+    },
+    {
+      "entityType": "shank",
+      "identity": {
+        "shank_number": 10
+      },
+      "parents": [
+        {
+          "entityType": "animal",
+          "identity": {
+            "animal_id": "ec014"
+          }
+        },
+        {
+          "entityType": "recording_day",
+          "identity": {
+            "day_id": "ec014.29"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "ec014.468"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "hc3",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "ec014.29/ec014.468/ec014.468.clu.10",
+            "ec014.29/ec014.468/ec014.468.res.10"
+          ],
+          "files": {
+            "clusters": [
+              "ec014.29/ec014.468/ec014.468.clu.10"
+            ],
+            "spike_times": [
+              "ec014.29/ec014.468/ec014.468.res.10"
+            ],
+            "features": [],
+            "waveforms": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "animal_id": "ec014",
+        "day_id": "ec014.29",
+        "session_id": "ec014.468",
+        "shank_number": 10
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "docs/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec013.15/ec013.156/ec013.156.eeg",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec013.15/ec013.156/ec013.156.whl",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec013.15/ec013.156/ec013.156.xml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec013.15/ec013.157/ec013.157.eeg",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec013.15/ec013.157/ec013.157.xml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec014.29/ec014.468/ec014.468.eeg",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec014.29/ec014.468/ec014.468.whl",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "ec014.29/ec014.468/ec014.468.xml",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "path": "hc3-metadata-tables/",
+      "reason": "no-match"
+    }
+  ]
+}

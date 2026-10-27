@@ -1,0 +1,232 @@
+{
+  "records": [
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": 715093703
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "session_715093703/"
+          ],
+          "files": {
+            "session_nwb": [
+              "session_715093703/session_715093703.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "session_id": 715093703
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": 719161530
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "session_719161530/"
+          ],
+          "files": {
+            "session_nwb": [
+              "session_719161530/session_719161530.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "session_id": 719161530
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": 721123822
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "session_721123822/"
+          ],
+          "files": {
+            "session_nwb": []
+          },
+          "isComplete": false
+        }
+      ],
+      "metadata": {
+        "session_id": 721123822
+      },
+      "issues": [
+        {
+          "code": "missing-required-file",
+          "message": "ecephys-cache: pattern 'session_nwb' is required, matched 0"
+        }
+      ]
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_id": 810755797
+      },
+      "parents": [
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": 715093703
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "session_715093703/probe_810755797_lfp.nwb"
+          ],
+          "files": {
+            "lfp_nwb": [
+              "session_715093703/probe_810755797_lfp.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "session_id": 715093703,
+        "probe_id": 810755797
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_id": 810755799
+      },
+      "parents": [
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": 715093703
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "session_715093703/probe_810755799_lfp.nwb"
+          ],
+          "files": {
+            "lfp_nwb": [
+              "session_715093703/probe_810755799_lfp.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "session_id": 715093703,
+        "probe_id": 810755799
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_id": 729445648
+      },
+      "parents": [
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": 721123822
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "ecephys-cache",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "session_721123822/probe_729445648_lfp.nwb"
+          ],
+          "files": {
+            "lfp_nwb": [
+              "session_721123822/probe_729445648_lfp.nwb"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "session_id": 721123822,
+        "probe_id": 729445648
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "channels.csv",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "manifest.json",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "probes.csv",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "session_715093703/session_715093703.nwb",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "session_719161530/session_719161530.nwb",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "sessions.csv",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "ecephys-cache",
+      "rootStoragePathIdentifier": "local",
+      "path": "units.csv",
+      "reason": "no-match"
+    }
+  ]
+}

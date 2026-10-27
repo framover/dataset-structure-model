@@ -1,0 +1,523 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "01"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-01/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "01"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "02"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-02/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "02"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "meg"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-01/ses-meg/"
+          ],
+          "files": {
+            "scans": [
+              "sub-01/ses-meg/sub-01_ses-meg_scans.tsv"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "meg"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "mri"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-01/ses-mri/"
+          ],
+          "files": {
+            "scans": [
+              "sub-01/ses-mri/sub-01_ses-mri_scans.tsv"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "mri"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_id": "mri"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "02"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "folder",
+          "paths": [
+            "sub-02/ses-mri/"
+          ],
+          "files": {
+            "scans": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "session_id": "mri"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-01_ses-meg"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "meg"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/ses-meg/meg/sub-01_ses-meg_coordsystem.json",
+            "sub-01/ses-meg/meg/sub-01_ses-meg_headshape.pos"
+          ],
+          "files": {
+            "data": [],
+            "sidecar": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_coordsystem.json"
+            ],
+            "events": []
+          },
+          "isComplete": false
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "meg",
+        "datatype": "meg",
+        "stem": "sub-01_ses-meg"
+      },
+      "issues": [
+        {
+          "code": "extraction-failed",
+          "message": "task: no value and no defaultValue"
+        },
+        {
+          "code": "extraction-failed",
+          "message": "run: no value and no defaultValue"
+        },
+        {
+          "code": "extraction-failed",
+          "message": "suffix: no value and no defaultValue"
+        },
+        {
+          "code": "missing-required-file",
+          "message": "bids: pattern 'data' is required, matched 0"
+        }
+      ]
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-01_ses-meg_task-facerecognition_run-01"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "meg"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_events.tsv",
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.fif",
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.json"
+          ],
+          "files": {
+            "data": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.fif"
+            ],
+            "sidecar": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_meg.json"
+            ],
+            "events": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-01_events.tsv"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "meg",
+        "datatype": "meg",
+        "stem": "sub-01_ses-meg_task-facerecognition_run-01",
+        "task": "facerecognition",
+        "run": 1,
+        "suffix": "meg"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-01_ses-meg_task-facerecognition_run-02"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "meg"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_events.tsv",
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.fif",
+            "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.json"
+          ],
+          "files": {
+            "data": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.fif"
+            ],
+            "sidecar": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_meg.json"
+            ],
+            "events": [
+              "sub-01/ses-meg/meg/sub-01_ses-meg_task-facerecognition_run-02_events.tsv"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "meg",
+        "datatype": "meg",
+        "stem": "sub-01_ses-meg_task-facerecognition_run-02",
+        "task": "facerecognition",
+        "run": 2,
+        "suffix": "meg"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-01_ses-mri_acq-mprage"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "mri"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.json",
+            "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.nii.gz"
+            ],
+            "sidecar": [
+              "sub-01/ses-mri/anat/sub-01_ses-mri_acq-mprage_T1w.json"
+            ],
+            "events": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "mri",
+        "datatype": "anat",
+        "stem": "sub-01_ses-mri_acq-mprage",
+        "suffix": "T1w"
+      },
+      "issues": [
+        {
+          "code": "extraction-failed",
+          "message": "task: no value and no defaultValue"
+        },
+        {
+          "code": "extraction-failed",
+          "message": "run: no value and no defaultValue"
+        }
+      ]
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-01_ses-mri_task-facerecognition_run-01"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "01"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "mri"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.json",
+            "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.nii.gz",
+            "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_events.tsv"
+          ],
+          "files": {
+            "data": [
+              "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.nii.gz"
+            ],
+            "sidecar": [
+              "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_bold.json"
+            ],
+            "events": [
+              "sub-01/ses-mri/func/sub-01_ses-mri_task-facerecognition_run-01_events.tsv"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "01",
+        "session_id": "mri",
+        "datatype": "func",
+        "stem": "sub-01_ses-mri_task-facerecognition_run-01",
+        "task": "facerecognition",
+        "run": 1,
+        "suffix": "bold"
+      }
+    },
+    {
+      "entityType": "acquisition",
+      "identity": {
+        "stem": "sub-02_ses-mri_acq-mprage"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "02"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_id": "mri"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bids",
+          "rootStoragePathIdentifier": "local",
+          "fileSystemType": "file",
+          "paths": [
+            "sub-02/ses-mri/anat/sub-02_ses-mri_acq-mprage_T1w.nii.gz"
+          ],
+          "files": {
+            "data": [
+              "sub-02/ses-mri/anat/sub-02_ses-mri_acq-mprage_T1w.nii.gz"
+            ],
+            "sidecar": [],
+            "events": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "02",
+        "session_id": "mri",
+        "datatype": "anat",
+        "stem": "sub-02_ses-mri_acq-mprage",
+        "suffix": "T1w"
+      },
+      "issues": [
+        {
+          "code": "extraction-failed",
+          "message": "task: no value and no defaultValue"
+        },
+        {
+          "code": "extraction-failed",
+          "message": "run: no value and no defaultValue"
+        }
+      ]
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "CHANGES",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "README",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "dataset_description.json",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "derivatives/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "participants.tsv",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "sub-01/ses-meg/sub-01_ses-meg_scans.tsv",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "bids",
+      "rootStoragePathIdentifier": "local",
+      "path": "sub-01/ses-mri/sub-01_ses-mri_scans.tsv",
+      "reason": "no-match"
+    }
+  ]
+}

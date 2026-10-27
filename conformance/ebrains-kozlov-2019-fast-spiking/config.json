@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "cell",
+      "description": "One recorded fast-spiking interneuron, <yymmdd>_FS<number>. The same identity names the cell's folder in analysis/, derived/ and original/.",
+      "isPrimary": true,
+      "identifierRef": "cell_id"
+    }
+  ],
+  "metadataDefinitions": {
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell identity",
+      "description": "Name of the cell's folder, as the data descriptor's <identity>.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^\\d{6}_FS\\d+$"
+      }
+    },
+    "recording_date": {
+      "name": "recording_date",
+      "title": "Recording date",
+      "description": "The first six digits of the identity, yymmdd.",
+      "dataType": "date",
+      "ofEntity": "cell"
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "analysis",
+      "displayName": "2019Q3/<cell type>/analysis",
+      "description": "Kozlov et al., electrophysiological recordings of striatal fast-spiking interneurons (dataset version 02f1aec9-c709-4dd3-8929-3833569078eb, bucket pc0a33-hbp-d000005_FS-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the analysis branch of 2019Q3, with one root per cell-type folder (fs), and holds the extracted features and the feature extraction notebook per cell. Every entry below the roots was listed.",
+      "dataCategory": "derived",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "fs",
+            "path": "/data/ebrains/pc0a33-hbp-d000005_FS-ephys_pub/2019Q3/fs/analysis"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^\\d{6}_FS\\d+$",
+            "filePatterns": [
+              {
+                "name": "features",
+                "pattern": "^{cell_id}-features\\.json$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Extracted electrophysiological features (eFEL)"
+              },
+              {
+                "name": "protocols",
+                "pattern": "^{cell_id}-protocols\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "spec",
+                "pattern": "^{cell_id}-spec\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "summary",
+                "pattern": "^{cell_id}-sum\\.json$",
+                "cardinality": "one"
+              },
+              {
+                "name": "figures",
+                "pattern": "^{cell_id}-figs\\.pdf$",
+                "cardinality": "one"
+              },
+              {
+                "name": "notebook",
+                "pattern": "^{cell_id}\\.ipynb$",
+                "cardinality": "one",
+                "description": "Feature extraction script"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "derived",
+      "displayName": "2019Q3/<cell type>/derived",
+      "description": "Kozlov et al., electrophysiological recordings of striatal fast-spiking interneurons (dataset version 02f1aec9-c709-4dd3-8929-3833569078eb, bucket pc0a33-hbp-d000005_FS-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3, with one root per cell-type folder (fs), and holds the derived traces per cell, ASCII text. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "fs",
+            "path": "/data/ebrains/pc0a33-hbp-d000005_FS-ephys_pub/2019Q3/fs/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^\\d{6}_FS\\d+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.dat$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original",
+      "displayName": "2019Q3/<cell type>/original",
+      "description": "Kozlov et al., electrophysiological recordings of striatal fast-spiking interneurons (dataset version 02f1aec9-c709-4dd3-8929-3833569078eb, bucket pc0a33-hbp-d000005_FS-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3, with one root per cell-type folder (fs), and holds the original recordings, Igor Pro. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "fs",
+            "path": "/data/ebrains/pc0a33-hbp-d000005_FS-ephys_pub/2019Q3/fs/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^\\d{6}_FS\\d+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "\\.ibw$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "Original traces, Igor binary wave format"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          },
+          {
+            "metadataRef": "recording_date",
+            "extraction": {
+              "method": "substring",
+              "pattern": "0:6",
+              "valueFormat": "yyMMdd",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

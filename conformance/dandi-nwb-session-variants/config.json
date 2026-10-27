@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One experimental session, identified by its UUID; represented by several NWB files that differ in the desc- entity", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Za-z0-9]+$" } },
+    "session_id": { "name": "session_id", "title": "Session UUID", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^[0-9a-f-]{36}$" } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "dandiset",
+      "displayName": "DANDI 000409 (IBL Brain Wide Map, local download)",
+      "description": "One folder per subject. Each session has a processed NWB file (desc-processed_behavior+ecephys+image) and, for sessions with raw data, a raw NWB file (desc-raw_ecephys+image). Both carry the same ses- UUID.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/dandi/000409" }
+        ],
+        "entityLayout": [
+          { "name": "subjects", "entityType": "subject", "matchPattern": "^sub-[A-Za-z0-9]+$" },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^sub-[A-Za-z0-9]+_ses-[0-9a-f-]{36}_desc-.+\\.nwb$",
+            "filePatterns": [
+              { "name": "processed", "pattern": "^sub-{subject_id}_ses-{session_id}_desc-processed_behavior\\+ecephys\\+image\\.nwb$", "isRequired": true, "cardinality": "one" },
+              { "name": "raw", "pattern": "^sub-{subject_id}_ses-{session_id}_desc-raw_ecephys\\+image\\.nwb$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "substring", "pattern": "4:", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "_ses-([0-9a-f-]{36})_", "entityLayoutLevel": "session-files" } }
+        ]
+      }
+    }
+  ]
+}

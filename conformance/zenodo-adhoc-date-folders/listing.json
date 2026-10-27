@@ -1,0 +1,26 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "deposit",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "2023-05-11/",
+        "2023-05-11/Thumbs.db",
+        "2023-05-11/opto_1/",
+        "2023-05-11/opto_1/plane1.tif",
+        "2023-05-11/opto_1/plane2.tif",
+        "2023-05-11/opto_1/plane3.tif",
+        "2023-05-11/opto_1/stim_times.csv",
+        "2023-05-11/spontaneous_1/",
+        "2023-05-11/spontaneous_1/plane1.tif",
+        "2023-05-11/spontaneous_1/plane2.tif",
+        "2023-05-11/spontaneous_1/plane3.tif",
+        "2023-05-11/spontaneous_2/",
+        "2023-05-11/spontaneous_2/plane1.tif",
+        "2023-05-11/spontaneous_2/plane2.tif",
+        "README.txt",
+        "processed_traces.mat"
+      ]
+    }
+  ]
+}

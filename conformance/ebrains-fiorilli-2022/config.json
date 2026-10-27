@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One rat. Table 1 of the data descriptor lists the animal ids rat-14, rat-16, rat-26 and rat-27; sessions_df.csv has the same values in its animal column.", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One recording session of one rat on one day. The key is the row index of sessions_df.csv, <animal>_<date>.", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Animal ID", "description": "ANIMALID in the data descriptor's file name template neo_ANIMALID_SESSIONID.pkl.", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^rat-\\d{2}$" } },
+    "session_id": { "name": "session_id", "title": "Session ID", "description": "Row index of sessions_df.csv: the animal id and the session date joined by an underscore.", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^rat-\\d{2}_\\d{6}$" } },
+    "session_date": { "name": "session_date", "title": "Session date", "description": "SESSIONID in the data descriptor's file name template and the date column of sessions_df.csv, written yymmdd.", "dataType": "date", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket d-d406a98c-ae5c-4fb3-9f0c-4cf4de9b1094",
+      "description": "Fiorilli et al., tetrode recordings during a visual, tactile and visuotactile discrimination task in the rat. The bucket holds one folder, hbp-data-002061, with the data descriptor, the licence, code/ and data/. All session files sit flat in data/. The data descriptor says: 'The .pkl session files contain spike data and meta information, stored in python NEO objects. The *_lfps.nio files contain the LFP signals (readable using the Nixio library).' LFP traces are downsampled to 1000 Hz and spikes are sorted, so the location is processed data. Every entry of the bucket was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local-copy", "path": "/data/ebrains/d-d406a98c-ae5c-4fb3-9f0c-4cf4de9b1094" }
+        ],
+        "entityLayout": [
+          { "name": "dataset-folder", "isVariable": false, "fixedName": "hbp-data-002061" },
+          { "name": "data-folder", "isVariable": false, "fixedName": "data" },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^neo_rat-\\d{2}_\\d{6}[_.]",
+            "filePatterns": [
+              { "name": "spikes", "pattern": "^neo_{session_id}\\.pkl$", "isRequired": true, "cardinality": "one", "description": "Spike data and meta information as pickled Neo objects" },
+              { "name": "lfp", "pattern": "^neo_{session_id}_lfps\\.nio$", "cardinality": "one", "description": "LFP signals, 1000 Hz, NIX file. Present for 18 of the 25 sessions." },
+              { "name": "lfp_clean", "pattern": "^neo_{session_id}_lfps_clean\\.nio$", "cardinality": "one", "description": "Present for rat-16_181013 only, which has no _lfps.nio file. The data descriptor does not mention the _clean suffix." }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "^neo_(rat-\\d{2})_", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "^neo_(rat-\\d{2}_\\d{6})[_.]", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_date", "extraction": { "method": "regex", "pattern": "^neo_rat-\\d{2}_(\\d{6})[_.]", "valueFormat": "yyMMdd", "entityLayoutLevel": "session-files" } }
+        ]
+      }
+    }
+  ]
+}

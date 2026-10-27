@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "cell",
+      "description": "One recorded low-threshold spiking interneuron. The dataset holds one cell, Experiment-9862.",
+      "isPrimary": true,
+      "identifierRef": "cell_id"
+    }
+  ],
+  "metadataDefinitions": {
+    "cell_id": {
+      "name": "cell_id",
+      "title": "Cell identity",
+      "description": "Name of the cell's folder, as the data descriptor's <identity>.",
+      "dataType": "string",
+      "ofEntity": "cell",
+      "validation": {
+        "pattern": "^Experiment-\\d+$"
+      }
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "derived",
+      "displayName": "2019Q3/<cell type>/derived",
+      "description": "Carannante et al., electrophysiological recordings of a striatal low-threshold spiking interneuron (dataset version 495de3d5-f9d5-4a4a-acd2-4ade0eaefb22, bucket pc0a33-hbp-d000007_LTS-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3, with one root per cell-type folder (lts), and holds the derived traces per cell, ASCII text. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "lts",
+            "path": "/data/ebrains/pc0a33-hbp-d000007_LTS-ephys_pub/2019Q3/lts/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^Experiment-\\d+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.dat$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original",
+      "displayName": "2019Q3/<cell type>/original",
+      "description": "Carannante et al., electrophysiological recordings of a striatal low-threshold spiking interneuron (dataset version 495de3d5-f9d5-4a4a-acd2-4ade0eaefb22, bucket pc0a33-hbp-d000007_LTS-ephys_pub). The data descriptor's layout is 2019Q3/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3, with one root per cell-type folder (lts), and holds the original recordings, Igor Pro. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "lts",
+            "path": "/data/ebrains/pc0a33-hbp-d000007_LTS-ephys_pub/2019Q3/lts/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^Experiment-\\d+$",
+            "filePatterns": [
+              {
+                "name": "original",
+                "pattern": "\\.pxp$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "derived-nwb",
+      "displayName": "2019Q3_NWB/<cell type>/derived",
+      "description": "Carannante et al., electrophysiological recordings of a striatal low-threshold spiking interneuron (dataset version 495de3d5-f9d5-4a4a-acd2-4ade0eaefb22, bucket pc0a33-hbp-d000007_LTS-ephys_pub). The data descriptor's layout is 2019Q3_NWB/<cell type>/<analysis|derived|original>/<identity>; this location is the derived branch of 2019Q3_NWB, with one root per cell-type folder (lts), and holds the derived traces per cell, NWB. Every entry below the roots was listed.",
+      "dataCategory": "processed",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "lts",
+            "path": "/data/ebrains/pc0a33-hbp-d000007_LTS-ephys_pub/2019Q3_NWB/lts/derived"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^Experiment-\\d+$",
+            "filePatterns": [
+              {
+                "name": "traces",
+                "pattern": "_ch\\d+_\\d+\\.nwb$",
+                "isRequired": true,
+                "cardinality": "many",
+                "description": "One trace per channel and sweep, <condition>_<protocol>_ch<N>_<sweep>. Even channels hold the current in pA, odd channels the voltage in mV; time in ms."
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "original-nwb",
+      "displayName": "2019Q3_NWB/<cell type>/original",
+      "description": "Carannante et al., electrophysiological recordings of a striatal low-threshold spiking interneuron (dataset version 495de3d5-f9d5-4a4a-acd2-4ade0eaefb22, bucket pc0a33-hbp-d000007_LTS-ephys_pub). The data descriptor's layout is 2019Q3_NWB/<cell type>/<analysis|derived|original>/<identity>; this location is the original branch of 2019Q3_NWB, with one root per cell-type folder (lts), and holds the original recordings, NWB. Every entry below the roots was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "lts",
+            "path": "/data/ebrains/pc0a33-hbp-d000007_LTS-ephys_pub/2019Q3_NWB/lts/original"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "cells",
+            "entityType": "cell",
+            "matchPattern": "^Experiment-\\d+$",
+            "filePatterns": [
+              {
+                "name": "original",
+                "pattern": "\\.nwb$",
+                "isRequired": true,
+                "cardinality": "one"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "cell_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "cells"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

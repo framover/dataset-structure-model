@@ -1,0 +1,45 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "hc3",
+      "rootStoragePathIdentifier": "local",
+      "entries": [
+        "docs/",
+        "docs/crcns-hc3-data-description.pdf",
+        "ec013.15/",
+        "ec013.15/ec013.156/",
+        "ec013.15/ec013.156/ec013.156.clu.1",
+        "ec013.15/ec013.156/ec013.156.clu.2",
+        "ec013.15/ec013.156/ec013.156.eeg",
+        "ec013.15/ec013.156/ec013.156.fet.1",
+        "ec013.15/ec013.156/ec013.156.fet.2",
+        "ec013.15/ec013.156/ec013.156.res.1",
+        "ec013.15/ec013.156/ec013.156.res.2",
+        "ec013.15/ec013.156/ec013.156.spk.1",
+        "ec013.15/ec013.156/ec013.156.spk.2",
+        "ec013.15/ec013.156/ec013.156.whl",
+        "ec013.15/ec013.156/ec013.156.xml",
+        "ec013.15/ec013.157/",
+        "ec013.15/ec013.157/ec013.157.clu.1",
+        "ec013.15/ec013.157/ec013.157.clu.2",
+        "ec013.15/ec013.157/ec013.157.eeg",
+        "ec013.15/ec013.157/ec013.157.res.1",
+        "ec013.15/ec013.157/ec013.157.xml",
+        "ec014.29/",
+        "ec014.29/ec014.468/",
+        "ec014.29/ec014.468/ec014.468.clu.1",
+        "ec014.29/ec014.468/ec014.468.clu.10",
+        "ec014.29/ec014.468/ec014.468.eeg",
+        "ec014.29/ec014.468/ec014.468.fet.1",
+        "ec014.29/ec014.468/ec014.468.res.1",
+        "ec014.29/ec014.468/ec014.468.res.10",
+        "ec014.29/ec014.468/ec014.468.spk.1",
+        "ec014.29/ec014.468/ec014.468.whl",
+        "ec014.29/ec014.468/ec014.468.xml",
+        "hc3-metadata-tables/",
+        "hc3-metadata-tables/hc3-cell.csv",
+        "hc3-metadata-tables/hc3-session.csv"
+      ]
+    }
+  ]
+}

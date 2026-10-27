@@ -1,0 +1,258 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj001"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj002"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj002"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj003"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj003"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "A150715"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj001"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/MF-CA3-STDP-neonate-WT-posPairing_Sbj001_A150715__A150715016_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj001/A150715/MF-CA3-STDP-neonate-WT-posPairing_Sbj001_A150715__A150715021_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001",
+        "sample_id": "A150715"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "A170715"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj002"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_A170715__A170715009_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/A170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_A170715__A170715015_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj002",
+        "sample_id": "A170715"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "B170715"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj002"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_B170715__B170715023_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj002/B170715/MF-CA3-STDP-neonate-WT-posPairing_Sbj002_B170715__B170715029_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj002",
+        "sample_id": "B170715"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "A210715"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_A210715__A210715006_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/A210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_A210715__A210715013_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj003",
+        "sample_id": "A210715"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "B210715"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_B2107150__B210715018_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-neonate-WT-posPairing/Sbj003/B210715/MF-CA3-STDP-neonate-WT-posPairing_Sbj003_B2107150__B210715023_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj003",
+        "sample_id": "B210715"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "MF-CA3-STDP-neonate-WT-posPairing/00-hbp-00005_DataDescriptor-MF-CA3-STDP-neonate-WT-posPairing_v1p1.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

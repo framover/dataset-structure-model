@@ -1,0 +1,11 @@
+# nansen-project-layout
+
+The data layout the NANSEN toolbox (VervaekeLab/NANSEN) manages, reconstructed from its source: a `Rawdata` data location of type *recorded* (read-only) with the SciScan two-photon template (`templates/datalocation/ophys/two_photon_sciscan.m`: a `Date` level matching `\d{4}_\d{2}_\d{2}`, then a `Session` level; Session ID = characters 19:end of the session folder, date = characters 1:10 of the date folder, time = characters 10:17 of the session folder), and the default `Processed` data location (`initializeDataLocationModel.m`: `Animal` → `Session`, folders generated as `subject-<subjectID>/session-<sessionID>`). Data variables are files `<sessionID>_<fileNameExpression><fileType>` inside the variable's `Subfolder` (`motion_corrected/`, `roi_data/`, `roisignals/` from the two-photon variable template), or at the top of the session folder when no subfolder is set. NANSEN matches session folders across data locations by `sessionID`. The project folder itself (`Configurations/`, `Metadata Tables/`, …) holds no data and is not described.
+
+What it checks:
+
+- Two root paths in one location on one environment, both present in the listing (NANSEN allows several root directories per data location, each with a UUID and a disk name — `uuid`, `volumeName`, `priority`).
+- Raw folders named by the acquisition timestamp and processed folders generated from templates, joined by `session_id`; `subject_id` inferred from the raw session name and a folder in processed.
+- A session present only in processed (`m0125-…`) and MATLAB-style index extraction translated to slices (`19:end` → `18:`, `10:17` → `9:17`).
+- NANSEN's `IgnoreList` (substring match) as `excludePatterns`; the `calibration` folder is `excluded`.
+- **Gap G12 (files in subfolders of an entity):** the variables `motion_corrected/<sid>_two_photon_corrected.raw`, `roi_data/<sid>_rois.mat` and `roisignals/<sid>_roisignals.mat` are exactly what NANSEN's variable model addresses, but `filePatterns` only match direct children of the entity folder. They are covered silently and cannot be declared required or reported in `files`; only the top-level custom variable is. `additionalFolders` records the folder names without meaning.

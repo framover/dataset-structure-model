@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "area", "description": "One brain area (AC, ICE): every file of the deposit belongs to an area, named <kind>_<area>[<part>].mat", "isPrimary": true, "identifierRef": "area_code" }
+  ],
+  "metadataDefinitions": {
+    "area_code": { "name": "area_code", "dataType": "string", "ofEntity": "area", "validation": { "enum": ["AC", "ICE"] } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "deposit",
+      "displayName": "Zenodo deposit 13941450",
+      "description": "A flat deposit of MATLAB files. Data_<area><part>.mat holds the responses of every ROI or unit of an area (the AC data is split in two files because of the size limit), Clusters_<area>.mat the clustered responses, AnatInfo_<area>.mat the ROI positions.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/zenodo/13941450" }
+        ],
+        "entityLayout": [
+          {
+            "name": "area-files",
+            "entityType": "area",
+            "fileSystemType": "file",
+            "matchPattern": "^(Data|Clusters|AnatInfo)_(AC|ICE)\\d*\\.mat$",
+            "filePatterns": [
+              { "name": "responses", "pattern": "^Data_{area_code}\\d*\\.mat$", "isRequired": true, "cardinality": "many" },
+              { "name": "clusters", "pattern": "^Clusters_{area_code}\\.mat$", "cardinality": "one" },
+              { "name": "anatomy", "pattern": "^AnatInfo_{area_code}\\.mat$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "area_code", "extraction": { "method": "regex", "pattern": "_(AC|ICE)\\d*\\.mat$", "entityLayoutLevel": "area-files" } }
+        ]
+      }
+    }
+  ]
+}

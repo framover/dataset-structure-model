@@ -1,0 +1,712 @@
+{
+  "records": [
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150602_c1_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150602_c1_D1/"
+          ],
+          "files": {
+            "features": [
+              "150602_c1_D1/150602_c1_D1-features.json"
+            ],
+            "protocols": [
+              "150602_c1_D1/150602_c1_D1-protocols.json"
+            ],
+            "spec": [
+              "150602_c1_D1/150602_c1_D1-spec.json"
+            ],
+            "summary": [
+              "150602_c1_D1/150602_c1_D1-sum.json"
+            ],
+            "figures": [
+              "150602_c1_D1/150602_c1_D1-figs.pdf"
+            ],
+            "notebook": [
+              "150602_c1_D1/150602_c1_D1.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150602_c1_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150602_c1_D1/ECall_APThreshold_ch2_353.dat",
+              "150602_c1_D1/ECall_APThreshold_ch3_353.dat",
+              "150602_c1_D1/ECall_APWaveform_ch2_371.dat",
+              "150602_c1_D1/ECall_APWaveform_ch2_372.dat",
+              "150602_c1_D1/ECall_APWaveform_ch2_373.dat",
+              "150602_c1_D1/ECall_APWaveform_ch2_374.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150602_c1_D1",
+        "recording_date": "2015-06-02",
+        "dopamine_receptor": "D1"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150908_c4_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150908_c4_D2/"
+          ],
+          "files": {
+            "features": [
+              "150908_c4_D2/150908_c4_D2-features.json"
+            ],
+            "protocols": [
+              "150908_c4_D2/150908_c4_D2-protocols.json"
+            ],
+            "spec": [
+              "150908_c4_D2/150908_c4_D2-spec.json"
+            ],
+            "summary": [
+              "150908_c4_D2/150908_c4_D2-sum.json"
+            ],
+            "figures": [
+              "150908_c4_D2/150908_c4_D2-figs.pdf"
+            ],
+            "notebook": [
+              "150908_c4_D2/150908_c4_D2.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150908_c4_D2/"
+          ],
+          "files": {
+            "traces": [
+              "150908_c4_D2/ECall_APThreshold_ch0_503.dat",
+              "150908_c4_D2/ECall_APThreshold_ch1_503.dat",
+              "150908_c4_D2/ECall_APWaveform_ch0_521.dat",
+              "150908_c4_D2/ECall_APWaveform_ch0_522.dat",
+              "150908_c4_D2/ECall_APWaveform_ch0_523.dat",
+              "150908_c4_D2/ECall_APWaveform_ch0_524.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150908_c4_D2",
+        "recording_date": "2015-09-08",
+        "dopamine_receptor": "D2"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150917_c10_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c10_D1/"
+          ],
+          "files": {
+            "features": [
+              "150917_c10_D1/150917_c10_D1-features.json"
+            ],
+            "protocols": [
+              "150917_c10_D1/150917_c10_D1-protocols.json"
+            ],
+            "spec": [
+              "150917_c10_D1/150917_c10_D1-spec.json"
+            ],
+            "summary": [
+              "150917_c10_D1/150917_c10_D1-sum.json"
+            ],
+            "figures": [
+              "150917_c10_D1/150917_c10_D1-figs.pdf"
+            ],
+            "notebook": [
+              "150917_c10_D1/150917_c10_D1.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c10_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c10_D1/ECBL_APThreshold_ch2_504.dat",
+              "150917_c10_D1/ECBL_APThreshold_ch3_504.dat",
+              "150917_c10_D1/ECBL_APWaveform_ch2_522.dat",
+              "150917_c10_D1/ECBL_APWaveform_ch2_523.dat",
+              "150917_c10_D1/ECBL_APWaveform_ch2_524.dat",
+              "150917_c10_D1/ECBL_APWaveform_ch2_525.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150917_c10_D1",
+        "recording_date": "2015-09-17",
+        "dopamine_receptor": "D1"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150917_c11_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c11_D2/"
+          ],
+          "files": {
+            "features": [
+              "150917_c11_D2/150917_c11_D2-features.json"
+            ],
+            "protocols": [
+              "150917_c11_D2/150917_c11_D2-protocols.json"
+            ],
+            "spec": [
+              "150917_c11_D2/150917_c11_D2-spec.json"
+            ],
+            "summary": [
+              "150917_c11_D2/150917_c11_D2-sum.json"
+            ],
+            "figures": [
+              "150917_c11_D2/150917_c11_D2-figs.pdf"
+            ],
+            "notebook": [
+              "150917_c11_D2/150917_c11_D2.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c11_D2/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c11_D2/ECBL_APThreshold_ch4_504.dat",
+              "150917_c11_D2/ECBL_APThreshold_ch5_504.dat",
+              "150917_c11_D2/ECBL_APWaveform_ch4_522.dat",
+              "150917_c11_D2/ECBL_APWaveform_ch4_523.dat",
+              "150917_c11_D2/ECBL_APWaveform_ch4_524.dat",
+              "150917_c11_D2/ECBL_APWaveform_ch4_525.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150917_c11_D2",
+        "recording_date": "2015-09-17",
+        "dopamine_receptor": "D2"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150917_c6_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c6_D1/"
+          ],
+          "files": {
+            "features": [
+              "150917_c6_D1/150917_c6_D1-features.json"
+            ],
+            "protocols": [
+              "150917_c6_D1/150917_c6_D1-protocols.json"
+            ],
+            "spec": [
+              "150917_c6_D1/150917_c6_D1-spec.json"
+            ],
+            "summary": [
+              "150917_c6_D1/150917_c6_D1-sum.json"
+            ],
+            "figures": [
+              "150917_c6_D1/150917_c6_D1-figs.pdf"
+            ],
+            "notebook": [
+              "150917_c6_D1/150917_c6_D1.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c6_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_578.dat",
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_580.dat",
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_581.dat",
+              "150917_c6_D1/BLVC_LEDtest_ch5_579.dat",
+              "150917_c6_D1/BLVC_LEDtest_ch5_582.dat",
+              "150917_c6_D1/BLVC_LEDtest_ch5_583.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150917_c6_D1",
+        "recording_date": "2015-09-17",
+        "dopamine_receptor": "D1"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "150917_c9_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c9_D1/"
+          ],
+          "files": {
+            "features": [
+              "150917_c9_D1/150917_c9_D1-features.json"
+            ],
+            "protocols": [
+              "150917_c9_D1/150917_c9_D1-protocols.json"
+            ],
+            "spec": [
+              "150917_c9_D1/150917_c9_D1-spec.json"
+            ],
+            "summary": [
+              "150917_c9_D1/150917_c9_D1-sum.json"
+            ],
+            "figures": [
+              "150917_c9_D1/150917_c9_D1-figs.pdf"
+            ],
+            "notebook": [
+              "150917_c9_D1/150917_c9_D1.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c9_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c9_D1/ECBL_APThreshold_ch0_504.dat",
+              "150917_c9_D1/ECBL_APThreshold_ch1_504.dat",
+              "150917_c9_D1/ECBL_APWaveform_ch0_522.dat",
+              "150917_c9_D1/ECBL_APWaveform_ch0_523.dat",
+              "150917_c9_D1/ECBL_APWaveform_ch0_524.dat",
+              "150917_c9_D1/ECBL_APWaveform_ch0_525.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "150917_c9_D1",
+        "recording_date": "2015-09-17",
+        "dopamine_receptor": "D1"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "151123_c1_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "151123_c1_D2/"
+          ],
+          "files": {
+            "features": [
+              "151123_c1_D2/151123_c1_D2-features.json"
+            ],
+            "protocols": [
+              "151123_c1_D2/151123_c1_D2-protocols.json"
+            ],
+            "spec": [
+              "151123_c1_D2/151123_c1_D2-spec.json"
+            ],
+            "summary": [
+              "151123_c1_D2/151123_c1_D2-sum.json"
+            ],
+            "figures": [
+              "151123_c1_D2/151123_c1_D2-figs.pdf"
+            ],
+            "notebook": [
+              "151123_c1_D2/151123_c1_D2.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "151123_c1_D2/"
+          ],
+          "files": {
+            "traces": [
+              "151123_c1_D2/ECall_APThreshold_ch0_496.dat",
+              "151123_c1_D2/ECall_APThreshold_ch1_496.dat",
+              "151123_c1_D2/ECall_APWaveform_ch0_514.dat",
+              "151123_c1_D2/ECall_APWaveform_ch0_515.dat",
+              "151123_c1_D2/ECall_APWaveform_ch0_516.dat",
+              "151123_c1_D2/ECall_APWaveform_ch0_517.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "151123_c1_D2",
+        "recording_date": "2015-11-23",
+        "dopamine_receptor": "D2"
+      }
+    },
+    {
+      "entityType": "cell",
+      "identity": {
+        "cell_id": "160118_c10_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "analysis",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "160118_c10_D2/"
+          ],
+          "files": {
+            "features": [
+              "160118_c10_D2/160118_c10_D2-features.json"
+            ],
+            "protocols": [
+              "160118_c10_D2/160118_c10_D2-protocols.json"
+            ],
+            "spec": [
+              "160118_c10_D2/160118_c10_D2-spec.json"
+            ],
+            "summary": [
+              "160118_c10_D2/160118_c10_D2-sum.json"
+            ],
+            "figures": [
+              "160118_c10_D2/160118_c10_D2-figs.pdf"
+            ],
+            "notebook": [
+              "160118_c10_D2/160118_c10_D2.ipynb"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "derived",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "160118_c10_D2/"
+          ],
+          "files": {
+            "traces": [
+              "160118_c10_D2/ECall_APThreshold_ch2_497.dat",
+              "160118_c10_D2/ECall_APThreshold_ch3_497.dat",
+              "160118_c10_D2/ECall_APWaveform_ch2_515.dat",
+              "160118_c10_D2/ECall_APWaveform_ch2_516.dat",
+              "160118_c10_D2/ECall_APWaveform_ch2_517.dat",
+              "160118_c10_D2/ECall_APWaveform_ch2_518.dat"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "cell_id": "160118_c10_D2",
+        "recording_date": "2016-01-18",
+        "dopamine_receptor": "D2"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "150602_c1_2_D1_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150602_c1_2_D1_D2/"
+          ],
+          "files": {
+            "traces": [
+              "150602_c1_2_D1_D2/ECall_APThreshold_ch2_353.ibw",
+              "150602_c1_2_D1_D2/ECall_APThreshold_ch3_353.ibw",
+              "150602_c1_2_D1_D2/ECall_APThreshold_ch4_353.ibw",
+              "150602_c1_2_D1_D2/ECall_APThreshold_ch5_353.ibw",
+              "150602_c1_2_D1_D2/ECall_APWaveform_ch2_371.ibw",
+              "150602_c1_2_D1_D2/ECall_APWaveform_ch2_372.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "150602_c1_2_D1_D2",
+        "experiment_date": "2015-06-02"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "150908_c4_5_D2_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150908_c4_5_D2_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150908_c4_5_D2_D1/ECall_APThreshold_ch0_503.ibw",
+              "150908_c4_5_D2_D1/ECall_APThreshold_ch1_503.ibw",
+              "150908_c4_5_D2_D1/ECall_APThreshold_ch2_503.ibw",
+              "150908_c4_5_D2_D1/ECall_APThreshold_ch3_503.ibw",
+              "150908_c4_5_D2_D1/ECall_APWaveform_ch0_521.ibw",
+              "150908_c4_5_D2_D1/ECall_APWaveform_ch0_522.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "150908_c4_5_D2_D1",
+        "experiment_date": "2015-09-08"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "150917_c6_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c6_D1/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_578.ibw",
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_580.ibw",
+              "150917_c6_D1/BLVC_LED3V2ms_ch5_581.ibw",
+              "150917_c6_D1/BLVC_LEDtest_ch5_579.ibw",
+              "150917_c6_D1/BLVC_LEDtest_ch5_582.ibw",
+              "150917_c6_D1/BLVC_LEDtest_ch5_583.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "150917_c6_D1",
+        "experiment_date": "2015-09-17"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "150917_c9_11_D1_D1_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "dspn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c9_11_D1_D1_D2/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch0_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch1_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch2_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch3_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch4_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch5_504.ibw"
+            ]
+          },
+          "isComplete": true
+        },
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "150917_c9_11_D1_D1_D2/"
+          ],
+          "files": {
+            "traces": [
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch0_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch1_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch2_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch3_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch4_504.ibw",
+              "150917_c9_11_D1_D1_D2/ECBL_APThreshold_ch5_504.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "150917_c9_11_D1_D1_D2",
+        "experiment_date": "2015-09-17"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "151123_c1_2_D2_D1"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "151123_c1_2_D2_D1/"
+          ],
+          "files": {
+            "traces": [
+              "151123_c1_2_D2_D1/ECall_APThreshold_ch0_496.ibw",
+              "151123_c1_2_D2_D1/ECall_APThreshold_ch1_496.ibw",
+              "151123_c1_2_D2_D1/ECall_APThreshold_ch2_496.ibw",
+              "151123_c1_2_D2_D1/ECall_APThreshold_ch3_496.ibw",
+              "151123_c1_2_D2_D1/ECall_APWaveform_ch0_514.ibw",
+              "151123_c1_2_D2_D1/ECall_APWaveform_ch0_515.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "151123_c1_2_D2_D1",
+        "experiment_date": "2015-11-23"
+      }
+    },
+    {
+      "entityType": "experiment",
+      "identity": {
+        "experiment_id": "160118_c9_11_D1_D2_D2"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "original",
+          "rootStoragePathIdentifier": "ispn",
+          "fileSystemType": "folder",
+          "paths": [
+            "160118_c9_11_D1_D2_D2/"
+          ],
+          "files": {
+            "traces": [
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch0_497.ibw",
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch1_497.ibw",
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch2_497.ibw",
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch3_497.ibw",
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch4_497.ibw",
+              "160118_c9_11_D1_D2_D2/ECall_APThreshold_ch5_497.ibw"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "experiment_id": "160118_c9_11_D1_D2_D2",
+        "experiment_date": "2016-01-18"
+      }
+    }
+  ],
+  "unmatched": []
+}

@@ -1,0 +1,47 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "entries": [
+        "170518_1a.ABF",
+        "170518_1b.ABF",
+        "170518_1c.ABF",
+        "170518_1d.ABF",
+        "170518_1e.ABF",
+        "170518_2a.ABF",
+        "170518_2b.ABF",
+        "170518_2c.ABF",
+        "170518_2d.ABF",
+        "170518_2e.ABF",
+        "170518_3a.ABF",
+        "170518_3b.ABF",
+        "170518_3c.ABF",
+        "170518_3d.ABF",
+        "170518_3e.ABF",
+        "170518_4a.ABF",
+        "170518_4b.ABF",
+        "170518_4c.ABF",
+        "170518_4d.ABF",
+        "170518_4e.ABF",
+        "170529_1a.ABF",
+        "170529_1b.ABF",
+        "170529_1c.ABF",
+        "170529_1d.ABF",
+        "170529_1e.ABF",
+        "170529_2a.ABF",
+        "170529_2b.ABF",
+        "170529_2c.ABF",
+        "170529_2d.ABF",
+        "170529_2e.ABF",
+        "170529_3a.ABF",
+        "170529_3b.ABF",
+        "170529_3c.ABF",
+        "170529_3d.ABF",
+        "170529_3e.ABF",
+        "EBRAINS-datadescriptor_Excitability of mouse hippocampal CA1 pyramidal neurons during sustained (500 ms) strong depolarization.pdf",
+        "Licence-CC-BY.pdf"
+      ]
+    }
+  ]
+}

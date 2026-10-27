@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "animal", "description": "One rat, e.g. ec013; never a folder of its own", "isPrimary": true, "identifierRef": "animal_id" },
+    { "name": "recording_day", "description": "A top-level directory such as ec013.15: recordings made with the same electrode placement, grouped by the data provider", "identifierRef": "day_id" },
+    { "name": "session", "description": "One recording session, e.g. ec013.156; every file of the session shares its name", "identifierRef": "session_id" },
+    { "name": "shank", "description": "One electrode group; its .clu/.res/.fet/.spk files share the numeric extension", "identifierRef": "shank_number" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "animal", "targetEntity": "recording_day", "relationType": "oneToMany" },
+    { "sourceEntity": "recording_day", "targetEntity": "session", "relationType": "oneToMany" },
+    { "sourceEntity": "session", "targetEntity": "shank", "relationType": "oneToMany" }
+  ],
+  "metadataDefinitions": {
+    "animal_id": { "name": "animal_id", "dataType": "string", "ofEntity": "animal", "validation": { "pattern": "^[a-z]{2}\\d{3}$" } },
+    "day_id": { "name": "day_id", "dataType": "string", "ofEntity": "recording_day", "validation": { "pattern": "^[a-z]{2}\\d{3}\\.\\d+$" } },
+    "session_id": { "name": "session_id", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^[a-z]{2}\\d{3}\\.\\d+$" } },
+    "session_number": { "name": "session_number", "description": "The digits after the dot", "dataType": "integer", "ofEntity": "session" },
+    "shank_number": { "name": "shank_number", "dataType": "integer", "ofEntity": "shank", "validation": { "minimum": 1 } }
+  },
+  "dataLocations": [
+    {
+      "identifier": "hc3",
+      "displayName": "CRCNS hc-3 (extracted archives)",
+      "description": "Each ec013.15-style archive extracts to a top directory holding one folder per session. A session folder holds <session>.xml (parameters), <session>.eeg (LFP), <session>.whl (position), and per electrode group N the files <session>.clu.N, .res.N, .fet.N and .spk.N. hc3-metadata-tables/ and docs/ sit beside the data.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/crcns/hc-3" }
+        ],
+        "entityLayout": [
+          { "name": "days", "entityType": "recording_day", "matchPattern": "^[a-z]{2}\\d{3}\\.\\d+$" },
+          {
+            "name": "sessions",
+            "entityType": "session",
+            "matchPattern": "^[a-z]{2}\\d{3}\\.\\d+$",
+            "filePatterns": [
+              { "name": "parameters", "pattern": "^{session_id}\\.xml$", "isRequired": true, "cardinality": "one" },
+              { "name": "lfp", "pattern": "^{session_id}\\.eeg$", "cardinality": "one" },
+              { "name": "position", "pattern": "^{session_id}\\.whl$", "cardinality": "one" }
+            ]
+          },
+          {
+            "name": "shank-files",
+            "entityType": "shank",
+            "fileSystemType": "file",
+            "matchPattern": "\\.(clu|res|fet|spk)\\.\\d+$",
+            "filePatterns": [
+              { "name": "clusters", "pattern": "^{session_id}\\.clu\\.{shank_number}$", "isRequired": true, "cardinality": "one" },
+              { "name": "spike_times", "pattern": "^{session_id}\\.res\\.{shank_number}$", "isRequired": true, "cardinality": "one" },
+              { "name": "features", "pattern": "^{session_id}\\.fet\\.{shank_number}$", "cardinality": "one" },
+              { "name": "waveforms", "pattern": "^{session_id}\\.spk\\.{shank_number}$", "cardinality": "one" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "day_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "days" } },
+          { "metadataRef": "animal_id", "extraction": { "method": "substring", "pattern": "0:5", "entityLayoutLevel": "days" } },
+          { "metadataRef": "session_id", "extraction": { "method": "substring", "pattern": ":", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "session_number", "extraction": { "method": "regex", "pattern": "\\.(\\d+)$", "entityLayoutLevel": "sessions" } },
+          { "metadataRef": "shank_number", "extraction": { "method": "regex", "pattern": "\\.(?:clu|res|fet|spk)\\.(\\d+)$", "entityLayoutLevel": "shank-files" } }
+        ]
+      }
+    }
+  ]
+}

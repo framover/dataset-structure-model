@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    {
+      "name": "subject",
+      "description": "One mouse. The data descriptor: 'folder containing all data from experimental subject Sbj001'.",
+      "isPrimary": true,
+      "identifierRef": "subject_id"
+    },
+    {
+      "name": "sample",
+      "description": "One CA3 pyramidal cell. The data descriptor: 'folder containing all data from measurement sample ... All data is in .txt format and stems from recordings of a single cell.'",
+      "identifierRef": "sample_id"
+    }
+  ],
+  "entityRelationships": [
+    {
+      "sourceEntity": "subject",
+      "targetEntity": "sample",
+      "relationType": "oneToMany",
+      "relationName": "hasSamples"
+    }
+  ],
+  "metadataDefinitions": {
+    "subject_id": {
+      "name": "subject_id",
+      "title": "Subject",
+      "description": "Name of the subject folder, Sbj<NNN>.",
+      "dataType": "string",
+      "ofEntity": "subject",
+      "validation": {
+        "pattern": "^Sbj\\d{3}$"
+      }
+    },
+    "sample_id": {
+      "name": "sample_id",
+      "title": "Measurement sample",
+      "description": "Name of the sample folder: an optional slice number, a cell letter and the recording date. The date is written with five or six digits (A30216, A260216), so it is not read as a date.",
+      "dataType": "string",
+      "ofEntity": "sample",
+      "validation": {
+        "pattern": "^\\d?[A-Z]\\d{5,6}$"
+      }
+    }
+  },
+  "dataLocations": [
+    {
+      "identifier": "bucket",
+      "displayName": "EBRAINS bucket p63ea6-hbp-00005, folder MF-CA3-STDP-neonate-KO-posPairing",
+      "description": "Marchetti et al.: Spike time dependent plasticity (STDP) data from neonate neuroligin-3 knock-out mice, positive pairing (dataset version ee606dea-6f56-45e0-9c04-23fb09e02561). Six dataset versions share the bucket p63ea6-hbp-00005, one folder each; this one is MF-CA3-STDP-neonate-KO-posPairing/. The data descriptor: 'File names ending with _C.txt are recordings in control conditions, those ending with _P.txt are recordings during and after pairing.' Every entry below the dataset's folder was listed.",
+      "dataCategory": "raw",
+      "access": "read",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          {
+            "identifier": "local-copy",
+            "path": "/data/ebrains/p63ea6-hbp-00005"
+          }
+        ],
+        "entityLayout": [
+          {
+            "name": "dataset-folder",
+            "isVariable": false,
+            "fixedName": "MF-CA3-STDP-neonate-KO-posPairing"
+          },
+          {
+            "name": "subjects",
+            "entityType": "subject",
+            "matchPattern": "^Sbj\\d{3}$"
+          },
+          {
+            "name": "samples",
+            "entityType": "sample",
+            "matchPattern": "^\\d?[A-Z]\\d{5,6}$",
+            "filePatterns": [
+              {
+                "name": "control",
+                "pattern": "_C\\.txt$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "EPSCs in control conditions, voltage clamp, at least 10 min"
+              },
+              {
+                "name": "pairing",
+                "pattern": "_P\\.txt$",
+                "isRequired": true,
+                "cardinality": "one",
+                "description": "Pairing in current clamp, then EPSCs for 30-40 min after pairing"
+              }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          {
+            "metadataRef": "subject_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "subjects"
+            }
+          },
+          {
+            "metadataRef": "sample_id",
+            "extraction": {
+              "method": "substring",
+              "pattern": ":",
+              "entityLayoutLevel": "samples"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "roots": [
+    {
+      "dataLocationIdentifier": "suite2p",
+      "rootStoragePathIdentifier": "analysis",
+      "entries": [
+        "m0123_20240315/",
+        "m0123_20240315/suite2p/",
+        "m0123_20240315/suite2p/combined/",
+        "m0123_20240315/suite2p/combined/F.npy",
+        "m0123_20240315/suite2p/combined/Fneu.npy",
+        "m0123_20240315/suite2p/combined/iscell.npy",
+        "m0123_20240315/suite2p/combined/ops.npy",
+        "m0123_20240315/suite2p/combined/spks.npy",
+        "m0123_20240315/suite2p/combined/stat.npy",
+        "m0123_20240315/suite2p/ops1.npy",
+        "m0123_20240315/suite2p/plane0/",
+        "m0123_20240315/suite2p/plane0/F.npy",
+        "m0123_20240315/suite2p/plane0/Fneu.npy",
+        "m0123_20240315/suite2p/plane0/data.bin",
+        "m0123_20240315/suite2p/plane0/iscell.npy",
+        "m0123_20240315/suite2p/plane0/ops.npy",
+        "m0123_20240315/suite2p/plane0/spks.npy",
+        "m0123_20240315/suite2p/plane0/stat.npy",
+        "m0123_20240315/suite2p/plane1/",
+        "m0123_20240315/suite2p/plane1/F.npy",
+        "m0123_20240315/suite2p/plane1/Fneu.npy",
+        "m0123_20240315/suite2p/plane1/iscell.npy",
+        "m0123_20240315/suite2p/plane1/ops.npy",
+        "m0123_20240315/suite2p/plane1/spks.npy",
+        "m0123_20240315/suite2p/plane1/stat.npy",
+        "m0123_20240315/suite2p/run.log",
+        "m0124_20240316/",
+        "m0124_20240316/suite2p/",
+        "m0124_20240316/suite2p/plane0/",
+        "m0124_20240316/suite2p/plane0/F.npy",
+        "m0124_20240316/suite2p/plane0/Fneu.npy",
+        "m0124_20240316/suite2p/plane0/iscell.npy",
+        "m0124_20240316/suite2p/plane0/ops.npy"
+      ]
+    }
+  ]
+}

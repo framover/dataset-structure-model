@@ -1,0 +1,47 @@
+{
+  "environmentIdentifier": "analysis-mac",
+  "roots": [
+    {
+      "dataLocationIdentifier": "scanimage",
+      "rootStoragePathIdentifier": "nas",
+      "entries": [
+        "2024-03-15/",
+        "2024-03-15/m0123/",
+        "2024-03-15/m0123/file_00001_00001.tif",
+        "2024-03-15/m0123/file_00001_00002.tif",
+        "2024-03-15/m0123/file_00001_00003.tif",
+        "2024-03-15/m0123/file_00002_00001.tif",
+        "2024-03-15/m0123/notes.txt",
+        "2024-03-15/m0124/",
+        "2024-03-15/m0124/spont_00001_00001.tif",
+        "2024-03-16/",
+        "2024-03-16/calibration/",
+        "2024-03-16/calibration/beads_00001_00001.tif",
+        "2024-03-16/m0123/",
+        "2024-03-16/m0123/file_00001_00001.tif",
+        "2024-03-16/m0123/file_00001_00002.tif"
+      ]
+    },
+    {
+      "dataLocationIdentifier": "caiman",
+      "rootStoragePathIdentifier": "nas",
+      "entries": [
+        "m0123/",
+        "m0123/2024-03-15/",
+        "m0123/2024-03-15/file_00001/",
+        "m0123/2024-03-15/file_00001/file_00001_results.hdf5",
+        "m0123/2024-03-15/file_00001/file_00001_rig__d1_512_d2_512_d3_1_order_F_frames_6000_.mmap",
+        "m0123/2024-03-15/file_00001/memmap__d1_512_d2_512_d3_1_order_C_frames_6000_.mmap",
+        "m0123/2024-03-15/file_00002/",
+        "m0123/2024-03-15/file_00002/memmap__d1_512_d2_512_d3_1_order_C_frames_2000_.mmap",
+        "m0123/2024-03-16/",
+        "m0123/2024-03-16/file_00001/",
+        "m0123/2024-03-16/file_00001/file_00001_results.hdf5",
+        "m0124/",
+        "m0124/2024-03-15/",
+        "m0124/2024-03-15/spont_00001/",
+        "m0124/2024-03-15/spont_00001/spont_00001_results.hdf5"
+      ]
+    }
+  ]
+}

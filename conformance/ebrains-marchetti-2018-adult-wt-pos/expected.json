@@ -1,0 +1,258 @@
+{
+  "records": [
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj001"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj001/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj002"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj002/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj002"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "Sbj003"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj003/"
+          ]
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj003"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "A260216"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj001"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_A260216__A260216_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/A260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_A260216__A260216_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001",
+        "sample_id": "A260216"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "B260216"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj001"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_B260216__B260216_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/B260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_B260216__B260216_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001",
+        "sample_id": "B260216"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "C260216"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj001"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_C260216__C260216_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj001/C260216/MF-CA3-STDP-adult-WT-posPairing_Sbj001_C260216__C260216_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj001",
+        "sample_id": "C260216"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "B110216"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj002"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/MF-CA3-STDP-adult-WT-posPairing_Sbj002_B110216__B110216_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj002/B110216/MF-CA3-STDP-adult-WT-posPairing_Sbj002_B110216__B110216_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj002",
+        "sample_id": "B110216"
+      }
+    },
+    {
+      "entityType": "sample",
+      "identity": {
+        "sample_id": "D110216"
+      },
+      "parents": [
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "Sbj003"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "bucket",
+          "rootStoragePathIdentifier": "local-copy",
+          "fileSystemType": "folder",
+          "paths": [
+            "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/"
+          ],
+          "files": {
+            "control": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/MF-CA3-STDP-adult-WT-posPairing_Sbj003_D110216__D110216_C.txt"
+            ],
+            "pairing": [
+              "MF-CA3-STDP-adult-WT-posPairing/Sbj003/D110216/MF-CA3-STDP-adult-WT-posPairing_Sbj003_D110216__D110216_P.txt"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "subject_id": "Sbj003",
+        "sample_id": "D110216"
+      }
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "bucket",
+      "rootStoragePathIdentifier": "local-copy",
+      "path": "MF-CA3-STDP-adult-WT-posPairing/00-hbp-00005_DataDescriptor_MF-CA3-STDP-adult-WT-posPairing_v1p1.txt",
+      "reason": "no-match",
+      "detail": "a folder is expected at level 'subjects'"
+    }
+  ]
+}

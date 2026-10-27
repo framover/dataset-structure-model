@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "0.1.0",
+  "entityTypes": [
+    { "name": "subject", "description": "One animal; a folder named sub-<label>", "isPrimary": true, "identifierRef": "subject_id" },
+    { "name": "session", "description": "One NWB file; the ses-<label> is the recording date", "identifierRef": "session_id" }
+  ],
+  "entityRelationships": [
+    { "sourceEntity": "subject", "targetEntity": "session", "relationType": "oneToMany", "relationName": "hasSessions" }
+  ],
+  "metadataDefinitions": {
+    "subject_id": { "name": "subject_id", "title": "Subject ID", "dataType": "string", "ofEntity": "subject", "validation": { "pattern": "^[A-Za-z0-9]+$" } },
+    "session_id": { "name": "session_id", "title": "Session label", "description": "The ses- label; in this dandiset an eight-digit date", "dataType": "string", "ofEntity": "session", "validation": { "pattern": "^\\d{8}$" } },
+    "session_date": { "name": "session_date", "title": "Session date", "dataType": "date", "ofEntity": "session" }
+  },
+  "dataLocations": [
+    {
+      "identifier": "dandiset",
+      "displayName": "DANDI 000006 (local download)",
+      "description": "As downloaded with the dandi CLI: dandiset.yaml at the root, one folder per subject, one NWB file per session named sub-<subject>_ses-<date>.nwb.",
+      "dataCategory": "imported",
+      "sourceType": "filesystem",
+      "filesystemSource": {
+        "rootStoragePaths": [
+          { "identifier": "local", "path": "/data/dandi/000006", "storageType": "local" }
+        ],
+        "entityLayout": [
+          {
+            "name": "subjects",
+            "entityType": "subject",
+            "pathComponentTemplate": "sub-{subject_id}",
+            "excludePatterns": ["^\\..*"]
+          },
+          {
+            "name": "session-files",
+            "entityType": "session",
+            "fileSystemType": "file",
+            "matchPattern": "^sub-[A-Za-z0-9]+_ses-\\d{8}\\.nwb$",
+            "filePatterns": [
+              { "name": "nwb", "pattern": "^sub-{subject_id}_ses-{session_id}\\.nwb$", "isRequired": true, "cardinality": "one", "description": "The NWB file holding the whole session" }
+            ]
+          }
+        ],
+        "metadataMapping": [
+          { "metadataRef": "subject_id", "extraction": { "method": "regex", "pattern": "^sub-([A-Za-z0-9]+)$", "entityLayoutLevel": "subjects" } },
+          { "metadataRef": "session_id", "extraction": { "method": "regex", "pattern": "_ses-(\\d{8})\\.nwb$", "entityLayoutLevel": "session-files" } },
+          { "metadataRef": "session_date", "extraction": { "method": "regex", "pattern": "_ses-(\\d{8})\\.nwb$", "valueFormat": "yyyyMMdd", "entityLayoutLevel": "session-files" } }
+        ],
+        "pathTemplate": "{rootPath}/sub-{subject_id}/sub-{subject_id}_ses-{session_id}.nwb"
+      }
+    }
+  ]
+}

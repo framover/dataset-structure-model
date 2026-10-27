@@ -14,7 +14,7 @@ Most data standards (BIDS, ISA, NWB) require you to conform your data to a speci
 
 A schema without an implementation drifts — the repository's own history shows it. Version 0.1.0 names what readers implement and configs rely on: the `filesystem` source, the extraction methods `substring`, `regex`, `template`, `fixed` and `function`, entity identity, file-level entities and the entity record. `spreadsheet`, `database` and `api` sources and the `sidecar` method stay in the schema as **DRAFT** so their place is reserved, but readers may reject them and they may change at any time. The rule from here: a field enters the core when a reader consumes it, not before.
 
-Version 1.0 is a promise that breaking changes become major versions. The core has been exercised on the authors' own layouts and one toy dataset, which is not evidence for that promise. So 1.0 waits until the mapping has been applied to datasets from outside the authors' lab and the core has stopped changing across them. Until then a change to the core bumps the minor version.
+Version 1.0 is a promise that breaking changes become major versions. The core has been exercised on the authors' own layouts and one toy dataset, which is not evidence for that promise. So 1.0 waits until the mapping has been applied to datasets from outside the authors' lab and the core has stopped changing across them. The first such pass is recorded in [Validation Against Foreign Datasets](../validation/foreign-datasets.md); until the gaps it lists are settled, a change to the core bumps the minor version.
 
 ---
 
@@ -44,9 +44,17 @@ Folders that are part of the path but are not entities — date folders, a fixed
 
 ---
 
+## A structural folder is walked through or reported, never silent
+
+Two consequences of "structural levels are not in the key" are stated so that readers and the self-consistency suite agree. First, when a structural level sits between an entity level and a file level and alternates between sibling folders, the files of one entity are pooled across those folders: a run's NIfTI in `funct/` and its timing file in `timing/` have the same identity under the same session, and the key cannot tell the folders apart. One folder per entity is not an alternative, because it would give two records with one key. Second, a structural folder that holds nothing an entity accounts for, whether empty or holding only entries the next level rejects, is reported `no-match` itself: `unmatched` lists topmost entries, and a folder nothing was found in is the topmost thing to report, not each of its contents.
+
+---
+
 ## Ancestor levels may be missing; ancestor identity may come from a descendant
 
 A processed location that holds session folders with no subject folder above them is common. The subject still exists — its id is in the session name — so extraction rules for an ancestor type run on the nearest descendant level and identify the parent. Requiring every location to mirror the full hierarchy would exclude most real processed-data layouts.
+
+The `isRequired` flag on a level is DRAFT for the same reason: the readers express a missing ancestor by omitting the level from that location's layout, not by a flag, and a depth that varies within one location is not described yet.
 
 ---
 
@@ -88,7 +96,9 @@ It records which locations fed this one. How the processing ran belongs to the p
 
 ## `fileGroupingPattern` stays simple
 
-A pattern, an optional name, `isRequired`, `cardinality`. A richer *file class* with role, MIME format, co-occurrence `groupKey` and per-file extractors was drafted and withdrawn: no reader consumed it, and roles can be expressed by `name` and `description`. Co-occurrence groups may return when a reader needs them.
+A pattern, an optional name, and how many files to expect. A richer *file class* with role, MIME format, co-occurrence `groupKey` and per-file extractors was drafted and withdrawn: no reader consumed it, and roles can be expressed by `name` and `description`. Co-occurrence groups may return when a reader needs them.
+
+The count has two spellings. `isRequired` and `cardinality` cover the common cases in one word; `minCount` and `maxCount` state any bound, because "exactly three planes" and "at most one sorted file" are real constraints a deposit can violate. The two spellings are equivalent where they overlap (`isRequired` is `minCount: 1`, `cardinality: one` is `maxCount: 1`), and a pattern that writes both forms must have them agree, so there is one meaning to implement and no precedence rule to remember.
 
 ---
 

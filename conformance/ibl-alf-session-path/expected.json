@@ -1,0 +1,418 @@
+{
+  "records": [
+    {
+      "entityType": "lab",
+      "identity": {
+        "lab_name": "cortexlab"
+      },
+      "parents": [],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/"
+          ]
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab"
+      }
+    },
+    {
+      "entityType": "subject",
+      "identity": {
+        "subject_id": "KS023"
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/"
+          ]
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_date": "2019-12-10",
+        "session_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-10/001/"
+          ]
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-10",
+        "session_number": 1,
+        "session_path": "cortexlab/Subjects/KS023/2019-12-10/001"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_date": "2019-12-10",
+        "session_number": 2
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-10/002/"
+          ]
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-10",
+        "session_number": 2,
+        "session_path": "cortexlab/Subjects/KS023/2019-12-10/002"
+      }
+    },
+    {
+      "entityType": "session",
+      "identity": {
+        "session_date": "2019-12-11",
+        "session_number": 1
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-11/001/"
+          ]
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-11",
+        "session_number": 1,
+        "session_path": "cortexlab/Subjects/KS023/2019-12-11/001"
+      }
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_label": "probe00"
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_date": "2019-12-10",
+            "session_number": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/",
+            "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/"
+          ],
+          "files": {
+            "spike_times": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/spikes.times.npy"
+            ],
+            "spike_clusters": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/spikes.clusters.npy"
+            ],
+            "ap_band": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.cbin"
+            ],
+            "ap_meta": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-10",
+        "session_number": 1,
+        "probe_label": "probe00"
+      },
+      "issues": [
+        {
+          "code": "duplicate-entity",
+          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe00'}: ['cortexlab/Subjects/KS023/2019-12-10/001/alf/probe00/', 'cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe00/']"
+        }
+      ]
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_label": "probe01"
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_date": "2019-12-10",
+            "session_number": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/",
+            "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/"
+          ],
+          "files": {
+            "spike_times": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/spikes.times.npy"
+            ],
+            "spike_clusters": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/spikes.clusters.npy"
+            ],
+            "ap_band": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/_spikeglx_ephysData_g0_t0.imec1.ap.cbin"
+            ],
+            "ap_meta": [
+              "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/_spikeglx_ephysData_g0_t0.imec1.ap.meta"
+            ]
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-10",
+        "session_number": 1,
+        "probe_label": "probe01"
+      },
+      "issues": [
+        {
+          "code": "duplicate-entity",
+          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe01'}: ['cortexlab/Subjects/KS023/2019-12-10/001/alf/probe01/', 'cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/probe01/']"
+        }
+      ]
+    },
+    {
+      "entityType": "probe",
+      "identity": {
+        "probe_label": "probe00"
+      },
+      "parents": [
+        {
+          "entityType": "lab",
+          "identity": {
+            "lab_name": "cortexlab"
+          }
+        },
+        {
+          "entityType": "subject",
+          "identity": {
+            "subject_id": "KS023"
+          }
+        },
+        {
+          "entityType": "session",
+          "identity": {
+            "session_date": "2019-12-11",
+            "session_number": 1
+          }
+        }
+      ],
+      "locations": [
+        {
+          "dataLocationIdentifier": "one-cache",
+          "rootStoragePathIdentifier": "cache",
+          "fileSystemType": "folder",
+          "paths": [
+            "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/",
+            "cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/"
+          ],
+          "files": {
+            "spike_times": [
+              "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/spikes.times.npy"
+            ],
+            "spike_clusters": [
+              "cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/spikes.clusters.npy"
+            ],
+            "ap_band": [
+              "cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/_spikeglx_ephysData_g0_t0.imec0.ap.cbin"
+            ],
+            "ap_meta": []
+          },
+          "isComplete": true
+        }
+      ],
+      "metadata": {
+        "lab_name": "cortexlab",
+        "subject_id": "KS023",
+        "session_date": "2019-12-11",
+        "session_number": 1,
+        "probe_label": "probe00"
+      },
+      "issues": [
+        {
+          "code": "duplicate-entity",
+          "message": "2 folders in 'one-cache' yield {'probe_label': 'probe00'}: ['cortexlab/Subjects/KS023/2019-12-11/001/alf/probe00/', 'cortexlab/Subjects/KS023/2019-12-11/001/raw_ephys_data/probe00/']"
+        }
+      ]
+    }
+  ],
+  "unmatched": [
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_trials.choice.npy",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_trials.intervals.npy",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/alf/_ibl_wheel.position.npy",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/raw_behavior_data/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/_spikeglx_ephysData_g0_t0.nidq.cbin",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/raw_ephys_data/_spikeglx_ephysData_g0_t0.nidq.meta",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/001/raw_video_data/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-10/002/raw_behavior_data/",
+      "reason": "no-match"
+    },
+    {
+      "dataLocationIdentifier": "one-cache",
+      "rootStoragePathIdentifier": "cache",
+      "path": "cortexlab/Subjects/KS023/2019-12-11/001/alf/_ibl_trials.intervals.npy",
+      "reason": "no-match"
+    }
+  ]
+}

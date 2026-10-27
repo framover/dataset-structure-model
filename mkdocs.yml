@@ -81,6 +81,8 @@ nav:
       - Flat Session Files: examples/flat-session-files.md
       - Raw and Processed Two-Photon: examples/raw-processed-two-photon.md
       - SHAREbrain Toy Dataset: examples/sharebrain.md
+  - Validation:
+      - Foreign Datasets: validation/foreign-datasets.md
   - API:
       - api/index.md
       - Python: api/python.md
